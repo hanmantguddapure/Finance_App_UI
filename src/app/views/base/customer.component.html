@@ -1,0 +1,192 @@
+<div class="animated fadeIn">
+ 
+  <div class="row">
+    <div class="col-sm-12">
+      <div class="card">
+        <div class="card-header">
+          <strong>Customer Detail</strong> 
+        </div>
+        <div class="card-body">
+          <form #custform="ngForm" class="form-horizontal">
+            
+            <div class="form-group row">
+              <label class="col-md-3 col-form-label">Full Name</label>
+              <div class="col-md-9">
+                <input type="text" name="fullName" ngModel class="form-control is-invalid" id="inputError1" placeholder="Full Name..">
+                <div *ngIf="isCustValid" class="invalid-feedback">
+                    Please Enter Customer Name.
+                  </div>
+              </div>
+            </div>
+            <div class="form-group row">
+              <label class="col-md-3 col-form-label">Buiseness</label>
+              <div class="col-md-9">
+                <input type="text" name="professionName" ngModel class="form-control"  placeholder="Buiseness Name..">
+              </div>
+            </div>
+           <div class="form-group row">
+              <label class="col-md-3 col-form-label" >Adhar No.</label>
+              <div class="col-md-9">
+                <input class="form-control" type="text" name="adharNo" ngModel placeholder="Adhar No.">
+              </div>
+            </div>
+            <div class="form-group row">
+              <label class="col-md-3 col-form-label" >PAN No.</label>
+              <div class="col-md-9">
+                <input class="form-control" type="text" name="panNo" ngModel placeholder="PAN No.">
+              </div>
+            </div>
+            <div class="card-header">
+              <strong>Address Detail</strong>
+            </div>
+           
+              <div class="card" ngModelGroup="address">
+               
+                <div class="card-body">
+                  
+                    <div class="form-group row">
+                      <label class="col-md-3 col-form-label" for="hf-email">Address</label>
+                      <div class="col-md-9">
+                        <input type="text" name="address" class="form-control" ngModel  placeholder="Address.." >
+                      </div>
+                    </div>
+                    <!--                    <div class="form-group row">
+                      <label class="col-md-3 col-form-label" for="hf-email">City</label>
+                      <div class="col-md-9">
+                        <input type="text" name="city" class="form-control" ngModel placeholder="City.." autocomplete="email">
+                      </div>
+                    </div>
+                    <div class="form-group row">
+                      <label class="col-md-3 col-form-label" for="hf-email">District</label>
+                      <div class="col-md-9">
+                        <input type="text" name="district" class="form-control" ngModel placeholder="Country.." autocomplete="email">
+                      </div>
+                    </div>
+                    <div class="form-group row">
+                      <label class="col-md-3 col-form-label" for="hf-email">State</label>
+                      <div class="col-md-9">
+                        <input type="text" name="state" class="form-control" ngModel placeholder="State.." autocomplete="email">
+                      </div>
+                    </div>
+                    <div class="form-group row">
+                      <label class="col-md-3 col-form-label" for="hf-email">Country</label>
+                      <div class="col-md-9">
+                        <input type="text" name="country" class="form-control" ngModel placeholder="Country.." autocomplete="email">
+                      </div>
+                    </div>
+                    -->
+                    <div class="form-group row">
+                      <label class="col-md-3 col-form-label" for="hf-email">Postal Code</label>
+                      <div class="col-md-9">
+                        <input type="text" name="zipCode" class="form-control" ngModel placeholder="Postal Code.." autocomplete="email">
+                      </div>
+                    </div>
+                    <div class="form-group row">
+                      <label class="col-md-3 col-form-label" for="hf-email">Email</label>
+                      <div class="col-md-9">
+                        <input type="text" name="email" class="form-control" ngModel placeholder="Email.." autocomplete="email">
+                      </div>
+                    </div>
+                    <div class="form-group row">
+                      <label class="col-md-3 col-form-label" for="hf-email">Mobile No.</label>
+                      <div class="col-md-9">
+                        <input type="text" name="phoneNo" class="form-control" ngModel placeholder="Mobile No." autocomplete="email">
+                      </div>
+                    </div>
+                    <div class="form-group row">
+                      <label class="col-md-3 col-form-label" for="hf-email">Alternet No.</label>
+                      <div class="col-md-9">
+                        <input type="text" name="altNo" class="form-control" ngModel placeholder="Alternet No." autocomplete="email">
+                      </div>
+                    </div>
+                    <div class="form-group row">
+                      <label class="col-md-3 col-form-label" for="hf-email">Native Place</label>
+                      <div class="col-md-9">
+                        <input type="text" name="nativePlace" class="form-control" ngModel placeholder="Native Place" autocomplete="email">
+                      </div>
+                    </div>
+                
+               
+               
+              </div>
+            </div><!--/.col-->
+            <div class="card-footer">
+              <button type="button" (click)="saveCustomerPersionDetail(custform.value)"  class="btn btn-sm btn-primary"><i class="fa fa-dot-circle-o"></i> Submit</button>
+              <button type="reset" class="btn btn-sm btn-danger"><i class="fa fa-ban"></i> Reset</button>
+            </div>
+      </form>
+        </div>
+       
+      </div>
+     
+    </div>
+
+  </div><!--/.row-->
+  <div class="col-sm-14">
+    <div class="card">
+      <div class="card-header">
+        <strong>Witness Persions</strong>
+      </div>
+      <div class="card-body">
+          <form #form="ngForm" class="form-horizontal">
+        <div class="row">
+        
+            <div class="form-group col-sm-4">
+              <label for="name">Full Name</label>
+              <input type="text" class="form-control is-invalid" id="inputError1"  name="fullName" ngModel >
+              <div *ngIf="isWitnessValid" class="invalid-feedback">
+                  Please Enter Customer Name.
+                </div>
+            </div>
+            <div class="row" ngModelGroup="address">
+            <div class="form-group col-sm-6">
+              <label for="name">Address</label>
+              <input type="text" class="form-control" name="address" ngModel placeholder="Address.....">
+            </div>
+            <div class="form-group col-sm-6">
+              <label for="name">Phone No.</label>
+              <input type="text" class="form-control" name="phoneNo" ngModel  placeholder="Phone No....">
+            </div>
+            </div>
+            <div  class="form-group col-sm-5">
+              
+                <button type="button" (click)="saveCustContactPersionDetail(form.value)"  class="btn btn-sm btn-primary"><i class="fa fa-dot-circle-o"></i> Add Witness</button>
+              </div>
+         
+        </div><!--/.row-->
+        </form>
+      </div>
+    </div>
+  </div><!--/.col-->
+  <div class="row">
+    <div class="col-lg-12">
+      <div class="card">
+        <div class="card-header">
+          <i class="fa fa-align-justify"></i>Witness Persions
+        </div>
+        <div class="card-body">
+          <table class="table table-bordered table-striped table-sm">
+            <thead>
+              <tr>
+                <th>Full Name</th>
+               
+                <th>Address</th>
+                <th>Phone No.</th>
+               
+              </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let custContactPersion of conatactPersionList">
+                <td>{{custContactPersion.fullName}}</td>
+                <td>{{custContactPersion.address.address}}</td>
+                <td>{{custContactPersion.address.phoneNo}}</td>
+              </tr>
+            </tbody>
+          </table>
+         
+        </div>
+      </div>
+    </div>
+    <!--/.col-->
+  </div>
+</div>

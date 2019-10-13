@@ -1,0 +1,43 @@
+<app-header
+  [navbarBrandRouterLink]="['/dashboard']"
+  [fixed]="true"
+  [navbarBrandFull]="{src: 'assets/img/brand/logo.svg', width: 89, height: 25, alt: 'CoreUI Logo'}"
+  [navbarBrandMinimized]="{src: 'assets/img/brand/sygnet.svg', width: 30, height: 30, alt: 'CoreUI Logo'}"
+  [sidebarToggler]="'lg'"
+  [asideMenuToggler]="'lg'">
+  <ul class="nav navbar-nav d-md-down-none">
+    <li class="nav-item px-3">
+      <a class="nav-link" href="/dashboard">Dashboard</a>
+    </li>
+  
+  </ul>
+  <ul class="nav navbar-nav ml-auto">
+  <!--  <li class="nav-item d-md-down-none">
+      <a class="nav-link" href="#"><i class="icon-bell"></i><span class="badge badge-pill badge-danger">5</span></a>
+    </li>-->
+    <li class="nav-item px-3">
+      <a class="nav-link" href="#">Logged In {{loggedUserName}}</a>
+    </li>
+    <li class="nav-item px-3">
+      <a class="nav-link" href="#"  (click)="logout()">Log Out</a>
+    </li>
+  </ul>
+</app-header>
+<div class="app-body">
+  
+  <app-sidebar [fixed]="true" [display]="'lg'">
+    <app-sidebar-nav [navItems]="navItems" [perfectScrollbar] [disabled]="sidebarMinimized"></app-sidebar-nav>
+    <app-sidebar-minimizer></app-sidebar-minimizer>
+   
+  </app-sidebar>
+ 
+  <main class="main">
+    
+    <div class="container-fluid">
+      <router-outlet></router-outlet>
+    </div>
+  </main>
+ 
+</div>
+<app-footer>
+</app-footer>

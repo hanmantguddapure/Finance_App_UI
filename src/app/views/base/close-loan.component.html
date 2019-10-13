@@ -1,0 +1,108 @@
+<div class="animated fadeIn">
+ 
+  <div class="row">
+    <div class="col-sm-12">
+      <div class="card">
+        <div class="card-header">
+          <strong>CLOSE ACCOUNT</strong> 
+        </div>
+        <div class="card-body">
+         <!--
+          <div class="form-group row">
+              <label class="col-md-3 col-form-label">Customer</label>
+              <div class="col-md-9">
+                <select class="form-control" name="custId" ngModel (change)="onCustomerChange($event.target.value)">
+                  <option>--Select Customer--</option>
+                  <option *ngFor="let customer of allCustomerList" value="{{customer.custId}}">{{customer.fullName}}</option>
+                </select>
+              </div>
+            </div>
+            -->
+            <div class="row">
+              <div class="form-group col-sm-2">
+                <label  for="email-input">Account Number</label>
+                <input type="text" name="loanAccNo" ngModel  (blur)="getAccountDetail($event.target.value)"  class="form-control" placeholder="Loan Account No....">
+              </div>
+              <div class="form-group col-sm-4">
+                <label for="email-input">Customer Name</label>
+                <input type="text" name="custFullName" value="{{loanDetail.custFullName}}" ngModel class="form-control" readonly>
+              </div>
+            <div class="form-group col-sm-2">
+              <label  for="email-input">Principal Amount</label>
+              <input type="text" name="loanAmt" value="{{loanDetail.principalAmount}}" ngModel class="form-control" readonly>
+            </div>
+            <div class="form-group col-sm-2">
+              <label for="email-input">Interest</label>
+              <input type="text" name="loanAmt" value="{{loanDetail.interest}}%" ngModel class="form-control" readonly>
+            </div>
+            <div class="form-group col-sm-2">
+              <label  for="email-input">Interest Amount</label>
+              <input type="text" name="loanAmt" value="{{loanDetail.interestAmt}}" ngModel class="form-control" readonly>
+            </div>
+            </div>
+            <div class="row">
+             <div class="form-group col-sm-2">
+              <label  for="email-input">Deposite  Amount</label>
+              <input type="text" name="loanAmt" value="{{loanDetail.depositeAmt}}" ngModel class="form-control" readonly>
+            </div>
+            <div class="form-group col-sm-2">
+              <label  for="email-input">Loan Amount</label>
+              <input type="text" name="principalAmount" value="{{loanDetail.loanAmt}}" ngModel class="form-control" readonly>
+            </div>
+            <div class="form-group col-sm-2">
+              <label  for="email-input">Total Collection</label>
+              <input type="text" name="shortName" value="{{loanDetail.totalCollection}}" ngModel class="form-control" readonly>
+            </div>
+            <div class="form-group col-sm-2">
+              <label  for="email-input">Required Collection</label>
+               <input type="text" name="shortName" value="{{loanDetail.pendingAmount}}" ngModel class="form-control" readonly>
+            </div>
+            <div class="form-group col-sm-2">
+              <label for="email-input">Installment Amount</label>
+              <input type="text" name="installmentAmount" value="{{loanDetail.installmentAmount}}"  ngModel class="form-control" readonly>
+            </div>
+            <div class="form-group col-sm-2">
+              <label  for="email-input">Total Installments</label>
+              <input type="text" name="installmentAmount" value="{{loanDetail.installments}}"  ngModel class="form-control" readonly>
+            </div>
+          <div class="form-group col-sm-2">
+            <label  for="email-input">Complete Installments</label>
+             <input type="text" name="installmentAmount" value="{{loanDetail.totalInstallments}}"  ngModel class="form-control" readonly>
+          </div>
+         <div class="form-group col-sm-2">
+            <label  for="email-input">Loan Status</label>
+            <input type="text" name="installmentAmount" value="{{loanDetail.loanStatus}}"  ngModel class="form-control" readonly>
+         </div>
+          </div>
+            <form #form="ngForm" class="form-horizontal">
+            <div class="form-group row">
+              <label class="col-md-3 col-form-label" for="email-input">Close Loan</label>
+              <div class="col-md-9">
+                <select class="form-control" name="loanStatus" ngModel >
+                  <option>--Select Customer--</option>
+                  <option value=Closed>Close</option>
+                </select>
+              </div>
+            </div>
+            <div class="form-group row">
+              <label class="col-md-3 col-form-label" for="email-input">Remark</label>
+              <div class="col-md-9">
+                <input type="text" name="remark"   ngModel class="form-control" placeholder="Remark">
+              </div>
+            </div>
+           
+            <div class="card-footer">
+              <button type="button" (click)="closeLoanAccount(form.value)"  class="btn btn-sm btn-primary"><i class="fa fa-dot-circle-o"></i> Submit</button>
+              <button type="reset" class="btn btn-sm btn-danger"><i class="fa fa-ban"></i> Reset</button>
+            </div>
+          </form>
+        </div>
+       
+      </div>
+     
+    </div>
+
+  </div><!--/.row-->
+ 
+ 
+</div>
