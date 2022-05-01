@@ -12,16 +12,16 @@ export class Dashboard {
     public pendingFdInterest:number;
 
     constructor(json: any) {
-        this.totalActiveLoanCollection = json.totalActiveLoanCollection ? json.totalActiveLoanCollection : '';
-        this.totalRunningLoanAmt = json.totalRunningLoanAmt ? json.totalRunningLoanAmt : '';
-        this.totalOpenedLoanAccount = json.totalOpenedLoanAccount ? json.totalOpenedLoanAccount : '';
-        this.totalDisburesements = json.totalDisburesements ? json.totalDisburesements : '';
-        this.pendingCollections = json.pendingCollections ? json.pendingCollections : '';
-        this.todayTotalCollection = json.todayTotalCollection ? json.todayTotalCollection : '';
-        this.totalActiveFdAcc = json.totalActiveFdAcc ? json.totalActiveFdAcc : '';
-        this.totalFdAmount = json.totalFdAmount ? json.totalFdAmount : '';
-        this.fdPaidInterest = json.fdPaidInterest ? json.fdPaidInterest : '';
-        this.pendingDisbursement = json.pendingDisbursement ? json.pendingDisbursement : '';
-        this.pendingFdInterest = json.pendingFdInterest ? json.pendingFdInterest : '';
+        this.totalActiveLoanCollection = json && json.totalActiveLoanCollection ? json.totalActiveLoanCollection : '';
+        this.totalRunningLoanAmt = json && json.totalRunningLoanAmt ? json.totalRunningLoanAmt : '';
+        this.totalOpenedLoanAccount = json && json.totalOpenedLoanAccount ? json.totalOpenedLoanAccount : '';
+        this.totalDisburesements = json && json.totalDisburesements ? json.totalDisburesements : '';
+        this.pendingCollections = json && json.pendingCollections ? json.pendingCollections : '';
+        this.todayTotalCollection = json && json.todayTotalCollection ? json.todayTotalCollection : '';
+        this.totalActiveFdAcc = json && json.totalActiveFdAcc ? json.totalActiveFdAcc : '';
+        this.totalFdAmount = json && json.totalFdAmount ? json.totalFdAmount : '';
+        this.fdPaidInterest = json && json.fdPaidInterest ? json.fdPaidInterest : '';
+        this.pendingDisbursement = json && json.pendingDisbursement ? json.pendingDisbursement : '';
+        this.pendingFdInterest = json && json.pendingFdInterest ? json.pendingFdInterest : '';
     }
 }

@@ -6,10 +6,10 @@ export class UserCredentials {
     public fullName:string;
 
     constructor(json: any) {
-        this.token = json.token ? json.token : 0;
-        this.userName = json.userName ? json.userName : '';
-        this.password = json.password ? json.password : '';
-        this.jwtToken = json.jwtToken ? json.jwtToken : '';
-        this.fullName = json.fullName ? json.fullName : '';
+        this.token = json && json.token ? json.token : 0;
+        this.userName = json && json.userName ? json.userName : '';
+        this.password = json && json.password ? json.password : '';
+        this.jwtToken = json && json.jwtToken ? json.jwtToken : '';
+        this.fullName = json && json.fullName ? json.fullName : '';
     }
 }

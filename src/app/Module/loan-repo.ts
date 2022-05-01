@@ -16,20 +16,20 @@ export class LoanRepo {
     public fullName: string;
 
     constructor(json: any) {
-        this.loanAccountNo = json.loanAccountNo ? json.loanAccountNo : 0;
-        this.loanAmt = json.loanAmt ? json.loanAmt : 0;
-        this.totalCollection = json.totalCollection ? json.totalCollection : 0;
-        this.remainCollection = json.remainCollection ? json.remainCollection : 0;
-        this.principalAmount = json.principalAmount ? json.principalAmount : 0;
-        this.disburseAmt = json.disburseAmt ? json.disburseAmt : 0;
-        this.proceessingFee = json.proceessingFee ? json.proceessingFee : 0;
-        this.totalInterest = json.totalInterest ? json.totalInterest : 0;
-        this.totalPenalty = json.totalPenalty ? json.totalPenalty : 0;
-        this.totalEarned = json.totalEarned ? json.totalEarned : 0;
-        this.loanEndigDate = json.loanEndigDate ? json.loanEndigDate : '';
-        this.loanStatus = json.loanStatus ? json.loanStatus : '';
-        this.paymentDate = json.paymentDate ? json.paymentDate : '';
-        this.paymentMode = json.paymentMode ? json.paymentMode : '';
-        this.fullName = json.fullName ? json.fullName : '';
+        this.loanAccountNo = json && json.loanAccountNo ? json.loanAccountNo : 0;
+        this.loanAmt = json && json.loanAmt ? json.loanAmt : 0;
+        this.totalCollection = json && json.totalCollection ? json.totalCollection : 0;
+        this.remainCollection = json && json.remainCollection ? json.remainCollection : 0;
+        this.principalAmount = json && json.principalAmount ? json.principalAmount : 0;
+        this.disburseAmt = json && json.disburseAmt ? json.disburseAmt : 0;
+        this.proceessingFee = json && json.proceessingFee ? json.proceessingFee : 0;
+        this.totalInterest = json && json.totalInterest ? json.totalInterest : 0;
+        this.totalPenalty = json && json.totalPenalty ? json.totalPenalty : 0;
+        this.totalEarned = json && json.totalEarned ? json.totalEarned : 0;
+        this.loanEndigDate = json && json.loanEndigDate ? json.loanEndigDate : '';
+        this.loanStatus = json && json.loanStatus ? json.loanStatus : '';
+        this.paymentDate = json && json.paymentDate ? json.paymentDate : '';
+        this.paymentMode = json && json.paymentMode ? json.paymentMode : '';
+        this.fullName = json && json.fullName ? json.fullName : '';
     }
 }

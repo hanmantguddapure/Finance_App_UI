@@ -27,28 +27,28 @@ export class Loandetail {
     public loanCollections: Array<PaymentDetail> = [];
 
     constructor(json: any) {
-        this.principalAmount = json.principalAmount ? json.principalAmount : 0;
-        this.interestAmt = json.interestAmt ? json.interestAmt : 0;
-        this.depositeAmt = json.depositeAmt ? json.depositeAmt : 0;
-        this.processingFees = json.processingFees ? json.processingFees : 0;
-        this.loanAmt = json.loanAmt ? json.loanAmt : 0;
-        this.installments = json.installments ? json.installments : 0;
-        this.installmentAmount = json.installmentAmount ? json.installmentAmount : 0;
-        this.disburseAmt = json.disburseAmt ? json.disburseAmt : 0;
-        this.totalCollection = json.totalCollection ? json.totalCollection : 0;
-        this.pendingAmount = json.pendingAmount ? json.pendingAmount : 0;
+        this.principalAmount = json && json.principalAmount ? json.principalAmount : 0;
+        this.interestAmt = json && json.interestAmt ? json.interestAmt : 0;
+        this.depositeAmt = json && json.depositeAmt ? json.depositeAmt : 0;
+        this.processingFees = json && json.processingFees ? json.processingFees : 0;
+        this.loanAmt = json && json.loanAmt ? json.loanAmt : 0;
+        this.installments = json && json.installments ? json.installments : 0;
+        this.installmentAmount = json && json.installmentAmount ? json.installmentAmount : 0;
+        this.disburseAmt = json && json.disburseAmt ? json.disburseAmt : 0;
+        this.totalCollection = json && json.totalCollection ? json.totalCollection : 0;
+        this.pendingAmount = json && json.pendingAmount ? json.pendingAmount : 0;
 
-        this.custId = json.custId ? json.custId : '';
-        this.custFullName = json.custFullName ? json.custFullName : '';
-        this.interest = json.interest ? json.interest : '';
-        this.loanStartDate = json.loanStartDate ? json.loanStartDate : '';
-        this.loanEndDate = json.loanEndDate ? json.loanEndDate : '';
-        this.installMentType = json.installMentType ? json.installMentType : '';
-        this.totalInstallments = json.totalInstallments ? json.totalInstallments : '';
-        this.loanStatus = json.loanStatus ? json.loanStatus : '';
-        this.loanAccountNo = json.loanAccountNo ? json.loanAccountNo : '';
-        this.remark = json.remark ? json.remark : '';
-        this.paymentDate = json.paymentDate ? json.paymentDate : '';
-        this.paymentMode = json.paymentMode ? json.paymentMode : '';
+        this.custId = json && json.custId ? json.custId : '';
+        this.custFullName = json && json.custFullName ? json.custFullName : '';
+        this.interest = json && json.interest ? json.interest : '';
+        this.loanStartDate = json && json.loanStartDate ? json.loanStartDate : '';
+        this.loanEndDate = json && json.loanEndDate ? json.loanEndDate : '';
+        this.installMentType = json && json.installMentType ? json.installMentType : '';
+        this.totalInstallments = json && json.totalInstallments ? json.totalInstallments : '';
+        this.loanStatus = json && json.loanStatus ? json.loanStatus : '';
+        this.loanAccountNo = json && json.loanAccountNo ? json.loanAccountNo : '';
+        this.remark = json && json.remark ? json.remark : '';
+        this.paymentDate = json && json.paymentDate ? json.paymentDate : '';
+        this.paymentMode = json && json.paymentMode ? json.paymentMode : '';
     }
 }

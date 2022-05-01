@@ -8,12 +8,12 @@ export class ShortTermLoan {
     public remark: string;
 
     constructor(json: any) {
-        this.shortTermLoanId = json.shortTermLoanId ? json.shortTermLoanId : 0;
-        this.loanAmt = json.loanAmt ? json.loanAmt : 0;
-        this.custFullName = json.custFullName ? json.custFullName : '';
-        this.startDate = json.startDate ? json.startDate : '';
-        this.endDate = json.endDate ? json.endDate : '';
-        this.status = json.status ? json.status : '';
-        this.remark = json.remark ? json.remark : '';
+        this.shortTermLoanId = json && json.shortTermLoanId ? json.shortTermLoanId : 0;
+        this.loanAmt = json && json.loanAmt ? json.loanAmt : 0;
+        this.custFullName = json && json.custFullName ? json.custFullName : '';
+        this.startDate = json && json.startDate ? json.startDate : '';
+        this.endDate = json && json.endDate ? json.endDate : '';
+        this.status = json && json.status ? json.status : '';
+        this.remark = json && json.remark ? json.remark : '';
     }
 }

@@ -11,15 +11,15 @@ export class Address {
 	nativePlace:string;
 
     constructor(json: any) {
-        this.address = json.address ? json.address : '';
-        this.city = json.city ? json.city : '';
-        this.district = json.district ? json.district : '';
-        this.state = json.state ? json.state : '';
-        this.country = json.country ? json.country : '';
-        this.zipCode = json.zipCode ? json.zipCode : '';
-        this.email = json.email ? json.email : '';
-        this.phoneNo = json.phoneNo ? json.phoneNo : '';
-        this.altNo = json.altNo ? json.altNo : '';
-        this.nativePlace = json.nativePlace ? json.nativePlace : '';
+        this.address = json && json.address ? json.address : '';
+        this.city = json && json.city ? json.city : '';
+        this.district = json && json.district ? json.district : '';
+        this.state = json && json.state ? json.state : '';
+        this.country = json && json.country ? json.country : '';
+        this.zipCode = json && json.zipCode ? json.zipCode : '';
+        this.email = json && json.email ? json.email : '';
+        this.phoneNo = json && json.phoneNo ? json.phoneNo : '';
+        this.altNo = json && json.altNo ? json.altNo : '';
+        this.nativePlace = json && json.nativePlace ? json.nativePlace : '';
     } 
 }

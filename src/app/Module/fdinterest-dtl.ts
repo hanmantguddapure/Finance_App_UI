@@ -7,11 +7,11 @@ export class FDInterestDtl {
     public paidDate:string;
 
     constructor(json: any) {
-        this.fdAccountId = json.fdAccountId ? json.fdAccountId : 0;
-        this.interestAmt = json.interestAmt ? json.interestAmt : 0;
-        this.fromDate = json.fromDate ? json.fromDate : '';
-        this.toDate = json.toDate ? json.toDate : '';
-        this.paidMode = json.paidMode ? json.paidMode : '';
-        this.paidDate = json.paidDate ? json.paidDate : '';
+        this.fdAccountId = json && json.fdAccountId ? json.fdAccountId : 0;
+        this.interestAmt = json && json.interestAmt ? json.interestAmt : 0;
+        this.fromDate = json && json.fromDate ? json.fromDate : '';
+        this.toDate = json && json.toDate ? json.toDate : '';
+        this.paidMode = json && json.paidMode ? json.paidMode : '';
+        this.paidDate = json && json.paidDate ? json.paidDate : '';
     }
 }

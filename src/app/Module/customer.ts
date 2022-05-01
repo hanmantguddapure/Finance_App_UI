@@ -10,12 +10,12 @@ export class Customer {
     public address: Address;
 
     constructor(json: any) {
-        this.fullName = json.fullName ? json.fullName : '';
-        this.professionName = json.professionName ? json.professionName : '';
-        this.panNo = json.panNo ? json.panNo : '';
-        this.adharNo = json.adharNo ? json.adharNo : '';
-        this.custId = json.custId ? json.custId : '';
-        this.contactPersionId = json.contactPersionId ? json.contactPersionId : '';
-        this.address = json.address ? json.address : '';
+        this.fullName = json && json.fullName ? json.fullName : '';
+        this.professionName = json && json.professionName ? json.professionName : '';
+        this.panNo = json && json.panNo ? json.panNo : '';
+        this.adharNo = json && json.adharNo ? json.adharNo : '';
+        this.custId = json && json.custId ? json.custId : '';
+        this.contactPersionId = json && json.contactPersionId ? json.contactPersionId : '';
+        this.address = json && json.address ? json.address : '';
     }
 }

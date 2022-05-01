@@ -11,8 +11,8 @@ export class AppSummary {
     constructor(json: any) {
         this.loanSummary = new LoanSummary(json.loanSummary);
         this.fdSummary = new FdSummary(json.fdSummary);
-        this.expenses = json.expenses ? json.expenses : 0;
-        this.firmLoan = json.firmLoan ? json.firmLoan : 0;
-        this.shortTermLoan = json.shortTermLoan ? json.shortTermLoan : 0;
+        this.expenses = json && json.expenses ? json.expenses : 0;
+        this.firmLoan = json && json.firmLoan ? json.firmLoan : 0;
+        this.shortTermLoan = json && json.shortTermLoan ? json.shortTermLoan : 0;
     }
 }

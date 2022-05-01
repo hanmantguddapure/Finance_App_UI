@@ -7,11 +7,11 @@ export class FdSummary {
 	public clodedFDAmount:number;
 
     constructor(json: any) {
-        this.nofFd = json.nofFd ? json.nofFd : 0;
-        this.fdAmount = json.fdAmount ? json.fdAmount : 0;
-        this.paidInterest = json.paidInterest ? json.paidInterest : 0;
-        this.pendingIntrest = json.pendingIntrest ? json.pendingIntrest : 0;
-        this.closedFd = json.closedFd ? json.closedFd : 0;
-        this.clodedFDAmount = json.clodedFDAmount ? json.clodedFDAmount : 0;
+        this.nofFd = json && json.nofFd ? json.nofFd : 0;
+        this.fdAmount = json && json.fdAmount ? json.fdAmount : 0;
+        this.paidInterest = json && json.paidInterest ? json.paidInterest : 0;
+        this.pendingIntrest = json && json.pendingIntrest ? json.pendingIntrest : 0;
+        this.closedFd = json && json.closedFd ? json.closedFd : 0;
+        this.clodedFDAmount = json && json.clodedFDAmount ? json.clodedFDAmount : 0;
     }
 }

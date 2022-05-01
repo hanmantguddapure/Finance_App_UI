@@ -19,20 +19,20 @@ export class FDAccount {
     public paidInterestHistory: Array<FDInterestDtl> = [];
 
     constructor(json: any) {
-        this.accountNo = json.accountNo ? json.accountNo : '';
-        this.custId = json.custId ? json.custId : '';
-        this.custName = json.custName ? json.custName : '';
-        this.amount = json.amount ? json.amount : '';
-        this.startDate = json.startDate ? json.startDate : '';
-        this.endDate = json.endDate ? json.endDate : '';
-        this.closingDate = json.closingDate ? json.closingDate : '';
-        this.interest = json.interest ? json.interest : '';
-        this.interestAmt = json.interestAmt ? json.interestAmt : '';
-        this.isActive = json.isActive ? json.isActive : '';
-        this.interstPayFrom = json.interstPayFrom ? json.interstPayFrom : '';
-        this.interestPayTo = json.interestPayTo ? json.interestPayTo : '';
-        this.pendingMonthsOfInterest = json.pendingMonthsOfInterest ? json.pendingMonthsOfInterest : '';
-        this.pendingInterestAmt = json.pendingInterestAmt ? json.pendingInterestAmt : '';
-        this.remark = json.remark ? json.remark : '';
+        this.accountNo = json && json.accountNo ? json.accountNo : '';
+        this.custId = json && json.custId ? json.custId : '';
+        this.custName = json && json.custName ? json.custName : '';
+        this.amount = json && json.amount ? json.amount : '';
+        this.startDate = json && json.startDate ? json.startDate : '';
+        this.endDate = json && json.endDate ? json.endDate : '';
+        this.closingDate = json && json.closingDate ? json.closingDate : '';
+        this.interest = json && json.interest ? json.interest : '';
+        this.interestAmt = json && json.interestAmt ? json.interestAmt : '';
+        this.isActive = json && json.isActive ? json.isActive : '';
+        this.interstPayFrom = json && json.interstPayFrom ? json.interstPayFrom : '';
+        this.interestPayTo = json && json.interestPayTo ? json.interestPayTo : '';
+        this.pendingMonthsOfInterest = json && json.pendingMonthsOfInterest ? json.pendingMonthsOfInterest : '';
+        this.pendingInterestAmt = json && json.pendingInterestAmt ? json.pendingInterestAmt : '';
+        this.remark = json && json.remark ? json.remark : '';
     }
 }
