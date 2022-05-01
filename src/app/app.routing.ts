@@ -3,6 +3,8 @@ import { Routes, RouterModule } from '@angular/router';
 
 // Import Containers
 import { DefaultLayoutComponent } from './containers';
+import { BaseModule } from './views/base/base.module';
+import { DashboardModule } from './views/dashboard/dashboard.module';
 
 import { P404Component } from './views/error/404.component';
 import { P500Component } from './views/error/500.component';
@@ -52,12 +54,12 @@ export const routes: Routes = [
     children: [
       {
         path: 'base',
-        loadChildren: './views/base/base.module#BaseModule'
+        loadChildren: () =>  BaseModule
       },
       
       {
         path: 'dashboard',
-        loadChildren: './views/dashboard/dashboard.module#DashboardModule'
+        loadChildren: () => DashboardModule
       }
     ]
   },
