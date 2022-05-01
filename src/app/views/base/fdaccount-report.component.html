@@ -11,7 +11,7 @@
           <div class="form-group row">
               <label class="col-md-3 col-form-label">Select FD Type</label>
               <div class="col-md-9">
-                <select class="form-control" name="fdStatus" ngModel (change)="onStatusChange($event.target.value)">
+                <select class="form-control" name="fdStatus" ngModel (change)="onStatusChange($event)">
                   <option>--Select FD Status--</option>
                   <option  value="2">All</option>
                   <option  value="1">Active</option>

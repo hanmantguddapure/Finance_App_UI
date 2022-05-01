@@ -12,7 +12,7 @@
           <div class="form-group row">
               <label class="col-md-3 col-form-label">Select Loan Type</label>
               <div class="col-md-9">
-                <select class="form-control" name="loanStatus" ngModel (change)="onStatusChange($event.target.value)">
+                <select class="form-control" name="loanStatus" ngModel (change)="onStatusChange($event)">
                   <option>--Select Loan Status--</option>
                   <option  value="Opened">Opened</option>
                   <option  value="Closed">Closed</option>

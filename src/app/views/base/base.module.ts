@@ -42,7 +42,6 @@ import { ProgressComponent } from './progress.component';
 import { TooltipModule } from 'ngx-bootstrap/tooltip';
 import { TooltipsComponent } from './tooltips.component';
 
-
 // Components Routing
 import { BaseRoutingModule } from './base-routing.module';
 import { CustomerComponent } from './customer.component';
@@ -74,8 +73,6 @@ import { ShortTermLoanComponent } from './short-term-loan.component';
 import { ShortTermLoanCloseComponent } from './short-term-loan-close.component';
 import { ShortTermLoanRepoComponent } from './short-term-loan-repo.component';
 
-
-
 @NgModule({
   imports: [
     CommonModule,
@@ -84,12 +81,12 @@ import { ShortTermLoanRepoComponent } from './short-term-loan-repo.component';
     BaseRoutingModule,
     BsDropdownModule.forRoot(),
     TabsModule,
-    CarouselModule.forRoot(),
-    CollapseModule.forRoot(),
-    PaginationModule.forRoot(),
-    PopoverModule.forRoot(),
-    ProgressbarModule.forRoot(),
-    TooltipModule.forRoot()
+    CarouselModule,
+    CollapseModule,
+    PaginationModule,
+    PopoverModule,
+    ProgressbarModule,
+    TooltipModule
   ],
   declarations: [
     CardsComponent,

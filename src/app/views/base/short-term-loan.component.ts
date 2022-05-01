@@ -4,21 +4,21 @@ import { LoanserviceService } from '../../Services/loanservice.service';
 
 @Component({
 
-  templateUrl: './short-term-loan.component.html',
-  
+    templateUrl: './short-term-loan.component.html',
+
 })
 export class ShortTermLoanComponent implements OnInit {
 
-  shortTermLoanObj:ShortTermLoan=new ShortTermLoan();
-  constructor(private loanservice:LoanserviceService) { }
+    shortTermLoanObj: ShortTermLoan = new ShortTermLoan(null);
+    constructor(private loanservice: LoanserviceService) { }
 
-  ngOnInit() {
-  }
-  createNewShortTermLoan():void{
-    this.loanservice.createNewShortTermLoan(this.shortTermLoanObj).subscribe(data => {
-      alert("Successfully Added");
-      })
-    
-  };
+    ngOnInit() {
+    }
+    createNewShortTermLoan(): void {
+        this.loanservice.createNewShortTermLoan(this.shortTermLoanObj).subscribe(data => {
+            alert("Successfully Added");
+        })
+
+    };
 
 }

@@ -10,7 +10,7 @@
           <div class="form-group row">
                 <label class="col-md-3 col-form-label">Customer Names</label>
                 <div class="col-md-9">
-                    <select class="form-control" name="custId" ngModel (change)="onStatusChange($event.target.value)">
+                    <select class="form-control" name="custId" ngModel (change)="onStatusChange($event)">
                         <option>--Select Customer--</option>
                         <option *ngFor="let customer of allCustomerList" value="{{customer.custId}}">{{customer.fullName}}</option>
                       </select>

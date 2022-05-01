@@ -5,16 +5,16 @@ import { AppConstants } from '../Module/app-constants';
 import { AppSummary } from '../Module/app-summary';
 
 @Injectable({
-  providedIn: 'root'
+    providedIn: 'root'
 })
 export class DashBoardServiceService {
 
-  constructor(private http: HttpClient) { }
-  public getDashboard(){
-    return this.http.get<Dashboard>(AppConstants.API_ENDPOINT+'/dashboard/dashboard');
-  }
-  public getAllSummaryRepo(loanStatus,fdStatus){
-    return this.http.get<AppSummary>(AppConstants.API_ENDPOINT+'/dashboard/get-all-summary-repo/'+loanStatus+'/'+fdStatus);
-  }
+    constructor(private http: HttpClient) { }
+    public getDashboard() {
+        return this.http.get<Dashboard>(AppConstants.API_ENDPOINT + '/dashboard/dashboard');
+    }
+    public getAllSummaryRepo(loanStatus: any, fdStatus: any) {
+        return this.http.get<AppSummary>(AppConstants.API_ENDPOINT + '/dashboard/get-all-summary-repo/' + loanStatus + '/' + fdStatus);
+    }
 
 }

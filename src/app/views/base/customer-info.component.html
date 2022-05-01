@@ -1,207 +1,218 @@
 <div class="animated fadeIn">
- 
-  <div class="row">
-    <div class="col-sm-12">
-      <div class="card">
-        <div class="card-header">
-          <strong>Customer Detail</strong> 
-        </div>
-        <div class="card-body">
-            <div class="form-group row">
-              <label class="col-md-3 col-form-label">Customer</label>
-              <div class="col-md-9">
-                <select class="form-control" name="custId" ngModel (change)="getCustomerDetail($event.target.value)">
-                  <option value="">--Select Customer--</option>
-                  <option *ngFor="let customer of allCustomerList" value="{{customer.custId}}">{{customer.fullName}}</option>
-                </select>
-              </div>
-            </div>
-            <div class="form-group row">
-              <label class="col-md-3 col-form-label">Full Name</label>
-              <div class="col-md-8">
-                <input type="text" name="fullName" value="{{custInfo.fullName}}" ngModel class="form-control" readonly>
-              </div>
-            </div>
-            <div class="form-group row">
-              <label class="col-md-3 col-form-label">Buiseness</label>
-              <div class="col-md-8">
-                <input type="text" name="professionName" value="{{custInfo.professionName}}" [(ngModel)]="custInfo.professionName" [disabled]="editProfession" class="form-control"  >
-              </div>
-              <label class="switch switch-3d switch-danger">
-                <input type="checkbox" class="switch-input" (change)="enableProfession()" checked title="Edit">
-                <span class="switch-slider"></span>
-              </label>
-            </div>
-           <div class="form-group row">
-              <label class="col-md-3 col-form-label" >Adhar No.</label>
-              <div class="col-md-8">
-                <input class="form-control" value="{{custInfo.adharNo}}" type="text" [disabled]="editAdhar" name="adharNo" [(ngModel)]="custInfo.adharNo">
-              </div>
-              <label class="switch switch-3d switch-danger">
-                <input type="checkbox" class="switch-input" (change)="enableAdharNo()" checked title="Edit">
-                <span class="switch-slider"></span>
-              </label>
-            </div>
-            <div class="form-group row">
-              <label class="col-md-3 col-form-label" >PAN No.</label>
-              <div class="col-md-8">
-                <input class="form-control" type="text" name="panNo" value="{{custInfo.panNo}}" [(ngModel)]="custInfo.panNo" [disabled]="editPan">
-              </div>
-              <label class="switch switch-3d switch-danger">
-                <input type="checkbox" class="switch-input" (change)="enablePan()" checked title="Edit">
-                <span class="switch-slider"></span>
-              </label>
-            </div>
-           
-            <div class="card-header">
-              <strong>Address Detail</strong>
-            </div>
-            <div class="card-body">
-                    <div class="form-group row">
-                      <label class="col-md-3 col-form-label" for="hf-email">Address</label>
-                      <div class="col-md-8">
-                        <input type="text" name="address" class="form-control" value="{{custInfo.address.address}}" [(ngModel)]="addressDetail.address" [disabled]="editAddress" >
-                      </div>
-                      <label class="switch switch-3d switch-danger">
-                          <input type="checkbox" class="switch-input" (change)="enableAddress()" checked title="Edit">
-                          <span class="switch-slider"></span>
-                        </label>
-                    </div>
-                
-                    <div class="form-group row">
-                      <label class="col-md-3 col-form-label" for="hf-email">Postal Code</label>
-                      <div class="col-md-8">
-                        <input type="text" name="zipCode" value="{{custInfo.address.zipCode}}" class="form-control" [(ngModel)]="addressDetail.zipCode" [disabled]="editPostalCode">
-                      </div>
-                      <label class="switch switch-3d switch-danger">
-                          <input type="checkbox" class="switch-input" (change)="enablePostalCode()" checked title="Edit">
-                          <span class="switch-slider"></span>
-                        </label>
-                    </div>
-                    <div class="form-group row">
-                      <label class="col-md-3 col-form-label" for="hf-email">Email</label>
-                      <div class="col-md-8">
-                        <input type="text" name="email" value="{{custInfo.address.email}}" class="form-control" [(ngModel)]="addressDetail.email" [disabled]="editEmail">
-                      </div>
-                      <label class="switch switch-3d switch-danger">
-                          <input type="checkbox" class="switch-input" (change)="enableEmail()" checked title="Edit">
-                          <span class="switch-slider"></span>
-                        </label>
-                    </div>
-                    <div class="form-group row">
-                      <label class="col-md-3 col-form-label" for="hf-email">Mobile No.</label>
-                      <div class="col-md-8">
-                        <input type="text" name="phoneNo" value="{{custInfo.address.phoneNo}}" class="form-control" [(ngModel)]="addressDetail.phoneNo" [disabled]="editPhone">
-                      </div>
-                      <label class="switch switch-3d switch-danger">
-                          <input type="checkbox" class="switch-input" (change)="enablePhone()" checked title="Edit">
-                          <span class="switch-slider"></span>
-                        </label>
-                    </div>
-                    <div class="form-group row">
-                      <label class="col-md-3 col-form-label" for="hf-email">Alternet No.</label>
-                      <div class="col-md-8">
-                        <input type="text" name="altNo" value="{{custInfo.address.altNo}}" class="form-control" ngModel readonly>
-                      </div>
-                     
-                    </div>
-                    <div class="form-group row">
-                      <label class="col-md-3 col-form-label" for="hf-email">Native Place</label>
-                      <div class="col-md-8">
-                        <input type="text" name="altNo" value="{{custInfo.address.nativePlace}}" class="form-control" ngModel readonly>
-                      </div>
-                     
-                    </div>
 
-                    <div class="form-group row">
-                      <label class="col-md-3 col-form-label" for="hf-email">Customer Detail</label>
-                      <div class="col-md-9">
-                        <a [href]="fileUrl" target="_blank" download="customer.pdf">DownloadFile</a>
-                     
-                      </div>
-                    </div>
-                    <div class="card-footer" *ngIf="isEiditable">
-                      <button type="button" (click)="editCustInfo()"  class="btn btn-sm btn-primary"><i class="fa fa-dot-circle-o"></i> Submit Changes</button>
-                    </div>
-               
-            </div><!--/.col-->
-        
-        </div>
-       
-      </div>
-     
-    </div>
-
-  </div><!--/.row-->
-  <div class="animated fadeIn">
-  <div class="row">
-    <div class="col-lg-12"> 
-           <div class="card">
-            <div class="card-header">
-              <i class="fa fa-align-justify"></i>Witness Persions <button type="button" (click)="enableAdd()"  class="btn btn-sm btn-primary"><i class="fa fa-dot-circle-o"></i> Add Witness</button>
-            </div>
-            <div class="card-body">
-                <div class="card-body" *ngIf="isEnableAdd">
-                    <form #form="ngForm" class="form-horizontal">
-                 <div class="row">
-                      <div class="form-group col-sm-4">
-                        <label for="name">Full Name</label>
-                        <input type="text" class="form-control is-invalid" id="inputError1"  name="fullName" ngModel >
-                        <div *ngIf="isWitnessValid" class="invalid-feedback">
-                            Please Enter Customer Name.
-                          </div>
-                      </div>
-                      <div class="row" ngModelGroup="address">
-                      <div class="form-group col-sm-6">
-                        <label for="name">Address</label>
-                        <input type="text" class="form-control" name="address" ngModel placeholder="Address.....">
-                      </div>
-                      <div class="form-group col-sm-6">
-                        <label for="name">Phone No.</label>
-                        <input type="text" class="form-control" name="phoneNo" ngModel  placeholder="Phone No....">
-                      </div>
-                      </div>
-                      <div  class="form-group col-sm-5">
-                        
-                          <button type="button" (click)="saveCustContactPersionDetail(form.value)"  class="btn btn-sm btn-primary"><i class="fa fa-dot-circle-o"></i> Add</button>
-                        </div>
-                      </div>
-                  </form>
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="card">
+                <div class="card-header">
+                    <strong>Customer Detail</strong>
                 </div>
-              <table class="table table-bordered table-striped table-sm">
-                <thead>
-                  <tr>
-                    <th>Full Name</th>
-                    <th>Address</th>
-                    <th>Phone No.</th>
-                    <th>Action</th>
-                  </tr>
-                </thead>
-                <tbody>
-                <tr *ngFor="let custContactPersion of conatactPersionList">
-                    <td><div *ngIf="editCache[custContactPersion.contactPersionId];then allow else block"> 
-                    </div> <ng-template #block>{{custContactPersion.fullName}}</ng-template>
-                          <ng-template #allow><input type="text" name="address" [(ngModel)]="custContactPersion.fullName" class="form-control"></ng-template>
-                   </td>
-                    <td><div *ngIf="editCache[custContactPersion.contactPersionId];then allowAdd else blockAdd"></div>
-                        <ng-template #blockAdd>{{custContactPersion.address.address}}</ng-template> 
-                        <ng-template #allowAdd><input type="text" name="address" [(ngModel)]="custContactPersion.address.address" class="form-control"></ng-template></td>
-                    <td><div *ngIf="editCache[custContactPersion.contactPersionId];then allowContactPersion else blockContactPersion"></div>
-                      <ng-template #blockContactPersion>{{custContactPersion.address.phoneNo}}</ng-template> 
-                      <ng-template #allowContactPersion><input type="text" name="phoneNo" [(ngModel)]="custContactPersion.address.phoneNo" class="form-control"></ng-template> </td>
-                    <td><div *ngIf="editCache[custContactPersion.contactPersionId];then allowBtn else blockBtn"></div> 
-                      <ng-template #blockBtn><button type="button" (click)="allowEdit(custContactPersion.contactPersionId)"  class="btn btn-sm btn-primary"><i class="fa fa-dot-circle-o"></i>Edit</button></ng-template>
-                      <ng-template #allowBtn> <button type="button" (click)="editCustContact(custContactPersion)"  class="btn btn-sm btn-primary"><i class="fa fa-dot-circle-o"></i>Save</button></ng-template></td>
-                  </tr>
-                </tbody>
-              </table>
-             
+                <div class="card-body">
+                    <div class="form-group row">
+                        <label class="col-md-3 col-form-label">Customer</label>
+                        <div class="col-md-9">
+                            <select class="form-control" name="custId" ngModel (change)="getCustomerDetail($event)">
+                                <option value="">--Select Customer--</option>
+                                <option *ngFor="let customer of allCustomerList" value="{{customer.custId}}">{{customer.fullName}}</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label class="col-md-3 col-form-label">Full Name</label>
+                        <div class="col-md-8">
+                            <input type="text" name="fullName" value="{{custInfo.fullName}}" ngModel class="form-control" readonly>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label class="col-md-3 col-form-label">Buiseness</label>
+                        <div class="col-md-8">
+                            <input type="text" name="professionName" value="{{custInfo.professionName}}" [(ngModel)]="custInfo.professionName" [disabled]="editProfession" class="form-control">
+                        </div>
+                        <label class="switch switch-3d switch-danger">
+                            <input type="checkbox" class="switch-input" (change)="enableProfession()" checked title="Edit">
+                            <span class="switch-slider"></span>
+                        </label>
+                    </div>
+                    <div class="form-group row">
+                        <label class="col-md-3 col-form-label">Adhar No.</label>
+                        <div class="col-md-8">
+                            <input class="form-control" value="{{custInfo.adharNo}}" type="text" [disabled]="editAdhar" name="adharNo" [(ngModel)]="custInfo.adharNo">
+                        </div>
+                        <label class="switch switch-3d switch-danger">
+                            <input type="checkbox" class="switch-input" (change)="enableAdharNo()" checked title="Edit">
+                            <span class="switch-slider"></span>
+                        </label>
+                    </div>
+                    <div class="form-group row">
+                        <label class="col-md-3 col-form-label">PAN No.</label>
+                        <div class="col-md-8">
+                            <input class="form-control" type="text" name="panNo" value="{{custInfo.panNo}}" [(ngModel)]="custInfo.panNo" [disabled]="editPan">
+                        </div>
+                        <label class="switch switch-3d switch-danger">
+                            <input type="checkbox" class="switch-input" (change)="enablePan()" checked title="Edit">
+                            <span class="switch-slider"></span>
+                        </label>
+                    </div>
+
+                    <div class="card-header">
+                        <strong>Address Detail</strong>
+                    </div>
+                    <div class="card-body">
+                        <div class="form-group row">
+                            <label class="col-md-3 col-form-label" for="hf-email">Address</label>
+                            <div class="col-md-8">
+                                <input type="text" name="address" class="form-control" value="{{custInfo.address.address}}" [(ngModel)]="addressDetail.address" [disabled]="editAddress">
+                            </div>
+                            <label class="switch switch-3d switch-danger">
+                                <input type="checkbox" class="switch-input" (change)="enableAddress()" checked title="Edit">
+                                <span class="switch-slider"></span>
+                            </label>
+                        </div>
+
+                        <div class="form-group row">
+                            <label class="col-md-3 col-form-label" for="hf-email">Postal Code</label>
+                            <div class="col-md-8">
+                                <input type="text" name="zipCode" value="{{custInfo.address.zipCode}}" class="form-control" [(ngModel)]="addressDetail.zipCode" [disabled]="editPostalCode">
+                            </div>
+                            <label class="switch switch-3d switch-danger">
+                                <input type="checkbox" class="switch-input" (change)="enablePostalCode()" checked title="Edit">
+                                <span class="switch-slider"></span>
+                            </label>
+                        </div>
+                        <div class="form-group row">
+                            <label class="col-md-3 col-form-label" for="hf-email">Email</label>
+                            <div class="col-md-8">
+                                <input type="text" name="email" value="{{custInfo.address.email}}" class="form-control" [(ngModel)]="addressDetail.email" [disabled]="editEmail">
+                            </div>
+                            <label class="switch switch-3d switch-danger">
+                                <input type="checkbox" class="switch-input" (change)="enableEmail()" checked title="Edit">
+                                <span class="switch-slider"></span>
+                            </label>
+                        </div>
+                        <div class="form-group row">
+                            <label class="col-md-3 col-form-label" for="hf-email">Mobile No.</label>
+                            <div class="col-md-8">
+                                <input type="text" name="phoneNo" value="{{custInfo.address.phoneNo}}" class="form-control" [(ngModel)]="addressDetail.phoneNo" [disabled]="editPhone">
+                            </div>
+                            <label class="switch switch-3d switch-danger">
+                                <input type="checkbox" class="switch-input" (change)="enablePhone()" checked title="Edit">
+                                <span class="switch-slider"></span>
+                            </label>
+                        </div>
+                        <div class="form-group row">
+                            <label class="col-md-3 col-form-label" for="hf-email">Alternet No.</label>
+                            <div class="col-md-8">
+                                <input type="text" name="altNo" value="{{custInfo.address.altNo}}" class="form-control" ngModel readonly>
+                            </div>
+
+                        </div>
+                        <div class="form-group row">
+                            <label class="col-md-3 col-form-label" for="hf-email">Native Place</label>
+                            <div class="col-md-8">
+                                <input type="text" name="altNo" value="{{custInfo.address.nativePlace}}" class="form-control" ngModel readonly>
+                            </div>
+
+                        </div>
+
+                        <div class="form-group row">
+                            <label class="col-md-3 col-form-label" for="hf-email">Customer Detail</label>
+                            <div class="col-md-9">
+                                <a [href]="fileUrl" target="_blank" download="customer.pdf">DownloadFile</a>
+
+                            </div>
+                        </div>
+                        <div class="card-footer" *ngIf="isEiditable">
+                            <button type="button" (click)="editCustInfo()" class="btn btn-sm btn-primary"><i class="fa fa-dot-circle-o"></i> Submit Changes</button>
+                        </div>
+
+                    </div>
+                    <!--/.col-->
+
+                </div>
+
             </div>
-          </div>
-         
-        </div><!--/.row-->
-      
-      </div>
+
+        </div>
+
     </div>
- 
+    <!--/.row-->
+    <div class="animated fadeIn">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="card">
+                    <div class="card-header">
+                        <i class="fa fa-align-justify"></i>Witness Persions <button type="button" (click)="enableAdd()" class="btn btn-sm btn-primary"><i class="fa fa-dot-circle-o"></i> Add Witness</button>
+                    </div>
+                    <div class="card-body">
+                        <div class="card-body" *ngIf="isEnableAdd">
+                            <form #form="ngForm" class="form-horizontal">
+                                <div class="row">
+                                    <div class="form-group col-sm-4">
+                                        <label for="name">Full Name</label>
+                                        <input type="text" class="form-control is-invalid" id="inputError1" name="fullName" ngModel>
+                                        <div *ngIf="isWitnessValid" class="invalid-feedback">
+                                            Please Enter Customer Name.
+                                        </div>
+                                    </div>
+                                    <div class="row" ngModelGroup="address">
+                                        <div class="form-group col-sm-6">
+                                            <label for="name">Address</label>
+                                            <input type="text" class="form-control" name="address" ngModel placeholder="Address.....">
+                                        </div>
+                                        <div class="form-group col-sm-6">
+                                            <label for="name">Phone No.</label>
+                                            <input type="text" class="form-control" name="phoneNo" ngModel placeholder="Phone No....">
+                                        </div>
+                                    </div>
+                                    <div class="form-group col-sm-5">
+
+                                        <button type="button" (click)="saveCustContactPersionDetail(form.value)" class="btn btn-sm btn-primary"><i class="fa fa-dot-circle-o"></i> Add</button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                        <table class="table table-bordered table-striped table-sm">
+                            <thead>
+                                <tr>
+                                    <th>Full Name</th>
+                                    <th>Address</th>
+                                    <th>Phone No.</th>
+                                    <th>Action</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr *ngFor="let custContactPersion of conatactPersionList;">
+                                    <td>
+                                        <div *ngIf="editCache[custContactPersion.contactPersionId];then allow else block">
+                                        </div>
+                                        <ng-template #block>{{custContactPersion.fullName}}</ng-template>
+                                        <ng-template #allow><input type="text" name="address" [(ngModel)]="custContactPersion.fullName" class="form-control"></ng-template>
+                                    </td>
+                                    <td>
+                                        <div *ngIf="editCache[custContactPersion.contactPersionId];then allowAdd else blockAdd"></div>
+                                        <ng-template #blockAdd>{{custContactPersion.address.address}}</ng-template>
+                                        <ng-template #allowAdd><input type="text" name="address" [(ngModel)]="custContactPersion.address.address" class="form-control"></ng-template>
+                                    </td>
+                                    <td>
+                                        <div *ngIf="editCache[custContactPersion.contactPersionId];then allowContactPersion else blockContactPersion"></div>
+                                        <ng-template #blockContactPersion>{{custContactPersion.address.phoneNo}}</ng-template>
+                                        <ng-template #allowContactPersion><input type="text" name="phoneNo" [(ngModel)]="custContactPersion.address.phoneNo" class="form-control"></ng-template>
+                                    </td>
+                                    <td>
+                                        <div *ngIf="editCache[custContactPersion.contactPersionId];then allowBtn else blockBtn"></div>
+                                        <ng-template #blockBtn><button type="button" (click)="allowEdit(custContactPersion.contactPersionId)" class="btn btn-sm btn-primary"><i class="fa fa-dot-circle-o"></i>Edit</button></ng-template>
+                                        <ng-template #allowBtn> <button type="button" (click)="editCustContact(custContactPersion)" class="btn btn-sm btn-primary"><i class="fa fa-dot-circle-o"></i>Save</button></ng-template>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+
+                    </div>
+                </div>
+
+            </div>
+            <!--/.row-->
+
+        </div>
+    </div>
+
 </div>

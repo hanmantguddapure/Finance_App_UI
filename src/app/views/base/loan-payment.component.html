@@ -11,7 +11,7 @@
           <div class="form-group row">
               <label class="col-md-3 col-form-label">Customer</label>
               <div class="col-md-9">
-                <select class="form-control" name="custId" ngModel (change)="onCustomerChange($event.target.value)">
+                <select class="form-control" name="custId" ngModel (change)="onCustomerChange($event)">
                   <option>--Select Customer--</option>
                   <option *ngFor="let customer of allCustomerList" value="{{customer.custId}}">{{customer.fullName}}</option>
                 </select>
@@ -22,7 +22,7 @@
             <div class="form-group row">
               <label class="col-md-3 col-form-label" for="email-input">Account Number</label>
               <div class="col-md-9">
-                <input type="text" name="loanAccNo" ngModel  (blur)="getAccountDetail($event.target.value)"  class="form-control" placeholder="Loan Account No....">
+                <input type="text" name="loanAccNo" ngModel  (blur)="getAccountDetail($event)"  class="form-control" placeholder="Loan Account No....">
               </div>
             </div>
             <div class="form-group row">
