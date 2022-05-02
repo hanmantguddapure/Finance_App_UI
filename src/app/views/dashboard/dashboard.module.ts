@@ -1,6 +1,17 @@
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { ChartsModule } from 'ng2-charts/ng2-charts';
+import { NgChartsModule } from 'ng2-charts';
+import {
+  AvatarModule,
+  ButtonModule,
+  GridModule,
+  NavModule,
+  ProgressModule,
+  TableModule,
+  TabsModule
+} from '@coreui/angular';
+import { IconModule } from '@coreui/icons-angular';
+import { ChartjsModule } from '@coreui/angular-chartjs';
 import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
 import { ButtonsModule } from 'ngx-bootstrap/buttons';
 
@@ -11,11 +22,18 @@ import { CommonModule } from '@angular/common';
 @NgModule({
   imports: [
     FormsModule,
+    IconModule,
     CommonModule,
+    GridModule,
+    ProgressModule,
     DashboardRoutingModule,
-    ChartsModule,
+    ButtonModule,
+    NgChartsModule,
     BsDropdownModule,
-    ButtonsModule.forRoot()
+    ButtonsModule.forRoot(),
+    ChartjsModule,
+    AvatarModule,
+    TableModule
   ],
   declarations: [ DashboardComponent ]
 })

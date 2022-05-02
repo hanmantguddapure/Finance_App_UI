@@ -1,17 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
-import { CardsComponent } from './cards.component';
-import { FormsComponent } from './forms.component';
-import { SwitchesComponent } from './switches.component';
 import { TablesComponent } from './tables.component';
-import { TabsComponent } from './tabs.component';
-import { CarouselsComponent } from './carousels.component';
-import { CollapsesComponent } from './collapses.component';
-import { PaginationsComponent } from './paginations.component';
-import {PopoversComponent} from './popovers.component';
-import {ProgressComponent} from './progress.component';
-import {TooltipsComponent} from './tooltips.component';
 import { CustomerComponent } from './customer.component';
 import { LoanAccountComponent } from './loan-account.component';
 import { LoanEMIComponent } from './loan-emi.component';
@@ -43,227 +33,227 @@ import { ShortTermLoanRepoComponent } from './short-term-loan-repo.component';
 
 
 const routes: Routes = [
-  {
-    path: '',
-    data: {
-      title: 'Base'
-    },
-    children: [
-      
-      {
-        path: 'fdaccount',
-        component:FDAccountComponent,
+    {
+        path: '',
         data: {
-          title: 'fdaccount'
-        }
-      },
-      {
-        path: 'fdaccountview',
-        component:FDAccountViewComponent,
-        data: {
-          title: 'fdaccountview'
-        }
-      },
-      {
-        path: 'fdaccountclose',
-        component:FDAccountCloseComponent,
-        data: {
-          title: 'fdaccountview'
-        }
-      },
-      {
-        path: 'fdpayinterest',
-        component:FDPayInterestAmtComponent,
-        data: {
-          title: 'fdpayinterest'
-        }
-      },
-      {
-        path: 'fdaccountreport',
-        component:FDAccountReportComponent,
-        data: {
-          title: 'fdaccountview'
-        }
-      },
-      {
-        path: 'fdcustreport',
-        component:FDOfCustomersComponent,
-        data: {
-          title: 'fdcustreport'
-        }
-      },
-      {
-        path: 'forms',
-        component: TablesComponent,
-        data: {
-          title: 'Forms'
-        }
-      },
-      {
-        path: 'customer',
-        component: CustomerComponent,
-        data: {
-          title: 'Customer'
-        }
-      },
-      {
-        path: 'customer-info',
-        component: CustomerInfoComponent,
-        data: {
-          title: 'Customer Information'
-        }
-      },
-      {
-        path: 'loan-account',
-        component: LoanAccountComponent,
-        data: {
-          title: 'Loan Account'
-        }
-      },
-      {
-        path: 'loan-payment',
-        component: LoanPaymentComponent,
-        data: {
-          title: 'Loan Payment'
-        }
-      },
-      {
-        path: 'loan-emi',
-        component: LoanEMIComponent,
-        data: {
-          title: 'Loan EMI'
-        }
-      },
-      {
-        path: 'loan-holders',
-        component: LoanHoldersComponent,
-        data: {
-          title: 'Loan Holders'
-        }
-      },
-      {
-        path: 'disbursed-loans',
-        component: DisbursedLoansComponent,
-        data: {
-          title: 'Disbursed Loans'
-        }
-      },
+            title: 'Base'
+        },
+        children: [
+
+            {
+                path: 'fdaccount',
+                component: FDAccountComponent,
+                data: {
+                    title: 'fdaccount'
+                }
+            },
+            {
+                path: 'fdaccountview',
+                component: FDAccountViewComponent,
+                data: {
+                    title: 'fdaccountview'
+                }
+            },
+            {
+                path: 'fdaccountclose',
+                component: FDAccountCloseComponent,
+                data: {
+                    title: 'fdaccountview'
+                }
+            },
+            {
+                path: 'fdpayinterest',
+                component: FDPayInterestAmtComponent,
+                data: {
+                    title: 'fdpayinterest'
+                }
+            },
+            {
+                path: 'fdaccountreport',
+                component: FDAccountReportComponent,
+                data: {
+                    title: 'fdaccountview'
+                }
+            },
+            {
+                path: 'fdcustreport',
+                component: FDOfCustomersComponent,
+                data: {
+                    title: 'fdcustreport'
+                }
+            },
+            {
+                path: 'forms',
+                component: TablesComponent,
+                data: {
+                    title: 'Forms'
+                }
+            },
+            {
+                path: 'customer',
+                component: CustomerComponent,
+                data: {
+                    title: 'Customer'
+                }
+            },
+            {
+                path: 'customer-info',
+                component: CustomerInfoComponent,
+                data: {
+                    title: 'Customer Information'
+                }
+            },
+            {
+                path: 'loan-account',
+                component: LoanAccountComponent,
+                data: {
+                    title: 'Loan Account'
+                }
+            },
+            {
+                path: 'loan-payment',
+                component: LoanPaymentComponent,
+                data: {
+                    title: 'Loan Payment'
+                }
+            },
+            {
+                path: 'loan-emi',
+                component: LoanEMIComponent,
+                data: {
+                    title: 'Loan EMI'
+                }
+            },
+            {
+                path: 'loan-holders',
+                component: LoanHoldersComponent,
+                data: {
+                    title: 'Loan Holders'
+                }
+            },
+            {
+                path: 'disbursed-loans',
+                component: DisbursedLoansComponent,
+                data: {
+                    title: 'Disbursed Loans'
+                }
+            },
 
 
-      {
-        path: 'loan-detail',
-        component: LoanDetailComponent,
-        data: {
-          title: 'Loan Detail'
-        }
-      },
-      {
-        path: 'close-loan',
-        component: CloseLoanComponent,
-        data: {
-          title: 'Close Loan'
-        }
-      },
-      {
-        path: 'loan-repo',
-        component:LoanRepoComponent,
-        data: {
-          title: 'Loan Report'
-        }
-      },
+            {
+                path: 'loan-detail',
+                component: LoanDetailComponent,
+                data: {
+                    title: 'Loan Detail'
+                }
+            },
+            {
+                path: 'close-loan',
+                component: CloseLoanComponent,
+                data: {
+                    title: 'Close Loan'
+                }
+            },
+            {
+                path: 'loan-repo',
+                component: LoanRepoComponent,
+                data: {
+                    title: 'Loan Report'
+                }
+            },
 
-      {
-        path: 'loan-penlty',
-        component:LoanPenltyComponent,
-        data: {
-          title: 'Add Penlty'
-        }
-      },
-      {
-        path: 'loan-penlty-repo',
-        component:LoanPenaltyRepoComponent,
-        data: {
-          title: 'Add Penlty'
-        }
-      },
-      {
-        path: 'loan-collection-report',
-        component:LoanCollectionReportComponent,
-        data: {
-          title: 'Loan Collection Report'
-        }
-      },
-      {
-        path: 'expense-types',
-        component:ExpenseTypesComponent,
-        data: {
-          title: 'Expense Types'
-        }
-      },
+            {
+                path: 'loan-penlty',
+                component: LoanPenltyComponent,
+                data: {
+                    title: 'Add Penlty'
+                }
+            },
+            {
+                path: 'loan-penlty-repo',
+                component: LoanPenaltyRepoComponent,
+                data: {
+                    title: 'Add Penlty'
+                }
+            },
+            {
+                path: 'loan-collection-report',
+                component: LoanCollectionReportComponent,
+                data: {
+                    title: 'Loan Collection Report'
+                }
+            },
+            {
+                path: 'expense-types',
+                component: ExpenseTypesComponent,
+                data: {
+                    title: 'Expense Types'
+                }
+            },
 
-      {
-        path: 'expense-detail',
-        component:ExpenseDetailComponent,
-        data: {
-          title: 'Expenses'
-        }
-      },
-      {
-        path: 'expense-report',
-        component:ExpenseReportComponent,
-        data: {
-          title: 'Expenses'
-        }
-      },
-      {
-        path: 'firm-loan',
-        component:FirmLoanComponent,
-        data: {
-          title: 'Firm Loan'
-        }
-      },
-      {
-        path: 'firm-loan-close',
-        component:FirmLoanCloseComponent,
-        data: {
-          title: 'Firm Loan Close'
-        }
-      },
-      {
-        path: 'firm-loan-repo',
-        component:FirmLoanRepoComponent,
-        data: {
-          title: 'Firm Loan Repo'
-        }
-      },
-      {
-        path: 'short-term-loan',
-        component:ShortTermLoanComponent,
-        data: {
-          title: 'Firm Loan'
-        }
-      },
-      {
-        path: 'short-term-loan-close',
-        component:ShortTermLoanCloseComponent,
-        data: {
-          title: 'Firm Loan'
-        }
-      },
-      {
-        path: 'short-term-loan-Report',
-        component:ShortTermLoanRepoComponent,
-        data: {
-          title: 'Firm Loan'
-        }
-      },
+            {
+                path: 'expense-detail',
+                component: ExpenseDetailComponent,
+                data: {
+                    title: 'Expenses'
+                }
+            },
+            {
+                path: 'expense-report',
+                component: ExpenseReportComponent,
+                data: {
+                    title: 'Expenses'
+                }
+            },
+            {
+                path: 'firm-loan',
+                component: FirmLoanComponent,
+                data: {
+                    title: 'Firm Loan'
+                }
+            },
+            {
+                path: 'firm-loan-close',
+                component: FirmLoanCloseComponent,
+                data: {
+                    title: 'Firm Loan Close'
+                }
+            },
+            {
+                path: 'firm-loan-repo',
+                component: FirmLoanRepoComponent,
+                data: {
+                    title: 'Firm Loan Repo'
+                }
+            },
+            {
+                path: 'short-term-loan',
+                component: ShortTermLoanComponent,
+                data: {
+                    title: 'Firm Loan'
+                }
+            },
+            {
+                path: 'short-term-loan-close',
+                component: ShortTermLoanCloseComponent,
+                data: {
+                    title: 'Firm Loan'
+                }
+            },
+            {
+                path: 'short-term-loan-Report',
+                component: ShortTermLoanRepoComponent,
+                data: {
+                    title: 'Firm Loan'
+                }
+            },
 
-    ]
-  }
+        ]
+    }
 ];
 
 @NgModule({
-  imports: [RouterModule.forChild(routes)],
-  exports: [RouterModule]
+    imports: [RouterModule.forChild(routes)],
+    exports: [RouterModule]
 })
-export class BaseRoutingModule {}
+export class BaseRoutingModule { }
