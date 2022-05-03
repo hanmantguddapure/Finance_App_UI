@@ -16,8 +16,11 @@ import { AppRoutingModule } from './app.routing';
 import { AppComponent } from './app.component';
 
 // Import containers
-import { DefaultLayoutComponent, DefaultHeaderComponent, DefaultFooterComponent } from './containers';
-
+import {
+  DefaultFooterComponent,
+  DefaultHeaderComponent,
+  DefaultLayoutComponent,
+} from './containers';
 import { P404Component } from './views/error/404.component';
 import { P500Component } from './views/error/500.component';
 import { LoginComponent } from './views/login/login.component';
@@ -57,16 +60,11 @@ import { FormsModule } from '@angular/forms';
 import { AutoPassJwtTokenOnReqHeader } from './interceptors/auto-pass-jwt-token-on-req-header';
 import { NgChartsModule } from 'ng2-charts';
 
+
 @NgModule({
-    declarations: [
-        AppComponent,
-        DefaultLayoutComponent,
-        DefaultHeaderComponent,
-        DefaultFooterComponent,
-        P404Component,
-        P500Component,
-        LoginComponent,
-        RegisterComponent
+  declarations: [AppComponent, DefaultFooterComponent,
+  DefaultHeaderComponent,
+  DefaultLayoutComponent],
     ],
     imports: [
         BrowserModule,
