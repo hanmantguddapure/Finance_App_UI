@@ -1,67 +1,69 @@
 <div class="animated fadeIn">
- 
-  <div class="row">
-    <div class="col-sm-12">
-      <div class="card">
-        <div class="card-header">
-          <strong>Firm Loan Account Close </strong> 
-       
-        </div>
-        <div class="card-body">
-          <form #form="ngForm" class="form-horizontal">
-            
-            <div class="form-group row">
-              <label class="col-md-3 col-form-label">Account No</label>
-              <div class="col-md-9">
-                <div class="col-md-9">
-                  <input name="firmLoanId" ngModel  (blur)="getAccountDetail($event)"  class="form-control" placeholder="Enter Account No...." >
+
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="card">
+                <div class="card-header">
+                    <strong>Firm Loan Account Close </strong>
+
                 </div>
-              </div>
-            </div>
-        
-            <div class="card-header">
-              <strong>Account Detail</strong>
-            </div>
-           
-              <div class="card" >
-               
                 <div class="card-body">
-                  <form #form="ngForm" class="form-horizontal">
-                    <div class="form-group row">
-                      <label for="email-input" class="col-md-3 col-form-label">Name Of Loan Provider</label>
-                      <div class="col-md-9">
-                        <input type="text" value="{{firmLoanObj.loanFrom}}"  readonly class="form-control" readonly>
-                      </div>
-                    </div>
+                    <form #form="ngForm" class="form-horizontal">
 
-                    <div class="form-group row">
-                      <label class="col-md-3 col-form-label" for="hf-email">Loan Amount</label>
-                      <div class="col-md-9">
-                        <input type="text" value="{{firmLoanObj.loanAmt}}" readonly class="form-control" readonly>
-                      </div>
-                    </div>
-                      <div class="form-group row">
-                          <label class="col-md-3 col-form-label" for="hf-email">Iterest Amount</label>
-                          <div class="col-md-9">
-                            <input type="text" name="interestAmt" [(ngModel)]="firmLoanObj.interestAmt" value="{{firmLoanObj.interestAmt}}"  class="form-control" >
-                          </div>
+                        <div class="form-group mb-3 row">
+                            <label class="col-md-3 col-form-label">Account No</label>
+                            <div class="col-md-9">
+                                <div class="col-md-9">
+                                    <input name="firmLoanId" ngModel (blur)="getAccountDetail($event)" class="form-control" placeholder="Enter Account No....">
+                                </div>
+                            </div>
                         </div>
-                    
-                    <div class="card-footer">
-                      <button type="button" (click)="closeFirmLoan()"  class="btn btn-sm btn-primary"><i class="fa fa-dot-circle-o"></i> Close</button>
-                      <button type="reset" class="btn btn-sm btn-danger"><i class="fa fa-ban"></i> Reset</button>
-                    </div>
-                </form>
-              </div>
-            </div><!--/.col-->
-           
-      </form>
-        </div>
-       
-      </div>
-     
-    </div>
 
-  </div><!--/.row-->
- 
+                        <div class="card-header">
+                            <strong>Account Detail</strong>
+                        </div>
+
+                        <div class="card">
+
+                            <div class="card-body">
+                                <form #form="ngForm" class="form-horizontal">
+                                    <div class="form-group mb-3 row">
+                                        <label for="email-input" class="col-md-3 col-form-label">Name Of Loan Provider</label>
+                                        <div class="col-md-9">
+                                            <input type="text" value="{{firmLoanObj.loanFrom}}" readonly class="form-control" readonly>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group mb-3 row">
+                                        <label class="col-md-3 col-form-label" for="hf-email">Loan Amount</label>
+                                        <div class="col-md-9">
+                                            <input type="text" value="{{firmLoanObj.loanAmt}}" readonly class="form-control" readonly>
+                                        </div>
+                                    </div>
+                                    <div class="form-group mb-3 row">
+                                        <label class="col-md-3 col-form-label" for="hf-email">Iterest Amount</label>
+                                        <div class="col-md-9">
+                                            <input type="text" name="interestAmt" [(ngModel)]="firmLoanObj.interestAmt" value="{{firmLoanObj.interestAmt}}" class="form-control">
+                                        </div>
+                                    </div>
+
+                                    <div class="card-footer">
+                                        <button type="button" (click)="closeFirmLoan()" class="btn mt-2 mb-2 btn-primary"><i class="fa fa-dot-circle-o"></i> Close</button>
+                                        <button type="reset" class="btn m-2 btn-danger"><i class="fa fa-ban"></i> Reset</button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                        <!--/.col-->
+
+                    </form>
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+    <!--/.row-->
+
 </div>

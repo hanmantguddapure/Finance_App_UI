@@ -1,41 +1,41 @@
 <div class="animated fadeIn">
- 
-  
-  <div class="row">
-    <div class="col-lg-12">
-      <div class="card">
-        <div class="card-header">
-          <i class="fa fa-align-justify"></i> Disbursed Loans
+
+
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="card">
+                <div class="card-header">
+                    <i class="fa fa-align-justify"></i> Disbursed Loans
+                </div>
+                <div class="card-body">
+                    <table class="table table-bordered table-striped table-sm">
+                        <thead>
+                            <tr>
+                                <th>Customer Name</th>
+                                <th>Account No.</th>
+                                <th>Loan Amount</th>
+                                <th>Disburesment</th>
+                                <th>Disbursed</th>
+                                <th>Disbursed Mode</th>
+                                <th>Disbursed Date</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let loanRepoDetail of loanRepoDetails">
+                                <td>{{loanRepoDetail.fullName}}</td>
+                                <td>{{loanRepoDetail.loanAccountNo}}</td>
+                                <td>{{loanRepoDetail.principalAmount}}</td>
+                                <td>{{loanRepoDetail.loanAmt}}</td>
+                                <td>{{loanRepoDetail.disburseAmt}}</td>
+                                <td>{{loanRepoDetail.paymentMode}}</td>
+                                <td>{{loanRepoDetail.paymentDate}}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                </div>
+            </div>
         </div>
-        <div class="card-body">
-          <table class="table table-bordered table-striped table-sm">
-            <thead>
-              <tr>
-               <th>Customer Name</th>
-                <th>Account No.</th>
-                <th>Loan Amount</th>
-                <th>Disburesment</th>
-                <th>Disbursed</th>
-                <th>Disbursed Mode</th>
-                <th>Disbursed Date</th>
-              </tr>
-            </thead>
-            <tbody>
-            <tr *ngFor="let loanRepoDetail of loanRepoDetails">
-                <td>{{loanRepoDetail.fullName}}</td>
-                <td>{{loanRepoDetail.loanAccountNo}}</td>
-                <td>{{loanRepoDetail.principalAmount}}</td>
-                <td>{{loanRepoDetail.loanAmt}}</td>
-                <td>{{loanRepoDetail.disburseAmt}}</td>
-                <td>{{loanRepoDetail.paymentMode}}</td>
-                <td>{{loanRepoDetail.paymentDate}}</td>
-              </tr>
-            </tbody>
-          </table>
-         
-        </div>
-      </div>
+        <!--/.col-->
     </div>
-    <!--/.col-->
-  </div>
 </div>

@@ -7,7 +7,7 @@
                     <strong>Customer Detail</strong>
                 </div>
                 <div class="card-body">
-                    <div class="form-group row">
+                    <div class="form-group mb-3 row">
                         <label class="col-md-3 col-form-label">Customer</label>
                         <div class="col-md-9">
                             <select class="form-control" name="custId" ngModel (change)="getCustomerDetail($event)">
@@ -16,13 +16,13 @@
                             </select>
                         </div>
                     </div>
-                    <div class="form-group row">
+                    <div class="form-group mb-3 row">
                         <label class="col-md-3 col-form-label">Full Name</label>
                         <div class="col-md-8">
                             <input type="text" name="fullName" value="{{custInfo.fullName}}" ngModel class="form-control" readonly>
                         </div>
                     </div>
-                    <div class="form-group row">
+                    <div class="form-group mb-3 row">
                         <label class="col-md-3 col-form-label">Buiseness</label>
                         <div class="col-md-8">
                             <input type="text" name="professionName" value="{{custInfo.professionName}}" [(ngModel)]="custInfo.professionName" [disabled]="editProfession" class="form-control">
@@ -32,7 +32,7 @@
                             <span class="switch-slider"></span>
                         </label>
                     </div>
-                    <div class="form-group row">
+                    <div class="form-group mb-3 row">
                         <label class="col-md-3 col-form-label">Adhar No.</label>
                         <div class="col-md-8">
                             <input class="form-control" value="{{custInfo.adharNo}}" type="text" [disabled]="editAdhar" name="adharNo" [(ngModel)]="custInfo.adharNo">
@@ -42,7 +42,7 @@
                             <span class="switch-slider"></span>
                         </label>
                     </div>
-                    <div class="form-group row">
+                    <div class="form-group mb-3 row">
                         <label class="col-md-3 col-form-label">PAN No.</label>
                         <div class="col-md-8">
                             <input class="form-control" type="text" name="panNo" value="{{custInfo.panNo}}" [(ngModel)]="custInfo.panNo" [disabled]="editPan">
@@ -57,7 +57,7 @@
                         <strong>Address Detail</strong>
                     </div>
                     <div class="card-body">
-                        <div class="form-group row">
+                        <div class="form-group mb-3 row">
                             <label class="col-md-3 col-form-label" for="hf-email">Address</label>
                             <div class="col-md-8">
                                 <input type="text" name="address" class="form-control" value="{{custInfo.address.address}}" [(ngModel)]="addressDetail.address" [disabled]="editAddress">
@@ -68,7 +68,7 @@
                             </label>
                         </div>
 
-                        <div class="form-group row">
+                        <div class="form-group mb-3 row">
                             <label class="col-md-3 col-form-label" for="hf-email">Postal Code</label>
                             <div class="col-md-8">
                                 <input type="text" name="zipCode" value="{{custInfo.address.zipCode}}" class="form-control" [(ngModel)]="addressDetail.zipCode" [disabled]="editPostalCode">
@@ -78,7 +78,7 @@
                                 <span class="switch-slider"></span>
                             </label>
                         </div>
-                        <div class="form-group row">
+                        <div class="form-group mb-3 row">
                             <label class="col-md-3 col-form-label" for="hf-email">Email</label>
                             <div class="col-md-8">
                                 <input type="text" name="email" value="{{custInfo.address.email}}" class="form-control" [(ngModel)]="addressDetail.email" [disabled]="editEmail">
@@ -88,7 +88,7 @@
                                 <span class="switch-slider"></span>
                             </label>
                         </div>
-                        <div class="form-group row">
+                        <div class="form-group mb-3 row">
                             <label class="col-md-3 col-form-label" for="hf-email">Mobile No.</label>
                             <div class="col-md-8">
                                 <input type="text" name="phoneNo" value="{{custInfo.address.phoneNo}}" class="form-control" [(ngModel)]="addressDetail.phoneNo" [disabled]="editPhone">
@@ -98,14 +98,14 @@
                                 <span class="switch-slider"></span>
                             </label>
                         </div>
-                        <div class="form-group row">
+                        <div class="form-group mb-3 row">
                             <label class="col-md-3 col-form-label" for="hf-email">Alternet No.</label>
                             <div class="col-md-8">
                                 <input type="text" name="altNo" value="{{custInfo.address.altNo}}" class="form-control" ngModel readonly>
                             </div>
 
                         </div>
-                        <div class="form-group row">
+                        <div class="form-group mb-3 row">
                             <label class="col-md-3 col-form-label" for="hf-email">Native Place</label>
                             <div class="col-md-8">
                                 <input type="text" name="altNo" value="{{custInfo.address.nativePlace}}" class="form-control" ngModel readonly>
@@ -113,7 +113,7 @@
 
                         </div>
 
-                        <div class="form-group row">
+                        <div class="form-group mb-3 row">
                             <label class="col-md-3 col-form-label" for="hf-email">Customer Detail</label>
                             <div class="col-md-9">
                                 <a [href]="fileUrl" target="_blank" download="customer.pdf">DownloadFile</a>
@@ -121,7 +121,7 @@
                             </div>
                         </div>
                         <div class="card-footer" *ngIf="isEiditable">
-                            <button type="button" (click)="editCustInfo()" class="btn btn-sm btn-primary"><i class="fa fa-dot-circle-o"></i> Submit Changes</button>
+                            <button type="button" (click)="editCustInfo()" class="btn mt-2 mb-2 btn-primary"><i class="fa fa-dot-circle-o"></i> Submit Changes</button>
                         </div>
 
                     </div>
@@ -140,7 +140,7 @@
             <div class="col-lg-12">
                 <div class="card">
                     <div class="card-header">
-                        <i class="fa fa-align-justify"></i>Witness Persions <button type="button" (click)="enableAdd()" class="btn btn-sm btn-primary"><i class="fa fa-dot-circle-o"></i> Add Witness</button>
+                        <i class="fa fa-align-justify"></i>Witness Persions <button type="button" (click)="enableAdd()" class="btn mt-2 mb-2 btn-primary"><i class="fa fa-dot-circle-o"></i> Add Witness</button>
                     </div>
                     <div class="card-body">
                         <div class="card-body" *ngIf="isEnableAdd">
@@ -165,7 +165,7 @@
                                     </div>
                                     <div class="form-group col-sm-5">
 
-                                        <button type="button" (click)="saveCustContactPersionDetail(form.value)" class="btn btn-sm btn-primary"><i class="fa fa-dot-circle-o"></i> Add</button>
+                                        <button type="button" (click)="saveCustContactPersionDetail(form.value)" class="btn mt-2 mb-2 btn-primary"><i class="fa fa-dot-circle-o"></i> Add</button>
                                     </div>
                                 </div>
                             </form>
@@ -199,8 +199,8 @@
                                     </td>
                                     <td>
                                         <div *ngIf="editCache[custContactPersion.contactPersionId];then allowBtn else blockBtn"></div>
-                                        <ng-template #blockBtn><button type="button" (click)="allowEdit(custContactPersion.contactPersionId)" class="btn btn-sm btn-primary"><i class="fa fa-dot-circle-o"></i>Edit</button></ng-template>
-                                        <ng-template #allowBtn> <button type="button" (click)="editCustContact(custContactPersion)" class="btn btn-sm btn-primary"><i class="fa fa-dot-circle-o"></i>Save</button></ng-template>
+                                        <ng-template #blockBtn><button type="button" (click)="allowEdit(custContactPersion.contactPersionId)" class="btn mt-2 mb-2 btn-primary"><i class="fa fa-dot-circle-o"></i>Edit</button></ng-template>
+                                        <ng-template #allowBtn> <button type="button" (click)="editCustContact(custContactPersion)" class="btn mt-2 mb-2 btn-primary"><i class="fa fa-dot-circle-o"></i>Save</button></ng-template>
                                     </td>
                                 </tr>
                             </tbody>

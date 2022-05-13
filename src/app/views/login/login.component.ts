@@ -30,7 +30,7 @@ export class LoginComponent {
         } else {
             alert("Please Enter User Name");
         }
-
+        // this.router.navigate(['dashboard']);
     }
     checkUserPassword(): void {
         console.log("check password process");

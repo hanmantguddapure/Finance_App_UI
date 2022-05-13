@@ -6,7 +6,7 @@ import { DomSanitizer } from '@angular/platform-browser';
 })
 export class TooltipsComponent {
     content: string = 'Vivamus sagittis lacus vel augue laoreet rutrum faucibus.';
-    html: any = `<span class="btn btn-danger">Never trust not sanitized HTML!!!</span>`;
+    html: any = `<span class="btn m-2 btn-danger">Never trust not sanitized HTML!!!</span>`;
     
     constructor(sanitizer: DomSanitizer) {
         this.html = sanitizer.sanitize(SecurityContext.HTML, this.html);

@@ -1,9 +1,9 @@
 export class UserCredentials {
-    public token:number;
-    public userName: string;
-    public password:string;
-    public jwtToken:string;
-    public fullName:string;
+    public token: number;
+    public userName: any;
+    public password: any;
+    public jwtToken: any;
+    public fullName: any;
 
     constructor(json: any) {
         this.token = json && json.token ? json.token : 0;

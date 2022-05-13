@@ -17,9 +17,9 @@ import { AppComponent } from './app.component';
 
 // Import containers
 import {
-  DefaultFooterComponent,
-  DefaultHeaderComponent,
-  DefaultLayoutComponent,
+    DefaultFooterComponent,
+    DefaultHeaderComponent,
+    DefaultLayoutComponent,
 } from './containers';
 import { P404Component } from './views/error/404.component';
 import { P500Component } from './views/error/500.component';
@@ -62,9 +62,15 @@ import { NgChartsModule } from 'ng2-charts';
 
 
 @NgModule({
-  declarations: [AppComponent, DefaultFooterComponent,
-  DefaultHeaderComponent,
-  DefaultLayoutComponent],
+    declarations: [
+        AppComponent,
+        DefaultFooterComponent,
+        DefaultHeaderComponent,
+        DefaultLayoutComponent,
+        P404Component,
+        P500Component,
+        LoginComponent,
+        RegisterComponent
     ],
     imports: [
         BrowserModule,
