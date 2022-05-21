@@ -1,14 +1,14 @@
 export class LoanSummary {
-    public noOfaccounts:number;
-    public princepleAmount:number;
-	public loanAmounts:number;
-    public disbursements:number;
-    public pendingDisburement:number;
-    public penalty:number;
-    public loanIntrest:number;
-    public collections:number;
-    public closedAccounts:number;
-    public processingFees:number;
+    noOfaccounts: number;
+    princepleAmount: number;
+    loanAmounts: number;
+    disbursements: number;
+    pendingDisburement: number;
+    penalty: number;
+    loanIntrest: number;
+    collections: number;
+    closedAccounts: number;
+    processingFees: number;
 
     constructor(json: any) {
         this.noOfaccounts = json && json.noOfaccounts ? json.noOfaccounts : 0;

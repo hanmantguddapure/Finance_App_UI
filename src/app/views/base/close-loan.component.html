@@ -7,17 +7,6 @@
                     <strong>CLOSE ACCOUNT</strong>
                 </div>
                 <div class="card-body">
-                    <!--
-          <div class="form-group mb-3 row">
-              <label class="col-md-3 col-form-label">Customer</label>
-              <div class="col-md-9">
-                <select class="form-control" name="custId" ngModel (change)="onCustomerChange($event)">
-                  <option>--Select Customer--</option>
-                  <option *ngFor="let customer of allCustomerList" value="{{customer.custId}}">{{customer.fullName}}</option>
-                </select>
-              </div>
-            </div>
-            -->
                     <div class="row">
                         <div class="form-group col-sm-2">
                             <label for="email-input">Account Number</label>
@@ -81,6 +70,7 @@
                                 <select class="form-control" name="loanStatus" ngModel>
                                     <option>--Select Customer--</option>
                                     <option value=Closed>Close</option>
+                                    <option value=MISC>MISC</option>
                                 </select>
                             </div>
                         </div>

@@ -24,12 +24,19 @@ export class FDAccountCloseComponent implements OnInit {
         }
 
     }
+
     calculateItersetAmt() {
         this.fdAccountDtls.interestAmt = (this.fdAccountDtls.amount / 100) * (this.fdAccountDtls.interest);
         console.log("test " + " " + this.fdAccountDtls.interest + " " + this.fdAccountDtls.interestAmt);
     }
 
     closeFD(): void {
+
+        if (this.fdAccountDtls.pendingInterestAmt) {
+            alert("Intrest amount is pending")
+            return;
+        }
+
         this.fdService.closeFD(this.fdAccountDtls).subscribe(data => {
             this.fdAccountDtls = data;
             alert("Successfully Closed");

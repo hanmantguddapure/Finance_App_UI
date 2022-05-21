@@ -46,13 +46,13 @@ export class DashboardComponent implements OnInit {
             this.appSummary = data;
             this.loanSummary = this.appSummary?.loanSummary;
             this.fdSummary = this.appSummary?.fdSummary;
-            this.totalcredit = this.loanSummary.collections + this.loanSummary.penalty + this.fdSummary.fdAmount + this.appSummary?.firmLoan;
-            this.totaolDebit = this.loanSummary.disbursements + this.fdSummary.paidInterest + this.appSummary?.expenses + this.appSummary?.shortTermLoan;
+            this.totalcredit = this.loanSummary?.collections + this.loanSummary?.penalty + this.fdSummary?.fdAmount + this.appSummary?.firmLoan;
+            this.totaolDebit = this.loanSummary?.disbursements + this.fdSummary?.paidInterest + this.appSummary?.expenses + this.appSummary?.shortTermLoan;
             this.totalClosingBal = this.totalcredit - this.totaolDebit;
 
-            this.totalDebitBalSummary = this.fdSummary.fdAmount + this.appSummary?.firmLoan + this.fdSummary.pendingIntrest;
-            this.totalCreditBalSummary = Math.floor(this.loanSummary.disbursements + this.loanSummary.loanIntrest + this.loanSummary.processingFees);
-            this.pendingCollection = this.totalCreditBalSummary - this.loanSummary.collections;
+            this.totalDebitBalSummary = this.fdSummary?.fdAmount + this.appSummary?.firmLoan + this.fdSummary?.pendingIntrest;
+            this.totalCreditBalSummary = Math.floor(this.loanSummary?.disbursements + this.loanSummary?.loanIntrest + this.loanSummary?.processingFees);
+            this.pendingCollection = this.totalCreditBalSummary - this.loanSummary?.collections;
             this.closingBalSummary = this.pendingCollection - this.totalDebitBalSummary;
         })
     }

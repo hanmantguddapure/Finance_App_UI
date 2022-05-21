@@ -53,10 +53,8 @@ export class LoanEMIComponent {
             this.loanservice.getLoanDetailByLoanId(loanId).subscribe(data => {
                 this.loanDetail = data;
                 this.loanPaymetDetails = this.loanDetail.loanCollections;
-
             })
         }
-
     }
 
     addCustomerPayment(paymentDetail: any) {
@@ -68,7 +66,6 @@ export class LoanEMIComponent {
             if (data) {
                 this.checkDuplicate = true;
             }
-
         })
         if (this.checkDuplicate) {
             if (confirm("Payment Already Added On This Date,Are You Want Add Again")) {
@@ -86,6 +83,12 @@ export class LoanEMIComponent {
         if (paymentDetail.paymentDate == "" || paymentDetail.paymentDate == undefined) {
             alert("Please enter payment date")
             this.isValidate = false;
+        }
+        let paymentDate = this.loanPaymetDetails.find(e => e.paymentDate == paymentDetail.paymentDate);
+
+        if (paymentDate) {
+            alert("EMI is already paid");
+            return;
         }
 
         if (this.isValidate && !this.checkDuplicate) {

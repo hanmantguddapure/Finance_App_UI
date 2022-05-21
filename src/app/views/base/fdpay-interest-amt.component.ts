@@ -7,10 +7,14 @@ import { FDInterestDtl } from '../../Module/fdinterest-dtl';
     templateUrl: './fdpay-interest-amt.component.html',
 })
 export class FDPayInterestAmtComponent implements OnInit {
-    fdDtls: FDAccount = new FDAccount(null);
-    fdInterest: FDInterestDtl = new FDInterestDtl(null);
-    fdInterestHistory: Array<FDInterestDtl> = [];
-    constructor(private fdService: FDServiceService) { }
+    fdDtls: FDAccount;
+    fdInterest: FDInterestDtl;
+    fdInterestHistory: Array<FDInterestDtl>;
+    constructor(private fdService: FDServiceService) {
+        this.fdDtls = new FDAccount(null);
+        this.fdInterest = new FDInterestDtl(null);
+        this.fdInterestHistory = [];
+    }
     ngOnInit() {
     }
 
@@ -20,7 +24,7 @@ export class FDPayInterestAmtComponent implements OnInit {
             alert("Please enter FD Account id")
         } else {
             this.fdService.getFDDetailByFDId(fdId).subscribe(data => {
-                this.fdDtls = data;
+                this.fdDtls = new FDAccount(data);
                 this.fdInterest.toDate = this.fdDtls.interestPayTo;
                 this.fdInterest.fromDate = this.fdDtls.interstPayFrom;
                 this.fdInterest.interestAmt = this.fdDtls.pendingInterestAmt;
