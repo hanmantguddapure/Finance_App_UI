@@ -13,7 +13,7 @@ export class LoanDetailComponent implements OnInit {
     loanDetail: Loandetail = new Loandetail(null);
     installmentMissedRequiredColl: any;
     loanPaymetDetails: Array<PaymentDetail> = [];
-    constructor(private loanservice: LoanserviceService) { }
+    constructor(private toster: ToastService,private loanservice: LoanserviceService) { }
     fileUrl: any;
     ngOnInit() {
     }
