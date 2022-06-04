@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ToastService } from 'src/app/Services/toast.service';
 import { ShortTermLoan } from '../../Module/short-term-loan';
 import { LoanserviceService } from '../../Services/loanservice.service';
 
@@ -11,7 +12,7 @@ export class ShortTermLoanRepoComponent implements OnInit {
     shortTermLoans: Array<ShortTermLoan> = [];
     totalLoan: number;
 
-    constructor(private loanService: LoanserviceService) { 
+    constructor(private toster: ToastService, private loanService: LoanserviceService) {
         this.totalLoan = 0;
     }
 

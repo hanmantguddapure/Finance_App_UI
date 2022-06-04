@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { UserCredentials } from '../../Module/user-credentials';
 import { LoginServiceService } from '../../Services/login-service.service';
 import { Router, ActivatedRoute } from '@angular/router';
+import { ToastService } from 'src/app/Services/toast.service';
 
 @Component({
     selector: 'app-dashboard',
@@ -11,7 +12,7 @@ export class LoginComponent {
     usercredential: UserCredentials = new UserCredentials(null);
     isValidUserName: boolean = false;
     showUserName: boolean = true;
-    constructor(private loginService: LoginServiceService, private router: Router, private route: ActivatedRoute) { }
+    constructor(private toster: ToastService, private loginService: LoginServiceService, private router: Router, private route: ActivatedRoute) { }
 
     ngOnInit() {
     }
@@ -23,12 +24,12 @@ export class LoginComponent {
                     this.isValidUserName = true;
                     this.showUserName = false;
                 } else {
-                    alert("User Is Not Valid");
+                    this.toster.error("User Is Not Valid");
                 }
                 console.log(this.isValidUserName);
             })
         } else {
-            alert("Please Enter User Name");
+            this.toster.error("Please Enter User Name");
         }
         // this.router.navigate(['dashboard']);
     }

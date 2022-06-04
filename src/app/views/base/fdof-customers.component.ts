@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { CustomerserviceService } from '../../Services/customerservice.service';
 import { FDAccount } from '../../Module/fdaccount';
 import { FDServiceService } from '../../Services/fdservice.service';
+import { ToastService } from 'src/app/Services/toast.service';
 
 @Component({
     templateUrl: './fdof-customers.component.html',
@@ -14,7 +15,7 @@ export class FDOfCustomersComponent implements OnInit {
     totalInterest: number = 0;
     total: number = 0;
     totalAccounts: number = 0;
-    constructor(private customerService: CustomerserviceService, private fdService: FDServiceService) { }
+    constructor(private toster: ToastService, private customerService: CustomerserviceService, private fdService: FDServiceService) { }
 
     ngOnInit() {
         this.customerService.getCustomerAllDetail().subscribe(data => {

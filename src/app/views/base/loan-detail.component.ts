@@ -3,6 +3,7 @@ import { LoanserviceService } from '../../Services/loanservice.service';
 import { PaymentDetail } from '../../Module/payment-detail';
 import { Loandetail } from '../../Module/loandetail';
 import { AppConstants } from '../../Module/app-constants';
+import { ToastService } from 'src/app/Services/toast.service';
 
 @Component({
 
@@ -13,14 +14,14 @@ export class LoanDetailComponent implements OnInit {
     loanDetail: Loandetail = new Loandetail(null);
     installmentMissedRequiredColl: any;
     loanPaymetDetails: Array<PaymentDetail> = [];
-    constructor(private toster: ToastService,private loanservice: LoanserviceService) { }
+    constructor(private toster: ToastService, private loanservice: LoanserviceService) { }
     fileUrl: any;
     ngOnInit() {
     }
     getAccountDetail(event: any) {
         let loanId = event.target.value;
         if (loanId == "") {
-            alert("Please enter loan id")
+            this.toster.error("Please enter loan id")
         } else {
             this.loanservice.getLoanDetailByLoanId(loanId).subscribe(data => {
                 this.loanDetail = data;

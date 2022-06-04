@@ -3,6 +3,7 @@ import { PaymentDetail } from '../../Module/payment-detail';
 import { LoanRepo } from '../../Module/loan-repo';
 import { LoanserviceService } from '../../Services/loanservice.service';
 import { AppConstants } from '../../Module/app-constants';
+import { ToastService } from 'src/app/Services/toast.service';
 
 @Component({
     templateUrl: 'loan-repo.component.html',
@@ -21,7 +22,7 @@ export class LoanRepoComponent implements OnInit {
     totalInterest: number = 0;
     totalProcessFess: number = 0;
     totalDisbursed: number = 0;
-    constructor(private loanservice: LoanserviceService) { }
+    constructor(private toster: ToastService, private loanservice: LoanserviceService) { }
 
     ngOnInit() {
     }

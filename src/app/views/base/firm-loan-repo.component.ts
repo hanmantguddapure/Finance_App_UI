@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ToastService } from 'src/app/Services/toast.service';
 import { FirmLoan } from '../../Module/firm-loan';
 import { LoanserviceService } from '../../Services/loanservice.service';
 
@@ -10,7 +11,7 @@ export class FirmLoanRepoComponent implements OnInit {
     firmLoanObjs: Array<FirmLoan> = [];
     totalLoan: number | any;
     totalInterest: number | any;
-    constructor(private loanService: LoanserviceService) { }
+    constructor(private toster: ToastService, private loanService: LoanserviceService) { }
     ngOnInit() {
     }
     onStatusChange(event: any) {

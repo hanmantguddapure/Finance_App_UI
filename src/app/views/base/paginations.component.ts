@@ -1,31 +1,32 @@
-import { Component, Input, ViewEncapsulation  } from '@angular/core';
+import { Component, Input, ViewEncapsulation } from '@angular/core';
+import { ToastService } from 'src/app/Services/toast.service';
 
 @Component({
-  templateUrl: 'paginations.component.html',
-  styles: ['.pager li.btn:active { box-shadow: none; }'],
-  encapsulation: ViewEncapsulation.None
+    templateUrl: 'paginations.component.html',
+    styles: ['.pager li.btn:active { box-shadow: none; }'],
+    encapsulation: ViewEncapsulation.None
 })
 export class PaginationsComponent {
 
-  constructor() { }
+    constructor(private toster: ToastService,) { }
 
-  totalItems: number = 64;
-  currentPage: number   = 4;
-  smallnumPages: number = 0;
+    totalItems: number = 64;
+    currentPage: number = 4;
+    smallnumPages: number = 0;
 
-  maxSize: number = 5;
-  bigTotalItems: number = 675;
-  bigCurrentPage: number = 1;
-  numPages: number = 0;
+    maxSize: number = 5;
+    bigTotalItems: number = 675;
+    bigCurrentPage: number = 1;
+    numPages: number = 0;
 
-  currentPager: number   = 4;
+    currentPager: number = 4;
 
-  setPage(pageNo: number): void {
-    this.currentPage = pageNo;
-  }
+    setPage(pageNo: number): void {
+        this.currentPage = pageNo;
+    }
 
-  pageChanged(event: any): void {
-    console.log('Page changed to: ' + event.page);
-    console.log('Number items per page: ' + event.itemsPerPage);
-  }
+    pageChanged(event: any): void {
+        console.log('Page changed to: ' + event.page);
+        console.log('Number items per page: ' + event.itemsPerPage);
+    }
 }

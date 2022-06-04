@@ -6,7 +6,10 @@ import { cilListNumbered, cilPaperPlane, brandSet, cilBell, cilEnvelopeOpen, cil
 @Component({
     // tslint:disable-next-line
     selector: 'body',
-    template: '<router-outlet></router-outlet>'
+    template: `
+    <app-toasts aria-live="polite" aria-atomic="true"></app-toasts>
+    <router-outlet></router-outlet>
+    `
 })
 export class AppComponent implements OnInit {
     constructor(private router: Router,

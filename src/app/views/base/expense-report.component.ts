@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ToastService } from 'src/app/Services/toast.service';
 import { Expense } from '../../Module/expense';
 import { ExpenseServiceService } from '../../Services/expense-service.service';
 
@@ -13,7 +14,7 @@ export class ExpenseReportComponent implements OnInit {
     expense: Expense = new Expense(null);
     total: number | any;
     expenseTypesList: Array<Expense> = [];
-    constructor(private expenseService: ExpenseServiceService) { }
+    constructor(private toster: ToastService, private expenseService: ExpenseServiceService) { }
 
     ngOnInit() {
 
@@ -44,11 +45,11 @@ export class ExpenseReportComponent implements OnInit {
 
     checkValidation() {
         if (this.expense.fromDate == undefined) {
-            alert("Please Enter From Date ");
+            this.toster.error("Please Enter From Date ");
             this.validationFlag = false;
         }
         if (this.expense.toDate == undefined) {
-            alert("Please Enter To Date");
+            this.toster.error("Please Enter To Date");
             this.validationFlag = false;
         }
     }

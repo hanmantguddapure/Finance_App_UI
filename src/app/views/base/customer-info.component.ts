@@ -3,6 +3,7 @@ import { CustomerserviceService } from '../../Services/customerservice.service';
 import { Customer } from '../../Module/customer';
 import { AppConstants } from '../../Module/app-constants';
 import { Address } from '../../Module/address';
+import { ToastService } from 'src/app/Services/toast.service';
 
 @Component({
     templateUrl: 'customer-info.component.html'
@@ -26,7 +27,7 @@ export class CustomerInfoComponent implements OnInit {
     fileUrl: any;
     isWitnessValid: any;
 
-    constructor(private customerService: CustomerserviceService) { }
+    constructor(private toster: ToastService, private customerService: CustomerserviceService) { }
     ngOnInit() {
         this.customerService.getCustomerAllDetail().subscribe((data: any) => {
             this.allCustomerList = data;
@@ -36,7 +37,7 @@ export class CustomerInfoComponent implements OnInit {
     getCustomerDetail(event: any) {
         let custId = event.target.value;
         if (custId == "") {
-            alert("Please Select Customer")
+            this.toster.error("Please Select Customer")
         } else {
             this.customerService.getCustomerDetail(custId).subscribe(data => {
                 this.custInfo = data;
@@ -51,7 +52,7 @@ export class CustomerInfoComponent implements OnInit {
     }
     editCustContact(custContactDtls: any) {
         this.customerService.editCustContactPersionDetail(custContactDtls).subscribe(data => {
-            alert("Save Changes Successfully");
+            this.toster.success("Save Changes Successfully");
             this.editCache[custContactDtls.contactPersionId] = false;
 
         })
@@ -69,7 +70,7 @@ export class CustomerInfoComponent implements OnInit {
         this.customerService.saveCustContactPersionDetail(custContactPersion).subscribe(data => {
             this.conatactPersionList.push(custContactPersion);
             this.isEnableAdd = false;
-            alert("Added Successfully")
+            this.toster.success("Added Successfully")
         })
     };
 
@@ -85,7 +86,7 @@ export class CustomerInfoComponent implements OnInit {
             this.editAddress = true;
             this.editEmail = true;
             this.editPhone = true;
-            alert("Save Changes Successfull");
+            this.toster.success("Save Changes Successfull");
         })
     }
     enableProfession() {

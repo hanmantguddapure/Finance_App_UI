@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { LoanPenalty } from '../../Module/loan-penalty';
 import { LoanserviceService } from '../../Services/loanservice.service';
 import { Router, ActivatedRoute } from '@angular/router';
+import { ToastService } from 'src/app/Services/toast.service';
 
 @Component({
     templateUrl: './loan-penlty.component.html',
@@ -10,12 +11,12 @@ export class LoanPenltyComponent {
     loanPenalties: Array<LoanPenalty> = [];
     loanPenlty: LoanPenalty = new LoanPenalty(null);
     isValidate: boolean = true;
-    constructor(private loanservice: LoanserviceService, private router: Router, private route: ActivatedRoute) { }
+    constructor(private toster: ToastService, private loanservice: LoanserviceService, private router: Router, private route: ActivatedRoute) { }
 
     getPenaltyDetail(event: any) {
         let loanId = event.target.value;
         if (loanId == "") {
-            alert("Please enter loan id")
+            this.toster.error("Please enter loan id")
         } else {
             this.loanservice.getLoanPenltyByLoanId(loanId).subscribe(data => {
                 this.loanPenalties = data;
@@ -29,15 +30,15 @@ export class LoanPenltyComponent {
         this.loanPenlty = penaltyDtls;
 
         if (this.loanPenlty.loanAccountId == undefined) {
-            alert("Please enter loan id")
+            this.toster.error("Please enter loan id")
             this.isValidate = false;
         }
         if (this.loanPenlty.penaltyAmt == undefined) {
-            alert("Please enter penalty")
+            this.toster.error("Please enter penalty")
             this.isValidate = false;
         }
         if (this.loanPenlty.remark == "" || this.loanPenlty.remark == undefined) {
-            alert("Please enter remark")
+            this.toster.error("Please enter remark")
             this.isValidate = false;
         }
         if (this.isValidate) {
@@ -46,7 +47,7 @@ export class LoanPenltyComponent {
                     this.loanPenalties = [];
                 }
                 this.loanPenalties.push(this.loanPenlty);
-                alert("Added Successfully");
+                this.toster.success("Added Successfully");
             })
         }
 

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ToastService } from 'src/app/Services/toast.service';
 import { FirmLoan } from '../../Module/firm-loan';
 import { LoanserviceService } from '../../Services/loanservice.service';
 
@@ -9,7 +10,7 @@ import { LoanserviceService } from '../../Services/loanservice.service';
 })
 export class FirmLoanCloseComponent implements OnInit {
     firmLoanObj: FirmLoan = new FirmLoan(null);
-    constructor(private loanService: LoanserviceService) { }
+    constructor(private toster: ToastService, private loanService: LoanserviceService) { }
 
     ngOnInit() {
     }
@@ -17,7 +18,7 @@ export class FirmLoanCloseComponent implements OnInit {
     getAccountDetail(event: any) {
         let firmLoanId = event.target.value;
         if (firmLoanId == "") {
-            alert("Please enter Account id")
+            this.toster.error("Please enter Account id")
         } else {
             this.loanService.getFirmLoanById(firmLoanId).subscribe(data => {
                 this.firmLoanObj = data;
@@ -29,7 +30,7 @@ export class FirmLoanCloseComponent implements OnInit {
     closeFirmLoan() {
         this.firmLoanObj.isActive = 0;
         this.loanService.closeFirmLoan(this.firmLoanObj).subscribe(data => {
-            alert("Successfully Closed");
+            this.toster.success("Successfully Closed");
         })
     }
 }

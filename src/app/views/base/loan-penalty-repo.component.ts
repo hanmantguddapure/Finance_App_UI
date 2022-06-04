@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ToastService } from 'src/app/Services/toast.service';
 import { LoanPenalty } from '../../Module/loan-penalty';
 import { LoanserviceService } from '../../Services/loanservice.service';
 
@@ -9,7 +10,7 @@ import { LoanserviceService } from '../../Services/loanservice.service';
 })
 export class LoanPenaltyRepoComponent implements OnInit {
     loanPenalties: Array<LoanPenalty> = [];
-    constructor(private loanservice: LoanserviceService) { }
+    constructor(private toster: ToastService, private loanservice: LoanserviceService) { }
 
     ngOnInit() {
     }
@@ -17,7 +18,6 @@ export class LoanPenaltyRepoComponent implements OnInit {
         let loanStatus = event.target.value;
         this.loanservice.getAllLoanPenaltiesByLoanStatus(loanStatus).subscribe(data => {
             this.loanPenalties = data;
-
         })
     }
 }

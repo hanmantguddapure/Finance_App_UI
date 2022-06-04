@@ -3,6 +3,7 @@ import { FDAccount } from '../../Module/fdaccount';
 import { FDServiceService } from '../../Services/fdservice.service';
 import { AppConstants } from '../../Module/app-constants';
 import { FDInterestDtl } from '../../Module/fdinterest-dtl';
+import { ToastService } from 'src/app/Services/toast.service';
 
 @Component({
 
@@ -13,7 +14,7 @@ export class FDAccountViewComponent implements OnInit {
     fdAccountDtls: FDAccount = new FDAccount(null);
     fdInterestHistory: Array<FDInterestDtl> = [];
     fileUrl: any;
-    constructor(private fdService: FDServiceService) { }
+    constructor(private toster: ToastService, private fdService: FDServiceService) { }
 
     ngOnInit() {
     }
@@ -21,7 +22,7 @@ export class FDAccountViewComponent implements OnInit {
     getAccountDetail(event: any) {
         let fdId = event.target.value;
         if (fdId == "") {
-            alert("Please enter FD Account id")
+            this.toster.error("Please enter FD Account id")
         } else {
             this.fdService.getFDDetailByFDId(fdId).subscribe(data => {
                 this.fdAccountDtls = data;

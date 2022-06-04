@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Customer } from '../../Module/customer';
 import { CustomerserviceService } from '../../Services/customerservice.service';
 import { Router, ActivatedRoute } from '@angular/router';
+import { ToastService } from 'src/app/Services/toast.service';
 
 
 @Component({
@@ -9,7 +10,7 @@ import { Router, ActivatedRoute } from '@angular/router';
 })
 export class CustomerComponent implements OnInit {
 
-    constructor(private customerService: CustomerserviceService, private router: Router, private route: ActivatedRoute) { }
+    constructor(private toster: ToastService, private customerService: CustomerserviceService, private router: Router, private route: ActivatedRoute) { }
     customer: Customer = new Customer(null);
     isCollapsed: boolean = false;
     isCustValid: boolean = false;
@@ -43,14 +44,14 @@ export class CustomerComponent implements OnInit {
                 this.customer = data;
 
                 this.custId = this.customer.custId;
-                alert("New Customer Created Successfully")
+                this.toster.success("New Customer Created Successfully")
             })
         }
 
     };
     saveCustContactPersionDetail(custContactPersion: any) {
         if (this.customer.custId == undefined) {
-            alert("please submit customer detail")
+            this.toster.error("please submit customer detail")
         } else {
             if (custContactPersion.fullName == "") {
                 this.isWitnessValid = true;
@@ -61,7 +62,7 @@ export class CustomerComponent implements OnInit {
                 this.customerService.saveCustContactPersionDetail(custContactPersion).subscribe(data => {
                     this.customer = data;
                     this.conatactPersionList.push(this.customer);
-                    alert("Added Successfully")
+                    this.toster.success("Added Successfully")
                 })
             };
         }

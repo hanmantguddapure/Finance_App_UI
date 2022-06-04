@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ToastService } from 'src/app/Services/toast.service';
 import { FirmLoan } from '../../Module/firm-loan';
 import { LoanserviceService } from '../../Services/loanservice.service';
 
@@ -7,14 +8,14 @@ import { LoanserviceService } from '../../Services/loanservice.service';
 })
 export class FirmLoanComponent implements OnInit {
     firmLoanObj: FirmLoan = new FirmLoan(null);
-    constructor(private loanservice: LoanserviceService) { }
+    constructor(private toster: ToastService, private loanservice: LoanserviceService) { }
 
     ngOnInit() {
     }
 
     createNewFirmLoan(): void {
         this.loanservice.createNewFirmLoan(this.firmLoanObj).subscribe(data => {
-            alert("Successfully Added");
+            this.toster.success("Successfully Added");
         });
     };
 }

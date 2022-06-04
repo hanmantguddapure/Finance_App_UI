@@ -1,16 +1,16 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { NgbModalConfig, NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { ToastService } from 'src/app/Services/toast.service';
 import { FDAccount } from '../../Module/fdaccount';
 import { FDServiceService } from '../../Services/fdservice.service';
 
 @Component({
-    templateUrl: './fdaccount-close.component.html',
-    providers: [NgbModalConfig, NgbModal]
+    templateUrl: './fdaccount-close.component.html'
 })
 export class FDAccountCloseComponent implements OnInit {
     fdAccountDtls: FDAccount = new FDAccount(null);
-    constructor(private fdService: FDServiceService, private modalService: NgbModal, private router: Router) { }
+    constructor(private toster: ToastService, private fdService: FDServiceService, private modalService: NgbModal, private router: Router) { }
 
     ngOnInit() {
     }
@@ -18,7 +18,7 @@ export class FDAccountCloseComponent implements OnInit {
     getAccountDetail(event: any) {
         let fdId = event.target.value;
         if (fdId == "") {
-            alert("Please enter FD Account id")
+            this.toster.error("Please enter FD Account id")
         } else {
             this.fdService.getFDDetailByFDId(fdId).subscribe(data => {
                 this.fdAccountDtls = data;
@@ -48,7 +48,7 @@ export class FDAccountCloseComponent implements OnInit {
 
         this.fdService.closeFD(this.fdAccountDtls).subscribe(data => {
             this.fdAccountDtls = data;
-            alert("Successfully Closed");
+            this.toster.success("Successfully Closed");
         })
     }
 

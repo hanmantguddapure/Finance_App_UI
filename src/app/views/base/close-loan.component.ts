@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ToastService } from 'src/app/Services/toast.service';
 import { Loandetail } from '../../Module/loandetail';
 import { PaymentDetail } from '../../Module/payment-detail';
 import { LoanserviceService } from '../../Services/loanservice.service';
@@ -11,14 +12,14 @@ import { LoanserviceService } from '../../Services/loanservice.service';
 export class CloseLoanComponent implements OnInit {
     loanDetail: Loandetail = new Loandetail(null);
     loanPaymetDetails: Array<PaymentDetail> = [];
-    constructor(private loanservice: LoanserviceService) { }
+    constructor(private toster: ToastService, private loanservice: LoanserviceService) { }
 
     ngOnInit() {
     }
     getAccountDetail(event: any) {
         let loanId = event.target.value;
         if (loanId == "") {
-            alert("Please enter loan id")
+            this.toster.error("Please enter loan id")
         } else {
             this.loanservice.getLoanDetailByLoanId(loanId).subscribe(data => {
                 this.loanDetail = data;
@@ -33,12 +34,12 @@ export class CloseLoanComponent implements OnInit {
 
     closeLoanAccount(loanDetail: any): void {
         if (this.loanDetail.custId == undefined) {
-            alert("please Enter CustId")
+            this.toster.error("please Enter CustId")
         } else {
             this.loanDetail.loanStatus = loanDetail.loanStatus;
             this.loanDetail.remark = loanDetail.remark;
             this.loanservice.closeLoanAccount(this.loanDetail).subscribe(data => {
-                alert("Closed Successfully")
+                this.toster.success("Closed Successfully")
             })
         }
     };

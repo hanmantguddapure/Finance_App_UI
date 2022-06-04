@@ -9,6 +9,7 @@ import {
     PerfectScrollbarConfigInterface,
     PerfectScrollbarModule,
 } from 'ngx-perfect-scrollbar';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 // Import routing module
 import { AppRoutingModule } from './app.routing';
@@ -25,6 +26,7 @@ import { P404Component } from './views/error/404.component';
 import { P500Component } from './views/error/500.component';
 import { LoginComponent } from './views/login/login.component';
 import { RegisterComponent } from './views/register/register.component';
+import { ToastsContainer } from './views/app-toaster.component';
 
 import {
     AvatarModule,
@@ -44,7 +46,7 @@ import {
     SharedModule,
     SidebarModule,
     TabsModule,
-    UtilitiesModule,
+    UtilitiesModule
 } from '@coreui/angular';
 
 import { IconModule, IconSetService } from '@coreui/icons-angular';
@@ -59,6 +61,7 @@ import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 import { AutoPassJwtTokenOnReqHeader } from './interceptors/auto-pass-jwt-token-on-req-header';
 import { NgChartsModule } from 'ng2-charts';
+import { NgbModal, NgbModalConfig, NgbToast } from '@ng-bootstrap/ng-bootstrap';
 
 
 @NgModule({
@@ -70,7 +73,8 @@ import { NgChartsModule } from 'ng2-charts';
         P404Component,
         P500Component,
         LoginComponent,
-        RegisterComponent
+        RegisterComponent,
+        ToastsContainer
     ],
     imports: [
         BrowserModule,
@@ -89,6 +93,7 @@ import { NgChartsModule } from 'ng2-charts';
         ButtonModule,
         BsDropdownModule.forRoot(),
         //TabsModule.forRoot(),
+        NgbModule,
         NgChartsModule,
         HttpClientModule,
         FormsModule,
@@ -103,7 +108,7 @@ import { NgChartsModule } from 'ng2-charts';
         ProgressModule,
         BadgeModule,
         ListGroupModule,
-        CardModule
+        CardModule,
     ],
     providers: [
         {
@@ -119,6 +124,8 @@ import { NgChartsModule } from 'ng2-charts';
             useValue: DEFAULT_PERFECT_SCROLLBAR_CONFIG,
         },
         IconSetService,
+        NgbToast,
+        NgbModalConfig, NgbModal,
         Title
     ],
     bootstrap: [AppComponent],

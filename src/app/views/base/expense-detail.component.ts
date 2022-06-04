@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ExpenseServiceService } from '../../Services/expense-service.service';
 import { Expense } from '../../Module/expense';
+import { ToastService } from 'src/app/Services/toast.service';
 
 @Component({
     templateUrl: './expense-detail.component.html'
@@ -12,7 +13,7 @@ export class ExpenseDetailComponent implements OnInit {
     expense: Expense = new Expense(null);
     expenseName: string | any;
     total: number = 0;
-    constructor(private expenseService: ExpenseServiceService) { }
+    constructor(private toster: ToastService, private expenseService: ExpenseServiceService) { }
     ngOnInit() {
         this.expenseService.getExpenseTypes().subscribe(data => {
             this.expenseTypesList = data;
@@ -22,7 +23,7 @@ export class ExpenseDetailComponent implements OnInit {
     selectchange(args: any) {
         this.expenseName = args.target.options[args.target.selectedIndex].text;
     }
-    
+
     getExpensess(event: any) {
         let selectedDate = event.target.value;
         this.total = 0;
@@ -30,7 +31,6 @@ export class ExpenseDetailComponent implements OnInit {
             this.expenseslst = data;
             this.expenseslst.forEach(element => {
                 this.total = this.total + (element.amount);
-
             });
 
         })
@@ -49,24 +49,23 @@ export class ExpenseDetailComponent implements OnInit {
                 this.expenseslst.push(data);
                 // this.total = this.total + parseInt(this.expense.amount);
                 //this.total=(this.total)+(this.expense.amount);
-                alert("Successfully Added");
+                this.toster.success("Successfully Added");
             })
         }
 
     };
     checkValidation() {
         if (this.expense.expenseTypeId == undefined) {
-            alert("Please Select Expense Type");
+            this.toster.error("Please Select Expense Type");
             this.validationFlag = false;
         }
         if (this.expense.amount == undefined) {
-            alert("Please Enter Amount");
+            this.toster.error("Please Enter Amount");
             this.validationFlag = false;
         }
         if (this.expense.fromDate == undefined) {
-            alert("Please Enter From Date ");
+            this.toster.error("Please Enter From Date ");
             this.validationFlag = false;
         }
-
     }
 }

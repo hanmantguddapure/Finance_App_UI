@@ -1,4 +1,5 @@
 import { Component, OnDestroy } from '@angular/core';
+import { ToastService } from 'src/app/Services/toast.service';
 
 @Component({
     templateUrl: 'progress.component.html'
@@ -15,7 +16,7 @@ export class ProgressComponent implements OnDestroy {
     timer: any = null;
     buttonCaption: string = 'Start';
 
-    constructor() {
+    constructor(private toster: ToastService,) {
         this.random();
         this.randomStacked();
     }

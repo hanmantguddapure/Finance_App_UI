@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ToastService } from 'src/app/Services/toast.service';
 import { ShortTermLoan } from '../../Module/short-term-loan';
 import { LoanserviceService } from '../../Services/loanservice.service';
 
@@ -10,7 +11,7 @@ import { LoanserviceService } from '../../Services/loanservice.service';
 export class ShortTermLoanCloseComponent implements OnInit {
 
     shortTermLoanObj: ShortTermLoan = new ShortTermLoan(null);
-    constructor(private loanService: LoanserviceService) { }
+    constructor(private toster: ToastService, private loanService: LoanserviceService) { }
 
     ngOnInit() {
     }
@@ -18,11 +19,10 @@ export class ShortTermLoanCloseComponent implements OnInit {
     getAccountDetail(event: any) {
         let shortTermLoanId = event.target.value
         if (shortTermLoanId == "") {
-            alert("Please enter Account id")
+            this.toster.error("Please enter Account id")
         } else {
             this.loanService.getShortTermLoanById(shortTermLoanId).subscribe(data => {
                 this.shortTermLoanObj = data;
-
             })
         }
 
@@ -30,7 +30,7 @@ export class ShortTermLoanCloseComponent implements OnInit {
     closeShortTermLoan() {
         this.shortTermLoanObj.status = '0';
         this.loanService.closeShortTermLoan(this.shortTermLoanObj).subscribe(data => {
-            alert("Successfully Closed");
+            this.toster.success("Successfully Closed");
         })
     }
 

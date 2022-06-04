@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ExpenseServiceService } from '../../Services/expense-service.service';
 import { Expense } from '../../Module/expense';
+import { ToastService } from 'src/app/Services/toast.service';
 
 @Component({
 
@@ -11,7 +12,7 @@ export class ExpenseTypesComponent implements OnInit {
 
     expenseTypesList: Array<Expense> = [];
     expense: Expense = new Expense(null);
-    constructor(private expenseService: ExpenseServiceService) { }
+    constructor(private toster: ToastService, private expenseService: ExpenseServiceService) { }
 
     ngOnInit() {
         this.expenseService.getExpenseTypes().subscribe(data => {
@@ -24,7 +25,7 @@ export class ExpenseTypesComponent implements OnInit {
             this.expenseService.addExpenseType(expenseName).subscribe(data => {
                 this.expense = data;
                 this.expenseTypesList.push(this.expense);
-                alert("Added Successfully")
+                this.toster.error("Added Successfully")
             })
         };
     }

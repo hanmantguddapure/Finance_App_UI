@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { LoanserviceService } from '../../Services/loanservice.service';
 import { LoanCollectionSummary } from '../../Module/loan-collection-summary';
 import { AppConstants } from '../../Module/app-constants';
+import { ToastService } from 'src/app/Services/toast.service';
 
 @Component({
     templateUrl: './loan-collection-report.component.html',
@@ -11,7 +12,7 @@ export class LoanCollectionReportComponent implements OnInit {
     loanCollRepo: LoanCollectionSummary = new LoanCollectionSummary(null);
     totalCollection: number = 0;
     fileUrl: any;
-    constructor(private loanservice: LoanserviceService) { }
+    constructor(private toster: ToastService, private loanservice: LoanserviceService) { }
 
     ngOnInit() {
     }

@@ -1,26 +1,27 @@
 import { Component } from '@angular/core';
+import { ToastService } from 'src/app/Services/toast.service';
 
 @Component({
-  templateUrl: 'forms.component.html'
+    templateUrl: 'forms.component.html'
 })
 export class FormsComponent {
 
-  constructor() { }
+    constructor(private toster: ToastService,) { }
 
-  isCollapsed: boolean = false;
-  iconCollapse: string = 'icon-arrow-up';
+    isCollapsed: boolean = false;
+    iconCollapse: string = 'icon-arrow-up';
 
-  collapsed(event: any): void {
-    // console.log(event);
-  }
+    collapsed(event: any): void {
+        // console.log(event);
+    }
 
-  expanded(event: any): void {
-    // console.log(event);
-  }
+    expanded(event: any): void {
+        // console.log(event);
+    }
 
-  toggleCollapse(): void {
-    this.isCollapsed = !this.isCollapsed;
-    this.iconCollapse = this.isCollapsed ? 'icon-arrow-down' : 'icon-arrow-up';
-  }
+    toggleCollapse(): void {
+        this.isCollapsed = !this.isCollapsed;
+        this.iconCollapse = this.isCollapsed ? 'icon-arrow-down' : 'icon-arrow-up';
+    }
 
 }

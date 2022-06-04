@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ToastService } from 'src/app/Services/toast.service';
 import { Loandetail } from '../../Module/loandetail';
 import { LoanserviceService } from '../../Services/loanservice.service';
 
@@ -10,14 +11,14 @@ import { LoanserviceService } from '../../Services/loanservice.service';
 export class LoanPaymentComponent implements OnInit {
     loanDetail: Loandetail = new Loandetail(null);
     disburseAmt: number | any;
-    constructor(private loanservice: LoanserviceService) { }
+    constructor(private toster: ToastService, private loanservice: LoanserviceService) { }
 
     ngOnInit() {
     }
     getAccountDetail(event: any) {
         let loanId = event.target.value;
         if (loanId == "") {
-            alert("Please enter loan id")
+            this.toster.error("Please enter loan id")
         } else {
             this.loanservice.getLoanDetailByLoanId(loanId).subscribe(data => {
                 this.loanDetail = data;
@@ -38,7 +39,7 @@ export class LoanPaymentComponent implements OnInit {
         this.loanDetail.disburseAmt = paymentDetail.disburseAmt;
         this.loanservice.makeLoanPayment(this.loanDetail).subscribe(data => {
             this.loanDetail = data;
-            alert("Payment Done Successfully");
+            this.toster.success("Payment Done Successfully");
         })
     }
 

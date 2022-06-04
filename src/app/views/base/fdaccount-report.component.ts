@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ToastService } from 'src/app/Services/toast.service';
 import { FDAccount } from '../../Module/fdaccount';
 import { FDServiceService } from '../../Services/fdservice.service';
 
@@ -13,7 +14,7 @@ export class FDAccountReportComponent implements OnInit {
     totalInterest: number = 0;
     total: number = 0;
     totalAccounts: number = 0;
-    constructor(private fdservice: FDServiceService) { }
+    constructor(private toster: ToastService, private fdservice: FDServiceService) { }
 
     ngOnInit() {
     }

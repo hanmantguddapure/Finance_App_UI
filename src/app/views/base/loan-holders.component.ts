@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { CustomerserviceService } from '../../Services/customerservice.service';
 import { LoanserviceService } from '../../Services/loanservice.service';
 import { LoanRepo } from '../../Module/loan-repo';
+import { ToastService } from 'src/app/Services/toast.service';
 
 @Component({
 
@@ -21,7 +22,7 @@ export class LoanHoldersComponent implements OnInit {
     totalInterest: number = 0;
     totalProcessFess: number = 0;
     totalDisbursed: number = 0;
-    constructor(private customerService: CustomerserviceService, private loanService: LoanserviceService) { }
+    constructor(private toster: ToastService, private customerService: CustomerserviceService, private loanService: LoanserviceService) { }
 
     ngOnInit() {
         this.customerService.getCustomerAllDetail().subscribe(data => {

@@ -1,11 +1,12 @@
 import { Component } from '@angular/core';
+import { ToastService } from 'src/app/Services/toast.service';
 
 @Component({
   templateUrl: 'collapses.component.html'
 })
 export class CollapsesComponent {
 
-  constructor() { }
+  constructor(private toster: ToastService,) { }
 
   isCollapsed: boolean = false;
 

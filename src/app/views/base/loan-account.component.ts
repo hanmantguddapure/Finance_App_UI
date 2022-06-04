@@ -4,13 +4,14 @@ import { Customer } from '../../Module/customer';
 import { Router, ActivatedRoute } from '@angular/router';
 import { LoanserviceService } from '../../Services/loanservice.service';
 import { Loandetail } from '../../Module/loandetail';
+import { ToastService } from 'src/app/Services/toast.service';
 
 @Component({
     templateUrl: 'loan-account.component.html'
 })
 export class LoanAccountComponent implements OnInit {
 
-    constructor(private customerService: CustomerserviceService, private loanservice: LoanserviceService, private router: Router, private route: ActivatedRoute) { }
+    constructor(private toster: ToastService, private customerService: CustomerserviceService, private loanservice: LoanserviceService, private router: Router, private route: ActivatedRoute) { }
     customer: Customer = new Customer(null);
     loanDetail: Loandetail = new Loandetail(null);
     isCollapsed: boolean = false;
@@ -44,7 +45,7 @@ export class LoanAccountComponent implements OnInit {
         if (this.validationFlag) {
             this.loanservice.saveLoanDetail(this.loanDetail).subscribe(data => {
                 this.loanDetail = data;
-                alert("Successfully Created New Loan Account");
+                this.toster.success("Successfully Created New Loan Account");
             })
         }
 
@@ -72,51 +73,51 @@ export class LoanAccountComponent implements OnInit {
     }
     checkValidation() {
         if (this.loanDetail.custId == undefined) {
-            alert("Please Select Customer");
+            this.toster.error("Please Select Customer");
             this.validationFlag = false;
         }
         if (this.loanDetail.principalAmount == undefined) {
-            alert("Please Enter Principal Amount");
+            this.toster.error("Please Enter Principal Amount");
             this.validationFlag = false;
         }
         if (this.loanDetail.interest == undefined) {
-            alert("Please Enter Loan Interest ");
+            this.toster.error("Please Enter Loan Interest ");
             this.validationFlag = false;
         }
         if (this.loanDetail.interestAmt == undefined) {
-            alert("Please Enter Interest Amount");
+            this.toster.error("Please Enter Interest Amount");
             this.validationFlag = false;
         }
         if (this.loanDetail.depositeAmt == undefined) {
-            alert("Please Enter Deposite Amount");
+            this.toster.error("Please Enter Deposite Amount");
             this.validationFlag = false;
         }
         if (this.loanDetail.processingFees == undefined) {
-            alert("Please Enter Processing Fees");
+            this.toster.error("Please Enter Processing Fees");
             this.validationFlag = false;
         }
         if (this.loanDetail.loanAmt == undefined) {
-            alert("Please Enter Loan Amount");
+            this.toster.error("Please Enter Loan Amount");
             this.validationFlag = false;
         }
         if (this.loanDetail.loanStartDate == undefined) {
-            alert("Please Enter Loan Start Date");
+            this.toster.error("Please Enter Loan Start Date");
             this.validationFlag = false;
         }
         if (this.loanDetail.loanEndDate == undefined) {
-            alert("Please Enter Loan End Date");
+            this.toster.error("Please Enter Loan End Date");
             this.validationFlag = false;
         }
         if (this.loanDetail.installMentType == undefined) {
-            alert("Please Enter Collection Type");
+            this.toster.error("Please Enter Collection Type");
             this.validationFlag = false;
         }
         if (this.loanDetail.installments == undefined) {
-            alert("Please Enter Installments");
+            this.toster.error("Please Enter Installments");
             this.validationFlag = false;
         }
         if (this.loanDetail.installmentAmount == undefined) {
-            alert("Please Enter Installment Amount");
+            this.toster.error("Please Enter Installment Amount");
             this.validationFlag = false;
         }
 
