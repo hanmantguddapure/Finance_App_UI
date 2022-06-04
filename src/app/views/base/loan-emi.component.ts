@@ -6,6 +6,8 @@ import { Loandetail } from '../../Module/loandetail';
 import { PaymentDetail } from '../../Module/payment-detail';
 import * as moment from 'moment';
 import { ToastService } from 'src/app/Services/toast.service';
+import { ModalService } from '@coreui/angular';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
     templateUrl: 'loan-emi.component.html'
@@ -21,7 +23,7 @@ export class LoanEMIComponent {
     currDate = new Date();
     collectionType = "Daily";
     iconCollapse: string = 'icon-arrow-up';
-    constructor(private toster: ToastService, private customerService: CustomerserviceService, private loanservice: LoanserviceService, private router: Router, private route: ActivatedRoute) {
+    constructor(private toster: ToastService, private modalService: NgbModal, private customerService: CustomerserviceService, private loanservice: LoanserviceService, private router: Router, private route: ActivatedRoute) {
         // this.loanDetail = { loanAccountNo: 4, "custId": 4, "principalAmount": 100000.0, "interest": 10.0, "interestAmt": 10000.0, "depositeAmt": 5000.0, "processingFees": 500.0, "loanAmt": 84500.0, "loanStartDate": "2022-06-10", "loanEndDate": "2022-06-22", "installMentType": "Daily", "installments": 100, "installmentAmount": 1000.0, "custFullName": "Rahul Patil", "totalCollection": 70000.0, "loanStatus": "Closed", "remark": "", "disburseAmt": 84500.0, "paymentDate": "2022-06-02", "paymentMode": "", "loanCollections": [{ "loanAccNo": null, "payment": 10000.0, "paymentMethod": "Daily", "paymentDate": "2022-06-03", "paymentId": 9 }, { "loanAccNo": null, "payment": 10000.0, "paymentMethod": "Daily", "paymentDate": "2022-06-03", "paymentId": 10 }, { "loanAccNo": null, "payment": 10000.0, "paymentMethod": "Daily", "paymentDate": "2022-06-03", "paymentId": 11 }, { "loanAccNo": null, "payment": 10000.0, "paymentMethod": "Daily", "paymentDate": "2022-06-03", "paymentId": 12 }, { "loanAccNo": null, "payment": 10000.0, "paymentMethod": "Daily", "paymentDate": "2022-06-04", "paymentId": 13 }, { "loanAccNo": null, "payment": 10000.0, "paymentMethod": "Daily", "paymentDate": "2022-06-04", "paymentId": 14 }, { "loanAccNo": null, "payment": 10000.0, "paymentMethod": "Daily", "paymentDate": "2022-06-04", "paymentId": 15 }] }
         // this.loanPaymetDetails = this.loanDetail.loanCollections;
     }
@@ -62,7 +64,7 @@ export class LoanEMIComponent {
         }
     }
 
-    addCustomerPayment(paymentDetail: any) {
+    addCustomerPayment(paymentDetail: any, content) {
         this.loanPaymentDetail = paymentDetail;
         this.loanPaymentDetail.loanAccNo = this.loanDetail.loanAccountNo;
         this.loanPaymentDetail.paymentMethod = "Daily";
@@ -80,15 +82,22 @@ export class LoanEMIComponent {
             return;
         }
 
-        let paymentDate = this.loanPaymetDetails.find(e => e.paymentDate == paymentDetail.paymentDate);
+        let paymentDate = this.loanPaymetDetails?.find(e => e.paymentDate == paymentDetail.paymentDate);
         console.log(paymentDetail);
         console.log(paymentDate);
 
         if (paymentDate) {
-            this.toster.error("Payment Already Added On This Date, Are You Want Add Again");
-            return;
+            this.modalService.open(content);
+        } else {
+            this.addCustomePayment();
         }
+    };
 
+    closeModal() {
+        this.modalService.hasOpenModals() && this.modalService.dismissAll();
+    }
+
+    addCustomePayment() {
         this.loanservice.addCustomerPaymet(this.loanPaymentDetail).subscribe(data => {
             if (this.loanPaymetDetails == null) {
                 this.loanPaymetDetails = [];
@@ -97,7 +106,7 @@ export class LoanEMIComponent {
             this.toster.success("Added Successfully");
             this.checkDuplicate = false;
         })
-    };
+    }
 
 
 }
