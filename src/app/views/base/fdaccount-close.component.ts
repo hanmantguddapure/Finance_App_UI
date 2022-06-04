@@ -1,13 +1,16 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { NgbModalConfig, NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { FDAccount } from '../../Module/fdaccount';
 import { FDServiceService } from '../../Services/fdservice.service';
 
 @Component({
     templateUrl: './fdaccount-close.component.html',
+    providers: [NgbModalConfig, NgbModal]
 })
 export class FDAccountCloseComponent implements OnInit {
     fdAccountDtls: FDAccount = new FDAccount(null);
-    constructor(private fdService: FDServiceService) { }
+    constructor(private fdService: FDServiceService, private modalService: NgbModal, private router: Router) { }
 
     ngOnInit() {
     }
@@ -19,7 +22,6 @@ export class FDAccountCloseComponent implements OnInit {
         } else {
             this.fdService.getFDDetailByFDId(fdId).subscribe(data => {
                 this.fdAccountDtls = data;
-
             })
         }
 
@@ -30,10 +32,17 @@ export class FDAccountCloseComponent implements OnInit {
         console.log("test " + " " + this.fdAccountDtls.interest + " " + this.fdAccountDtls.interestAmt);
     }
 
-    closeFD(): void {
+    closeModal(isRedirection: boolean) {
+        this.modalService.hasOpenModals() && this.modalService.dismissAll();
+        if (isRedirection) {
+            this.router.navigate(['base', 'fdpayinterest']);
+        }
+    }
+
+    closeFD(content: any) {
 
         if (this.fdAccountDtls.pendingInterestAmt) {
-            alert("Intrest amount is pending")
+            this.modalService.open(content);
             return;
         }
 
