@@ -12,10 +12,21 @@ export class ExpenseReportComponent implements OnInit {
     validationFlag: boolean = true;
     expense: Expense = new Expense(null);
     total: number | any;
+    expenseTypesList: Array<Expense> = [];
     constructor(private expenseService: ExpenseServiceService) { }
 
     ngOnInit() {
+
+        this.expenseService.getExpenseTypes().subscribe(data => {
+            this.expenseTypesList = data;
+        })
     }
+
+    onStatusChange(event: any) {
+        let expenseType = event.target.value;
+        this.expenseService.setExpenseType(expenseType);
+    }
+
     getExpenseDtls(expenseDetails: any): void {
         this.validationFlag = true;
         this.expense = expenseDetails;
@@ -26,11 +37,9 @@ export class ExpenseReportComponent implements OnInit {
                 this.expenseslst = data;
                 this.expenseslst.forEach(element => {
                     this.total = this.total + (element.amount);
-
                 });
             })
         }
-
     };
 
     checkValidation() {
@@ -43,6 +52,4 @@ export class ExpenseReportComponent implements OnInit {
             this.validationFlag = false;
         }
     }
-
-
 }

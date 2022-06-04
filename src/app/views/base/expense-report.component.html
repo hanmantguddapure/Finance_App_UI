@@ -8,6 +8,16 @@
                 </div>
                 <div class="card-body">
                     <form #form="ngForm" class="form-horizontal">
+                        
+                        <div class="form-group mb-3 row">
+                            <label class="col-md-3 col-form-label">Select FD Type</label>
+                            <div class="col-md-9">
+                                <select class="form-control" name="fdStatus" ngModel (change)="onStatusChange($event)">
+                                    <option>--Select FD Status--</option>
+                                    <option *ngFor="let item as expenseTypesList; let i = index;" [value]="item.expenseType">{{item.expenseType | uppercase}}</option>
+                                </select>
+                            </div>
+                        </div>
                         <div class="form-group mb-3 row">
                             <label class="col-md-3 col-form-label" for="hf-email">From Date</label>
                             <div class="col-md-9">

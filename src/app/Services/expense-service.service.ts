@@ -24,9 +24,14 @@ export class ExpenseServiceService {
         return this.http.post<Expense[]>(AppConstants.API_ENDPOINT + '/expense/get-expense-detail', expenseDtls);
     }
 
+    public setExpenseType(expenseType: any) {
+        return this.http.get<Expense[]>(AppConstants.API_ENDPOINT + '/expense/expense-type/' + expenseType);
+    }
+
     public getExpenseByDate(fromDate: any) {
         return this.http.get<Expense[]>(AppConstants.API_ENDPOINT + '/expense/get-expenses/' + fromDate);
     }
+
     public getExpenseBetween(fromDate: any, toDate: any) {
         return this.http.get<Expense[]>(AppConstants.API_ENDPOINT + '/expense/get-expense-between/' + fromDate + "/" + toDate);
     }
