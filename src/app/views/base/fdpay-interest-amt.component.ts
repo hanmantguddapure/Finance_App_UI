@@ -26,6 +26,9 @@ export class FDPayInterestAmtComponent implements OnInit {
         } else {
             this.fdService.getFDDetailByFDId(fdId).subscribe(data => {
                 this.fdDtls = new FDAccount(data);
+                if (this.fdDtls.isActive.toLowerCase() == "closed") {
+                    this.toster.error("This FD already closed");
+                }
                 this.fdInterest.toDate = this.fdDtls.interestPayTo;
                 this.fdInterest.fromDate = this.fdDtls.interstPayFrom;
                 this.fdInterest.interestAmt = this.fdDtls.pendingInterestAmt;
@@ -36,7 +39,9 @@ export class FDPayInterestAmtComponent implements OnInit {
 
     payInterestAmt(fdInterestDetail: any) {
         // this.fdInterest=fdInterestDetail;
-        console.log(JSON.stringify(this.fdInterest));
+        if (this.fdDtls.isActive.toLowerCase() == "closed") {
+            return;
+        }
         this.fdService.payInterestAmt(this.fdInterest).subscribe(data => {
             if (this.fdInterestHistory == null) {
                 this.fdInterestHistory = [];

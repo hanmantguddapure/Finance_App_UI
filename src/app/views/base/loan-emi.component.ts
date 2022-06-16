@@ -59,12 +59,18 @@ export class LoanEMIComponent {
         } else {
             this.loanservice.getLoanDetailByLoanId(loanId).subscribe(data => {
                 this.loanDetail = data;
+                if (this.loanDetail.loanStatus.toLowerCase() == "closed") {
+                    this.toster.error("Loan already closed");
+                }
                 this.loanPaymetDetails = this.loanDetail.loanCollections;
             })
         }
     }
 
     addCustomerPayment(paymentDetail: any, content) {
+        if (this.loanDetail.loanStatus.toLowerCase() == "closed") {
+            return;
+        }
         this.loanPaymentDetail = paymentDetail;
         this.loanPaymentDetail.loanAccNo = this.loanDetail.loanAccountNo;
         this.loanPaymentDetail.paymentMethod = "Daily";
