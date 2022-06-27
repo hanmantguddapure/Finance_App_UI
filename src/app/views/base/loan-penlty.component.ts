@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { LoanPenalty } from '../../Module/loan-penalty';
+import { LoanPenalty } from 'src/shared/modals/loan-penalty';
 import { LoanserviceService } from '../../Services/loanservice.service';
 import { Router, ActivatedRoute } from '@angular/router';
-import { ToastService } from 'src/app/Services/toast.service';
+import { ToastService } from 'src/shared/services/toast.service';
 
 @Component({
     templateUrl: './loan-penlty.component.html',

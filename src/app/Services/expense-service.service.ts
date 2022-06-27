@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { ExpressionType } from '@angular/compiler';
-import { AppConstants } from '../Module/app-constants';
-import { Expense } from '../Module/expense';
+import { AppConstants } from 'src/shared/modals/app-constants';
+import { Expense } from 'src/shared/modals/expense';
 
 
 @Injectable({

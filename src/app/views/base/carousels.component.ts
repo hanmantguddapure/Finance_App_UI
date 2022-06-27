@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { CarouselConfig } from 'ngx-bootstrap/carousel';
-import { ToastService } from 'src/app/Services/toast.service';
+import { ToastService } from 'src/shared/services/toast.service';
 
 @Component({
     templateUrl: 'carousels.component.html', providers: [

@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { ToastService } from 'src/app/Services/toast.service';
-import { LoanPenalty } from '../../Module/loan-penalty';
+import { ToastService } from 'src/shared/services/toast.service';
+import { LoanPenalty } from 'src/shared/modals/loan-penalty';
 import { LoanserviceService } from '../../Services/loanservice.service';
 
 @Component({

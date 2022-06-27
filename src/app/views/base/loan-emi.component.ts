@@ -2,10 +2,10 @@ import { Component, OnInit } from '@angular/core';
 import { CustomerserviceService } from '../../Services/customerservice.service';
 import { LoanserviceService } from '../../Services/loanservice.service';
 import { Router, ActivatedRoute } from '@angular/router';
-import { Loandetail } from '../../Module/loandetail';
-import { PaymentDetail } from '../../Module/payment-detail';
+import { Loandetail } from 'src/shared/modals/loandetail';
+import { PaymentDetail } from 'src/shared/modals/payment-detail';
 import * as moment from 'moment';
-import { ToastService } from 'src/app/Services/toast.service';
+import { ToastService } from 'src/shared/services/toast.service';
 import { ModalService } from '@coreui/angular';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 

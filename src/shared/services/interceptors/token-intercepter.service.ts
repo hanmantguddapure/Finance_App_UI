@@ -10,19 +10,29 @@ import {
 import { Observable, throwError } from 'rxjs';
 import { retry, catchError } from 'rxjs/operators';
 import { Router } from '@angular/router';
+
+import { CacheService } from 'src/shared/services/cache.service';
+import { ToastService } from '../toast.service';
+
 @Injectable()
-export class AutoPassJwtTokenOnReqHeader implements HttpInterceptor {
-    constructor(private router: Router) { }
+export class TokenInterceptor implements HttpInterceptor {
+    constructor(
+        private router: Router,
+        private cache: CacheService,
+        private tostar: ToastService
+    ) { }
+
     addAuthHeader(request: any) {
-        if (localStorage.getItem('token') != null) {
+        if (this.cache.user.token != null) {
             request = request.clone({
                 setHeaders: {
-                    Authorization: localStorage.getItem('token')
+                    Authorization: this.cache.user.token
                 }
             });
         }
         return request;
     }
+
     intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
         request = this.addAuthHeader(request);
         return next.handle(request).pipe(
@@ -37,20 +47,20 @@ export class AutoPassJwtTokenOnReqHeader implements HttpInterceptor {
                     errorMessage = `Error Code: ${error.status}\nMessage: ${error.message}`;
                 }
                 switch (error.status) {
-                    case 0: alert("Internal Server Error");
+                    case 0: this.tostar.error("Internal Server Error");
                         this.router.navigate(['login']);
                         break;
-                    case 204: alert("Not Available");
+                    case 204: this.tostar.error("Not Available");
                         break;
-                    case 401: alert("Unauthorized");
+                    case 401: this.tostar.error("Unauthorized");
                         break;
-                    case 404: alert("Requested is invalid");
+                    case 404: this.tostar.error("Requested is invalid");
                         break;
-                    case 409: alert("Already Exist");
+                    case 409: this.tostar.error("Already Exist");
                         break;
-                    case 500: alert("Internal Server Error");
+                    case 500: this.tostar.error("Internal Server Error");
                         break;
-                    default: alert(errorMessage);
+                    default: this.tostar.error(errorMessage);
                         break;
                 }
                 return throwError(errorMessage);

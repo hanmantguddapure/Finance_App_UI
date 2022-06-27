@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { ToastService } from 'src/app/Services/toast.service';
+import { ToastService } from 'src/shared/services/toast.service';
 
 @Component({
   templateUrl: 'cards.component.html'

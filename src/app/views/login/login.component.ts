@@ -1,26 +1,35 @@
 import { Component } from '@angular/core';
-import { UserCredentials } from '../../Module/user-credentials';
+import { User } from 'src/shared/modals/user';
 import { LoginServiceService } from '../../Services/login-service.service';
 import { Router, ActivatedRoute } from '@angular/router';
-import { ToastService } from 'src/app/Services/toast.service';
+
+import { ToastService } from 'src/shared/services/toast.service';
+import { CacheService } from 'src/shared/services/cache.service';
 
 @Component({
     selector: 'app-dashboard',
     templateUrl: 'login.component.html'
 })
 export class LoginComponent {
-    usercredential: UserCredentials = new UserCredentials(null);
+    user: User = new User(null);
     isValidUserName: boolean = false;
     showUserName: boolean = true;
-    constructor(private toster: ToastService, private loginService: LoginServiceService, private router: Router, private route: ActivatedRoute) { }
+
+    constructor(
+        private toster: ToastService,
+        private cache: CacheService,
+        private loginService: LoginServiceService,
+        private router: Router,
+        private route: ActivatedRoute) { }
 
     ngOnInit() {
     }
+
     checkUserName() {
-        if (this.usercredential.userName != null && this.usercredential.userName != "") {
-            this.loginService.checkUserName(this.usercredential.userName).subscribe(data => {
-                this.usercredential = data;
-                if (this.usercredential.token != null || this.usercredential.token != undefined) {
+        if (this.user.userName != null && this.user.userName != "") {
+            this.loginService.checkUserName(this.user.userName).subscribe(data => {
+                this.user = data;
+                if (this.user.token != null || this.user.token != undefined) {
                     this.isValidUserName = true;
                     this.showUserName = false;
                 } else {
@@ -33,12 +42,11 @@ export class LoginComponent {
         }
         // this.router.navigate(['dashboard']);
     }
+
     checkUserPassword(): void {
-        console.log("check password process");
-        this.loginService.checkUser(this.usercredential).subscribe(data => {
-            this.usercredential = data;
-            localStorage.setItem('token', this.usercredential.jwtToken);
-            localStorage.setItem('fullName', this.usercredential.fullName);
+        this.loginService.checkUser(this.user).subscribe(data => {
+            this.cache.user = data;
+            this.cache.set('user', this.cache.user);
             this.router.navigate(['dashboard']);
         })
     };

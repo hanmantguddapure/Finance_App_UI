@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ExpenseServiceService } from '../../Services/expense-service.service';
-import { Expense } from '../../Module/expense';
-import { ToastService } from 'src/app/Services/toast.service';
+import { Expense } from 'src/shared/modals/expense';
+import { ToastService } from 'src/shared/services/toast.service';
 
 @Component({
     templateUrl: './expense-detail.component.html'

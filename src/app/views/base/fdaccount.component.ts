@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { CustomerserviceService } from '../../Services/customerservice.service';
-import { FDAccount } from '../../Module/fdaccount';
-import { Customer } from '../../Module/customer';
+import { FDAccount } from 'src/shared/modals/fdaccount';
+import { Customer } from 'src/shared/modals/customer';
 import { FDServiceService } from '../../Services/fdservice.service';
-import { ToastService } from 'src/app/Services/toast.service';
+import { ToastService } from 'src/shared/services/toast.service';
 
 @Component({
     templateUrl: './fdaccount.component.html',

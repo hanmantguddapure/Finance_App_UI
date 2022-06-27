@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { CustomerserviceService } from '../../Services/customerservice.service';
 import { LoanserviceService } from '../../Services/loanservice.service';
-import { LoanRepo } from '../../Module/loan-repo';
-import { ToastService } from 'src/app/Services/toast.service';
+import { LoanRepo } from 'src/shared/modals/loan-repo';
+import { ToastService } from 'src/shared/services/toast.service';
 
 @Component({
 

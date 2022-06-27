@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { FDAccount } from '../../Module/fdaccount';
+import { FDAccount } from 'src/shared/modals/fdaccount';
 import { FDServiceService } from '../../Services/fdservice.service';
-import { AppConstants } from '../../Module/app-constants';
-import { FDInterestDtl } from '../../Module/fdinterest-dtl';
-import { ToastService } from 'src/app/Services/toast.service';
+import { AppConstants } from 'src/shared/modals/app-constants';
+import { FDInterestDtl } from 'src/shared/modals/fdinterest-dtl';
+import { ToastService } from 'src/shared/services/toast.service';
 
 @Component({
 

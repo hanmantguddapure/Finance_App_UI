@@ -1,10 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { CustomerserviceService } from '../../Services/customerservice.service';
-import { Customer } from '../../Module/customer';
+import { Customer } from 'src/shared/modals/customer';
 import { Router, ActivatedRoute } from '@angular/router';
 import { LoanserviceService } from '../../Services/loanservice.service';
-import { Loandetail } from '../../Module/loandetail';
-import { ToastService } from 'src/app/Services/toast.service';
+import { Loandetail } from 'src/shared/modals/loandetail';
+import { ToastService } from 'src/shared/services/toast.service';
 
 @Component({
     templateUrl: 'loan-account.component.html'

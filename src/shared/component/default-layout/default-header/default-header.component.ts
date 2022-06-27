@@ -1,7 +1,8 @@
 import { Component, Input } from '@angular/core';
 import { Router } from '@angular/router';
 import { ClassToggleService, HeaderComponent } from '@coreui/angular';
-import { navItems } from 'src/app/_nav';
+import { navItems } from 'src/shared/component/_nav';
+import { CacheService } from 'src/shared/services/cache.service';
 
 @Component({
     selector: 'app-default-header',
@@ -10,30 +11,27 @@ import { navItems } from 'src/app/_nav';
 export class DefaultHeaderComponent extends HeaderComponent {
     public navItems = navItems;
     public sidebarMinimized = true;
-    public loggedUserName: any;
-
     @Input() sidebarId: string = "sidebar";
 
     public newMessages = new Array(4)
     public newTasks = new Array(5)
     public newNotifications = new Array(5)
 
-    constructor(private router: Router, private classToggler: ClassToggleService) {
+    constructor(
+        private router: Router,
+        private classToggler: ClassToggleService,
+        public cache: CacheService) {
         super();
     }
 
     ngOnInit() {
-        this.loggedUserName = '';
-        this.loggedUserName = localStorage.getItem('fullName');
-        console.log("check clogget user " + this.loggedUserName);
     }
 
     ngOnDestroy(): void {
     }
 
     logout() {
-        console.log("remove its works");
-        localStorage.removeItem("token");
+        this.cache.clean('user');
         this.router.navigate(['login']);
     }
 }

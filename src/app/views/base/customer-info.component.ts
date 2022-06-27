@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { CustomerserviceService } from '../../Services/customerservice.service';
-import { Customer } from '../../Module/customer';
-import { AppConstants } from '../../Module/app-constants';
-import { Address } from '../../Module/address';
-import { ToastService } from 'src/app/Services/toast.service';
+import { Customer } from 'src/shared/modals/customer';
+import { AppConstants } from 'src/shared/modals/app-constants';
+import { Address } from 'src/shared/modals/address';
+import { ToastService } from 'src/shared/services/toast.service';
 
 @Component({
     templateUrl: 'customer-info.component.html'

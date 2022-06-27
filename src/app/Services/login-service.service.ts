@@ -1,46 +1,25 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { UserCredentials } from '../Module/user-credentials';
-import { AppConstants } from '../Module/app-constants';
+import { User } from 'src/shared/modals/user';
+import { AppConstants } from 'src/shared/modals/app-constants';
+import { CacheService } from 'src/shared/services/cache.service';
 
 @Injectable({
     providedIn: 'root'
 })
 export class LoginServiceService {
 
-    constructor(private http: HttpClient) { }
+    constructor(
+        private http: HttpClient,
+        private cache: CacheService
+    ) { }
 
-    public checkUserName(username: String): Observable<UserCredentials> {
-        return this.http.get<UserCredentials>(AppConstants.API_ENDPOINT + '/authontication/check-username/' + username);
+    public checkUserName(username: String): Observable<User> {
+        return this.http.get<User>(AppConstants.API_ENDPOINT + '/authontication/check-username/' + username);
     }
 
-    public checkUser(userCredential: UserCredentials) {
-        return this.http.post<UserCredentials>(AppConstants.API_ENDPOINT + '/authontication/check-password', userCredential);
-    }
-
-    // public getToken(): string {
-    //     return localStorage.getItem("token");
-    // }
-
-    private setSession(authResult: any) {
-        // const expiresAt = moment().add(authResult.expiresIn,'second');
-
-        // localStorage.setItem('id_token', authResult.idToken);
-        // localStorage.setItem("expires_at", JSON.stringify(expiresAt.valueOf()) );
-    }
-
-    public isLoggedIn() {
-        // return moment().isBefore(this.getExpiration());
-    }
-
-    isLoggedOut() {
-        // return !this.isLoggedIn();
-    }
-
-    getExpiration() {
-        const expiration: any = localStorage.getItem("expires_at");
-        const expiresAt = JSON.parse(expiration);
-        // return moment(expiresAt);
+    public checkUser(userCredential: User) {
+        return this.http.post<User>(AppConstants.API_ENDPOINT + '/authontication/check-password', userCredential);
     }
 }

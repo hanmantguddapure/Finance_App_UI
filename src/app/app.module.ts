@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { HashLocationStrategy, LocationStrategy, PathLocationStrategy } from '@angular/common';
+import { HashLocationStrategy, LocationStrategy } from '@angular/common';
 import { BrowserModule, Title } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ReactiveFormsModule } from '@angular/forms';
@@ -10,23 +10,6 @@ import {
     PerfectScrollbarModule,
 } from 'ngx-perfect-scrollbar';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-
-// Import routing module
-import { AppRoutingModule } from './app.routing';
-
-import { AppComponent } from './app.component';
-
-// Import containers
-import {
-    DefaultFooterComponent,
-    DefaultHeaderComponent,
-    DefaultLayoutComponent,
-} from './containers';
-import { P404Component } from './views/error/404.component';
-import { P500Component } from './views/error/500.component';
-import { LoginComponent } from './views/login/login.component';
-import { RegisterComponent } from './views/register/register.component';
-import { ToastsContainer } from './views/app-toaster.component';
 
 import {
     AvatarModule,
@@ -59,10 +42,28 @@ const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
 import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
-import { AutoPassJwtTokenOnReqHeader } from './interceptors/auto-pass-jwt-token-on-req-header';
 import { NgChartsModule } from 'ng2-charts';
 import { NgbModal, NgbModalConfig, NgbToast } from '@ng-bootstrap/ng-bootstrap';
 
+// Import routing module
+import { AppRoutingModule } from './app.routing';
+
+import { AppComponent } from './app.component';
+
+// Import containers
+import {
+    DefaultFooterComponent,
+    DefaultHeaderComponent,
+    DefaultLayoutComponent,
+} from 'src/shared';
+
+import { P404Component } from './views/error/404.component';
+import { P500Component } from './views/error/500.component';
+import { LoginComponent } from './views/login/login.component';
+import { RegisterComponent } from './views/register/register.component';
+import { ToastsContainer } from './views/app-toaster.component';
+
+import { TokenInterceptor } from 'src/shared/services/interceptors/token-intercepter.service';
 
 @NgModule({
     declarations: [
@@ -116,16 +117,13 @@ import { NgbModal, NgbModalConfig, NgbToast } from '@ng-bootstrap/ng-bootstrap';
             useClass: HashLocationStrategy,
         }, {
             provide: HTTP_INTERCEPTORS,
-            useClass: AutoPassJwtTokenOnReqHeader,
+            useClass: TokenInterceptor,
             multi: true
-        },
-        {
-            provide: PERFECT_SCROLLBAR_CONFIG,
-            useValue: DEFAULT_PERFECT_SCROLLBAR_CONFIG,
         },
         IconSetService,
         NgbToast,
-        NgbModalConfig, NgbModal,
+        NgbModalConfig,
+        NgbModal,
         Title
     ],
     bootstrap: [AppComponent],

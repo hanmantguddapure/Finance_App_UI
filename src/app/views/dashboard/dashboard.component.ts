@@ -1,12 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 
-import { customTooltips } from "@coreui/chartjs";
-
 import { LoanserviceService } from '../../Services/loanservice.service';
 import { DashBoardServiceService } from '../../Services/dash-board-service.service';
-import { AppSummary } from '../../Module/app-summary';
-import { LoanSummary } from '../../Module/loan-summary';
-import { FdSummary } from '../../Module/fd-summary';
+import { AppSummary } from 'src/shared/modals/app-summary';
+import { LoanSummary } from 'src/shared/modals/loan-summary';
+import { FdSummary } from 'src/shared/modals/fd-summary';
+import { ApiService } from 'src/shared/services/api.service';
+import { Router } from '@angular/router';
 
 
 @Component({
@@ -25,7 +25,11 @@ export class DashboardComponent implements OnInit {
     totalClosingBal: number;
     pendingCollection: number;
     closingBalSummary: number;
-    constructor(private loanservice: LoanserviceService, private dashboardService: DashBoardServiceService) {
+    constructor(private loanservice: LoanserviceService,
+        private dashboardService: DashBoardServiceService,
+        private apiService: ApiService,
+        private router: Router) {
+
         this.totalcredit = 0;
         this.totalDebitBalSummary = 0;
         this.totalCreditBalSummary = 0;
@@ -38,7 +42,7 @@ export class DashboardComponent implements OnInit {
         this.loanSummary = new LoanSummary(null);
         this.fdSummary = new FdSummary(null);
     }
-   
+
 
     ngOnInit(): void {
         this.dashboardService.getAllSummaryRepo('Opened', 'Active').subscribe(data => {

@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { Customer } from '../../Module/customer';
+import { Customer } from 'src/shared/modals/customer';
 import { CustomerserviceService } from '../../Services/customerservice.service';
 import { Router, ActivatedRoute } from '@angular/router';
-import { ToastService } from 'src/app/Services/toast.service';
+import { ToastService } from 'src/shared/services/toast.service';
 
 
 @Component({

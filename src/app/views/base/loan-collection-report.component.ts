@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { LoanserviceService } from '../../Services/loanservice.service';
-import { LoanCollectionSummary } from '../../Module/loan-collection-summary';
-import { AppConstants } from '../../Module/app-constants';
-import { ToastService } from 'src/app/Services/toast.service';
+import { LoanCollectionSummary } from 'src/shared/modals/loan-collection-summary';
+import { AppConstants } from 'src/shared/modals/app-constants';
+import { ToastService } from 'src/shared/services/toast.service';
 
 @Component({
     templateUrl: './loan-collection-report.component.html',

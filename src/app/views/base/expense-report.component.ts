@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { ToastService } from 'src/app/Services/toast.service';
-import { Expense } from '../../Module/expense';
+import { ToastService } from 'src/shared/services/toast.service';
+import { Expense } from 'src/shared/modals/expense';
 import { ExpenseServiceService } from '../../Services/expense-service.service';
 
 @Component({

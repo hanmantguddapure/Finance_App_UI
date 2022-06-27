@@ -1,7 +1,5 @@
 import { Component, TemplateRef } from '@angular/core';
-import { ToastService } from '../Services/toast.service';
-
-
+import { ToastService } from 'src/shared/services/toast.service';
 
 @Component({
     selector: 'app-toasts',

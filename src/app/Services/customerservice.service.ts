@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { AppConstants } from '../Module/app-constants';
-import { Customer } from '../Module/customer';
+import { AppConstants } from 'src/shared/modals/app-constants';
+import { Customer } from 'src/shared/modals/customer';
 import { Observable } from 'rxjs';
 @Injectable({
     providedIn: 'root'

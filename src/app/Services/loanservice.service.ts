@@ -1,16 +1,16 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Loandetail } from '../Module/loandetail';
-import { AppConstants } from '../Module/app-constants';
+import { Loandetail } from 'src/shared/modals/loandetail';
+import { AppConstants } from 'src/shared/modals/app-constants';
 import { Observable } from 'rxjs';
-import { PaymentDetail } from '../Module/payment-detail';
-import { LoanRepo } from '../Module/loan-repo';
-import { Dashboard } from '../Module/dashboard';
-import { PendingLoanPayments } from '../Module/pending-loan-payments';
-import { LoanCollectionSummary } from '../Module/loan-collection-summary';
-import { LoanPenalty } from '../Module/loan-penalty';
-import { FirmLoan } from '../Module/firm-loan';
-import { ShortTermLoan } from '../Module/short-term-loan';
+import { PaymentDetail } from 'src/shared/modals/payment-detail';
+import { LoanRepo } from 'src/shared/modals/loan-repo';
+import { Dashboard } from 'src/shared/modals/dashboard';
+import { PendingLoanPayments } from 'src/shared/modals/pending-loan-payments';
+import { LoanCollectionSummary } from 'src/shared/modals/loan-collection-summary';
+import { LoanPenalty } from 'src/shared/modals/loan-penalty';
+import { FirmLoan } from 'src/shared/modals/firm-loan';
+import { ShortTermLoan } from 'src/shared/modals/short-term-loan';
 
 @Injectable({
     providedIn: 'root'

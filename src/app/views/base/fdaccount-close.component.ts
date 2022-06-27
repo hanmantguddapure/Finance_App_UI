@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
-import { ToastService } from 'src/app/Services/toast.service';
-import { FDAccount } from '../../Module/fdaccount';
+import { ToastService } from 'src/shared/services/toast.service';
+import { FDAccount } from 'src/shared/modals/fdaccount';
 import { FDServiceService } from '../../Services/fdservice.service';
 
 @Component({

@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { FDAccount } from '../Module/fdaccount';
-import { AppConstants } from '../Module/app-constants';
-import { FDInterestDtl } from '../Module/fdinterest-dtl';
+import { FDAccount } from 'src/shared/modals/fdaccount';
+import { AppConstants } from 'src/shared/modals/app-constants';
+import { FDInterestDtl } from 'src/shared/modals/fdinterest-dtl';
 
 @Injectable({
     providedIn: 'root'

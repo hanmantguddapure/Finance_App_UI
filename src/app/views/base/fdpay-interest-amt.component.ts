@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { FDAccount } from '../../Module/fdaccount';
+import { FDAccount } from 'src/shared/modals/fdaccount';
 import { FDServiceService } from '../../Services/fdservice.service';
-import { FDInterestDtl } from '../../Module/fdinterest-dtl';
-import { ToastService } from 'src/app/Services/toast.service';
+import { FDInterestDtl } from 'src/shared/modals/fdinterest-dtl';
+import { ToastService } from 'src/shared/services/toast.service';
 
 @Component({
     templateUrl: './fdpay-interest-amt.component.html',

@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { PaymentDetail } from '../../Module/payment-detail';
-import { LoanRepo } from '../../Module/loan-repo';
+import { PaymentDetail } from 'src/shared/modals/payment-detail';
+import { LoanRepo } from 'src/shared/modals/loan-repo';
 import { LoanserviceService } from '../../Services/loanservice.service';
-import { AppConstants } from '../../Module/app-constants';
-import { ToastService } from 'src/app/Services/toast.service';
+import { AppConstants } from 'src/shared/modals/app-constants';
+import { ToastService } from 'src/shared/services/toast.service';
 
 @Component({
     templateUrl: 'loan-repo.component.html',
