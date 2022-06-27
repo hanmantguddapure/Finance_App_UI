@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { User } from 'src/shared/modals/user';
-import { LoginServiceService } from '../../Services/login-service.service';
+import { LoginServiceService } from 'src/app/services/login-service.service';
 import { Router, ActivatedRoute } from '@angular/router';
 
 import { ToastService } from 'src/shared/services/toast.service';

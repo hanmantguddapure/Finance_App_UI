@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
-import { LoanserviceService } from '../../Services/loanservice.service';
-import { DashBoardServiceService } from '../../Services/dash-board-service.service';
+import { LoanserviceService } from 'src/app/services/loanservice.service';
+import { DashBoardServiceService } from 'src/app/services/dash-board-service.service';
 import { AppSummary } from 'src/shared/modals/app-summary';
 import { LoanSummary } from 'src/shared/modals/loan-summary';
 import { FdSummary } from 'src/shared/modals/fd-summary';

@@ -1,35 +1,40 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
-import { TablesComponent } from './tables.component';
-import { CustomerComponent } from './customer.component';
-import { LoanAccountComponent } from './loan-account.component';
-import { LoanEMIComponent } from './loan-emi.component';
-import { CustomerInfoComponent } from './customer-info.component';
-import { LoanDetailComponent } from './loan-detail.component';
-import { CloseLoanComponent } from './close-loan.component';
-import { LoanRepoComponent } from './loan-repo.component';
-import { LoanPaymentComponent } from './loan-payment.component';
-import { LoanPenltyComponent } from './loan-penlty.component';
-import { LoanCollectionReportComponent } from './loan-collection-report.component';
-import { ExpenseTypesComponent } from './expense-types.component';
-import { ExpenseDetailComponent } from './expense-detail.component';
-import { ExpenseReportComponent } from './expense-report.component';
-import { DisbursedLoansComponent } from './disbursed-loans.component';
-import { FDAccountComponent } from './fdaccount.component';
-import { FDAccountViewComponent } from './fdaccount-view.component';
-import { FDAccountCloseComponent } from './fdaccount-close.component';
-import { FDAccountReportComponent } from './fdaccount-report.component';
-import { FDPayInterestAmtComponent } from './fdpay-interest-amt.component';
-import { FDOfCustomersComponent } from './fdof-customers.component';
-import { LoanHoldersComponent } from './loan-holders.component';
-import { LoanPenaltyRepoComponent } from './loan-penalty-repo.component';
-import { FirmLoanComponent } from './firm-loan.component';
-import { FirmLoanRepoComponent } from './firm-loan-repo.component';
-import { FirmLoanCloseComponent } from './firm-loan-close.component';
-import { ShortTermLoanComponent } from './short-term-loan.component';
-import { ShortTermLoanCloseComponent } from './short-term-loan-close.component';
-import { ShortTermLoanRepoComponent } from './short-term-loan-repo.component';
+import { CustomerComponent } from './customer/customer.component';
+import { CustomerInfoComponent } from './customer/customer-info.component';
+
+import { FDAccountComponent } from './fd/fdaccount.component';
+import { FDAccountViewComponent } from './fd/fdaccount-view.component';
+import { FDAccountCloseComponent } from './fd/fdaccount-close.component';
+import { FDAccountReportComponent } from './fd/fdaccount-report.component';
+import { FDPayInterestAmtComponent } from './fd/fdpay-interest-amt.component';
+import { FDOfCustomersComponent } from './fd/fdof-customers.component';
+
+import { LoanAccountComponent } from './loans/loan-account.component';
+import { LoanPaymentComponent } from './loans/loan-payment.component';
+import { LoanEMIComponent } from './loans/loan-emi.component';
+import { LoanDetailComponent } from './loans/loan-detail.component';
+import { LoanRepoComponent } from './loans/loan-repo.component';
+import { LoanPenltyComponent } from './loans/loan-penlty.component';
+import { LoanCollectionReportComponent } from './loans/loan-collection-report.component';
+import { LoanHoldersComponent } from './loans/loan-holders.component';
+import { LoanPenaltyRepoComponent } from './loans/loan-penalty-repo.component';
+
+import { CloseLoanComponent } from './common/close-loan.component';
+import { DisbursedLoansComponent } from './common/disbursed-loans.component';
+
+import { ExpenseTypesComponent } from './expense/expense-types.component';
+import { ExpenseDetailComponent } from './expense/expense-detail.component';
+import { ExpenseReportComponent } from './expense/expense-report.component';
+
+import { FirmLoanComponent } from './firm-loan/firm-loan.component';
+import { FirmLoanRepoComponent } from './firm-loan/firm-loan-repo.component';
+import { FirmLoanCloseComponent } from './firm-loan/firm-loan-close.component';
+
+import { ShortTermLoanComponent } from './short-term-loans/short-term-loan.component';
+import { ShortTermLoanCloseComponent } from './short-term-loans/short-term-loan-close.component';
+import { ShortTermLoanRepoComponent } from './short-term-loans/short-term-loan-repo.component';
 
 
 const routes: Routes = [
@@ -80,13 +85,6 @@ const routes: Routes = [
                 component: FDOfCustomersComponent,
                 data: {
                     title: 'fdcustreport'
-                }
-            },
-            {
-                path: 'forms',
-                component: TablesComponent,
-                data: {
-                    title: 'Forms'
                 }
             },
             {
