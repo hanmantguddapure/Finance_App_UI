@@ -7,9 +7,9 @@ export class User {
 
     constructor(json: any) {
         this.token = json?.token ?? 0;
-        this.userName = json?.userName ?? '';
-        this.password = json?.password ?? '';
-        this.jwtToken = json?.jwtToken ?? '';
-        this.fullName = json?.fullName ?? '';
+        this.userName = json?.userName ?? 'dvv';
+        this.password = json?.password ?? 'asasd';
+        this.jwtToken = json?.jwtToken ?? 'asd';
+        this.fullName = json?.fullName ?? 'sd';
     }
 }

@@ -1,9 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
-import { CustomerComponent } from './customer/customer.component';
-import { CustomerInfoComponent } from './customer/customer-info.component';
-
 import { FDAccountComponent } from './fd/fdaccount.component';
 import { FDAccountViewComponent } from './fd/fdaccount-view.component';
 import { FDAccountCloseComponent } from './fd/fdaccount-close.component';
@@ -36,15 +33,17 @@ import { ShortTermLoanComponent } from './short-term-loans/short-term-loan.compo
 import { ShortTermLoanCloseComponent } from './short-term-loans/short-term-loan-close.component';
 import { ShortTermLoanRepoComponent } from './short-term-loans/short-term-loan-repo.component';
 
-
 const routes: Routes = [
     {
         path: '',
-        data: {
-            title: 'Base'
-        },
         children: [
-
+            {
+                path: 'customer',
+                data: {
+                    title: 'Customer'
+                },
+                loadChildren: () => import('./customer/customer.module').then(m => m.CustomerModule)
+            },
             {
                 path: 'fdaccount',
                 component: FDAccountComponent,
@@ -85,20 +84,6 @@ const routes: Routes = [
                 component: FDOfCustomersComponent,
                 data: {
                     title: 'fdcustreport'
-                }
-            },
-            {
-                path: 'customer',
-                component: CustomerComponent,
-                data: {
-                    title: 'Customer'
-                }
-            },
-            {
-                path: 'customer-info',
-                component: CustomerInfoComponent,
-                data: {
-                    title: 'Customer Information'
                 }
             },
             {
@@ -247,7 +232,7 @@ const routes: Routes = [
             },
 
         ]
-    }
+    },
 ];
 
 @NgModule({

@@ -57,11 +57,11 @@ import {
     DefaultLayoutComponent,
 } from 'src/shared';
 
-import { P404Component } from './views/error/404.component';
-import { P500Component } from './views/error/500.component';
+import { P404Component } from '../shared/component/error/404.component';
+import { P500Component } from '../shared/component/error/500.component';
 import { LoginComponent } from './views/login/login.component';
 import { RegisterComponent } from './views/register/register.component';
-import { ToastsContainer } from './views/app-toaster.component';
+import { ToastsContainer } from './views/base/common/app-toaster.component';
 
 import { TokenInterceptor } from 'src/shared/services/interceptors/token-intercepter.service';
 

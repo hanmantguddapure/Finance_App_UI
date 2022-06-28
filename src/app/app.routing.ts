@@ -6,8 +6,8 @@ import { DefaultLayoutComponent } from '../shared';
 import { BaseModule } from './views/base/base.module';
 import { DashboardModule } from './views/dashboard/dashboard.module';
 
-import { P404Component } from './views/error/404.component';
-import { P500Component } from './views/error/500.component';
+import { P404Component } from '../shared/component/error/404.component';
+import { P500Component } from '../shared/component/error/500.component';
 import { LoginComponent } from './views/login/login.component';
 import { RegisterComponent } from './views/register/register.component';
 

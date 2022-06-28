@@ -1,6 +1,6 @@
 // Angular
 import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NgModule } from '@angular/core';
 
 // Tabs Component
@@ -29,9 +29,6 @@ import { TooltipModule } from 'ngx-bootstrap/tooltip';
 
 // Components Routing
 import { BaseRoutingModule } from './base-routing.module';
-
-import { CustomerComponent } from './customer/customer.component';
-import { CustomerInfoComponent } from './customer/customer-info.component';
 
 import { FDAccountComponent } from './fd/fdaccount.component';
 import { FDAccountViewComponent } from './fd/fdaccount-view.component';
@@ -69,6 +66,7 @@ import { ShortTermLoanRepoComponent } from './short-term-loans/short-term-loan-r
     imports: [
         CommonModule,
         FormsModule,
+        ReactiveFormsModule,
 
         BaseRoutingModule,
         BsDropdownModule.forRoot(),
@@ -81,12 +79,10 @@ import { ShortTermLoanRepoComponent } from './short-term-loans/short-term-loan-r
         TooltipModule
     ],
     declarations: [
-        CustomerComponent,
         FDAccountComponent,
         FDAccountViewComponent,
         FDAccountCloseComponent,
         FDAccountReportComponent,
-        CustomerInfoComponent,
         LoanAccountComponent,
         LoanPaymentComponent,
         LoanEMIComponent,
@@ -111,7 +107,7 @@ import { ShortTermLoanRepoComponent } from './short-term-loans/short-term-loan-r
         FirmLoanCloseComponent,
         ShortTermLoanComponent,
         ShortTermLoanCloseComponent,
-        ShortTermLoanRepoComponent
+        ShortTermLoanRepoComponent,
     ]
 })
 export class BaseModule { }

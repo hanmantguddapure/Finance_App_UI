@@ -6,9 +6,7 @@ import { PaymentDetail } from 'src/shared/modals/payment-detail';
 import { LoanserviceService } from 'src/app/services/loanservice.service';
 
 @Component({
-
     templateUrl: './close-loan.component.html',
-
 })
 export class CloseLoanComponent implements OnInit {
     loanDetail: Loandetail = new Loandetail(null);
