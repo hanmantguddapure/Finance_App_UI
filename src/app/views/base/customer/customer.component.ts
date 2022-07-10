@@ -5,7 +5,7 @@ import { Component, OnInit } from '@angular/core';
     templateUrl: './customer.component.html'
 })
 export class CustomerComponent implements OnInit {
-
+    active = 'top';
     constructor() { }
 
     ngOnInit(): void {

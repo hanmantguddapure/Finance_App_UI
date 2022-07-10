@@ -3,19 +3,66 @@ import { Address } from './address';
 export class Customer {
     public fullName: string;
     public professionName: string;
+    public shortName: string;
+    public buiseness: string;
     public panNo: string;
     public adharNo: string;
     public custId: BigInteger;
     public contactPersionId: BigInteger;
     public address: Address;
+    public contactPeopleDtls: ContactPepoleDtls[];
+    public nomineeDtls: NomineeDtls[];
 
     constructor(json: any) {
-        this.fullName = json && json.fullName ? json.fullName : '';
-        this.professionName = json && json.professionName ? json.professionName : '';
-        this.panNo = json && json.panNo ? json.panNo : '';
-        this.adharNo = json && json.adharNo ? json.adharNo : '';
-        this.custId = json && json.custId ? json.custId : '';
-        this.contactPersionId = json && json.contactPersionId ? json.contactPersionId : '';
-        this.address = json && json.address ? json.address : '';
+        this.fullName = json?.fullName ?? '';
+        this.professionName = json?.professionName ?? '';
+        this.shortName = json?.shortName ?? '';
+        this.buiseness = json?.buiseness ?? '';
+        this.panNo = json?.panNo ?? '';
+        this.adharNo = json?.adharNo ?? '';
+        this.custId = json?.custId ?? '';
+        this.contactPersionId = json?.contactPersionId ?? '';
+        this.address = json?.address ?? '';
+
+        this.contactPeopleDtls = new Array();
+        if (json?.contactPeopleDtls?.length) {
+            json.contactPeopleDtls.forEach(e => {
+                this.contactPeopleDtls.push(new ContactPepoleDtls(e))
+            });
+        }
+        this.nomineeDtls = new Array();
+        if (json?.nomineeDtls?.length) {
+            json.nomineeDtls.forEach(e => {
+                this.nomineeDtls.push(new NomineeDtls(e))
+            });
+        }
+    }
+}
+
+
+export class ContactPepoleDtls {
+    contactPersionId: number;
+    public fullName: string; 
+    public address: Address;
+
+    constructor(json: any) {
+        this.contactPersionId = json?.contactPersionId ?? '';
+        this.fullName = json?.fullName ?? '';
+        this.address = json?.address ?? '';
+    }
+}
+
+
+export class NomineeDtls {
+    nomineeId: number;
+    public fullName: string;
+    public address: Address;
+    public relation: string;
+
+    constructor(json: any) {
+        this.nomineeId = json?.nomineeId ?? '';
+        this.fullName = json?.fullName ?? '';
+        this.address = json?.address ?? '';
+        this.relation = json?.relation ?? '';
     }
 }
