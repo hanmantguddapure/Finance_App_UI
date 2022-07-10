@@ -4,8 +4,7 @@
             <div class="col-sm-4 col-md-4 pb-4" *ngIf="isView && CustomerGroup">
                 <label class="col-form-label">Customer</label>
                 <select class="form-control" formControlName="custId">
-                    <option value="1">--Select Customer--</option>
-                    <option value="2">--Select Customer--</option>
+                    <option value="">--Select Customer--</option>
                     <option *ngFor="let customer of allCustomerList" value="{{customer.custId}}">{{customer.fullName}}</option>
                 </select>
             </div>

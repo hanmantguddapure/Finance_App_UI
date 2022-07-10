@@ -64,7 +64,8 @@ ngb-accordion {
 }
 
 .form-control {
-    &.ng-valid {
+    &.ng-valid,
+    &.ng-invalid {
         padding-right: 0px !important;
         background: none;
         &:focus {
