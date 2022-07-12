@@ -1,24 +1,16 @@
 <div class="animated fadeIn">
-    <div class="row">
-        <div class="col-sm-6 col-lg-3">
-            <div class="card text-white m-2 bg-primary">
-                <div class="text-value px-2">Current Loans {{loanSummary?.noOfaccounts}}</div>
-            </div>
+    <div class="row ps-3 pe-3 pb-1">
+        <div class="col-sm-6 col-lg-3 p-2 text-white bg-primary card">
+            <div class="text-value px-2">Current Loans {{loanSummary?.noOfaccounts}}</div>
         </div>
-        <div class="col-sm-6 col-lg-3">
-            <div class="card text-white m-2 bg-primary">
-                <div class="text-value px-2">Loan Amt {{loanSummary?.princepleAmount}}</div>
-            </div>
+        <div class="col-sm-6 col-lg-3 p-2 text-white bg-secondary card">
+            <div class="text-value px-2">Loan Amt {{loanSummary?.princepleAmount}}</div>
         </div>
-        <div class="col-sm-6 col-lg-3">
-            <div class="card text-white m-2 bg-info">
-                <div class="text-value px-2">Pending Disburesment {{loanSummary?.pendingDisburement}}</div>
-            </div>
+        <div class="col-sm-6 col-lg-3 p-2 text-white bg-info card">
+            <div class="text-value px-2">Pending Disburesment {{loanSummary?.pendingDisburement}}</div>
         </div>
-        <div class="col-sm-6 col-lg-3">
-            <div class="card text-white m-2 bg-warning">
-                <div class="text-value px-2">Current Fixed Deposites: {{fdSummary?.nofFd}}</div>
-            </div>
+        <div class="col-sm-6 col-lg-3 p-2 text-white bg-warning card">
+            <div class="text-value px-2">Current Fixed Deposites: {{fdSummary?.nofFd}}</div>
         </div>
     </div>
     <div class="row">
@@ -82,7 +74,7 @@
             </div>
         </div>
     </div>
-<div class="row">
+    <div class="row">
         <div class="col-lg-12">
             <div class="card">
                 <div class="card-header">
@@ -129,7 +121,7 @@
                                         <td colspan="3">Total Credit ({{totalCreditBalSummary}})-Collection ({{loanSummary?.collections}})</td>
                                         <td>{{pendingCollection}}</td>
                                     </tr>
-                                <tr>
+                                    <tr>
                                         <td>Closing Balance (Total Pending Collection -Total Debit)</td>
                                         <td colspan="3" class="text-center">{{closingBalSummary}}</td>
                                     </tr>

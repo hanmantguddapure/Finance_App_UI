@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, NavigationEnd } from '@angular/router';
 import { IconSetService } from '@coreui/icons-angular';
-import { cilListNumbered, cilPaperPlane, brandSet, cilBell, cilEnvelopeOpen, cilCommentSquare, cilCreditCard, cilFile, cilList, cilLockLocked, cilMenu, cilSettings, cilTask, cilUser, cilPuzzle, cilViewModule, cilPencil, cilFolder, cilNotes } from '@coreui/icons';
+import { cilListNumbered, cilPaperPlane, cilBell, cilEnvelopeOpen, cilCommentSquare, cilCreditCard, cilFile, cilList, cilLockLocked, cilMenu, cilSettings, cilTask, cilUser, cilPuzzle, cilViewModule, cilPencil, cilFolder, cilNotes, cilLibrary, cilDollar, cilMoney, cilBank, cilBuilding } from '@coreui/icons';
 import { CacheService } from 'src/shared/services/cache.service';
 
 @Component({
@@ -17,7 +17,7 @@ export class AppComponent implements OnInit {
         public iconSet: IconSetService,
         public cache: CacheService
     ) {
-        iconSet.icons = { cilListNumbered, cilPaperPlane, ...brandSet, cilBell, cilEnvelopeOpen, cilTask, cilCommentSquare, cilUser, cilSettings, cilCreditCard, cilFile, cilLockLocked, cilMenu, cilList, cilPuzzle, cilViewModule, cilPencil, cilFolder, cilNotes };
+        iconSet.icons = { cilListNumbered, cilPaperPlane, cilBell, cilEnvelopeOpen, cilTask, cilCommentSquare, cilUser, cilSettings, cilCreditCard, cilFile, cilLockLocked, cilMenu, cilList, cilPuzzle, cilViewModule, cilPencil, cilFolder, cilNotes, cilLibrary, cilDollar, cilMoney, cilBank, cilBuilding };
     }
 
     ngOnInit() {

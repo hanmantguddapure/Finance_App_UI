@@ -9,63 +9,63 @@
                 <div class="card-body">
                     <div class="row">
                         <div class="form-group col-sm-2">
-                            <label for="email-input">Account Number</label>
+                            <label class="col-form-label">Account Number</label>
                             <input type="text" name="loanAccNo" ngModel (blur)="getAccountDetail($event)" class="form-control" placeholder="Loan Account No....">
                         </div>
                         <div class="form-group col-sm-4">
-                            <label for="email-input">Customer Name</label>
+                            <label class="col-form-label">Customer Name</label>
                             <input type="text" name="custFullName" value="{{loanDetail.custFullName}}" ngModel class="form-control" readonly>
                         </div>
                         <div class="form-group col-sm-2">
-                            <label for="email-input">Principal Amount</label>
+                            <label class="col-form-label">Principal Amount</label>
                             <input type="text" name="loanAmt" value="{{loanDetail.principalAmount}}" ngModel class="form-control" readonly>
                         </div>
                         <div class="form-group col-sm-2">
-                            <label for="email-input">Interest</label>
+                            <label class="col-form-label">Interest</label>
                             <input type="text" name="loanAmt" value="{{loanDetail.interest}}%" ngModel class="form-control" readonly>
                         </div>
                         <div class="form-group col-sm-2">
-                            <label for="email-input">Interest Amount</label>
+                            <label class="col-form-label">Interest Amount</label>
                             <input type="text" name="loanAmt" value="{{loanDetail.interestAmt}}" ngModel class="form-control" readonly>
                         </div>
                     </div>
                     <div class="row">
                         <div class="form-group col-sm-2">
-                            <label for="email-input">Deposite Amount</label>
+                            <label class="col-form-label">Deposite Amount</label>
                             <input type="text" name="loanAmt" value="{{loanDetail.depositeAmt}}" ngModel class="form-control" readonly>
                         </div>
                         <div class="form-group col-sm-2">
-                            <label for="email-input">Loan Amount</label>
+                            <label class="col-form-label">Loan Amount</label>
                             <input type="text" name="principalAmount" value="{{loanDetail.loanAmt}}" ngModel class="form-control" readonly>
                         </div>
                         <div class="form-group col-sm-2">
-                            <label for="email-input">Total Collection</label>
+                            <label class="col-form-label">Total Collection</label>
                             <input type="text" name="shortName" value="{{loanDetail.totalCollection}}" ngModel class="form-control" readonly>
                         </div>
                         <div class="form-group col-sm-2">
-                            <label for="email-input">Required Collection</label>
+                            <label class="col-form-label">Required Collection</label>
                             <input type="text" name="shortName" value="{{loanDetail.pendingAmount}}" ngModel class="form-control" readonly>
                         </div>
                         <div class="form-group col-sm-2">
-                            <label for="email-input">Installment Amount</label>
+                            <label class="col-form-label">Installment Amount</label>
                             <input type="text" name="installmentAmount" value="{{loanDetail.installmentAmount}}" ngModel class="form-control" readonly>
                         </div>
                         <div class="form-group col-sm-2">
-                            <label for="email-input">Total Installments</label>
+                            <label class="col-form-label">Total Installments</label>
                             <input type="text" name="installmentAmount" value="{{loanDetail.installments}}" ngModel class="form-control" readonly>
                         </div>
                         <div class="form-group col-sm-2">
-                            <label for="email-input">Complete Installments</label>
+                            <label class="col-form-label">Complete Installments</label>
                             <input type="text" name="installmentAmount" value="{{loanDetail.totalInstallments}}" ngModel class="form-control" readonly>
                         </div>
                         <div class="form-group col-sm-2">
-                            <label for="email-input">Loan Status</label>
+                            <label class="col-form-label">Loan Status</label>
                             <input type="text" name="installmentAmount" value="{{loanDetail.loanStatus}}" ngModel class="form-control" readonly>
                         </div>
                     </div>
                     <form #form="ngForm" class="form-horizontal pt-4">
                         <div class="form-group mb-3 row">
-                            <label class="col-md-3 col-form-label" for="email-input">Close Loan</label>
+                            <label class="col-md-3 col-form-label">Close Loan</label>
                             <div class="col-md-9">
                                 <select class="form-control" name="loanStatus" ngModel>
                                     <option>--Select Customer--</option>

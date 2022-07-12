@@ -10,39 +10,39 @@
                     <form #form="ngForm" class="form-horizontal">
                         <div class="row">
                             <div class="form-group col-sm-2">
-                                <label for="email-input">Account Number</label>
-                                <input type="text" name="fdAccountId"  [ngModelOptions]="{standalone: true}"  [(ngModel)]="fdInterest.fdAccountId" (blur)="getFDDetailByFDId($event)" class="form-control" placeholder="FD Account No....">
+                                <label class="col-form-label">Account Number</label>
+                                <input type="text" name="fdAccountId" [ngModelOptions]="{standalone: true}" [(ngModel)]="fdInterest.fdAccountId" (blur)="getFDDetailByFDId($event)" class="form-control" placeholder="FD Account No....">
                             </div>
                             <div class="form-group col-sm-4">
-                                <label for="email-input">Customer Name</label>
-                                <input type="text" value="{{fdDtls.custName}}"  [ngModelOptions]="{standalone: true}" ngModel class="form-control" readonly>
+                                <label class="col-form-label">Customer Name</label>
+                                <input type="text" value="{{fdDtls.custName}}" [ngModelOptions]="{standalone: true}" ngModel class="form-control" readonly>
                             </div>
                             <div class="form-group col-sm-3">
-                                <label for="email-input">From Date</label>
-                                <input class="form-control" name="fromDate"  [ngModelOptions]="{standalone: true}"  [(ngModel)]="fdInterest.fromDate" id="date-input" value="{{fdDtls.interstPayFrom}}" type="date">
+                                <label class="col-form-label">From Date</label>
+                                <input class="form-control" name="fromDate" [ngModelOptions]="{standalone: true}" [(ngModel)]="fdInterest.fromDate" id="date-input" value="{{fdDtls.interstPayFrom}}" type="date">
                             </div>
                             <div class="form-group col-sm-3">
-                                <label for="email-input">To Date</label>
-                                <input class="form-control" name="toDate"  [ngModelOptions]="{standalone: true}"  [(ngModel)]="fdInterest.toDate" id="date-input" value="{{fdDtls.interestPayTo}}" type="date">
+                                <label class="col-form-label">To Date</label>
+                                <input class="form-control" name="toDate" [ngModelOptions]="{standalone: true}" [(ngModel)]="fdInterest.toDate" id="date-input" value="{{fdDtls.interestPayTo}}" type="date">
                             </div>
                         </div>
 
                         <div class="row">
                             <div class="form-group col-sm-2">
-                                <label for="email-input" title="Interest Is Monthly Basis">Pending Months</label>
-                                <input type="text" value="{{fdDtls.pendingMonthsOfInterest}}" [ngModelOptions]="{standalone: true}"  ngModel class="form-control">
+                                <label title="Interest Is Monthly Basis">Pending Months</label>
+                                <input type="text" value="{{fdDtls.pendingMonthsOfInterest}}" [ngModelOptions]="{standalone: true}" ngModel class="form-control">
                             </div>
                             <div class="form-group col-sm-2">
-                                <label for="email-input" title="Interest Is Monthly Basis">Interest In %</label>
-                                <input type="text" value="{{fdDtls.interest}}"  [ngModelOptions]="{standalone: true}" ngModel class="form-control">
+                                <label title="Interest Is Monthly Basis">Interest In %</label>
+                                <input type="text" value="{{fdDtls.interest}}" [ngModelOptions]="{standalone: true}" ngModel class="form-control">
                             </div>
                             <div class="form-group col-sm-2">
-                                <label for="email-input">Interest Amount</label>
-                                <input type="text" name="interestAmt"  [ngModelOptions]="{standalone: true}"  [(ngModel)]="fdInterest.interestAmt" value="{{fdDtls.pendingInterestAmt}}" class="form-control">
+                                <label class="col-form-label">Interest Amount</label>
+                                <input type="text" name="interestAmt" [ngModelOptions]="{standalone: true}" [(ngModel)]="fdInterest.interestAmt" value="{{fdDtls.pendingInterestAmt}}" class="form-control">
                             </div>
                             <div class="form-group col-sm-3">
-                                <label for="email-input">Pay Mode</label>
-                                <select class="form-control" name="paidMode"  [ngModelOptions]="{standalone: true}"  [(ngModel)]="fdInterest.paidMode">
+                                <label class="col-form-label">Pay Mode</label>
+                                <select class="form-control" name="paidMode" [ngModelOptions]="{standalone: true}" [(ngModel)]="fdInterest.paidMode">
                                     <option>--Select Mode--</option>
                                     <option value="Cash">Cash</option>
                                     <option value="Cheque">Cheque</option>

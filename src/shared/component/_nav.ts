@@ -4,16 +4,17 @@ export const navItems: INavData[] = [
     {
         name: 'Dashboard',
         url: '/dashboard',
-        iconComponent: 'icon-speedometer'
+        iconComponent: { name: 'cil-library' }
     },
     {
         name: 'Customer',
-        url: '/base/customer'
+        url: '/base/customer',
+        iconComponent: { name: 'cil-user' }
     },
     {
         name: 'Loan',
         url: '/Loan',
-        iconComponent: { name: 'cil-puzzle' },
+        iconComponent: { name: 'cil-dollar' },
         children: [
             {
                 name: 'Account',
@@ -96,7 +97,7 @@ export const navItems: INavData[] = [
     {
         name: 'Expense',
         url: '/Expense',
-        iconComponent: { name: 'cil-puzzle' },
+        iconComponent: { name: 'cil-money' },
         children: [
             {
                 name: 'Expense Types',
@@ -120,7 +121,7 @@ export const navItems: INavData[] = [
     {
         name: 'Firm',
         url: '/Expense',
-        iconComponent: { name: 'cil-puzzle' },
+        iconComponent: { name: 'cil-building' },
         children: [
             {
                 name: 'New Loan',
@@ -157,7 +158,7 @@ export const navItems: INavData[] = [
     {
         name: 'Fixed Deposite',
         url: '/FD',
-        iconComponent: { name: 'cil-puzzle' },
+        iconComponent: { name: 'cil-bank' },
         children: [
             {
                 name: 'Account',
@@ -212,7 +213,6 @@ export const navItems: INavData[] = [
             },
         ],
     },
-
     {
         divider: true
     },
