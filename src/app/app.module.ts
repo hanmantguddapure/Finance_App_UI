@@ -63,7 +63,7 @@ import { LoginComponent } from './views/login/login.component';
 import { RegisterComponent } from './views/register/register.component';
 import { ToastsContainer } from './views/base/common/app-toaster.component';
 
-import { TokenInterceptor } from 'src/shared/services/interceptors/token-intercepter.service';
+import { JwtAuthService } from 'src/shared/services/token-intercepter.service';
 
 @NgModule({
     declarations: [
@@ -115,9 +115,10 @@ import { TokenInterceptor } from 'src/shared/services/interceptors/token-interce
         {
             provide: LocationStrategy,
             useClass: HashLocationStrategy,
-        }, {
+        },
+        {
             provide: HTTP_INTERCEPTORS,
-            useClass: TokenInterceptor,
+            useClass: JwtAuthService,
             multi: true
         },
         IconSetService,
