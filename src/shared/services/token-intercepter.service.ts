@@ -43,9 +43,8 @@ export class JwtAuthService implements HttpInterceptor {
         request: HttpRequest<any>,
         next: HttpHandler
     ): Observable<HttpEvent<any>> {
-console.log('call');
 
-        return next.handle(this.addAuthToken({ request })).pipe(
+        return next.handle(this.addAuthToken(request)).pipe(
             catchError((error: HttpErrorResponse) => {
                 // if (requestError && requestError.status === 401) {
                 //     if (this.refreshTokenInProgress) {
