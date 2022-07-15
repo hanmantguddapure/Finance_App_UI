@@ -15,6 +15,9 @@ export class LoginComponent {
     isValidUserName: boolean = false;
     showUserName: boolean = true;
 
+    userLoader: boolean = false;
+    passwordLoader: boolean = false;
+
     constructor(
         private toster: ToastService,
         private cache: CacheService,
@@ -26,28 +29,41 @@ export class LoginComponent {
     }
 
     checkUserName() {
-        if (this.user.userName != null && this.user.userName != "") {
-            this.loginService.checkUserName(this.user.userName).subscribe(data => {
-                this.user = data;
-                if (this.user.token != null || this.user.token != undefined) {
-                    this.isValidUserName = true;
-                    this.showUserName = false;
-                } else {
-                    this.toster.error("User Is Not Valid");
-                }
-                console.log(this.isValidUserName);
-            })
-        } else {
-            this.toster.error("Please Enter User Name");
+        if (this.userLoader) {
+            return;
         }
-        // this.router.navigate(['dashboard']);
+        if (!this.user.userName) {
+            this.toster.error("Please Enter User Name");
+            return;
+        }
+        this.userLoader = true;
+        this.loginService.checkUserName(this.user.userName).subscribe(data => {
+            this.user = data;
+            if (this.user.token != null || this.user.token != undefined) {
+                this.isValidUserName = true;
+                this.showUserName = false;
+            } else {
+                this.toster.error("User Is Not Valid");
+            }
+            console.log(this.isValidUserName);
+            this.userLoader = false;
+        }, error => {
+            this.userLoader = false;
+        });
     }
 
     checkUserPassword(): void {
+        if (this.passwordLoader) {
+            return;
+        }
+        this.passwordLoader = true;
         this.loginService.checkUser(this.user).subscribe(data => {
             this.cache.user = data;
             this.cache.set('user', this.cache.user);
             this.router.navigate(['dashboard']);
-        })
+            this.passwordLoader = false;
+        }, error => {
+            this.passwordLoader = false;
+        });
     };
 }
