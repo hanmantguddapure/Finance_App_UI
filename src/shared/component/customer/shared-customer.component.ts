@@ -70,7 +70,7 @@ export class SharedCustomerComponent implements OnInit {
     ngOnInit() {
         this.customerService.getCustomerAllDetail().subscribe((data: any) => {
             console.log(data);
-            
+
             this.allCustomerList = data.response;
         });
 
@@ -151,7 +151,7 @@ export class SharedCustomerComponent implements OnInit {
     contactDetails(data) {
         let Group = this.fb.group({
             contactPersionId: [data?.contactPersionId ?? null],
-            fullName: [data?.fullName ?? null, [Validators.required]],
+            fullName: [data?.fullName ?? null],
             address: this.fb.group({
                 address: [data?.address?.address ?? null],
                 city: [data?.address?.city ?? null],
@@ -172,7 +172,7 @@ export class SharedCustomerComponent implements OnInit {
     nomineeDetails(data) {
         let Group = this.fb.group({
             nomineeId: [data?.nomineeId ?? null],
-            fullName: [data?.fullName ?? null, [Validators.required]],
+            fullName: [data?.fullName ?? null],
             relation: [data?.relation ?? null],
             address: this.fb.group({
                 address: [data?.address?.address ?? null],
