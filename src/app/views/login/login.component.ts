@@ -45,7 +45,6 @@ export class LoginComponent {
             } else {
                 this.toster.error("User Is Not Valid");
             }
-            console.log(this.isValidUserName);
             this.userLoader = false;
         }, error => {
             this.userLoader = false;

@@ -28,13 +28,13 @@ export class JwtAuthService implements HttpInterceptor {
     addAuthToken(request) {
         // const token = this.authService.getAuthToken();
 
-        if (!this.cache?.user?.token) {
+        if (!this.cache?.user?.jwtToken) {
             return request;
         }
 
         return request.clone({
             setHeaders: {
-                Authorization: this.cache?.user?.token
+                Authorization: this.cache?.user?.jwtToken
             }
         });
     }
