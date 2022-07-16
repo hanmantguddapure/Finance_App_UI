@@ -68,13 +68,18 @@ export class SharedCustomerComponent implements OnInit {
 
 
     ngOnInit() {
-        this.customerService.getCustomerAllDetail().subscribe((data: any) => {
-            console.log(data);
+        this.getAll();
+        this.valueChanges();
+    }
 
+    getAll() {
+        if (this.isView) {
+            return;
+        }
+
+        this.customerService.getCustomerAllDetail().subscribe((data: any) => {
             this.allCustomerList = data.response;
         });
-
-        this.valueChanges();
     }
 
     valueChanges() {
