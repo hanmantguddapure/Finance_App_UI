@@ -3,7 +3,7 @@
 
 ``` bash
 # clone the repo
-$ git clone https://github.com/coreui/coreui-free-angular-admin-template.git my-project
+$ git clone https://github.com/hanmantguddapure/Finance_App_UI.git
 
 # go into app's directory
 $ cd my-project
