@@ -10,7 +10,7 @@ export class CustomerserviceService {
 
     constructor(private http: HttpClient) { }
     public saveCustomerDetail(customer: Customer) {
-        return this.http.post<Customer>(AppConstants.API_ENDPOINT + '/customer/add-new', customer);
+        return this.http.post<Customer>(AppConstants.API_ENDPOINT + '/customer/add', customer);
     }
     public getCustomerDetail(custId: any): Observable<Customer> {
         return this.http.get<Customer>(AppConstants.API_ENDPOINT + '/customer/find-byId/' + custId);

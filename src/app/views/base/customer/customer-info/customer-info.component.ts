@@ -3,8 +3,6 @@ import { Component, OnInit } from '@angular/core';
 import { CustomerserviceService } from 'src/app/services/customerservice.service';
 import { ToastService } from 'src/shared/services/toast.service';
 
-import { Customer } from 'src/shared/modals/customer';
-import { AppConstants } from 'src/shared/modals/app-constants';
 import { Address } from 'src/shared/modals/address';
 import { FormBuilder, Validators } from '@angular/forms';
 

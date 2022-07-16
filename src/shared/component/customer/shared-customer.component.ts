@@ -69,7 +69,9 @@ export class SharedCustomerComponent implements OnInit {
 
     ngOnInit() {
         this.customerService.getCustomerAllDetail().subscribe((data: any) => {
-            this.allCustomerList = data;
+            console.log(data);
+            
+            this.allCustomerList = data.response;
         });
 
         this.valueChanges();
@@ -80,8 +82,8 @@ export class SharedCustomerComponent implements OnInit {
             if (custId == "") {
                 this.toster.error("Please Select Customer")
             } else {
-                this.customerService.getCustomerDetail(custId).subscribe(data => {
-                    this.custInfo = data;
+                this.customerService.getCustomerDetail(custId).subscribe((data: any) => {
+                    this.custInfo = data.response;
                     this.CustomerGroup.patchValue(this.custInfo, { emitEvent: false });
                     this.initContactPeople(this.custInfo.contactPeopleDtls);
                     this.initNomineeDtls(this.custInfo.nomineeDtls);
@@ -91,9 +93,9 @@ export class SharedCustomerComponent implements OnInit {
 
                     this.fileUrl = AppConstants.API_ENDPOINT + "/customer/download/" + custId;
                 });
-                this.customerService.getCustomerContactPeoples(custId).subscribe(data => {
-                    this.conatactPersionList = data;
-                });
+                // this.customerService.getCustomerContactPeoples(custId).subscribe(data => {
+                //     this.conatactPersionList = data;
+                // });
             }
         });
     }
@@ -148,19 +150,19 @@ export class SharedCustomerComponent implements OnInit {
 
     contactDetails(data) {
         let Group = this.fb.group({
-            contactPersionId: [data?.contactPersionId ?? ''],
-            fullName: [data?.fullName ?? '', [Validators.required]],
+            contactPersionId: [data?.contactPersionId ?? null],
+            fullName: [data?.fullName ?? null, [Validators.required]],
             address: this.fb.group({
-                address: [data?.address?.address ?? ''],
-                city: [data?.address?.city ?? ''],
-                district: [data?.address?.district ?? ''],
-                state: [data?.address?.state ?? ''],
-                country: [data?.address?.country ?? ''],
-                zipCode: [data?.address?.zipCode ?? ''],
-                email: [data?.address?.email ?? ''],
-                phoneNo: [data?.address?.phoneNo ?? ''],
-                nativePlace: [data?.address?.nativePlace ?? ''],
-                altNo: [data?.address?.altNo ?? ''],
+                address: [data?.address?.address ?? null],
+                city: [data?.address?.city ?? null],
+                district: [data?.address?.district ?? null],
+                state: [data?.address?.state ?? null],
+                country: [data?.address?.country ?? null],
+                zipCode: [data?.address?.zipCode ?? null],
+                email: [data?.address?.email ?? null],
+                phoneNo: [data?.address?.phoneNo ?? null],
+                nativePlace: [data?.address?.nativePlace ?? null],
+                altNo: [data?.address?.altNo ?? null],
             })
         });
 
@@ -169,20 +171,20 @@ export class SharedCustomerComponent implements OnInit {
 
     nomineeDetails(data) {
         let Group = this.fb.group({
-            nomineeId: [data?.nomineeId ?? ''],
-            fullName: [data?.fullName ?? '', [Validators.required]],
-            relation: [data?.relation ?? ''],
+            nomineeId: [data?.nomineeId ?? null],
+            fullName: [data?.fullName ?? null, [Validators.required]],
+            relation: [data?.relation ?? null],
             address: this.fb.group({
-                address: [data?.address?.address ?? ''],
-                city: [data?.address?.city ?? ''],
-                district: [data?.address?.district ?? ''],
-                state: [data?.address?.state ?? ''],
-                country: [data?.address?.country ?? ''],
-                zipCode: [data?.address?.zipCode ?? ''],
-                email: [data?.address?.email ?? ''],
-                phoneNo: [data?.address?.phoneNo ?? ''],
-                nativePlace: [data?.address?.nativePlace ?? ''],
-                altNo: [data?.address?.altNo ?? ''],
+                address: [data?.address?.address ?? null],
+                city: [data?.address?.city ?? null],
+                district: [data?.address?.district ?? null],
+                state: [data?.address?.state ?? null],
+                country: [data?.address?.country ?? null],
+                zipCode: [data?.address?.zipCode ?? null],
+                email: [data?.address?.email ?? null],
+                phoneNo: [data?.address?.phoneNo ?? null],
+                nativePlace: [data?.address?.nativePlace ?? null],
+                altNo: [data?.address?.altNo ?? null],
             })
         });
 
