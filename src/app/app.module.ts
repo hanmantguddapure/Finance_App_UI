@@ -5,7 +5,6 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ReactiveFormsModule } from '@angular/forms';
 
 import {
-    PERFECT_SCROLLBAR_CONFIG,
     PerfectScrollbarConfigInterface,
     PerfectScrollbarModule,
 } from 'ngx-perfect-scrollbar';
@@ -13,22 +12,17 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 import {
     AvatarModule,
-    BadgeModule,
     BreadcrumbModule,
     ButtonGroupModule,
     ButtonModule,
-    CardModule,
     DropdownModule,
     FooterModule,
     FormModule,
     GridModule,
     HeaderModule,
-    ListGroupModule,
     NavModule,
-    ProgressModule,
     SharedModule,
     SidebarModule,
-    TabsModule,
     UtilitiesModule
 } from '@coreui/angular';
 
@@ -93,7 +87,6 @@ import { JwtAuthService } from 'src/shared/services/token-intercepter.service';
         NavModule,
         ButtonModule,
         BsDropdownModule.forRoot(),
-        //TabsModule.forRoot(),
         NgbModule,
         NgChartsModule,
         HttpClientModule,
@@ -102,14 +95,7 @@ import { JwtAuthService } from 'src/shared/services/token-intercepter.service';
         UtilitiesModule,
         ButtonGroupModule,
         ReactiveFormsModule,
-        SidebarModule,
         SharedModule,
-        TabsModule,
-        ListGroupModule,
-        ProgressModule,
-        BadgeModule,
-        ListGroupModule,
-        CardModule,
     ],
     providers: [
         {

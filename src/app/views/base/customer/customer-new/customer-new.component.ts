@@ -7,11 +7,10 @@ import {
     ActivatedRoute
 } from '@angular/router';
 
-import { Customer } from 'src/shared/modals/customer';
 import { ToastService } from 'src/shared/services/toast.service';
 
 import { CustomerserviceService } from 'src/app/services/customerservice.service';
-import { FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 @Component({
     templateUrl: 'customer-new.component.html'
@@ -19,6 +18,7 @@ import { FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
 export class CustomerNewComponent implements OnInit {
 
     CustomerGroup: FormGroup;
+    isLoader: boolean;
 
     constructor(private toster: ToastService,
         private customerService: CustomerserviceService,
@@ -62,11 +62,25 @@ export class CustomerNewComponent implements OnInit {
             this.toster.error("Please fill required fields");
             return;
         }
+        this.isLoader = true;
         let customer = this.CustomerGroup.getRawValue();
+        let contactdtls, nomineeDtls;
+        customer.contactPeopleDtls.forEach((e: any) => {
+            contactdtls = (e.fullName || e.address.address || e.address.phoneNo) ? 1 : 0;
+        });
+        customer.nomineeDtls.forEach((e: any) => {
+            nomineeDtls = (e.fullName || e.address.address || e.address.phoneNo || e.relation) ? 1 : 0;
+        });
+
+        !contactdtls && delete customer.contactPeopleDtls;
+        !nomineeDtls && delete customer.nomineeDtls;
 
         this.customerService.saveCustomerDetail(customer).subscribe(data => {
             this.CustomerGroup.get('custId').patchValue(data.custId);
             this.toster.success("New Customer Created Successfully")
+            this.isLoader = false;
+        }, error => {
+            this.isLoader = false;
         })
     };
 }

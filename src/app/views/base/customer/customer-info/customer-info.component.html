@@ -2,7 +2,7 @@
     <div class="row">
         <div class="col-sm-12">
             <form #custform="ngForm" class="form-horizontal">
-                <shared-customer [isView]="true" [CustomerGroup]="CustomerGroup"></shared-customer>
+                <shared-customer [isView]="true" [isLoader]="isLoader" [CustomerGroup]="CustomerGroup"></shared-customer>
                 <!--/.col-->
                 <div class="card-footer text-riendght">
                     <button type="button" (click)="saveCustomerPersionDetail()" class="btn mt-2 mb-2 btn-primary"><i class="fa fa-dot-circle-o"></i> Submit</button>

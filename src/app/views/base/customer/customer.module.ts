@@ -8,7 +8,7 @@ import { CustomerRoutingModule } from './customer-routing.module';
 import { CustomerComponent } from './customer.component';
 import { CustomerNewComponent } from './customer-new/customer-new.component';
 import { CustomerInfoComponent } from './customer-info/customer-info.component';
-import { SharedCustomerComponent } from 'src/shared';
+import { LoaderComponent, SharedCustomerComponent } from 'src/shared';
 
 @NgModule({
     imports: [
@@ -23,7 +23,8 @@ import { SharedCustomerComponent } from 'src/shared';
         CustomerComponent,
         CustomerNewComponent,
         CustomerInfoComponent,
-        SharedCustomerComponent
+        SharedCustomerComponent,
+        LoaderComponent
     ]
 })
 export class CustomerModule { }

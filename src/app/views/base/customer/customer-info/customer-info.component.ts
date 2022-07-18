@@ -26,6 +26,7 @@ export class CustomerInfoComponent implements OnInit {
     fileUrl: any;
     isWitnessValid: any;
     CustomerGroup: any;
+    isLoader: boolean;
 
     constructor(
         private toster: ToastService,
@@ -68,11 +69,15 @@ export class CustomerInfoComponent implements OnInit {
             this.toster.error("Please fill required fields");
             return;
         }
+        this.isLoader = true;
         let customer = this.CustomerGroup.getRawValue();
 
         this.customerService.saveCustomerDetail(customer).subscribe(data => {
+            this.isLoader = false;
             this.CustomerGroup.get('custId').patchValue(data.custId);
             this.toster.success("New Customer Created Successfully")
+        }, error => {
+            this.isLoader = false;
         })
     };
 

@@ -10,8 +10,6 @@ import {
     ActivatedRoute
 } from '@angular/router';
 
-
-
 import { Customer } from '../../modals/customer';
 import { ToastService } from '../../services/toast.service';
 
@@ -27,6 +25,7 @@ export class SharedCustomerComponent implements OnInit {
     @Input() CustomerGroup: FormGroup;
     @Input() CustomerData: FormGroup;
     @Input() isView: Boolean;
+    @Input() isLoader: boolean;
 
     customer: Customer = new Customer(null);
     isCollapsed: boolean = false;
@@ -51,6 +50,7 @@ export class SharedCustomerComponent implements OnInit {
     editEmail: boolean;
     editPhone: boolean;
 
+
     constructor(private toster: ToastService,
         private customerService: CustomerserviceService,
         private router: Router,
@@ -68,15 +68,19 @@ export class SharedCustomerComponent implements OnInit {
 
 
     ngOnInit() {
-        this.getAll();
-        this.valueChanges();
+        if (this.isView) {
+            this.getAll();
+            this.valueChanges();
+        } else {
+            this.contactPeopleDtls.clear();
+            this.nomineeDtls.clear();
+
+            this.addContactPeople();
+            this.addNomineeDtls();
+        }
     }
 
     getAll() {
-        if (this.isView) {
-            return;
-        }
-
         this.customerService.getCustomerAllDetail().subscribe((data: any) => {
             this.allCustomerList = data.response;
         });
@@ -87,6 +91,7 @@ export class SharedCustomerComponent implements OnInit {
             if (custId == "") {
                 this.toster.error("Please Select Customer")
             } else {
+                this.isLoader = true;
                 this.customerService.getCustomerDetail(custId).subscribe((data: any) => {
                     this.custInfo = data.response;
                     this.CustomerGroup.patchValue(this.custInfo, { emitEvent: false });
@@ -97,20 +102,15 @@ export class SharedCustomerComponent implements OnInit {
                     this.CustomerGroup.get('custId').enable({ emitEvent: false });
 
                     this.fileUrl = AppConstants.API_ENDPOINT + "/customer/download/" + custId;
+                    this.isLoader = false;
+                }, error => {
+                    this.isLoader = false;
                 });
-                // this.customerService.getCustomerContactPeoples(custId).subscribe(data => {
-                //     this.conatactPersionList = data;
-                // });
             }
         });
     }
 
     ngOnChanges(changes: SimpleChanges): void {
-        console.log(this.CustomerGroup);
-        if (!this.isView) {
-            this.addContactPeople();
-            this.addNomineeDtls();
-        }
     }
 
     get contactPeopleDtls() {
@@ -214,12 +214,17 @@ export class SharedCustomerComponent implements OnInit {
             this.toster.error("Please fill required fields");
             return;
         }
+        this.isLoader = true;
+
         let customer = this.CustomerGroup.getRawValue();
 
         this.customerService.saveCustomerDetail(customer).subscribe(data => {
+            this.isLoader = false;
             this.customer = data;
             this.custId = this.customer.custId;
             this.toster.success("New Customer Created Successfully")
+        }, error => {
+            this.isLoader = false;
         })
     };
 
@@ -241,15 +246,20 @@ export class SharedCustomerComponent implements OnInit {
     }
 
     saveCustContactPersionDetail(custContactPersion: any): void {
+        this.isLoader = true;
         custContactPersion.custId = this.custInfo.custId;
         this.customerService.saveCustContactPersionDetail(custContactPersion).subscribe(data => {
             this.conatactPersionList.push(custContactPersion);
             this.isEnableAdd = false;
             this.toster.success("Added Successfully")
+            this.isLoader = false;
+        }, errot => {
+            this.isLoader = false;
         })
     };
 
     editCustInfo() {
+        this.isLoader = true;
         this.custInfo.address = this.addressDetail;
         this.customerService.editCustomerDetail(this.custInfo).subscribe(data => {
             this.custInfo = data;
@@ -262,6 +272,9 @@ export class SharedCustomerComponent implements OnInit {
             this.editEmail = true;
             this.editPhone = true;
             this.toster.success("Save Changes Successfull");
+            this.isLoader = false;
+        }, errot => {
+            this.isLoader = false;
         })
     }
 }
