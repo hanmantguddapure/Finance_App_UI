@@ -33,10 +33,10 @@ export class CustomerNewComponent implements OnInit {
             custId: [null],
             fullName: [null, [Validators.required]],
             shortName: [null],
-            buiseness: [null],
+            profession: [null],
             adharNo: [null],
             panNo: [null],
-            professionName: [null],
+            // professionName: [null],
             address: this.fb.group({
                 address: [null],
                 city: [null],

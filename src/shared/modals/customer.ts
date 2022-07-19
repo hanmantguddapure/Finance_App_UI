@@ -4,6 +4,7 @@ export class Customer {
     public fullName: string;
     public professionName: string;
     public shortName: string;
+    public profession: string;
     public buiseness: string;
     public panNo: string;
     public adharNo: string;
@@ -18,6 +19,7 @@ export class Customer {
         this.professionName = json?.professionName ?? '';
         this.shortName = json?.shortName ?? '';
         this.buiseness = json?.buiseness ?? '';
+        this.profession = json?.profession ?? '';
         this.panNo = json?.panNo ?? '';
         this.adharNo = json?.adharNo ?? '';
         this.custId = json?.custId ?? '';
@@ -31,6 +33,7 @@ export class Customer {
             });
         }
         this.nomineeDtls = new Array();
+        // nomineeDtlsResponse
         if (json?.nomineeDtls?.length) {
             json.nomineeDtls.forEach(e => {
                 this.nomineeDtls.push(new NomineeDtls(e))
@@ -42,7 +45,7 @@ export class Customer {
 
 export class ContactPepoleDtls {
     contactPersionId: number;
-    public fullName: string; 
+    public fullName: string;
     public address: Address;
 
     constructor(json: any) {

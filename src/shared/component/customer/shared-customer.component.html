@@ -12,7 +12,9 @@
         <ngb-accordion [closeOthers]="true" #acc="ngbAccordion" activeIds="ngb-panel-0" *ngIf="((isView && CustomerGroup.get('fullName').value) || !isView)">
             <ngb-panel id="ngb-panel-0">
                 <ng-template ngbPanelHeader>
-                    <button ngbPanelToggle class="accordion-button"><strong>Customer Detail</strong></button>
+                    <button ngbPanelToggle class="accordion-button">
+                        <strong>Customer Detail</strong>
+                    </button>
                 </ng-template>
                 <ng-template ngbPanelContent>
                     <div class="form-group mb-3 row">
@@ -25,8 +27,8 @@
                         </div>
                         <div class="col-4 col-md-4">
                             <label class="col-form-label">Buiseness</label>
-                            <input type="checkbox" class="switch-input pt-1" checked title="Edit" (change)="CustomerGroup.get('professionName').enable()" *ngIf="CustomerGroup.get('professionName').disabled">
-                            <input type="text" formControlName="professionName" class="form-control" placeholder="Buiseness Name..">
+                            <input type="checkbox" class="switch-input pt-1" checked title="Edit" (change)="CustomerGroup.get('profession').enable()" *ngIf="CustomerGroup.get('profession').disabled">
+                            <input type="text" formControlName="profession" class="form-control" placeholder="Buiseness Name..">
                         </div>
                         <div class="col-4 col-md-4">
                             <label class="col-form-label">Adhar No.</label>
@@ -43,7 +45,9 @@
             </ngb-panel>
             <ngb-panel>
                 <ng-template ngbPanelHeader>
-                    <button ngbPanelToggle class="accordion-button"><strong>Address Detail</strong></button>
+                    <button ngbPanelToggle class="accordion-button">
+                        <strong>Address Detail</strong>
+                    </button>
                 </ng-template>
                 <ng-template ngbPanelContent>
                     <div class="form-group mb-3 row" formGroupName="address">
@@ -74,6 +78,7 @@
                         </div>
                         <div class="col-4 col-md-4 col-sm-12">
                             <label class="col-form-label">Native Place</label>
+                            <input type="checkbox" class="switch-input pt-1" checked title="Edit" (change)="CustomerGroup.get('address.nativePlace').enable()" *ngIf="CustomerGroup.get('address.nativePlace').disabled">
                             <input type="text" formControlName="nativePlace" class="form-control" placeholder="Native Place">
                         </div>
                     </div>
@@ -81,7 +86,9 @@
             </ngb-panel>
             <ngb-panel>
                 <ng-template ngbPanelHeader>
-                    <button ngbPanelToggle class="accordion-button"><strong>Nominee Detail</strong></button>
+                    <button ngbPanelToggle class="accordion-button">
+                        <strong>Nominee Detail</strong>
+                    </button>
                 </ng-template>
                 <ng-template ngbPanelContent>
                     <div class="form-group mb-3 row" formArrayName="nomineeDtls" *ngFor="let item of nomineeDtls['controls']; let i = index;">
@@ -108,23 +115,31 @@
                                 <label class="col-form-label">Phone No.</label>
                                 <input type="text" class="form-control" formControlName="phoneNo" placeholder="Phone No.">
                             </div>
-                            <div class="form-group col-4 col-md-4 col-sm-12 mt-1 pt-4" *ngIf="isView">
-                                <button type="button" (click)="allowEdit(item)" class="btn mt-2 mb-2 btn-primary">
-                                    <i class="fa fa-dot-circle-o"></i>Edit
+                            <div class="form-group col-4 col-md-4 col-sm-12 mt-1 pt-4">
+                                <button type="button" *ngIf="isView" (click)="allowEdit(item)" class="btn mt-2 mb-2 btn-primary">
+                                    <i class="fa fa-dot-circle-o">
+                                    </i>Edit
+                                </button>
+                                <button type="button" *ngIf="!item.value.nomineeId" (click)="deleteNominee(item, i)" class="btn mt-2 mb-2 ms-2 btn-danger">
+                                    <i class="fa fa-dot-circle-o">
+                                    </i>Delete
                                 </button>
                             </div>
                         </ng-container>
                     </div>
                     <div class="form-group col-sm-5">
                         <button type="button" (click)="addNomineeDtls()" class="btn mt-2 mb-2 btn-primary">
-                            <i class="fa fa-dot-circle-o"></i> Add Nominee
+                            <i class="fa fa-dot-circle-o">
+                            </i> Add Nominee
                         </button>
                     </div>
                 </ng-template>
             </ngb-panel>
             <ngb-panel>
                 <ng-template ngbPanelHeader>
-                    <button ngbPanelToggle class="accordion-button"><strong>Witness Persions</strong></button>
+                    <button ngbPanelToggle class="accordion-button">
+                        <strong>Witness Persions</strong>
+                    </button>
                 </ng-template>
                 <ng-template ngbPanelContent>
                     <div class="form-group mb-3 row" formArrayName="contactPeopleDtls" *ngFor="let item of contactPeopleDtls['controls']; let i = index;">
@@ -144,15 +159,22 @@
                                 <label class="col-form-label">Phone No.</label>
                                 <input type="text" class="form-control" formControlName="phoneNo" placeholder="Phone No.">
                             </div>
-                            <div class="form-group col-4 col-md-4 col-sm-12 mt-1 pt-4" *ngIf="isView">
-                                <button type="button" (click)="allowEdit(item)" class="btn mt-2 mb-2 btn-primary">
-                                    <i class="fa fa-dot-circle-o"></i>Edit</button>
+                            <div class="form-group col-4 col-md-4 col-sm-12 mt-1 pt-4">
+                                <button *ngIf="isView" type="button" (click)="allowEdit(item)" class="btn mt-2 mb-2 btn-primary">
+                                    <i class="fa fa-dot-circle-o">
+                                    </i>Edit
+                                </button>
+                                <button *ngIf="!item.value.contactPersionId" type="button" (click)="deleteContact(item, i)" class="btn mt-2 mb-2 ms-2 btn-danger">
+                                    <i class="fa fa-dot-circle-o">
+                                    </i>Delete
+                                </button>
                             </div>
                         </div>
                     </div>
                     <div class="form-group col-sm-5">
                         <button type="button" (click)="addContactPeople()" class="btn mt-2 mb-2 btn-primary">
-                            <i class="fa fa-dot-circle-o"></i> Add Witness
+                            <i class="fa fa-dot-circle-o">
+                            </i> Add Witness
                         </button>
                     </div>
                 </ng-template>
@@ -166,4 +188,6 @@
         </div>
     </div>
 </div>
-<app-shared-loader *ngIf="isLoader"></app-shared-loader>
+<app-shared-loader *ngIf="isLoader">
+
+</app-shared-loader>

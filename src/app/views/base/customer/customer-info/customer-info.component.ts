@@ -43,7 +43,7 @@ export class CustomerInfoComponent implements OnInit {
             custId: [''],
             fullName: ['', [Validators.required]],
             shortName: [''],
-            buiseness: [''],
+            profession: [''],
             adharNo: [''],
             panNo: [''],
             professionName: [''],

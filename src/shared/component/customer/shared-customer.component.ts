@@ -88,7 +88,7 @@ export class SharedCustomerComponent implements OnInit {
 
     valueChanges() {
         this.CustomerGroup.get('custId').valueChanges.subscribe((custId: any) => {
-            if (custId == "") {
+            if (!custId || custId == "") {
                 this.toster.error("Please Select Customer")
             } else {
                 this.isLoader = true;
@@ -122,6 +122,8 @@ export class SharedCustomerComponent implements OnInit {
     }
 
     initContactPeople(data) {
+        console.log(data);
+
         this.contactPeopleDtls.clear();
         if (data?.length) {
             data.forEach(e => {
@@ -131,6 +133,8 @@ export class SharedCustomerComponent implements OnInit {
     }
 
     initNomineeDtls(data) {
+        console.log(data);
+
         this.nomineeDtls.clear();
         if (data?.length) {
             data.forEach(e => {
@@ -144,6 +148,14 @@ export class SharedCustomerComponent implements OnInit {
             return;
         }
         this.contactPeopleDtls.push(this.contactDetails(null));
+    }
+
+    deleteNominee(item, i) {
+        this.nomineeDtls.removeAt(i);
+    }
+
+    deleteContact(item, i) {
+        this.contactPeopleDtls.removeAt(i);
     }
 
     addNomineeDtls() {
