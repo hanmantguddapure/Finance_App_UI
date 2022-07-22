@@ -1,3 +1,3 @@
 export class AppConstants {
-    public static API_ENDPOINT ="http://ec2-13-233-101-37.ap-south-1.compute.amazonaws.com:8080";
+    public static API_ENDPOINT = "https://finance-app-test-hanmantguddapure-dev.apps.sandbox.x8i5.p1.openshiftapps.com";
 }

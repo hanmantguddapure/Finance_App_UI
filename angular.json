@@ -69,12 +69,12 @@
                             "outputHashing": "all"
                         },
                         "development": {
-                            "buildOptimizer": false,
-                            "optimization": false,
+                            "buildOptimizer": true,
+                            "optimization": true,
                             "vendorChunk": true,
                             "extractLicenses": false,
                             "sourceMap": true,
-                            "namedChunks": true
+                            "namedChunks": false
                         }
                     },
                     "defaultConfiguration": "production"
@@ -197,8 +197,8 @@
                             "outputHashing": "all"
                         },
                         "development": {
-                            "buildOptimizer": false,
-                            "optimization": false,
+                            "buildOptimizer": true,
+                            "optimization": true,
                             "vendorChunk": true,
                             "extractLicenses": false,
                             "sourceMap": true,
@@ -245,6 +245,5 @@
                 }
             }
         }
-    },
-    "defaultProject": "ng"
+    }
 }

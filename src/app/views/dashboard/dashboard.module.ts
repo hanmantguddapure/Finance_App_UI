@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { NgChartsModule } from 'ng2-charts';
 import {
   AvatarModule,
   ButtonModule,
@@ -11,7 +10,6 @@ import {
   TabsModule
 } from '@coreui/angular';
 import { IconModule } from '@coreui/icons-angular';
-import { ChartjsModule } from '@coreui/angular-chartjs';
 import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
 import { ButtonsModule } from 'ngx-bootstrap/buttons';
 
@@ -28,10 +26,8 @@ import { CommonModule } from '@angular/common';
     ProgressModule,
     DashboardRoutingModule,
     ButtonModule,
-    NgChartsModule,
     BsDropdownModule,
     ButtonsModule.forRoot(),
-    ChartjsModule,
     AvatarModule,
     TableModule
   ],

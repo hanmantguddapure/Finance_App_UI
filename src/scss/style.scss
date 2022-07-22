@@ -5,8 +5,6 @@ $enable-rtl: true;
 @import "~@coreui/coreui/scss/coreui";
 // Override Boostrap variables
 @import "~@coreui/coreui/scss/variables";
-// Import Chart.js custom tooltips styles
-@import "~@coreui/chartjs/scss/coreui-chartjs";
 
 .wrapper {
     width: 100%;
@@ -55,4 +53,28 @@ ngb-accordion {
 .btn-check:focus + .btn,
 .btn:focus {
     box-shadow: none;
+}
+
+.login-body {
+    display: grid;
+    height: 100vh;
+    place-items: center;
+    .card {
+        width: clamp(23ch, 50%, 46ch);
+        display: flex;
+        flex-direction: column;
+        padding: 1rem;
+    }
+}
+
+.dash-card-parent {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin: 5px;
+    .card {
+        margin: 5px;
+        flex: 1 1 150px; // streached
+        // flex: 0 1 150px; // No streached
+    }
 }

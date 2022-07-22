@@ -28,15 +28,10 @@ import {
 
 import { IconModule, IconSetService } from '@coreui/icons-angular';
 
-const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
-    suppressScrollX: true,
-};
-
 // Import 3rd party components
 import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
-import { NgChartsModule } from 'ng2-charts';
 import { NgbModal, NgbModalConfig, NgbToast } from '@ng-bootstrap/ng-bootstrap';
 
 // Import routing module
@@ -48,7 +43,7 @@ import { AppComponent } from './app.component';
 import {
     DefaultFooterComponent,
     DefaultHeaderComponent,
-    DefaultLayoutComponent,
+    DefaultLayoutComponent
 } from 'src/shared';
 
 import { P404Component } from '../shared/component/error/404.component';
@@ -88,7 +83,6 @@ import { JwtAuthService } from 'src/shared/services/token-intercepter.service';
         ButtonModule,
         BsDropdownModule.forRoot(),
         NgbModule,
-        NgChartsModule,
         HttpClientModule,
         FormsModule,
         FormModule,
