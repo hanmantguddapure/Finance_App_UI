@@ -90,23 +90,22 @@ export class SharedCustomerComponent implements OnInit {
         this.CustomerGroup.get('custId').valueChanges.subscribe((custId: any) => {
             if (!custId || custId == "") {
                 this.toster.error("Please Select Customer")
-            } else {
-                this.isLoader = true;
-                this.customerService.getCustomerDetail(custId).subscribe((data: any) => {
-                    this.custInfo = data.response;
-                    this.CustomerGroup.patchValue(this.custInfo, { emitEvent: false });
-                    this.initContactPeople(this.custInfo.contactPeopleDtls);
-                    this.initNomineeDtls(this.custInfo.nomineeDtls);
-
-                    this.CustomerGroup.disable({ emitEvent: false });
-                    this.CustomerGroup.get('custId').enable({ emitEvent: false });
-
-                    this.fileUrl = AppConstants.API_ENDPOINT + "/customer/download/" + custId;
-                    this.isLoader = false;
-                }, error => {
-                    this.isLoader = false;
-                });
             }
+            this.isLoader = true;
+            this.customerService.getCustomerDetail(custId).subscribe((data: any) => {
+                this.custInfo = data.response;
+                this.CustomerGroup.patchValue(this.custInfo, { emitEvent: false });
+                this.initContactPeople(this.custInfo.contactPeopleDtls);
+                this.initNomineeDtls(this.custInfo.nomineeDtls);
+
+                this.CustomerGroup.disable({ emitEvent: false });
+                this.CustomerGroup.get('custId').enable({ emitEvent: false });
+
+                this.fileUrl = AppConstants.API_ENDPOINT + "/customer/download/" + custId;
+                this.isLoader = false;
+            }, error => {
+                this.isLoader = false;
+            });
         });
     }
 
@@ -221,25 +220,6 @@ export class SharedCustomerComponent implements OnInit {
         this.iconCollapse = this.isCollapsed ? 'icon-arrow-down' : 'icon-arrow-up';
     }
 
-    saveCustomerPersionDetail() {
-        if (this.CustomerGroup.invalid) {
-            this.toster.error("Please fill required fields");
-            return;
-        }
-        this.isLoader = true;
-
-        let customer = this.CustomerGroup.getRawValue();
-
-        this.customerService.saveCustomerDetail(customer).subscribe(data => {
-            this.isLoader = false;
-            this.customer = data;
-            this.custId = this.customer.custId;
-            this.toster.success("New Customer Created Successfully")
-        }, error => {
-            this.isLoader = false;
-        })
-    };
-
     /* ##################### View section ###################### */
 
     editCustContact(custContactDtls: any) {
@@ -257,18 +237,9 @@ export class SharedCustomerComponent implements OnInit {
         group.enable();
     }
 
-    saveCustContactPersionDetail(custContactPersion: any): void {
-        this.isLoader = true;
-        custContactPersion.custId = this.custInfo.custId;
-        this.customerService.saveCustContactPersionDetail(custContactPersion).subscribe(data => {
-            this.conatactPersionList.push(custContactPersion);
-            this.isEnableAdd = false;
-            this.toster.success("Added Successfully")
-            this.isLoader = false;
-        }, errot => {
-            this.isLoader = false;
-        })
-    };
+    print() {
+        window.print();
+    }
 
     editCustInfo() {
         this.isLoader = true;

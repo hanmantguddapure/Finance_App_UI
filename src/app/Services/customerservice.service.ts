@@ -3,15 +3,27 @@ import { HttpClient } from '@angular/common/http';
 import { AppConstants } from 'src/shared/modals/app-constants';
 import { Customer } from 'src/shared/modals/customer';
 import { Observable } from 'rxjs';
+import { ApiService } from 'src/shared/services/api.service';
 @Injectable({
     providedIn: 'root'
 })
 export class CustomerserviceService {
 
-    constructor(private http: HttpClient) { }
-    public saveCustomerDetail(customer: Customer) {
-        return this.http.post<Customer>(AppConstants.API_ENDPOINT + '/customer/add', customer);
+    constructor(
+        private http: HttpClient,
+        private apiService: ApiService
+    ) { }
+
+    saveCustomerDetail(data) {
+        return new Promise<void>((resolve, reject) => {
+            this.apiService.postAPI('/customer/add', data).then(resp => {
+                resolve(resp);
+            }, error => {
+                reject(error);
+            })
+        });
     }
+
     public getCustomerDetail(custId: any): Observable<Customer> {
         return this.http.get<Customer>(AppConstants.API_ENDPOINT + '/customer/find-byId/' + custId);
     }

@@ -75,7 +75,7 @@ export class CustomerNewComponent implements OnInit {
         !contactdtls && delete customer.contactPeopleDtls;
         !nomineeDtls && delete customer.nomineeDtls;
 
-        this.customerService.saveCustomerDetail(customer).subscribe(data => {
+        this.customerService.saveCustomerDetail(customer).then((data: any) => {
             this.CustomerGroup.get('custId').patchValue(data.custId);
             this.toster.success("New Customer Created Successfully")
             this.isLoader = false;

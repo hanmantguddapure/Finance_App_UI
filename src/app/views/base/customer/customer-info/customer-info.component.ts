@@ -72,10 +72,9 @@ export class CustomerInfoComponent implements OnInit {
         this.isLoader = true;
         let customer = this.CustomerGroup.getRawValue();
 
-        this.customerService.saveCustomerDetail(customer).subscribe(data => {
+        this.customerService.saveCustomerDetail(customer).then(data => {
             this.isLoader = false;
-            this.CustomerGroup.get('custId').patchValue(data.custId);
-            this.toster.success("New Customer Created Successfully")
+            this.toster.success(customer.custId ? "Customer updated Successfully" : "New Customer Created Successfully")
         }, error => {
             this.isLoader = false;
         })

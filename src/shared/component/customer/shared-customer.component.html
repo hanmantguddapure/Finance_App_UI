@@ -3,7 +3,7 @@
         <div class="form-group mb-3 row">
             <div class="col-sm-4 col-md-4 pb-4" *ngIf="isView && CustomerGroup">
                 <label class="col-form-label">Customer</label>
-                <select class="form-control" formControlName="custId">
+                <select class ="form-control" formControlName="custId">
                     <option value="">--Select Customer--</option>
                     <option *ngFor="let customer of allCustomerList" value="{{customer.custId}}">{{customer.fullName}}</option>
                 </select>
@@ -183,7 +183,7 @@
         <div class="row" *ngIf="isView && CustomerGroup.get('fullName').value">
             <label class="col-3 col-form-label p-3" for="hf-email">Customer Detail</label>
             <div class="col-3 col-form-label p-3">
-                <a [href]="fileUrl" target="_blank" download="customer.pdf">DownloadFile</a>
+                <a (click)="print()" target="_blank" download="customer.pdf">Print</a>
             </div>
         </div>
     </div>
