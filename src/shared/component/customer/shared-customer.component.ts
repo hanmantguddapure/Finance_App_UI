@@ -4,7 +4,7 @@ import {
     OnInit,
     SimpleChanges
 } from '@angular/core';
-import { AbstractControl, FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { AbstractControl, FormArray, FormBuilder, FormGroup } from '@angular/forms';
 import {
     Router,
     ActivatedRoute
@@ -15,13 +15,13 @@ import { ToastService } from '../../services/toast.service';
 
 import { CustomerserviceService } from '../../../app/services/customerservice.service';
 import { AppConstants } from 'src/shared/modals/app-constants';
+import { GenratePDFService } from 'src/shared/services/pdf-genrate.service';
 
 @Component({
     templateUrl: 'shared-customer.component.html',
     selector: 'shared-customer'
 })
 export class SharedCustomerComponent implements OnInit {
-
     @Input() CustomerGroup: FormGroup;
     @Input() CustomerData: FormGroup;
     @Input() isView: Boolean;
@@ -54,6 +54,7 @@ export class SharedCustomerComponent implements OnInit {
     constructor(private toster: ToastService,
         private customerService: CustomerserviceService,
         private router: Router,
+        private genrateService: GenratePDFService,
         private route: ActivatedRoute,
         private fb: FormBuilder) {
         this.relation = [
@@ -170,15 +171,7 @@ export class SharedCustomerComponent implements OnInit {
             fullName: [data?.fullName ?? null],
             address: this.fb.group({
                 address: [data?.address?.address ?? null],
-                city: [data?.address?.city ?? null],
-                district: [data?.address?.district ?? null],
-                state: [data?.address?.state ?? null],
-                country: [data?.address?.country ?? null],
-                zipCode: [data?.address?.zipCode ?? null],
-                email: [data?.address?.email ?? null],
-                phoneNo: [data?.address?.phoneNo ?? null],
-                nativePlace: [data?.address?.nativePlace ?? null],
-                altNo: [data?.address?.altNo ?? null],
+                phoneNo: [data?.address?.phoneNo ?? null]
             })
         });
 
@@ -192,15 +185,7 @@ export class SharedCustomerComponent implements OnInit {
             relation: [data?.relation ?? null],
             address: this.fb.group({
                 address: [data?.address?.address ?? null],
-                city: [data?.address?.city ?? null],
-                district: [data?.address?.district ?? null],
-                state: [data?.address?.state ?? null],
-                country: [data?.address?.country ?? null],
-                zipCode: [data?.address?.zipCode ?? null],
-                email: [data?.address?.email ?? null],
-                phoneNo: [data?.address?.phoneNo ?? null],
-                nativePlace: [data?.address?.nativePlace ?? null],
-                altNo: [data?.address?.altNo ?? null],
+                phoneNo: [data?.address?.phoneNo ?? null]
             })
         });
 
@@ -238,7 +223,10 @@ export class SharedCustomerComponent implements OnInit {
     }
 
     print() {
-        window.print();
+        let group = this.CustomerGroup.getRawValue();
+
+        this.genrateService.generatePDFwithoutHtml(group, this.customer?.view);
+        // window.print();
     }
 
     editCustInfo() {

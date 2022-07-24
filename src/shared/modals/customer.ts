@@ -1,20 +1,44 @@
 import { Address } from './address';
 
+export class CustomerView {
+    title = "Customer Detail";
+    title_address = "Address Detail";
+    title_nomineeDtls = "Nominee Detail";
+    title_contactPeopleDtls = "Witness Persions";
+    lbl_fullName = "Full Name";
+    lbl_professionName = "Buiseness";
+    lbl_panNo = "PAN No";
+    lbl_adharNo = "Aadhar No";
+    lbl_address = "Address";
+    lbl_city = "City";
+    lbl_district = "District";
+    lbl_state = "State";
+    lbl_country = "Country";
+    lbl_zipCode = "Postal Code";
+    lbl_email = "Email";
+    lbl_phoneNo = "Phone No";
+    lbl_nativePlace = "Native Place";
+    lbl_altNo = "Alternet No";
+    lbl_relation = "Nominee Relation";
+}
+
 export class Customer {
-    public fullName: string;
-    public professionName: string;
-    public shortName: string;
-    public profession: string;
-    public buiseness: string;
-    public panNo: string;
-    public adharNo: string;
-    public custId: BigInteger;
-    public contactPersionId: BigInteger;
-    public address: Address;
-    public contactPeopleDtls: ContactPepoleDtls[];
-    public nomineeDtls: NomineeDtls[];
+    fullName: string;
+    professionName: string;
+    shortName: string;
+    profession: string;
+    buiseness: string;
+    panNo: string;
+    adharNo: string;
+    custId: BigInteger;
+    contactPersionId: BigInteger;
+    address: Address;
+    contactPeopleDtls: ContactPepoleDtls[];
+    nomineeDtls: NomineeDtls[];
+    view: CustomerView;
 
     constructor(json: any) {
+
         this.fullName = json?.fullName ?? '';
         this.professionName = json?.professionName ?? '';
         this.shortName = json?.shortName ?? '';
@@ -39,6 +63,9 @@ export class Customer {
                 this.nomineeDtls.push(new NomineeDtls(e))
             });
         }
+
+        this.view = new CustomerView();
+
     }
 }
 

@@ -38,16 +38,12 @@ export class CustomerNewComponent implements OnInit {
             panNo: [null],
             // professionName: [null],
             address: this.fb.group({
-                address: [null],
-                city: [null],
-                district: [null],
-                state: [null],
-                country: [null],
-                zipCode: [null],
-                email: [null],
-                phoneNo: [null],
-                nativePlace: [null],
-                altNo: [null],
+                address: [''],
+                zipCode: [''],
+                email: [''],
+                phoneNo: [''],
+                nativePlace: [''],
+                altNo: ['']
             }),
             contactPeopleDtls: this.fb.array([]),
             nomineeDtls: this.fb.array([])

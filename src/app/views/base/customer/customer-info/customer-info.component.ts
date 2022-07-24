@@ -49,15 +49,11 @@ export class CustomerInfoComponent implements OnInit {
             professionName: [''],
             address: this.fb.group({
                 address: [''],
-                city: [''],
-                district: [''],
-                state: [''],
-                country: [''],
                 zipCode: [''],
                 email: [''],
                 phoneNo: [''],
                 nativePlace: [''],
-                altNo: [''],
+                altNo: ['']
             }),
             contactPeopleDtls: this.fb.array([]),
             nomineeDtls: this.fb.array([])
