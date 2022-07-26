@@ -14,12 +14,21 @@ export class ExpenseReportComponent implements OnInit {
     expense: Expense = new Expense(null);
     total: number | any;
     expenseTypesList: Array<Expense> = [];
+    deleteLoader: any;
     constructor(private toster: ToastService, private expenseService: ExpenseServiceService) {
 
     }
 
     ngOnInit() {
 
+        this.expenseslst = [
+            {
+                expenseType: 'Ters', expenseTypeId: 1, amount: 0, fromDate: '', toDate: '', remark: ''
+            },
+            {
+                expenseType: 'ters', expenseTypeId: 1, amount: 0, fromDate: '', toDate: '', remark: ''
+            }
+        ];
         this.expenseService.getExpenseTypes().subscribe(data => {
             this.expenseTypesList = data;
         })
@@ -42,6 +51,19 @@ export class ExpenseReportComponent implements OnInit {
             })
         }
     };
+
+    delete(index, id) {
+        if (this.deleteLoader) {
+            return;
+        }
+        this.deleteLoader = true;
+        this.expenseService.deleteExpenses(index).then(data => {
+            this.deleteLoader = false;
+            this.expenseslst.splice(index, 1);
+        }, error => {
+            this.deleteLoader = false;
+        })
+    }
 
     calculateTotal(data) {
         this.total = 0;

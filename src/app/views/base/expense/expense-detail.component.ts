@@ -42,7 +42,7 @@ export class ExpenseDetailComponent implements OnInit {
         this.expense.expenseType = this.expenseName;
         this.checkValidation();
         if (this.validationFlag) {
-            this.expenseService.addExpenseDtls(this.expense).subscribe(data => {
+            this.expenseService.addExpenseDtls(this.expense).then((data: any) => {
                 if (this.expenseslst == null) {
                     this.expenseslst = [];
                 }

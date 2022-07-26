@@ -20,55 +20,49 @@
                     <i class="fa fa-align-justify"></i> Summary
                 </div>
                 <div class="card-body">
-                    <table class="table table-bordered table-striped table-sm">
-                        <thead>
-                            <tr>
-                                <table class="table table-bordered table-striped table-sm">
-                                    <th colspan="2">Credit</th>
-                                    <th colspan="2">Debit</th>
-                                    <tr>
-                                        <td>Source</td>
-                                        <td>Amount</td>
-                                        <td>Source</td>
-                                        <td>Amount</td>
-                                    </tr>
-                                    <tr>
-                                        <td>Loan Collection</td>
-                                        <td>{{loanSummary?.collections}}</td>
-                                        <td>Disbursed Loans</td>
-                                        <td>{{loanSummary?.disbursements}}</td>
-                                    </tr>
-                                    <tr>
-                                        <td>Loan Penalty</td>
-                                        <td>{{loanSummary?.penalty}}</td>
-                                        <td>FD Paid Interests</td>
-                                        <td>{{fdSummary?.paidInterest}}</td>
-                                    </tr>
-                                    <tr>
-                                        <td>FD Deposits</td>
-                                        <td>{{fdSummary?.fdAmount}}</td>
-                                        <td>Expenses</td>
-                                        <td>{{appSummary.expenses}}</td>
-                                    </tr>
-                                    <tr>
-                                        <td>Firm Loan</td>
-                                        <td>{{appSummary.firmLoan}}</td>
-                                        <td>Short Term Loan</td>
-                                        <td>{{appSummary.shortTermLoan}}</td>
-                                    </tr>
-                                    <tr>
-                                        <td>Total</td>
-                                        <td>{{totalcredit}}</td>
-                                        <td>Total</td>
-                                        <td>{{totaolDebit}}</td>
-                                    </tr>
-                                    <tr>
-                                        <td>Closing Balance</td>
-                                        <td colspan="3" class="text-center">{{totalClosingBal}}</td>
-                                    </tr>
-                                </table>
-                            </tr>
-                        </thead>
+                    <table class="table table-bordered">
+                        <th colspan="2">Credit</th>
+                        <th colspan="2">Debit</th>
+                        <tr>
+                            <td>Source</td>
+                            <td>Amount</td>
+                            <td>Source</td>
+                            <td>Amount</td>
+                        </tr>
+                        <tr>
+                            <td>Loan Collection</td>
+                            <td>{{loanSummary?.collections}}</td>
+                            <td>Disbursed Loans</td>
+                            <td>{{loanSummary?.disbursements}}</td>
+                        </tr>
+                        <tr>
+                            <td>Loan Penalty</td>
+                            <td>{{loanSummary?.penalty}}</td>
+                            <td>FD Paid Interests</td>
+                            <td>{{fdSummary?.paidInterest}}</td>
+                        </tr>
+                        <tr>
+                            <td>FD Deposits</td>
+                            <td>{{fdSummary?.fdAmount}}</td>
+                            <td>Expenses</td>
+                            <td>{{appSummary.expenses}}</td>
+                        </tr>
+                        <tr>
+                            <td>Firm Loan</td>
+                            <td>{{appSummary.firmLoan}}</td>
+                            <td>Short Term Loan</td>
+                            <td>{{appSummary.shortTermLoan}}</td>
+                        </tr>
+                        <tr>
+                            <td>Total</td>
+                            <td>{{totalcredit}}</td>
+                            <td>Total</td>
+                            <td>{{totaolDebit}}</td>
+                        </tr>
+                        <tr>
+                            <td>Closing Balance</td>
+                            <td colspan="3" class="text-center">{{totalClosingBal}}</td>
+                        </tr>
                     </table>
                 </div>
             </div>
@@ -81,53 +75,47 @@
                     <i class="fa fa-align-justify"></i> Balance Summary
                 </div>
                 <div class="card-body">
-                    <table class="table table-bordered table-striped table-sm">
-                        <thead>
-                            <tr>
-                                <table class="table table-bordered table-striped table-sm">
-                                    <th colspan="2">Credit</th>
-                                    <th colspan="2">Debit</th>
-                                    <tr>
-                                        <td>Source</td>
-                                        <td>Amount</td>
-                                        <td>Source</td>
-                                        <td>Amount</td>
-                                    </tr>
-                                    <tr>
-                                        <td>Disbursed Loans</td>
-                                        <td>{{loanSummary?.disbursements}}</td>
-                                        <td>FD Deposits</td>
-                                        <td>{{fdSummary?.fdAmount}}</td>
-                                    </tr>
-                                    <tr>
-                                        <td>Loan Intrest</td>
-                                        <td>{{loanSummary?.loanIntrest}}</td>
-                                        <td>FD Pending Interest</td>
-                                        <td>{{fdSummary?.pendingIntrest}}</td>
-                                    </tr>
-                                    <tr>
-                                        <td>Loan Processing Fees</td>
-                                        <td>{{loanSummary?.processingFees}}</td>
-                                        <td>Firm Loan</td>
-                                        <td>{{appSummary.firmLoan}}</td>
-                                    </tr>
-                                    <tr>
-                                        <td>Total</td>
-                                        <td>{{totalCreditBalSummary}}</td>
-                                        <td>Total</td>
-                                        <td>{{totalDebitBalSummary}}</td>
-                                    </tr>
-                                    <tr>
-                                        <td colspan="3">Total Credit ({{totalCreditBalSummary}})-Collection ({{loanSummary?.collections}})</td>
-                                        <td>{{pendingCollection}}</td>
-                                    </tr>
-                                    <tr>
-                                        <td>Closing Balance (Total Pending Collection -Total Debit)</td>
-                                        <td colspan="3" class="text-center">{{closingBalSummary}}</td>
-                                    </tr>
-                                </table>
-                            </tr>
-                        </thead>
+                    <table class="table table-bordered">
+                        <th colspan="2">Credit</th>
+                        <th colspan="2">Debit</th>
+                        <tr>
+                            <td>Source</td>
+                            <td>Amount</td>
+                            <td>Source</td>
+                            <td>Amount</td>
+                        </tr>
+                        <tr>
+                            <td>Disbursed Loans</td>
+                            <td>{{loanSummary?.disbursements}}</td>
+                            <td>FD Deposits</td>
+                            <td>{{fdSummary?.fdAmount}}</td>
+                        </tr>
+                        <tr>
+                            <td>Loan Intrest</td>
+                            <td>{{loanSummary?.loanIntrest}}</td>
+                            <td>FD Pending Interest</td>
+                            <td>{{fdSummary?.pendingIntrest}}</td>
+                        </tr>
+                        <tr>
+                            <td>Loan Processing Fees</td>
+                            <td>{{loanSummary?.processingFees}}</td>
+                            <td>Firm Loan</td>
+                            <td>{{appSummary.firmLoan}}</td>
+                        </tr>
+                        <tr>
+                            <td>Total</td>
+                            <td>{{totalCreditBalSummary}}</td>
+                            <td>Total</td>
+                            <td>{{totalDebitBalSummary}}</td>
+                        </tr>
+                        <tr>
+                            <td colspan="3">Total Credit ({{totalCreditBalSummary}})-Collection ({{loanSummary?.collections}})</td>
+                            <td>{{pendingCollection}}</td>
+                        </tr>
+                        <tr>
+                            <td>Closing Balance (Total Pending Collection -Total Debit)</td>
+                            <td colspan="3" class="text-center">{{closingBalSummary}}</td>
+                        </tr>
                     </table>
                 </div>
             </div>

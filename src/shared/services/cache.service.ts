@@ -9,11 +9,12 @@ export class CacheService {
     }
 
     set(key, value) {
-        localStorage.setItem(key, value);
+        localStorage.setItem(key, JSON.stringify(value));
     }
 
     get(key) {
-        return localStorage.getItem(key);
+        let user: any = localStorage.getItem(key);
+        return user ? JSON.parse(user) : null;
     }
 
     clean(key) {

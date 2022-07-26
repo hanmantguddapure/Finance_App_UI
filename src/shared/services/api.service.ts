@@ -38,7 +38,7 @@ export class ApiService {
                 },
                 error: (err: any) => {
                     console.log(err);
-                    
+
                     reject(err);
                 },
                 complete: () => {
@@ -82,15 +82,23 @@ export class ApiService {
                 });
         });
     }
-    // // HttpClient API delete() method => Delete API
-    // deleteAPI(id: any) {
-    // return new Promise<void>((resolve, reject) => {//     
-    //     this.http
-    //         .delete(AppConstants.API_ENDPOINT + '/APIs/' + id, this.httpOptions)
-    //         .pipe(map(res => res as {}), catchError(this.handleError)).subscribe(resp => {
-
-    // });
-    // }
+    // HttpClient API delete() method => Delete API
+    deleteAPI(url, id: any) {
+        return new Promise<void>((resolve, reject) => {//     
+            this.http
+                .delete(AppConstants.API_ENDPOINT + url + '/' + id, this.httpOptions).subscribe({
+                    next: (res: any) => {
+                        resolve(res);
+                    },
+                    error: (err: any) => {
+                        reject(err);
+                    },
+                    complete: () => {
+                        console.log('complete');
+                    },
+                });
+        })
+    }
 
     // Error handling
     handleError(error: any): Observable<Response> {
