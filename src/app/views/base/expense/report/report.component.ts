@@ -5,7 +5,7 @@ import { ExpenseServiceService } from 'src/app/services/expense-service.service'
 
 @Component({
 
-    templateUrl: './expense-report.component.html'
+    templateUrl: './report.component.html'
 
 })
 export class ExpenseReportComponent implements OnInit {
@@ -20,15 +20,6 @@ export class ExpenseReportComponent implements OnInit {
     }
 
     ngOnInit() {
-
-        this.expenseslst = [
-            {
-                expenseType: 'Ters', expenseTypeId: 1, amount: 0, fromDate: '', toDate: '', remark: ''
-            },
-            {
-                expenseType: 'ters', expenseTypeId: 1, amount: 0, fromDate: '', toDate: '', remark: ''
-            }
-        ];
         this.expenseService.getExpenseTypes().subscribe(data => {
             this.expenseTypesList = data;
         })

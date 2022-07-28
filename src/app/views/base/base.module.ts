@@ -50,10 +50,6 @@ import { LoanPenaltyRepoComponent } from './loans/loan-penalty-repo.component';
 import { CloseLoanComponent } from './common/close-loan.component';
 import { DisbursedLoansComponent } from './common/disbursed-loans.component';
 
-import { ExpenseTypesComponent } from './expense/expense-types.component';
-import { ExpenseDetailComponent } from './expense/expense-detail.component';
-import { ExpenseReportComponent } from './expense/expense-report.component';
-
 import { FirmLoanComponent } from './firm-loan/firm-loan.component';
 import { FirmLoanRepoComponent } from './firm-loan/firm-loan-repo.component';
 import { FirmLoanCloseComponent } from './firm-loan/firm-loan-close.component';
@@ -92,9 +88,6 @@ import { ShortTermLoanRepoComponent } from './short-term-loans/short-term-loan-r
         LoanRepoComponent,
         LoanPenltyComponent,
         LoanCollectionReportComponent,
-        ExpenseTypesComponent,
-        ExpenseDetailComponent,
-        ExpenseReportComponent,
         FDAccountViewComponent,
         FDAccountCloseComponent,
         FDAccountReportComponent,

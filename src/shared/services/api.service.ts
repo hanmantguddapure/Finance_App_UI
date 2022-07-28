@@ -69,7 +69,7 @@ export class ApiService {
     putAPI(url, data, id) {
         return new Promise<void>((resolve, reject) => {
             this.http
-                .put(AppConstants.API_ENDPOINT + '/APIs/' + id, JSON.stringify(data), this.httpOptions).subscribe({
+                .put(AppConstants.API_ENDPOINT + url + (id ? ('/' + id) : ''), JSON.stringify(data), this.httpOptions).subscribe({
                     next: (res: any) => {
                         resolve(res);
                     },

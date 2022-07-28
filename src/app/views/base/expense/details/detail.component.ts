@@ -4,7 +4,7 @@ import { Expense } from 'src/shared/modals/expense';
 import { ToastService } from 'src/shared/services/toast.service';
 
 @Component({
-    templateUrl: './expense-detail.component.html'
+    templateUrl: './detail.component.html'
 })
 export class ExpenseDetailComponent implements OnInit {
     expenseTypesList: Array<Expense> = [];

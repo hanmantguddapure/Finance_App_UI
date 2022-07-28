@@ -21,10 +21,6 @@ import { LoanPenaltyRepoComponent } from './loans/loan-penalty-repo.component';
 import { CloseLoanComponent } from './common/close-loan.component';
 import { DisbursedLoansComponent } from './common/disbursed-loans.component';
 
-import { ExpenseTypesComponent } from './expense/expense-types.component';
-import { ExpenseDetailComponent } from './expense/expense-detail.component';
-import { ExpenseReportComponent } from './expense/expense-report.component';
-
 import { FirmLoanComponent } from './firm-loan/firm-loan.component';
 import { FirmLoanRepoComponent } from './firm-loan/firm-loan-repo.component';
 import { FirmLoanCloseComponent } from './firm-loan/firm-loan-close.component';
@@ -43,6 +39,14 @@ const routes: Routes = [
                     title: 'Customer'
                 },
                 loadChildren: () => import('./customer/customer.module').then(m => m.CustomerModule)
+            },
+
+            {
+                path: 'expense',
+                data: {
+                    title: 'Expense'
+                },
+                loadChildren: () => import('./expense/expense.module').then(m => m.ExpenseModule)
             },
             {
                 path: 'fdaccount',
@@ -121,8 +125,6 @@ const routes: Routes = [
                     title: 'Disbursed Loans'
                 }
             },
-
-
             {
                 path: 'loan-detail',
                 component: LoanDetailComponent,
@@ -164,28 +166,6 @@ const routes: Routes = [
                 component: LoanCollectionReportComponent,
                 data: {
                     title: 'Loan Collection Report'
-                }
-            },
-            {
-                path: 'expense-types',
-                component: ExpenseTypesComponent,
-                data: {
-                    title: 'Expense Types'
-                }
-            },
-
-            {
-                path: 'expense-detail',
-                component: ExpenseDetailComponent,
-                data: {
-                    title: 'Expenses'
-                }
-            },
-            {
-                path: 'expense-report',
-                component: ExpenseReportComponent,
-                data: {
-                    title: 'Expenses'
                 }
             },
             {
