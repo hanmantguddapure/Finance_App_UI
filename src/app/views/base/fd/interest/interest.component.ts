@@ -5,9 +5,9 @@ import { FDInterestDtl } from 'src/shared/modals/fdinterest-dtl';
 import { ToastService } from 'src/shared/services/toast.service';
 
 @Component({
-    templateUrl: './fdpay-interest-amt.component.html',
+    templateUrl: './interest.component.html',
 })
-export class FDPayInterestAmtComponent implements OnInit {
+export class InterestComponent implements OnInit {
     fdDtls: FDAccount;
     fdInterest: FDInterestDtl;
     fdInterestHistory: Array<FDInterestDtl>;

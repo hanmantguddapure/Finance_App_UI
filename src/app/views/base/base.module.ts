@@ -30,13 +30,6 @@ import { TooltipModule } from 'ngx-bootstrap/tooltip';
 // Components Routing
 import { BaseRoutingModule } from './base-routing.module';
 
-import { FDAccountComponent } from './fd/fdaccount.component';
-import { FDAccountViewComponent } from './fd/fdaccount-view.component';
-import { FDAccountCloseComponent } from './fd/fdaccount-close.component';
-import { FDAccountReportComponent } from './fd/fdaccount-report.component';
-import { FDPayInterestAmtComponent } from './fd/fdpay-interest-amt.component';
-import { FDOfCustomersComponent } from './fd/fdof-customers.component';
-
 import { LoanAccountComponent } from './loans/loan-account.component';
 import { LoanPaymentComponent } from './loans/loan-payment.component';
 import { LoanEMIComponent } from './loans/loan-emi.component';
@@ -75,10 +68,6 @@ import { ShortTermLoanRepoComponent } from './short-term-loans/short-term-loan-r
         TooltipModule
     ],
     declarations: [
-        FDAccountComponent,
-        FDAccountViewComponent,
-        FDAccountCloseComponent,
-        FDAccountReportComponent,
         LoanAccountComponent,
         LoanPaymentComponent,
         LoanEMIComponent,
@@ -88,11 +77,6 @@ import { ShortTermLoanRepoComponent } from './short-term-loans/short-term-loan-r
         LoanRepoComponent,
         LoanPenltyComponent,
         LoanCollectionReportComponent,
-        FDAccountViewComponent,
-        FDAccountCloseComponent,
-        FDAccountReportComponent,
-        FDPayInterestAmtComponent,
-        FDOfCustomersComponent,
         LoanHoldersComponent,
         LoanPenaltyRepoComponent,
         FirmLoanComponent,

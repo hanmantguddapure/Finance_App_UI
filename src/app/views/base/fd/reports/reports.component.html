@@ -1,0 +1,11 @@
+<ul class="nav nav-tabs" id="myTab" role="tablist">
+    <li class="nav-item" role="presentation">
+        <button routerLink="holders" [routerLinkActive]="'active'" class="nav-link" id="holders" data-bs-target="#holders" aria-controls="holders" aria-selected="true">Holders Reports</button>
+    </li>
+    <li class="nav-item" role="presentation">
+        <button routerLink="status" [routerLinkActive]="'active'" class="nav-link" id="status" data-bs-target="#status" aria-controls="status" aria-selected="false">Status Reports</button>
+    </li>
+</ul>
+<div class="tab-content" id="myTabContent">
+    <router-outlet></router-outlet>
+</div>

@@ -1,14 +1,16 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+
 import { ToastService } from 'src/shared/services/toast.service';
 import { FDAccount } from 'src/shared/modals/fdaccount';
 import { FDServiceService } from 'src/app/services/fdservice.service';
 
 @Component({
-    templateUrl: './fdaccount-close.component.html'
+    templateUrl: './close.component.html'
 })
-export class FDAccountCloseComponent implements OnInit {
+
+export class CloseComponent implements OnInit {
     fdAccountDtls: FDAccount = new FDAccount(null);
     constructor(private toster: ToastService, private fdService: FDServiceService, private modalService: NgbModal, private router: Router) { }
 

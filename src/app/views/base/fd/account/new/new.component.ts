@@ -1,18 +1,19 @@
 import { Component, OnInit } from '@angular/core';
+
 import { CustomerserviceService } from 'src/app/services/customerservice.service';
 import { FDAccount } from 'src/shared/modals/fdaccount';
-import { Customer } from 'src/shared/modals/customer';
 import { FDServiceService } from 'src/app/services/fdservice.service';
 import { ToastService } from 'src/shared/services/toast.service';
 
 @Component({
-    templateUrl: './fdaccount.component.html',
+    templateUrl: './new.component.html',
 
 })
-export class FDAccountComponent implements OnInit {
+export class NewComponent implements OnInit {
     allCustomerList: any;
     fdAccount: FDAccount = new FDAccount(null);
     validationFlag: boolean = true;
+
     constructor(private toster: ToastService, private customerService: CustomerserviceService, private fdService: FDServiceService) { }
     ngOnInit() {
         this.customerService.getCustomerAllDetail().subscribe(data => {

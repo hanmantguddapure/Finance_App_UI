@@ -143,61 +143,19 @@ export const navItems: INavData[] = [
         children: [
             {
                 name: 'Account',
-                url: '/base/fdaccount',
-                iconComponent: { name: 'cil-notes' },
-                children: [
-                    {
-                        name: 'New',
-                        url: '/base/fdaccount',
-                        iconComponent: { name: 'cil-pencil' }
-                    },
-                    {
-                        name: 'View',
-                        url: '/base/fdaccountview',
-                        iconComponent: { name: 'cil-pencil' }
-                    },
-                    {
-                        name: 'Close',
-                        url: '/base/fdaccountclose',
-                        iconComponent: { name: 'cil-pencil' }
-                    },
-                ],
+                url: '/base/fd/account',
             },
             {
                 name: 'Interest',
-                url: '/base/fdaccount',
-                iconComponent: { name: 'cil-notes' },
-                children: [
-                    {
-                        name: 'Pay',
-                        url: '/base/fdpayinterest',
-                        iconComponent: { name: 'cil-pencil' }
-                    },
-                ],
+                url: '/base/fd/interest',
             },
             {
                 name: 'Reports',
-                url: '/base/fdaccount',
-                iconComponent: { name: 'cil-notes' },
-                children: [
-                    {
-                        name: 'Status',
-                        url: '/base/fdaccountreport',
-                        iconComponent: { name: 'cil-pencil' }
-                    },
-                    {
-                        name: 'Holders',
-                        url: '/base/fdcustreport',
-                        iconComponent: { name: 'cil-pencil' }
-                    },
-                ],
-            },
+                url: '/base/fd/reports',
+            }
         ],
     },
     {
         divider: true
-    },
-
-
-
+    }
 ];

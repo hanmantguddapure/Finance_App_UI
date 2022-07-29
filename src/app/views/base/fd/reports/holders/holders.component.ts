@@ -5,9 +5,9 @@ import { FDServiceService } from 'src/app/services/fdservice.service';
 import { ToastService } from 'src/shared/services/toast.service';
 
 @Component({
-    templateUrl: './fdof-customers.component.html',
+    templateUrl: './holders.component.html',
 })
-export class FDOfCustomersComponent implements OnInit {
+export class HoldersComponent implements OnInit {
     allCustomerList: any;
     fdAccount: FDAccount = new FDAccount(null);
     fdReports: Array<FDAccount> = [];

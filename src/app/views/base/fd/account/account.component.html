@@ -1,0 +1,14 @@
+<ul class="nav nav-tabs" id="myTab" role="tablist">
+    <li class="nav-item" role="presentation">
+        <button routerLink="new" [routerLinkActive]="'active'" class="nav-link" id="new" data-bs-target="#new" aria-controls="new" aria-selected="true">New Account</button>
+    </li>
+    <li class="nav-item" role="presentation">
+        <button routerLink="view" [routerLinkActive]="'active'" class="nav-link" id="view" data-bs-target="#view" aria-controls="view" aria-selected="false">View Account</button>
+    </li>
+    <li class="nav-item" role="presentation">
+        <button routerLink="close" [routerLinkActive]="'active'" class="nav-link" id="close" data-bs-target="#close" aria-controls="close" aria-selected="false">Close Account</button>
+    </li>
+</ul>
+<div class="tab-content" id="myTabContent">
+    <router-outlet></router-outlet>
+</div>

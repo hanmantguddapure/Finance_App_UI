@@ -1,13 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
-import { FDAccountComponent } from './fd/fdaccount.component';
-import { FDAccountViewComponent } from './fd/fdaccount-view.component';
-import { FDAccountCloseComponent } from './fd/fdaccount-close.component';
-import { FDAccountReportComponent } from './fd/fdaccount-report.component';
-import { FDPayInterestAmtComponent } from './fd/fdpay-interest-amt.component';
-import { FDOfCustomersComponent } from './fd/fdof-customers.component';
-
 import { LoanAccountComponent } from './loans/loan-account.component';
 import { LoanPaymentComponent } from './loans/loan-payment.component';
 import { LoanEMIComponent } from './loans/loan-emi.component';
@@ -40,7 +33,6 @@ const routes: Routes = [
                 },
                 loadChildren: () => import('./customer/customer.module').then(m => m.CustomerModule)
             },
-
             {
                 path: 'expense',
                 data: {
@@ -49,46 +41,11 @@ const routes: Routes = [
                 loadChildren: () => import('./expense/expense.module').then(m => m.ExpenseModule)
             },
             {
-                path: 'fdaccount',
-                component: FDAccountComponent,
+                path: 'fd',
                 data: {
-                    title: 'fdaccount'
-                }
-            },
-            {
-                path: 'fdaccountview',
-                component: FDAccountViewComponent,
-                data: {
-                    title: 'fdaccountview'
-                }
-            },
-            {
-                path: 'fdaccountclose',
-                component: FDAccountCloseComponent,
-                data: {
-                    title: 'fdaccountview'
-                }
-            },
-            {
-                path: 'fdpayinterest',
-                component: FDPayInterestAmtComponent,
-                data: {
-                    title: 'fdpayinterest'
-                }
-            },
-            {
-                path: 'fdaccountreport',
-                component: FDAccountReportComponent,
-                data: {
-                    title: 'fdaccountview'
-                }
-            },
-            {
-                path: 'fdcustreport',
-                component: FDOfCustomersComponent,
-                data: {
-                    title: 'fdcustreport'
-                }
+                    title: 'FD'
+                },
+                loadChildren: () => import('./fd/fd.module').then(m => m.FDModule)
             },
             {
                 path: 'loan-account',

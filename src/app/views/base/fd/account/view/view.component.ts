@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+
 import { FDAccount } from 'src/shared/modals/fdaccount';
+
 import { FDServiceService } from 'src/app/services/fdservice.service';
 import { AppConstants } from 'src/shared/modals/app-constants';
 import { FDInterestDtl } from 'src/shared/modals/fdinterest-dtl';
@@ -7,10 +9,10 @@ import { ToastService } from 'src/shared/services/toast.service';
 
 @Component({
 
-    templateUrl: './fdaccount-view.component.html',
+    templateUrl: './view.component.html',
 
 })
-export class FDAccountViewComponent implements OnInit {
+export class ViewComponent implements OnInit {
     fdAccountDtls: FDAccount = new FDAccount(null);
     fdInterestHistory: Array<FDInterestDtl> = [];
     fileUrl: any;

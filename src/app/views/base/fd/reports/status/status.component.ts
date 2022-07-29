@@ -5,10 +5,10 @@ import { FDServiceService } from 'src/app/services/fdservice.service';
 
 @Component({
 
-    templateUrl: './fdaccount-report.component.html',
+    templateUrl: './status.component.html',
 
 })
-export class FDAccountReportComponent implements OnInit {
+export class StatusComponent implements OnInit {
     fdReports: Array<FDAccount> = [];
     totalFD: number = 0;
     totalInterest: number = 0;
