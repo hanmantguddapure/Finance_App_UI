@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
-import { LoaderComponent } from 'src/shared';
+import { SharedAppModule } from 'src/shared/shared.module';
 
 import { IntrestRoutingModule } from './interest-routing.module';
 import { InterestComponent } from './interest.component';
@@ -13,14 +13,13 @@ import { InterestComponent } from './interest.component';
         CommonModule,
         FormsModule,
         ReactiveFormsModule,
+        SharedAppModule,
 
         IntrestRoutingModule,
         NgbModule
     ],
     declarations: [
-        InterestComponent,
-
-        LoaderComponent
+        InterestComponent
     ]
 })
 export class IntrestModule { }

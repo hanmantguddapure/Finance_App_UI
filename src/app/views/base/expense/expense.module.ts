@@ -3,6 +3,8 @@ import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
+import { SharedModule } from '@coreui/angular';
+
 import { ExpenseRoutingModule } from './expense-routing.module';
 
 import { ExpenseComponent } from './expense.component';
@@ -15,6 +17,7 @@ import { ExpenseTypesComponent } from './types/types.component';
         CommonModule,
         FormsModule,
         ReactiveFormsModule,
+        SharedModule,
 
         ExpenseRoutingModule,
         NgbModule

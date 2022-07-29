@@ -30,6 +30,8 @@ import { TooltipModule } from 'ngx-bootstrap/tooltip';
 // Components Routing
 import { BaseRoutingModule } from './base-routing.module';
 
+import { SharedAppModule } from 'src/shared/shared.module';
+
 import { LoanAccountComponent } from './loans/loan-account.component';
 import { LoanPaymentComponent } from './loans/loan-payment.component';
 import { LoanEMIComponent } from './loans/loan-emi.component';
@@ -56,6 +58,7 @@ import { ShortTermLoanRepoComponent } from './short-term-loans/short-term-loan-r
         CommonModule,
         FormsModule,
         ReactiveFormsModule,
+        SharedAppModule,
 
         BaseRoutingModule,
         BsDropdownModule.forRoot(),

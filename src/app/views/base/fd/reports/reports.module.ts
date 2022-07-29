@@ -3,8 +3,9 @@ import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
+import { SharedAppModule } from 'src/shared/shared.module';
+
 import { ReportsRoutingModule } from './reports-routing.module';
-import { LoaderComponent } from 'src/shared';
 import { ReportsComponent } from './reports.component';
 import { StatusComponent } from './status/status.component';
 import { HoldersComponent } from './holders/holders.component';
@@ -14,6 +15,7 @@ import { HoldersComponent } from './holders/holders.component';
         CommonModule,
         FormsModule,
         ReactiveFormsModule,
+        SharedAppModule,
 
         ReportsRoutingModule,
         NgbModule
@@ -21,10 +23,7 @@ import { HoldersComponent } from './holders/holders.component';
     declarations: [
         ReportsComponent,
         StatusComponent,
-        HoldersComponent,
-
-
-        LoaderComponent
+        HoldersComponent
     ]
 })
 export class ReportsModule { }

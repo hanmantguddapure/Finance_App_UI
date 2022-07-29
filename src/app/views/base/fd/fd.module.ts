@@ -3,6 +3,8 @@ import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
+import { SharedAppModule } from 'src/shared/shared.module';
+
 import { FDRoutingModule } from './fd-routing.module';
 
 @NgModule({
@@ -10,6 +12,7 @@ import { FDRoutingModule } from './fd-routing.module';
         CommonModule,
         FormsModule,
         ReactiveFormsModule,
+        SharedAppModule,
 
         FDRoutingModule,
         NgbModule

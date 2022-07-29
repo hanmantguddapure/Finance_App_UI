@@ -1,8 +1,9 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
+import { DefaultLayoutComponent } from 'src/shared/component/default-layout/default-layout.component';
+
 // Import Containers
-import { DefaultLayoutComponent } from '../shared';
 import { BaseModule } from './views/base/base.module';
 import { DashboardModule } from './views/dashboard/dashboard.module';
 
