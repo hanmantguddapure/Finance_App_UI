@@ -10,6 +10,7 @@ import { ReportsComponent } from './reports.component';
 import { StatusComponent } from './status/status.component';
 import { HoldersComponent } from './holders/holders.component';
 
+
 @NgModule({
     imports: [
         CommonModule,

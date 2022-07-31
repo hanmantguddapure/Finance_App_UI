@@ -8,6 +8,7 @@ import { SharedAppModule } from 'src/shared/shared.module';
 import { IntrestRoutingModule } from './interest-routing.module';
 import { InterestComponent } from './interest.component';
 
+
 @NgModule({
     imports: [
         CommonModule,

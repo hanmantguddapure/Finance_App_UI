@@ -36,7 +36,6 @@ import {
         IconModule,
         PerfectScrollbarModule,
         NgbModule,
-        HttpClientModule,
         CommonModule,
         FormsModule,
         RouterModule,

@@ -10,6 +10,7 @@ import { NewComponent } from './new/new.component';
 import { CloseComponent } from './close/close.component';
 import { SharedModule } from '@coreui/angular';
 
+
 @NgModule({
     imports: [
         CommonModule,

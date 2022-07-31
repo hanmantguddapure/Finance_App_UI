@@ -53,6 +53,7 @@ import { ShortTermLoanComponent } from './short-term-loans/short-term-loan.compo
 import { ShortTermLoanCloseComponent } from './short-term-loans/short-term-loan-close.component';
 import { ShortTermLoanRepoComponent } from './short-term-loans/short-term-loan-repo.component';
 
+
 @NgModule({
     imports: [
         CommonModule,

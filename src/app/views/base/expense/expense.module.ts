@@ -12,12 +12,14 @@ import { ExpenseDetailComponent } from './details/detail.component';
 import { ExpenseReportComponent } from './report/report.component';
 import { ExpenseTypesComponent } from './types/types.component';
 
+
 @NgModule({
     imports: [
         CommonModule,
         FormsModule,
         ReactiveFormsModule,
         SharedModule,
+        
 
         ExpenseRoutingModule,
         NgbModule

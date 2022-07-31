@@ -11,6 +11,7 @@ import { CustomerComponent } from './customer.component';
 import { CustomerNewComponent } from './customer-new/customer-new.component';
 import { CustomerInfoComponent } from './customer-info/customer-info.component';
 
+
 @NgModule({
     imports: [
         CommonModule,
