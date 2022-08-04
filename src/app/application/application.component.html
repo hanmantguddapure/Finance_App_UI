@@ -1,0 +1,37 @@
+<mat-drawer-container class="example-container">
+    <mat-drawer #drawer mode="side" opened class="drower">
+        <div class="d-flex flex-column flex-shrink-0 bg-light drower-pan">
+            <div class="banner">
+                <img src="../../assets/img/brand/logo.jpg" alt="Banner">
+            </div>
+            <ul ngbNav #nav="ngbNav" class="justify-content-center nav-list" orientation="vertical">
+                <ng-container *ngFor="let item of navItems; let i = index;">
+                    <li [ngbNavItem]="1" *ngIf="!item.children">
+                        <a ngbNavLink class="nav-link" [routerLink]="item.url" [routerLinkActive]="'active'">
+                            <i [class]="item.icon + ' p-2'"></i>
+                            {{item.name}}
+                        </a>
+                        <hr class="dropdown-divider">
+                    </li>
+                    <li ngbDropdown *ngIf="item.children">
+                        <a href="javascript:;" class="nav-link" ngbDropdownToggle>
+                            <i [class]="item.icon + ' p-2'"></i>{{item.name}}</a>
+                        <div ngbDropdownMenu>
+                            <button [routerLink]="e.url" [routerLinkActive]="'active'" *ngFor="let e of item.children; let j = index;" ngbDropdownItem>{{e.name}}</button>
+                        </div>
+                        <hr class="dropdown-divider">
+                    </li>
+                </ng-container>
+            </ul>
+            <a href="javascript:;" class="collaps" (click)="drawer.toggle()">
+                <i class="fa fa-chevron-left"></i>
+            </a>
+        </div>
+    </mat-drawer>
+    <mat-drawer-content class="drower-content">
+        <app-header [drawer]="drawer"></app-header>
+        <div class="p-2">
+            <router-outlet></router-outlet>
+        </div>
+    </mat-drawer-content>
+</mat-drawer-container>

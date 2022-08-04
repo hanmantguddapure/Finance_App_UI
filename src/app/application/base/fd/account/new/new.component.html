@@ -1,0 +1,79 @@
+<div class="animated fadeIn">
+
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="card">
+                <div class="card-header">
+                    <strong>Fixed Deposite Account </strong> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    <strong>Account No:- {{fdAccount.accountNo}}</strong>
+                </div>
+                <div class="card-body">
+                    <form #form="ngForm" class="form-horizontal">
+
+                        <div class="form-group mb-3 row">
+                            <label class="col-md-3 col-form-label">Customer</label>
+                            <div class="col-md-9">
+                                <select class="form-control" name="custId" [(ngModel)]=fdAccount.custId>
+                                    <option>--Select Customer--</option>
+                                    <option *ngFor="let customer of allCustomerList" value="{{customer.custId}}">{{customer.fullName}}</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="card-header">
+                            <strong>Create New Account</strong>
+                        </div>
+
+                        <div class="card">
+
+                            <div class="card-body">
+
+                                <div class="form-group mb-3 row">
+                                    <label class="col-md-3 col-form-label" for="hf-email">FD Amount</label>
+                                    <div class="col-md-9">
+                                        <input type="text" name="amount" [(ngModel)]=fdAccount.amount class="form-control">
+                                    </div>
+                                </div>
+                                <div class="form-group mb-3 row">
+                                    <label class="col-md-3 col-form-label" for="hf-email">Iterest</label>
+                                    <div class="col-md-9">
+                                        <input type="text" name="iterest" [(ngModel)]=fdAccount.interest class="form-control" (blur)="calculateItersetAmt()">
+                                    </div>
+                                </div>
+                                <div class="form-group mb-3 row">
+                                    <label class="col-md-3 col-form-label" for="hf-email">Iterest Amount</label>
+                                    <div class="col-md-9">
+                                        <input type="text" name="interestAmt" [(ngModel)]=fdAccount.interestAmt value="{{fdAccount.interestAmt}}" class="form-control" readonly>
+                                    </div>
+                                </div>
+
+                                <div class="form-group mb-3 row">
+                                    <label class="col-md-3 col-form-label" for="hf-email">Start Date</label>
+                                    <div class="col-md-9">
+                                        <input class="form-control" id="date-input" [(ngModel)]=fdAccount.startDate type="date" name="startDate">
+                                    </div>
+                                </div>
+                                <div class="form-group mb-3 row">
+                                    <label class="col-md-3 col-form-label" for="hf-email">End Date</label>
+                                    <div class="col-md-9">
+                                        <input class="form-control" id="date-input" [(ngModel)]=fdAccount.endDate type="date" name="endDate">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!--/.col-->
+                        <div class="card-footer">
+                            <button type="button" mat-raised-button (click)="createNewFD()" class="mt-2 mb-2 " color="primary"><i class="fa fa-dot-circle-o"></i> Submit</button>
+                            <button type="reset" mat-raised-button class="m-2" color="warn"><i class="fa fa-ban"></i> Reset</button>
+                        </div>
+                    </form>
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+    <!--/.row-->
+
+</div>

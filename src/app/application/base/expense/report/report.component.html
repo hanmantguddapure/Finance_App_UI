@@ -1,0 +1,66 @@
+<div class="animated fadeIn">
+    <div class="card">
+        <div class="card-header">
+            <strong>Expenses Report</strong>
+        </div>
+        <div class="card-body">
+            <form #form="ngForm" class="form-horizontal">
+                <div class="form-group mb-3 row">
+                    <div class="col-md-4">
+                        <label class="col-form-label">Expence Type</label>
+                        <select class="form-control" name="fdStatus" ngModel (change)="onStatusChange($event)">
+                            <option>--Select FD Status--</option>
+                            <option *ngFor="let item of expenseTypesList; let i = index;" [value]="item.expenseType">{{item.expenseType | uppercase}}</option>
+                        </select>
+                    </div>
+                    <div class="col-md-4">
+                        <label class="col-form-label" for="fromDate">From Date</label>
+                        <input class="form-control" id="fromDate" type="date" name="fromDate" ngModel>
+                    </div>
+                    <div class="col-md-4">
+                        <label class="col-form-label" for="toDate">To Date</label>
+                        <input class="form-control" id="toDate" type="date" name="toDate" ngModel>
+                    </div>
+                </div>
+                <div class="text-end">
+                    <button type="button" mat-raised-button (click)="getExpenseDtls(form.value)" class="mt-2 mb-2 " color="primary"><i class="fa fa-dot-circle-o"></i> Submit</button>
+                    <button type="reset" mat-raised-button class="m-2" color="warn"><i class="fa fa-ban"></i> Reset</button>
+                </div>
+            </form>
+
+            <div class="pt-4">
+                <!-- <div *ngIf="expenseslst?.length" class="pt-4"> -->
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th width="10%">No.</th>
+                            <th>Date</th>
+                            <th>Expense Type</th>
+                            <th>Remark</th>
+                            <th>Amount</th>
+                            <th class="text-center">Option</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let expenseDtls of expenseslst; let i = index;">
+                            <td>{{i+1}}</td>
+                            <td>{{expenseDtls.fromDate}}</td>
+                            <td>{{expenseDtls.expenseType}}</td>
+                            <td>{{expenseDtls.remark}}</td>
+                            <td>{{expenseDtls.amount}}</td>
+                            <td class="text-center" width="10%">
+                                <a href="javascript:;" class="text-danger" (click)="delete(i, expenseDtls.expenseTypeId)">
+                                    <i class="fa fa-trash"></i>
+                                </a>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="5">Total</td>
+                            <td>{{total}}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>

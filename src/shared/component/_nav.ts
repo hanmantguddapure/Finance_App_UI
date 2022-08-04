@@ -1,161 +1,105 @@
-import { INavData } from "@coreui/angular";
-
-export const navItems: INavData[] = [
+export const navItems: any = [
     {
         name: 'Dashboard',
-        url: '/dashboard',
-        iconComponent: { name: 'cil-library' }
+        url: '/application/dashboard',
+        icon: 'fa fa-dashboard',
     },
     {
         name: 'Customer',
-        url: '/base/customer',
-        iconComponent: { name: 'cil-user' }
+        url: '/application/customer',
+        icon: 'fa fa-user',
     },
     {
         name: 'Loan',
-        url: '/Loan',
-        iconComponent: { name: 'cil-dollar' },
+        url: '',
+        icon: 'fa fa-money',
         children: [
             {
                 name: 'Account',
-                url: '/Loan',
-                iconComponent: { name: 'cil-notes' },
-                children: [
-                    {
-                        name: 'New',
-                        url: '/base/loan-account',
-                        iconComponent: { name: 'cil-pencil' }
-                    },
-                    {
-                        name: 'View',
-                        url: '/base/loan-detail',
-                        iconComponent: { name: 'cil-pencil' }
-                    },
-                    {
-                        name: 'Close',
-                        url: '/base/close-loan',
-                        iconComponent: { name: 'cil-pencil' }
-                    },
-                ]
+                url: '/application/loan-account',
+                icon: 'cil-notes'
             },
             {
                 name: 'Disbursement',
-                url: '/Loan',
-                iconComponent: { name: 'cil-notes' },
-                children: [
-                    {
-                        name: 'Disburse Loan',
-                        url: '/base/loan-payment',
-                        iconComponent: { name: 'cil-pencil' }
-                    },
-                    {
-                        name: 'Disbursed Loans',
-                        url: '/base/disbursed-loans',
-                        iconComponent: { name: 'cil-pencil' }
-                    },
-                ]
+                url: '/application/disbursed-loans',
+                icon: 'cil-notes'
             },
             {
                 name: 'Installments',
-                url: '/base/loan-emi',
-                iconComponent: { name: 'cil-pencil' }
+                url: '/application/loan-emi',
+                icon: 'cil-pencil',
             },
             {
                 name: 'Reports',
-                url: '/base',
-                iconComponent: { name: 'cil-notes' },
-                children: [
-                    {
-                        name: 'Loan Status',
-                        url: '/base/loan-repo',
-                        iconComponent: { name: 'cil-pencil' }
-                    },
-                    {
-                        name: 'Loan Holders',
-                        url: '/base/loan-holders',
-                        iconComponent: { name: 'cil-pencil' }
-                    },
-                    {
-                        name: 'Loan Penalty',
-                        url: '/base/loan-penlty-repo',
-                        iconComponent: { name: 'cil-pencil' }
-                    },
-                    {
-                        name: 'Collection Report',
-                        url: '/base/loan-collection-report',
-                        iconComponent: { name: 'cil-pencil' }
-                    },
-                ]
+                url: '/application/loan-repo',
+                icon: 'cil-notes',
             },
             {
                 name: 'Penlty',
-                url: '/base/loan-penlty',
-                iconComponent: { name: 'cil-pencil' }
-            },
+                url: '/application/loan-penlty',
+                icon: 'cil-pencil',
+            }
         ]
     },
     {
         name: 'Expense',
-        url: '/base/expense',
-        iconComponent: { name: 'cil-money' },
+        url: '/application/expense',
+        icon: 'fa fa-exchange',
     },
     {
         name: 'Firm',
-        url: '/Expense',
-        iconComponent: { name: 'cil-building' },
+        url: '',
+        icon: 'fa fa-building',
         children: [
             {
                 name: 'New Loan',
-                url: '/base/firm-loan',
-                iconComponent: { name: 'cil-pencil' }
+                url: '/application/firm-loan',
+                icon: 'cil-pencil',
             },
             {
                 name: 'Close Loan',
-                url: '/base/firm-loan-close',
-                iconComponent: { name: 'cil-pencil' }
+                url: '/application/firm-loan-close',
+                icon: 'cil-pencil',
             },
             {
                 name: 'Report',
-                url: '/base/firm-loan-repo',
-                iconComponent: { name: 'cil-pencil' }
+                url: '/application/firm-loan-repo',
+                icon: 'cil-pencil',
             },
             {
                 name: 'New Short Term Loan',
-                url: '/base/short-term-loan',
-                iconComponent: { name: 'cil-pencil' }
+                url: '/application/short-term-loan',
+                icon: 'cil-pencil',
             },
             {
                 name: 'Close Short Term Loan',
-                url: '/base/short-term-loan-close',
-                iconComponent: { name: 'cil-pencil' }
+                url: '/application/short-term-loan-close',
+                icon: 'cil-pencil',
             },
             {
                 name: 'Report Short Term Loan',
-                url: '/base/short-term-loan-Report',
-                iconComponent: { name: 'cil-pencil' }
+                url: '/application/short-term-loan-Report',
+                icon: 'cil-pencil',
             },
         ]
     },
     {
         name: 'Fixed Deposite',
-        url: '/FD',
-        iconComponent: { name: 'cil-bank' },
+        url: '',
+        icon: 'fa fa-file-o',
         children: [
             {
                 name: 'Account',
-                url: '/base/fd/account',
+                url: '/application/fd/account',
             },
             {
                 name: 'Interest',
-                url: '/base/fd/interest',
+                url: '/application/fd/interest',
             },
             {
                 name: 'Reports',
-                url: '/base/fd/reports',
+                url: '/application/fd/reports',
             }
         ],
-    },
-    {
-        divider: true
     }
 ];

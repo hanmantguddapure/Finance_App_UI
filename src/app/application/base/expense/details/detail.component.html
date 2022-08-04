@@ -1,0 +1,64 @@
+<div class="animated fadeIn">
+    <div class="card">
+        <div class="card-header">
+            <strong>Add Expenses</strong>
+        </div>
+        <div class="card-body">
+            <form #form="ngForm" class="form-horizontal">
+                <div class="form-group row">
+                    <div class="col-md-4">
+                        <label class="col-form-label" for="hf-email">Date</label>
+                        <input class="form-control" id="date-input" (blur)="getExpensess($event)" type="date" name="fromDate" ngModel>
+                    </div>
+                    <div class="col-md-4">
+                        <label class="col-form-label" for="expenseTypeId">Expense Types</label>
+                        <select class="form-control" id="expenseTypeId" name="expenseTypeId" ngModel (change)="selectchange($event)">
+                            <option>--Select Type--</option>
+                            <option *ngFor="let expenses of expenseTypesList" value="{{expenses.expenseTypeId}}">{{expenses.expenseType}}</option>
+                        </select>
+                    </div>
+                    <div class="col-md-4">
+                        <label class="col-form-label" for="amount">Amount</label>
+                        <input type="text" name="amount" id="amount" ngModel class="form-control">
+                    </div>
+                    <div class="col-md-4">
+                        <label class="col-form-label" for="remark">Remark</label>
+                        <input type="text" name="remark" id="remark" ngModel class="form-control">
+                    </div>
+                </div>
+                <div class="text-end">
+                    <button type="button" mat-raised-button (click)="addExpenseDtls(form.value)" class="mt-2 mb-2 " color="primary"><i class="fa fa-dot-circle-o"></i> Submit</button>
+                    <button type="reset" mat-raised-button class="m-2" color="warn"><i class="fa fa-ban"></i> Reset</button>
+                </div>
+            </form>
+
+            <!-- <div *ngIf="expenseslst?.length" class="pt-4"> -->
+            <div class="pt-4">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th width="10%">No.</th>
+                            <th>Date</th>
+                            <th>Expense Type</th>
+                            <th>Remark</th>
+                            <th>Amount</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let expenseDtls of expenseslst; let i = index;">
+                            <td>{{i+1}}</td>
+                            <td>{{expenseDtls.fromDate}}</td>
+                            <td>{{expenseDtls.expenseType}}</td>
+                            <td>{{expenseDtls.remark}}</td>
+                            <td>{{expenseDtls.amount}}</td>
+                        </tr>
+                        <tr>
+                            <td colspan="4">Total</td>
+                            <td>{{total}}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>

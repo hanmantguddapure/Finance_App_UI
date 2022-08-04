@@ -1,0 +1,71 @@
+<div class="animated fadeIn">
+    <div class="card">
+        <div class="card-header">
+            <strong>Expense Types</strong>
+        </div>
+        <div class="card-body">
+            <form #form="ngForm" class="form-horizontal" [formGroup]="ExpenseGroup">
+                <div class="form-group mb-3 row">
+                    <div class="col-md-10">
+                        <label class="col-form-label">Expense Name</label>
+                        <input type="text" name="expenseType" formControlName="expenseType" class="form-control" placeholder="Type Of Expenses">
+                    </div>
+                    <div class="col-md-2 p-0 pt-4 mt-2 pe-3 text-end">
+                        <button type="button" mat-raised-button (click)="addExpenseTypes()" class="mt-2 btn-success">
+                            <i class="fa fa-check"></i>
+                        </button>
+                        <button type="reset" mat-raised-button class="btn ms-2 mt-1 m-2" color="warn">
+                            <i class="fa fa-ban"></i>
+                        </button>
+                    </div>
+                </div>
+            </form>
+
+            <div *ngIf="expenseTypesList?.length">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th width="10%">No.</th>
+                            <th>Name</th>
+                            <th width="10%" class="text-center">Option</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let expenseTypes of expenseTypesList; let i = index;">
+                            <td>{{i+1}}</td>
+                            <td>{{expenseTypes.expenseType}}</td>
+                            <td *ngIf="expenseTypes.expenseTypeId" class="text-center">
+                                <a href="javascript:;" (click)="intiateEdit(content, expenseTypes)">
+                                    <i class="fa fa-pencil"></i>
+                                </a>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+<ng-template #content let-modal>
+    <div class="modal-header">
+        <button type="button" mat-raised-button class="btn-close m-2 text-end p-2" aria-label="Close" (click)="close()"></button>
+    </div>
+    <div class="modal-body">
+        <form #form="ngForm" class="form-horizontal" [formGroup]="UpdateExpenseGroup">
+            <div class="form-group mb-3 row">
+                <div class="col-md-12">
+                    <label class="col-form-label">Expense Name</label>
+                    <input type="text" name="expenseType" formControlName="expenseType" class="form-control" placeholder="Type Of Expenses">
+                    <p class="text-danger m-0" *ngIf="(UpdateExpenseGroup.get('expenseType').dirty || UpdateExpenseGroup.get('expenseType').touched ) && UpdateExpenseGroup.get('expenseType').errors">
+                        <span *ngIf="UpdateExpenseGroup.get('expenseType').errors?.['required']">Please enter valid name</span>
+                        <span *ngIf="UpdateExpenseGroup.get('expenseType').errors?.['similar']">Please enter diffrent name</span>
+                    </p>
+                </div>
+                <div class="p-0 mt-2 pe-3 text-end">
+                    <button type="button" mat-raised-button class="btn m-2 btn-light" (click)="updateData()">Update</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</ng-template>
