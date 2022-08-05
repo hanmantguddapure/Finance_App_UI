@@ -9,21 +9,21 @@
                 <div class="card-body">
                     <form #form="ngForm" class="form-horizontal">
                         <div class="form-group mb-3 row">
-                            <label class="col-md-3 col-form-label"  >Account Number</label>
+                            <label class="col-md-3 col-form-label">Account Number</label>
                             <div class="col-md-9">
                                 <input type="text" name="loanAccountId" ngModel (blur)="getPenaltyDetail($event)" class="form-control" placeholder="Loan Account No....">
                             </div>
                         </div>
 
                         <div class="form-group mb-3 row">
-                            <label class="col-md-3 col-form-label"  >penalty Amount</label>
+                            <label class="col-md-3 col-form-label">penalty Amount</label>
                             <div class="col-md-9">
                                 <input type="text" name="penaltyAmt" ngModel class="form-control">
                             </div>
                         </div>
 
                         <div class="form-group mb-3 row">
-                            <label class="col-md-3 col-form-label"  >Remark</label>
+                            <label class="col-md-3 col-form-label">Remark</label>
                             <div class="col-md-9">
                                 <input type="text" name="remark" ngModel class="form-control">
                             </div>
@@ -32,9 +32,9 @@
 
 
 
-                        <div class="card-footer">
-                            <button type="button" mat-raised-button (click)="addPenalty(form.value)" class="mt-2 mb-2 " color="primary"><i class="fa fa-dot-circle-o"></i> Submit</button>
-                            <button type="reset" mat-raised-button class="m-2" color="warn"><i class="fa fa-ban"></i> Reset</button>
+                        <div class="card-footer text-end">
+                            <button type="button" mat-raised-button (click)="addPenalty(form.value)" class="mt-2 mb-2 " color="primary"> Submit</button>
+                            <button type="reset" mat-raised-button class="m-2"> Reset</button>
                         </div>
 
                     </form>

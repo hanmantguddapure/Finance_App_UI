@@ -1,22 +1,8 @@
 $enable-ltr: true;
 $enable-rtl: true;
 
-// Import styles with default layout.
-@import "~@coreui/coreui/scss/coreui";
-// Override Boostrap variables
-@import "~@coreui/coreui/scss/variables";
+@import "~bootstrap/scss/bootstrap.scss";
 @import "~@angular/material/prebuilt-themes/indigo-pink.css";
-
-
-.wrapper {
-    width: 100%;
-    @include ltr-rtl("padding-left", var(--cui-sidebar-occupy-start, 0));
-    @include ltr-rtl("padding-right", var(--cui-sidebar-occupy-end, 0));
-    will-change: auto;
-    @include transition(padding 0.15s);
-}
-// perfect scrollbar theming for use with [perfectScrollbar] directive
-//@import '~perfect-scrollbar/css/perfect-scrollbar.css';
 
 $sidebar-backdrop-bg: #3c645fe3;
 

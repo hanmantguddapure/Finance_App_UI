@@ -10,7 +10,7 @@ import { ToastService } from 'src/shared/services/toast.service';
       [autohide]="true"
       [delay]="toast.delay || 5000"
       (hidden)="toastService.remove(toast)"
-    >
+  >
       <ng-template [ngIf]="isTemplate(toast)" [ngIfElse]="text">
         <ng-template [ngTemplateOutlet]="toast.textOrTpl"></ng-template>
       </ng-template>

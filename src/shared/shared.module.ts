@@ -10,6 +10,7 @@ import { MatListModule } from "@angular/material/list";
 import { MatButtonModule } from "@angular/material/button";
 import { MatCardModule } from '@angular/material/card';
 import { MatTabsModule } from '@angular/material/tabs';
+import { MatExpansionModule } from '@angular/material/expansion';
 
 import { CommonComponents } from "./component";
 
@@ -28,7 +29,8 @@ import { CommonComponents } from "./component";
         MatListModule,
         MatButtonModule,
         MatCardModule,
-        MatTabsModule
+        MatTabsModule,
+        MatExpansionModule
     ],
     exports: [
         ...CommonComponents,
@@ -38,7 +40,8 @@ import { CommonComponents } from "./component";
         MatListModule,
         MatButtonModule,
         MatCardModule,
-        MatTabsModule
+        MatTabsModule,
+        MatExpansionModule
     ]
 })
 export class SharedAppModule { }

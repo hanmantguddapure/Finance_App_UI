@@ -19,6 +19,7 @@ import { LoginComponent } from './auth/login.component';
 import { NgbModal, NgbModalConfig, NgbToast } from '@ng-bootstrap/ng-bootstrap';
 import { HashLocationStrategy, LocationStrategy } from '@angular/common';
 import { JwtAuthService } from 'src/shared/services/token-intercepter.service';
+import { SharedAppModule } from 'src/shared/shared.module';
 
 @NgModule({
     imports: [
@@ -27,6 +28,7 @@ import { JwtAuthService } from 'src/shared/services/token-intercepter.service';
         FormsModule,
         ReactiveFormsModule,
         HttpClientModule,
+        SharedAppModule,
 
         AppRoutingModule
     ],

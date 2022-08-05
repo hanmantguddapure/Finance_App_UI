@@ -1,14 +1,8 @@
-<div class="animated fadeIn">
-    <div class="row">
-        <div class="col-sm-12">
-            <form #custform="ngForm" class="form-horizontal">
-                <shared-customer [isView]="true" [isLoader]="isLoader" [CustomerGroup]="CustomerGroup"></shared-customer>
-                <!--/.col-->
-                <div class="card-footer text-riendght">
-                    <button type="button" mat-raised-button (click)="saveCustomerPersionDetail()" class="mt-2 mb-2 " color="primary"><i class="fa fa-dot-circle-o"></i> Submit</button>
-                    <button type="reset" mat-raised-button class="m-2" color="warn"><i class="fa fa-ban"></i> Reset</button>
-                </div>
-            </form>
-        </div>
+<form #custform="ngForm" class="form-horizontal">
+    <shared-customer [isView]="true" [isLoader]="isLoader" [CustomerGroup]="CustomerGroup"></shared-customer>
+    <!--/.col-->
+    <div class="card-footer text-end">
+        <button type="button" mat-raised-button (click)="saveCustomerPersionDetail()" class="mt-2 mb-2 " color="primary"> Submit</button>
+        <button type="reset" mat-raised-button class="m-2"> Reset</button>
     </div>
-</div>
+</form>

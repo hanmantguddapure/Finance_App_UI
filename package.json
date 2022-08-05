@@ -23,7 +23,6 @@
     "@angular/router": "^14.1.0",
     "@material/drawer": "^14.0.0",
     "@ng-bootstrap/ng-bootstrap": "^13.0.0",
-    "@coreui/coreui": "^4.2.0",
     "@types/jspdf": "^2.0.0",
     "bootstrap": "^5.2.0",
     "flag-icon-css": "^4.1.7",

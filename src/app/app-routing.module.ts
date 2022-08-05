@@ -19,7 +19,7 @@ const appRoutes: Routes = [
         path: 'application',
         loadChildren: () => import('./application/application.module').then(m => m.ApplicationModule),
     },
-    { path: '', redirectTo: '/login', pathMatch: 'full' },
+    { path: '', redirectTo: '/application', pathMatch: 'full' },
 
     {
         path: '404',
