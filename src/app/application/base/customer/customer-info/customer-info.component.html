@@ -1,7 +1,7 @@
 <form #custform="ngForm" class="form-horizontal">
     <shared-customer [isView]="true" [isLoader]="isLoader" [CustomerGroup]="CustomerGroup"></shared-customer>
     <!--/.col-->
-    <div class="card-footer text-end">
+    <div class="text-end">
         <button type="button" mat-raised-button (click)="saveCustomerPersionDetail()" class="mt-2 mb-2 " color="primary"> Submit</button>
         <button type="reset" mat-raised-button class="m-2"> Reset</button>
     </div>

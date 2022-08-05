@@ -1,5 +1,4 @@
 <div class="animated fadeIn">
-
     <div class="row">
         <div class="col-sm-12">
             <div class="card">
@@ -17,47 +16,41 @@
                             <input type="text" value="{{fdAccountDtls.custName}}" class="form-control" readonly>
                         </div>
                         <div class="form-group col-sm-2">
-                            <label for="hf-email">FD Amount</label>
+                            <label class="col-form-label" for="hf-email">FD Amount</label>
                             <input type="text" value="{{fdAccountDtls.amount}}" class="form-control" readonly>
                         </div>
                         <div class="form-group col-sm-2">
-                            <label for="hf-email">Iterest</label>
+                            <label class="col-form-label" for="hf-email">Iterest</label>
                             <input type="text" value="{{fdAccountDtls.interest}} %" class="form-control" readonly>
                         </div>
                         <div class="form-group col-sm-2">
-                            <label for="hf-email">Total Paid Iterest</label>
+                            <label class="col-form-label" for="hf-email">Total Paid Iterest</label>
                             <input type="text" value="{{fdAccountDtls.interestAmt}}" class="form-control" readonly>
                         </div>
                     </div>
                     <div class="row">
-
                         <div class="form-group col-sm-2">
-                            <label for="hf-email">Start Date</label>
+                            <label class="col-form-label" for="hf-email">Start Date</label>
                             <input type="text" value="{{fdAccountDtls.startDate}}" class="form-control" readonly>
                         </div>
                         <div class="form-group col-sm-2">
-                            <label for="hf-email">End Date</label>
+                            <label class="col-form-label" for="hf-email">End Date</label>
                             <input type="text" value="{{fdAccountDtls.endDate}}" class="form-control" readonly>
                         </div>
                         <div class="form-group col-sm-2">
-                            <label for="hf-email">Closing Date</label>
+                            <label class="col-form-label" for="hf-email">Closing Date</label>
                             <input type="text" value="{{fdAccountDtls.closingDate}}" class="form-control" readonly>
                         </div>
                         <div class="form-group col-sm-2">
-                            <label for="hf-email">Status</label>
+                            <label class="col-form-label" for="hf-email">Status</label>
                             <input type="text" value="{{fdAccountDtls.isActive}}" class="form-control" readonly>
                         </div>
                         <div class="form-group col-sm-8">
                             <a [href]="fileUrl" target="_blank" download="fd.pdf">Download</a>
                         </div>
                     </div>
-                    <div class="row">
-
-
-                    </div>
                 </div>
             </div>
-            <!--/.row-->
         </div>
     </div>
     <div class="row">
@@ -78,7 +71,6 @@
                         </thead>
                         <tbody>
                             <tr *ngFor="let fdInterestDtl of fdInterestHistory">
-
                                 <td>{{fdInterestDtl.fromDate}}</td>
                                 <td>{{fdInterestDtl.toDate}}</td>
                                 <td>{{fdInterestDtl.interestAmt}}</td>
@@ -86,9 +78,7 @@
                             </tr>
                         </tbody>
                     </table>
-
                 </div>
             </div>
         </div>
-        <!--/.col-->
     </div>

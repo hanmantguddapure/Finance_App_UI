@@ -79,7 +79,7 @@ export class JwtAuthService implements HttpInterceptor {
                 }
                 switch (error.status) {
                     case 0: this.tostar.error("Internal Server Error");
-                        this.router.navigate(['login']);
+                        // this.router.navigate(['login']);
                         break;
                     case 204: this.tostar.error("Not Available");
                         break;

@@ -1,9 +1,9 @@
-<ul class="nav nav-tabs" id="myTab" role="tablist">
-    <li class="nav-item" role="presentation">
-        <button routerLink="customer-new" [routerLinkActive]="'active'" class="nav-link" id="customer-new" data-bs-target="#customer-new" aria-controls="customer-new" aria-selected="true">New Customer</button>
-    </li>
-    <li class="nav-item" role="presentation">
-        <button routerLink="customer-info" [routerLinkActive]="'active'" class="nav-link" id="customer-info" data-bs-target="#customer-info" aria-controls="customer-info" aria-selected="false">View Customer</button>
-    </li>
-</ul>
+<nav mat-tab-nav-bar>
+    <a mat-tab-link routerLink="customer-new" routerLinkActive #rla="routerLinkActive" [active]="rla.isActive">
+        New Customer
+    </a>
+    <a mat-tab-link routerLink="customer-info" routerLinkActive #rla1="routerLinkActive" [active]="rla1.isActive">
+        View Customer
+    </a>
+</nav>
 <router-outlet></router-outlet>

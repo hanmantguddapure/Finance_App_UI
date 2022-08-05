@@ -16,28 +16,23 @@ export const navItems: any = [
         children: [
             {
                 name: 'Account',
-                url: '/application/loan-account',
-                icon: 'cil-notes'
+                url: '/application/loan/account'
             },
             {
                 name: 'Disbursement',
-                url: '/application/disbursed-loans',
-                icon: 'cil-notes'
+                url: '/application/loan/disbursement'
             },
             {
                 name: 'Installments',
-                url: '/application/loan-emi',
-                icon: 'cil-pencil',
+                url: '/application/loan/emi'
             },
             {
                 name: 'Reports',
-                url: '/application/loan-repo',
-                icon: 'cil-notes',
+                url: '/application/loan/reports'
             },
             {
                 name: 'Penlty',
-                url: '/application/loan-penlty',
-                icon: 'cil-pencil',
+                url: '/application/loan/penalty'
             }
         ]
     },
@@ -52,34 +47,12 @@ export const navItems: any = [
         icon: 'fa fa-building',
         children: [
             {
-                name: 'New Loan',
-                url: '/application/firm-loan',
-                icon: 'cil-pencil',
+                name: 'Loan',
+                url: '/application/firm/loan',
             },
             {
-                name: 'Close Loan',
-                url: '/application/firm-loan-close',
-                icon: 'cil-pencil',
-            },
-            {
-                name: 'Report',
-                url: '/application/firm-loan-repo',
-                icon: 'cil-pencil',
-            },
-            {
-                name: 'New Short Term Loan',
-                url: '/application/short-term-loan',
-                icon: 'cil-pencil',
-            },
-            {
-                name: 'Close Short Term Loan',
-                url: '/application/short-term-loan-close',
-                icon: 'cil-pencil',
-            },
-            {
-                name: 'Report Short Term Loan',
-                url: '/application/short-term-loan-Report',
-                icon: 'cil-pencil',
+                name: 'Short Term Loan',
+                url: '/application/firm/short-term',
             },
         ]
     },

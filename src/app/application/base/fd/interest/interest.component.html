@@ -29,11 +29,11 @@
 
                         <div class="row">
                             <div class="form-group col-sm-2">
-                                <label title="Interest Is Monthly Basis">Pending Months</label>
+                                <label class="col-form-label" title="Interest Is Monthly Basis">Pending Months</label>
                                 <input type="text" value="{{fdDtls.pendingMonthsOfInterest}}" [ngModelOptions]="{standalone: true}" ngModel class="form-control">
                             </div>
                             <div class="form-group col-sm-2">
-                                <label title="Interest Is Monthly Basis">Interest In %</label>
+                                <label class="col-form-label" title="Interest Is Monthly Basis">Interest In %</label>
                                 <input type="text" value="{{fdDtls.interest}}" [ngModelOptions]="{standalone: true}" ngModel class="form-control">
                             </div>
                             <div class="form-group col-sm-2">
@@ -50,8 +50,8 @@
                                 </select>
                             </div>
                         </div>
-                        <div class="card-footer text-end">
-                            <button type="button" class="m-2" mat-raised-button (click)="payInterestAmt(form.value)" class="mt-2 mb-2 " color="primary"> PAY</button>
+                        <div class="mt-2 text-end">
+                            <button type="button" class="m-2" mat-raised-button (click)="payInterestAmt(form.value)" class="mt-2 mb-2" color="primary"> PAY</button>
                         </div>
                     </form>
                 </div>
