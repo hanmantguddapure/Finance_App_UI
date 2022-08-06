@@ -59,7 +59,7 @@ export class ExpenseTypesComponent implements OnInit {
             this.toster.error("Please add Expense Type");
             return;
         }
-        this.expenseService.addExpenseType(data.expenseType).then((data: any) => {
+        this.expenseService.addExpenseType(data).then((data: any) => {
             this.expense = data;
             this.expenseTypesList.push(this.expense);
             this.toster.success("Added Successfully");

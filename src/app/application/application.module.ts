@@ -13,7 +13,6 @@ import { ApplicationRoutingModule } from './application-routing.module';
 import { ApplicationComponent } from './application.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { HeaderComponent } from './core/header/header.component';
-import { LoaderComponent } from './core/loader.component';
 
 
 import { SharedAppModule } from 'src/shared/shared.module';
@@ -30,8 +29,7 @@ import { SharedAppModule } from 'src/shared/shared.module';
     declarations: [
         ApplicationComponent,
         DashboardComponent,
-        HeaderComponent,
-        LoaderComponent,
+        HeaderComponent
     ],
     providers: [
     ]

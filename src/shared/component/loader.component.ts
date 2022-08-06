@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 
 @Component({
-    selector: 'app-shared-loader',
+    selector: 'app-loader',
     template: `
     <div class="spinner-wrapper">
         <div class="spinner-border spinner" role="status">
