@@ -58,7 +58,7 @@ export class LoginComponent {
         this.loginService.checkUser(this.user).subscribe(data => {
             this.cache.user = data;
             this.cache.set('user', this.cache.user);
-            this.router.navigate(['dashboard']);
+            this.router.navigate(['/application/dashboard']);
             this.passwordLoader = false;
         }, error => {
             this.passwordLoader = false;
