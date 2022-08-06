@@ -84,4 +84,5 @@
         <button type="button" mat-raised-button class="m-2 " (click)="closeModal(false)">Close</button>
         <button type="button" mat-raised-button class="m-2 " color="primary" (click)="closeModal(true)">Okay</button>
     </div>
+    <app-loader *ngIf="isLoader"></app-loader>
 </ng-template>

@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { ToastService } from 'src/shared/services/toast.service';
+
 import { LoanRepo } from 'src/shared/modals/loan-repo';
-import { LoanserviceService } from 'src/shared/providers/loanservice.service';
+
+import { ToastService, LoanService } from 'src/shared';
 
 @Component({
     templateUrl: './loans.component.html'
@@ -9,16 +10,17 @@ import { LoanserviceService } from 'src/shared/providers/loanservice.service';
 
 export class LoansComponent implements OnInit {
     loanRepoDetails: Array<LoanRepo> = [];
+    isLoader: boolean;
 
-    constructor(private toster: ToastService, private loanservice: LoanserviceService) { }
-
-    ngOnInit() {
-        this.loanservice.getDisburseLoansByStatus('Opened').subscribe(data => {
-
-            this.loanRepoDetails = data;
-
-
-        })
+    constructor(private toster: ToastService, private loanservice: LoanService) {
+        this.isLoader = false;
     }
 
+    ngOnInit() {
+        this.isLoader = true;
+        this.loanservice.getDisburseLoansByStatus('Opened').subscribe(data => {
+            this.loanRepoDetails = data;
+            this.isLoader = false;
+        })
+    }
 }

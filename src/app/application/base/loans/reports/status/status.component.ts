@@ -1,14 +1,14 @@
 import { Component, OnInit } from '@angular/core';
 
-import { LoanRepo } from 'src/shared/modals/loan-repo';
-import { LoanserviceService } from 'src/shared/providers/loanservice.service';
+import { LoanService, ToastService } from 'src/shared';
+
 import { AppConstants } from 'src/shared/modals/app-constants';
-import { ToastService } from 'src/shared/services/toast.service';
+import { LoanRepo } from 'src/shared/modals/loan-repo';
 
 @Component({
     templateUrl: 'status.component.html',
-
 })
+
 export class StatusComponent implements OnInit {
     loanRepoDetails: Array<LoanRepo> = [];
     fileUrl: any;
@@ -22,7 +22,11 @@ export class StatusComponent implements OnInit {
     totalInterest: number = 0;
     totalProcessFess: number = 0;
     totalDisbursed: number = 0;
-    constructor(private toster: ToastService, private loanservice: LoanserviceService) { }
+    isLoader: boolean;
+
+    constructor(private toster: ToastService, private loanservice: LoanService) {
+        this.isLoader = false;
+    }
 
     ngOnInit() {
     }
@@ -37,6 +41,7 @@ export class StatusComponent implements OnInit {
         this.totalEarning = 0;
         this.totalInterest = 0;
         this.fileUrl = AppConstants.API_ENDPOINT + "/Loan/download-loan-accounts/" + loanStatus;
+        this.isLoader = true;
         this.loanservice.getLoanDetailByStatus(loanStatus).subscribe(data => {
             this.loanRepoDetails = data;
             this.loanRepoDetails.forEach(element => {
@@ -49,10 +54,9 @@ export class StatusComponent implements OnInit {
                 this.totalInterest = this.totalInterest + (element.totalInterest);
                 this.totalProcessFess = this.totalProcessFess + (element.proceessingFee);
                 this.totalDisbursed = this.totalDisbursed + (element.disburseAmt);
-
             });
             this.totalAccounts = this.loanRepoDetails.length;
+            this.isLoader = false;
         })
     }
-
 }

@@ -94,6 +94,7 @@
         </div>
         <!--/.col-->
     </div>
+    <app-loader *ngIf="isLoader"></app-loader>
 </div>
 
 <ng-template #content let-c="close" let-d="dismiss">

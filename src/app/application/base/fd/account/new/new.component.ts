@@ -1,23 +1,28 @@
 import { Component, OnInit } from '@angular/core';
 
-import { CustomerserviceService } from 'src/shared/providers/customerservice.service';
 import { FDAccount } from 'src/shared/modals/fdaccount';
-import { FDServiceService } from 'src/shared/providers/fdservice.service';
-import { ToastService } from 'src/shared/services/toast.service';
+
+import { ToastService, FDService, CustomerService } from 'src/shared';
 
 @Component({
-    templateUrl: './new.component.html',
-
+    templateUrl: './new.component.html'
 })
+
 export class NewComponent implements OnInit {
     allCustomerList: any;
     fdAccount: FDAccount = new FDAccount(null);
     validationFlag: boolean = true;
+    isLoader: boolean;
 
-    constructor(private toster: ToastService, private customerService: CustomerserviceService, private fdService: FDServiceService) { }
+    constructor(private toster: ToastService, private customerService: CustomerService, private fdService: FDService) {
+        this.isLoader = false;
+    }
+
     ngOnInit() {
+        this.isLoader = true;
         this.customerService.getCustomerAllDetail().subscribe(data => {
             this.allCustomerList = data;
+            this.isLoader = false;
         })
     }
 
@@ -30,9 +35,11 @@ export class NewComponent implements OnInit {
         this.validationFlag = true;
         this.checkValidation();
         if (this.validationFlag) {
+            this.isLoader = true;
             this.fdService.createNewFD(this.fdAccount).subscribe(data => {
                 this.fdAccount = data;
                 this.toster.success("Successfully Created New FD");
+                this.isLoader = false;
             })
         }
     };

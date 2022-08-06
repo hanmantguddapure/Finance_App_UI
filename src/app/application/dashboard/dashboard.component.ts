@@ -1,12 +1,17 @@
 import { Component, OnInit } from '@angular/core';
-
-import { LoanserviceService } from 'src/shared/providers/loanservice.service';
-import { DashBoardServiceService } from 'src/shared/providers/dash-board-service.service';
-import { AppSummary } from 'src/shared/modals/app-summary';
-import { LoanSummary } from 'src/shared/modals/loan-summary';
-import { FdSummary } from 'src/shared/modals/fd-summary';
-import { ApiService } from 'src/shared/services/api.service';
 import { Router } from '@angular/router';
+
+import {
+    LoanService,
+    DashBoardService,
+    ApiService,
+} from 'src/shared';
+
+import { AppSummary } from 'src/shared/modals/app-summary';
+import { FdSummary } from 'src/shared/modals/fd-summary';
+import { LoanSummary } from 'src/shared/modals/loan-summary';
+
+
 
 
 @Component({
@@ -25,8 +30,8 @@ export class DashboardComponent implements OnInit {
     totalClosingBal: number;
     pendingCollection: number;
     closingBalSummary: number;
-    constructor(private loanservice: LoanserviceService,
-        private dashboardService: DashBoardServiceService,
+    constructor(private loanservice: LoanService,
+        private dashboardService: DashBoardService,
         private apiService: ApiService,
         private router: Router) {
 

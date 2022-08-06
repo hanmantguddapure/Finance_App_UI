@@ -1,17 +1,19 @@
 import { Component, OnInit } from '@angular/core';
 
-import { ToastService } from 'src/shared/services/toast.service';
 import { Loandetail } from 'src/shared/modals/loandetail';
 import { PaymentDetail } from 'src/shared/modals/payment-detail';
-import { LoanserviceService } from 'src/shared/providers/loanservice.service';
 
+import { LoanService, ToastService } from 'src/shared';
 @Component({
     templateUrl: './close.component.html',
 })
 export class CloseComponent implements OnInit {
     loanDetail: Loandetail = new Loandetail(null);
     loanPaymetDetails: Array<PaymentDetail> = [];
-    constructor(private toster: ToastService, private loanservice: LoanserviceService) { }
+    isLoader: boolean;
+    constructor(private toster: ToastService, private loanservice: LoanService) {
+        this.isLoader = false;
+    }
 
     ngOnInit() {
     }
@@ -20,11 +22,13 @@ export class CloseComponent implements OnInit {
         if (loanId == "") {
             this.toster.error("Please enter loan id")
         } else {
+            this.isLoader = true;
             this.loanservice.getLoanDetailByLoanId(loanId).subscribe(data => {
                 this.loanDetail = data;
                 this.loanDetail.pendingAmount = this.loanDetail.principalAmount - this.loanDetail.totalCollection - this.loanDetail.depositeAmt;
                 this.loanPaymetDetails = this.loanDetail.loanCollections;
                 this.loanDetail.totalInstallments = this.loanPaymetDetails.length;
+                this.isLoader = false;
             })
         }
 
@@ -37,8 +41,10 @@ export class CloseComponent implements OnInit {
         } else {
             this.loanDetail.loanStatus = loanDetail.loanStatus;
             this.loanDetail.remark = loanDetail.remark;
+            this.isLoader = true;
             this.loanservice.closeLoanAccount(this.loanDetail).subscribe(data => {
                 this.toster.success("Closed Successfully")
+                this.isLoader = false;
             })
         }
     };

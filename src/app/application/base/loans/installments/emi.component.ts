@@ -1,11 +1,10 @@
 import { Component } from '@angular/core';
-import { CustomerserviceService } from 'src/shared/providers/customerservice.service';
-import { LoanserviceService } from 'src/shared/providers/loanservice.service';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { Router, ActivatedRoute } from '@angular/router';
 
 import { PaymentDetail } from 'src/shared/modals/payment-detail';
-import { ToastService } from 'src/shared/services/toast.service';
-import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+
+import { CustomerService, LoanService, ToastService } from 'src/shared';
 
 @Component({
     templateUrl: './emi.component.html'
@@ -21,9 +20,11 @@ export class EMIComponent {
     currDate = new Date();
     collectionType = "Daily";
     iconCollapse: string = 'icon-arrow-up';
-    constructor(private toster: ToastService, private modalService: NgbModal, private customerService: CustomerserviceService, private loanservice: LoanserviceService, private router: Router, private route: ActivatedRoute) {
+    isLoader: boolean;
+    constructor(private toster: ToastService, private modalService: NgbModal, private customerService: CustomerService, private loanservice: LoanService, private router: Router, private route: ActivatedRoute) {
         // this.loanDetail = { loanAccountNo: 4, "custId": 4, "principalAmount": 100000.0, "interest": 10.0, "interestAmt": 10000.0, "depositeAmt": 5000.0, "processingFees": 500.0, "loanAmt": 84500.0, "loanStartDate": "2022-06-10", "loanEndDate": "2022-06-22", "installMentType": "Daily", "installments": 100, "installmentAmount": 1000.0, "custFullName": "Rahul Patil", "totalCollection": 70000.0, "loanStatus": "Closed", "remark": "", "disburseAmt": 84500.0, "paymentDate": "2022-06-02", "paymentMode": "", "loanCollections": [{ "loanAccNo": null, "payment": 10000.0, "paymentMethod": "Daily", "paymentDate": "2022-06-03", "paymentId": 9 }, { "loanAccNo": null, "payment": 10000.0, "paymentMethod": "Daily", "paymentDate": "2022-06-03", "paymentId": 10 }, { "loanAccNo": null, "payment": 10000.0, "paymentMethod": "Daily", "paymentDate": "2022-06-03", "paymentId": 11 }, { "loanAccNo": null, "payment": 10000.0, "paymentMethod": "Daily", "paymentDate": "2022-06-03", "paymentId": 12 }, { "loanAccNo": null, "payment": 10000.0, "paymentMethod": "Daily", "paymentDate": "2022-06-04", "paymentId": 13 }, { "loanAccNo": null, "payment": 10000.0, "paymentMethod": "Daily", "paymentDate": "2022-06-04", "paymentId": 14 }, { "loanAccNo": null, "payment": 10000.0, "paymentMethod": "Daily", "paymentDate": "2022-06-04", "paymentId": 15 }] }
         // this.loanPaymetDetails = this.loanDetail.loanCollections;
+        this.isLoader = false;
     }
     collapsed(event: any): void {
         // console.log(event);
@@ -33,8 +34,10 @@ export class EMIComponent {
         // console.log(event);
     }
     ngOnInit() {
+        this.isLoader = true;
         this.customerService.getCustomerAllDetail().subscribe(data => {
             this.allCustomerList = data;
+            this.isLoader = false;
         })
     };
     toggleCollapse(): void {
@@ -55,12 +58,14 @@ export class EMIComponent {
         if (loanId == "") {
             this.toster.error("Please enter loan id")
         } else {
+            this.isLoader = true;
             this.loanservice.getLoanDetailByLoanId(loanId).subscribe(data => {
                 this.loanDetail = data;
                 if (this.loanDetail.loanStatus.toLowerCase() == "closed") {
                     this.toster.error("Loan already closed");
                 }
                 this.loanPaymetDetails = this.loanDetail.loanCollections;
+                this.isLoader = false;
             })
         }
     }
@@ -102,6 +107,7 @@ export class EMIComponent {
     }
 
     addCustomePayment() {
+        this.isLoader = true;
         this.loanservice.addCustomerPaymet(this.loanPaymentDetail).subscribe(data => {
             if (this.loanPaymetDetails == null) {
                 this.loanPaymetDetails = [];
@@ -109,8 +115,7 @@ export class EMIComponent {
             this.loanPaymetDetails.push(this.loanPaymentDetail);
             this.toster.success("Added Successfully");
             this.checkDuplicate = false;
+            this.isLoader = false;
         })
     }
-
-
 }

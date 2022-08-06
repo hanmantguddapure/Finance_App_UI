@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { CustomerserviceService } from 'src/shared/providers/customerservice.service';
+
 import { FDAccount } from 'src/shared/modals/fdaccount';
-import { FDServiceService } from 'src/shared/providers/fdservice.service';
-import { ToastService } from 'src/shared/services/toast.service';
+
+import { ToastService, FDService, CustomerService } from 'src/shared';
 
 @Component({
     templateUrl: './holders.component.html',
@@ -15,19 +15,26 @@ export class HoldersComponent implements OnInit {
     totalInterest: number = 0;
     total: number = 0;
     totalAccounts: number = 0;
-    constructor(private toster: ToastService, private customerService: CustomerserviceService, private fdService: FDServiceService) { }
+    isLoader: boolean;
+    constructor(private toster: ToastService, private customerService: CustomerService, private fdService: FDService) {
+        this.isLoader = false;
+    }
 
     ngOnInit() {
+        this.isLoader = true;
         this.customerService.getCustomerAllDetail().subscribe(data => {
             this.allCustomerList = data;
+            this.isLoader = false;
         })
     }
+
     onStatusChange(event: any) {
         let custId = event.target.value;
         this.totalFD = 0
         this.totalInterest = 0;
         this.total = 0;
         this.totalAccounts = 0;
+        this.isLoader = true;
         this.fdService.getCustFDLst(custId).subscribe(data => {
             this.fdReports = data;
             this.fdReports.forEach(element => {
@@ -36,7 +43,7 @@ export class HoldersComponent implements OnInit {
             });
             this.total = this.totalFD + this.totalInterest;
             this.totalAccounts = this.fdReports.length;
+            this.isLoader = false;
         })
     }
-
 }

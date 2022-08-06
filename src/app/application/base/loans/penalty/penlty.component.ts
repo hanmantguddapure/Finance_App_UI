@@ -1,8 +1,9 @@
-import { Component, OnInit } from '@angular/core';
-import { LoanPenalty } from 'src/shared/modals/loan-penalty';
-import { LoanserviceService } from 'src/shared/providers/loanservice.service';
+import { Component } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
-import { ToastService } from 'src/shared/services/toast.service';
+
+import { LoanPenalty } from 'src/shared/modals/loan-penalty';
+
+import { LoanService, ToastService } from 'src/shared';
 
 @Component({
     templateUrl: './penlty.component.html',
@@ -11,19 +12,22 @@ export class LoanPenltyComponent {
     loanPenalties: Array<LoanPenalty> = [];
     loanPenlty: LoanPenalty = new LoanPenalty(null);
     isValidate: boolean = true;
-    constructor(private toster: ToastService, private loanservice: LoanserviceService, private router: Router, private route: ActivatedRoute) { }
+    isLoader: boolean;
+    constructor(private toster: ToastService, private loanservice: LoanService, private router: Router, private route: ActivatedRoute) {
+        this.isLoader = false;
+    }
 
     getPenaltyDetail(event: any) {
         let loanId = event.target.value;
         if (loanId == "") {
             this.toster.error("Please enter loan id")
         } else {
+            this.isLoader = true;
             this.loanservice.getLoanPenltyByLoanId(loanId).subscribe(data => {
                 this.loanPenalties = data;
-
+                this.isLoader = false;
             })
         }
-
     }
 
     addPenalty(penaltyDtls: any) {
@@ -42,12 +46,14 @@ export class LoanPenltyComponent {
             this.isValidate = false;
         }
         if (this.isValidate) {
+            this.isLoader = true;
             this.loanservice.addLoanPenlty(this.loanPenlty).subscribe(data => {
                 if (this.loanPenalties == null) {
                     this.loanPenalties = [];
                 }
                 this.loanPenalties.push(this.loanPenlty);
                 this.toster.success("Added Successfully");
+                this.isLoader = false;
             })
         }
 

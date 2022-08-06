@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { LoanserviceService } from 'src/shared/providers/loanservice.service';
+
 import { LoanCollectionSummary } from 'src/shared/modals/loan-collection-summary';
 import { AppConstants } from 'src/shared/modals/app-constants';
-import { ToastService } from 'src/shared/services/toast.service';
+
+import { LoanService, ToastService } from 'src/shared';
 
 @Component({
     templateUrl: './collection.component.html',
@@ -12,7 +13,11 @@ export class CollectionComponent implements OnInit {
     loanCollRepo: LoanCollectionSummary = new LoanCollectionSummary(null);
     totalCollection: number = 0;
     fileUrl: any;
-    constructor(private toster: ToastService, private loanservice: LoanserviceService) { }
+    isLoader: boolean;
+    constructor(private toster: ToastService, private loanservice: LoanService) {
+        this.isLoader = false;
+
+    }
 
     ngOnInit() {
     }
@@ -20,22 +25,26 @@ export class CollectionComponent implements OnInit {
     getCollectionDetail(collectionDates: any) {
         this.totalCollection = 0;
         this.loanCollRepo = collectionDates;
+        this.isLoader = true;
         this.loanservice.getLoanCollectionsByDate(this.loanCollRepo.fromDate, this.loanCollRepo.toDate).subscribe(data => {
             this.loanCollections = data;
             this.loanCollections.forEach(element => {
                 this.totalCollection = this.totalCollection + (element.payment);
                 this.fileUrl = AppConstants.API_ENDPOINT + "/Loan/download-loan-collection-repo/" + this.loanCollRepo.fromDate + "/" + this.loanCollRepo.toDate;
             });
+            this.isLoader = false;
         })
     }
 
     getDailyCollection() {
         this.totalCollection = 0;
+        this.isLoader = true;
         this.loanservice.getTodayCollectionSummary().subscribe(data => {
             this.loanCollections = data;
             this.loanCollections.forEach(element => {
                 this.totalCollection = this.totalCollection + (element.payment);
             });
+            this.isLoader = false;
         })
     }
 

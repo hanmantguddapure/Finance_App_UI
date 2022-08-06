@@ -1,24 +1,27 @@
 import { Component, OnInit } from '@angular/core';
-import { ToastService } from 'src/shared/services/toast.service';
+
 import { ShortTermLoan } from 'src/shared/modals/short-term-loan';
-import { LoanserviceService } from 'src/shared/providers/loanservice.service';
+
+import { CustomerService, LoanService, ToastService } from 'src/shared';
 
 @Component({
-
     templateUrl: './new.component.html',
-
 })
 export class NewComponent implements OnInit {
 
     shortTermLoanObj: ShortTermLoan = new ShortTermLoan(null);
-    constructor(private toster: ToastService, private loanservice: LoanserviceService) { }
+    isLoader: boolean;
+    constructor(private toster: ToastService, private loanservice: LoanService) {
+        this.isLoader = false;
+    }
 
     ngOnInit() {
     }
     createNewShortTermLoan(): void {
+        this.isLoader = true;
         this.loanservice.createNewShortTermLoan(this.shortTermLoanObj).subscribe(data => {
             this.toster.success("Successfully Added");
+            this.isLoader = false;
         })
-    };
-
+    }
 }

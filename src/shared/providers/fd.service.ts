@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+
 import { FDAccount } from 'src/shared/modals/fdaccount';
 import { AppConstants } from 'src/shared/modals/app-constants';
 import { FDInterestDtl } from 'src/shared/modals/fdinterest-dtl';
@@ -7,7 +8,7 @@ import { FDInterestDtl } from 'src/shared/modals/fdinterest-dtl';
 @Injectable({
     providedIn: 'root'
 })
-export class FDServiceService {
+export class FDService {
 
     constructor(private http: HttpClient) { }
 

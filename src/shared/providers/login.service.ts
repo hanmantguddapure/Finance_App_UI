@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
+
 import { User } from 'src/shared/modals/user';
 import { AppConstants } from 'src/shared/modals/app-constants';
 import { CacheService } from 'src/shared/services/cache.service';
@@ -8,7 +9,7 @@ import { CacheService } from 'src/shared/services/cache.service';
 @Injectable({
     providedIn: 'root'
 })
-export class LoginServiceService {
+export class LoginService {
 
     constructor(
         private http: HttpClient,

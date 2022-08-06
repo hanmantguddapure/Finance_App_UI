@@ -7,10 +7,9 @@ import {
     ActivatedRoute
 } from '@angular/router';
 
-import { ToastService } from 'src/shared/services/toast.service';
-
-import { CustomerserviceService } from 'src/shared/providers/customerservice.service';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+
+import { ToastService, CustomerService, GenratePDFService } from 'src/shared';
 
 @Component({
     templateUrl: 'customer-new.component.html'
@@ -21,7 +20,7 @@ export class CustomerNewComponent implements OnInit {
     isLoader: boolean;
 
     constructor(private toster: ToastService,
-        private customerService: CustomerserviceService,
+        private customerService: CustomerService,
         private router: Router,
         private route: ActivatedRoute,
         private fb: FormBuilder) {

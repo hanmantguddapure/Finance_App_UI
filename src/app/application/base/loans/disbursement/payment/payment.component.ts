@@ -1,17 +1,20 @@
 import { Component, OnInit } from '@angular/core';
-import { ToastService } from 'src/shared/services/toast.service';
+
 import { Loandetail } from 'src/shared/modals/loandetail';
-import { LoanserviceService } from 'src/shared/providers/loanservice.service';
+
+import { ToastService, LoanService } from 'src/shared';
 
 @Component({
-
     templateUrl: './payment.component.html',
-
 })
+
 export class PaymentComponent implements OnInit {
     loanDetail: Loandetail = new Loandetail(null);
     disburseAmt: number | any;
-    constructor(private toster: ToastService, private loanservice: LoanserviceService) { }
+    isLoader: boolean;
+    constructor(private toster: ToastService, private loanservice: LoanService) {
+        this.isLoader = false;
+    }
 
     ngOnInit() {
     }
@@ -20,6 +23,7 @@ export class PaymentComponent implements OnInit {
         if (loanId == "") {
             this.toster.error("Please enter loan id")
         } else {
+            this.isLoader = true;
             this.loanservice.getLoanDetailByLoanId(loanId).subscribe(data => {
                 this.loanDetail = data;
                 if (this.loanDetail.disburseAmt != null) {
@@ -29,6 +33,7 @@ export class PaymentComponent implements OnInit {
 
                     this.loanDetail.disburseAmt = this.loanDetail.loanAmt;
                 }
+                this.isLoader = false;
             })
         }
 
@@ -37,9 +42,11 @@ export class PaymentComponent implements OnInit {
     makeLoanPayment(paymentDetail: any) {
         this.loanDetail.paymentMode = paymentDetail.paymentMode;
         this.loanDetail.disburseAmt = paymentDetail.disburseAmt;
+        this.isLoader = true;
         this.loanservice.makeLoanPayment(this.loanDetail).subscribe(data => {
             this.loanDetail = data;
             this.toster.success("Payment Done Successfully");
+            this.isLoader = false;
         })
     }
 

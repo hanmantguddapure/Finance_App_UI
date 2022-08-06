@@ -1,18 +1,19 @@
 import { Component, OnInit } from '@angular/core';
 
-import { ToastService } from 'src/shared/services/toast.service';
 import { ShortTermLoan } from 'src/shared/modals/short-term-loan';
-import { LoanserviceService } from 'src/shared/providers/loanservice.service';
+
+import { CustomerService, LoanService, ToastService } from 'src/shared';
 
 @Component({
-
     templateUrl: './close.component.html',
-
 })
 export class CloseComponent implements OnInit {
 
     shortTermLoanObj: ShortTermLoan = new ShortTermLoan(null);
-    constructor(private toster: ToastService, private loanService: LoanserviceService) { }
+    isLoader: boolean;
+    constructor(private toster: ToastService, private loanService: LoanService) {
+        this.isLoader = false;
+    }
 
     ngOnInit() {
     }
@@ -22,16 +23,20 @@ export class CloseComponent implements OnInit {
         if (shortTermLoanId == "") {
             this.toster.error("Please enter Account id")
         } else {
+            this.isLoader = true;
             this.loanService.getShortTermLoanById(shortTermLoanId).subscribe(data => {
                 this.shortTermLoanObj = data;
+                this.isLoader = false;
             })
         }
 
     }
     closeShortTermLoan() {
         this.shortTermLoanObj.status = '0';
+        this.isLoader = true;
         this.loanService.closeShortTermLoan(this.shortTermLoanObj).subscribe(data => {
             this.toster.success("Successfully Closed");
+            this.isLoader = false;
         })
     }
 

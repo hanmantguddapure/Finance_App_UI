@@ -1,10 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-
-import { CustomerserviceService } from 'src/shared/providers/customerservice.service';
-import { ToastService } from 'src/shared/services/toast.service';
+import { FormBuilder, Validators } from '@angular/forms';
 
 import { Address } from 'src/shared/modals/address';
-import { FormBuilder, Validators } from '@angular/forms';
+
+import { ToastService, CustomerService, GenratePDFService } from 'src/shared';
 
 @Component({
     templateUrl: 'customer-info.component.html'
@@ -31,7 +30,7 @@ export class CustomerInfoComponent implements OnInit {
     constructor(
         private toster: ToastService,
         private fb: FormBuilder,
-        private customerService: CustomerserviceService) {
+        private customerService: CustomerService) {
         this.createForm();
     }
 

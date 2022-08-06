@@ -11,6 +11,7 @@ import { MatButtonModule } from "@angular/material/button";
 import { MatCardModule } from '@angular/material/card';
 import { MatTabsModule } from '@angular/material/tabs';
 import { MatExpansionModule } from '@angular/material/expansion';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 
 import { CommonComponents } from "./component";
 
@@ -30,7 +31,8 @@ import { CommonComponents } from "./component";
         MatButtonModule,
         MatCardModule,
         MatTabsModule,
-        MatExpansionModule
+        MatExpansionModule,
+        MatProgressSpinnerModule
     ],
     exports: [
         ...CommonComponents,

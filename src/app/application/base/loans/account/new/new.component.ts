@@ -1,17 +1,20 @@
 import { Component, OnInit } from '@angular/core';
-import { CustomerserviceService } from 'src/shared/providers/customerservice.service';
-import { Customer } from 'src/shared/modals/customer';
 import { Router, ActivatedRoute } from '@angular/router';
-import { LoanserviceService } from 'src/shared/providers/loanservice.service';
+
+import { Customer } from 'src/shared/modals/customer';
 import { Loandetail } from 'src/shared/modals/loandetail';
-import { ToastService } from 'src/shared/services/toast.service';
+
+import { CustomerService, LoanService, ToastService } from 'src/shared';
 
 @Component({
     templateUrl: 'new.component.html'
 })
 export class NewComponent implements OnInit {
+    isLoader: boolean;
 
-    constructor(private toster: ToastService, private customerService: CustomerserviceService, private loanservice: LoanserviceService, private router: Router, private route: ActivatedRoute) { }
+    constructor(private toster: ToastService, private customerService: CustomerService, private loanservice: LoanService, private router: Router, private route: ActivatedRoute) {
+        this.isLoader = false;
+    }
     customer: Customer = new Customer(null);
     loanDetail: Loandetail = new Loandetail(null);
     isCollapsed: boolean = false;
@@ -35,17 +38,21 @@ export class NewComponent implements OnInit {
 
 
     ngOnInit() {
+        this.isLoader = true;
         this.customerService.getCustomerAllDetail().subscribe(data => {
             this.allCustomerList = data;
+            this.isLoader = false;
         })
     };
     saveLoanDetail(): void {
         this.validationFlag = true;
         this.checkValidation();
         if (this.validationFlag) {
+            this.isLoader = true;
             this.loanservice.saveLoanDetail(this.loanDetail).subscribe(data => {
                 this.loanDetail = data;
                 this.toster.success("Successfully Created New Loan Account");
+                this.isLoader = false;
             })
         }
 

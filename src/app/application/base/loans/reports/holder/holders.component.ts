@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { CustomerserviceService } from 'src/shared/providers/customerservice.service';
-import { LoanserviceService } from 'src/shared/providers/loanservice.service';
+
 import { LoanRepo } from 'src/shared/modals/loan-repo';
-import { ToastService } from 'src/shared/services/toast.service';
+
+import { CustomerService, LoanService, ToastService } from 'src/shared';
 
 @Component({
 
@@ -22,11 +22,16 @@ export class HoldersComponent implements OnInit {
     totalInterest: number = 0;
     totalProcessFess: number = 0;
     totalDisbursed: number = 0;
-    constructor(private toster: ToastService, private customerService: CustomerserviceService, private loanService: LoanserviceService) { }
+    isLoader: boolean;
+    constructor(private toster: ToastService, private customerService: CustomerService, private loanService: LoanService) {
+        this.isLoader = false;
+    }
 
     ngOnInit() {
+        this.isLoader = true;
         this.customerService.getCustomerAllDetail().subscribe(data => {
             this.allCustomerList = data;
+            this.isLoader = false;
         })
     }
 
@@ -39,6 +44,7 @@ export class HoldersComponent implements OnInit {
         this.totalAccounts = 0;
         this.totalEarning = 0;
         this.totalInterest = 0;
+        this.isLoader = true;
         this.loanService.getLoanDetailByCustId(custId).subscribe(data => {
             this.loanRepoDetails = data;
             this.loanRepoDetails.forEach(element => {
@@ -53,6 +59,7 @@ export class HoldersComponent implements OnInit {
                 this.totalDisbursed = this.totalDisbursed + (element.disburseAmt);
 
             });
+            this.isLoader = false;
         })
     }
 

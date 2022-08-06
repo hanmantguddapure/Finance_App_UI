@@ -1,15 +1,14 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { ExpressionType } from '@angular/compiler';
+
 import { AppConstants } from 'src/shared/modals/app-constants';
 import { Expense } from 'src/shared/modals/expense';
 import { ApiService } from 'src/shared/services/api.service';
 
-
 @Injectable({
     providedIn: 'root'
 })
-export class ExpenseServiceService {
+export class ExpenseService {
 
     constructor(
         private http: HttpClient,

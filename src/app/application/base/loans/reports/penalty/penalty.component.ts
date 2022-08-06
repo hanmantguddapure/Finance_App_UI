@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { ToastService } from 'src/shared/services/toast.service';
+
 import { LoanPenalty } from 'src/shared/modals/loan-penalty';
-import { LoanserviceService } from 'src/shared/providers/loanservice.service';
+
+import { ToastService, LoanService } from 'src/shared';
 
 @Component({
 
@@ -10,14 +11,19 @@ import { LoanserviceService } from 'src/shared/providers/loanservice.service';
 })
 export class PenaltyComponent implements OnInit {
     loanPenalties: Array<LoanPenalty> = [];
-    constructor(private toster: ToastService, private loanservice: LoanserviceService) { }
+    isLoader: boolean;
+    constructor(private toster: ToastService, private loanservice: LoanService) {
+        this.isLoader = false;
+    }
 
     ngOnInit() {
     }
     onStatusChange(event: any) {
         let loanStatus = event.target.value;
+        this.isLoader = true;
         this.loanservice.getAllLoanPenaltiesByLoanStatus(loanStatus).subscribe(data => {
             this.loanPenalties = data;
+            this.isLoader = false;
         })
     }
 }

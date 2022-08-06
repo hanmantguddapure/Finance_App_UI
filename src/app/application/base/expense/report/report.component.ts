@@ -1,12 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { ToastService } from 'src/shared/services/toast.service';
+
 import { Expense } from 'src/shared/modals/expense';
-import { ExpenseServiceService } from 'src/shared/providers/expense-service.service';
 
+import { ToastService, ExpenseService } from 'src/shared';
 @Component({
-
     templateUrl: './report.component.html'
-
 })
 export class ExpenseReportComponent implements OnInit {
     expenseslst: Array<Expense> = [];
@@ -15,21 +13,29 @@ export class ExpenseReportComponent implements OnInit {
     total: number | any;
     expenseTypesList: Array<Expense> = [];
     deleteLoader: any;
-    constructor(private toster: ToastService, private expenseService: ExpenseServiceService) {
+    isLoader: boolean;
 
+    constructor(private toster: ToastService, private expenseService: ExpenseService) {
+        this.isLoader = false;
     }
 
     ngOnInit() {
+        this.isLoader = true;
+
         this.expenseService.getExpenseTypes().subscribe(data => {
             this.expenseTypesList = data;
+            this.isLoader = false;
         })
     }
 
     onStatusChange(event: any) {
         let expenseType = event.target.value;
+
+        this.isLoader = true;
         this.expenseService.setExpenseType(expenseType).subscribe(data => {
             this.calculateTotal(data)
-        })
+            this.isLoader = false;
+        });
     }
 
     getExpenseDtls(expenseDetails: any): void {
@@ -37,8 +43,10 @@ export class ExpenseReportComponent implements OnInit {
         this.expense = expenseDetails;
         this.checkValidation();
         if (this.validationFlag) {
+            this.isLoader = true;
             this.expenseService.getExpenseBetween(expenseDetails.fromDate, expenseDetails.toDate).subscribe(data => {
                 this.calculateTotal(data)
+                this.isLoader = false;
             })
         }
     };

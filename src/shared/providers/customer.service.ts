@@ -1,13 +1,15 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { Observable } from 'rxjs';
+
 import { AppConstants } from 'src/shared/modals/app-constants';
 import { Customer } from 'src/shared/modals/customer';
-import { Observable } from 'rxjs';
 import { ApiService } from 'src/shared/services/api.service';
+
 @Injectable({
     providedIn: 'root'
 })
-export class CustomerserviceService {
+export class CustomerService {
 
     constructor(
         private http: HttpClient,

@@ -1,11 +1,13 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 
-import { LoginServiceService } from 'src/shared/providers/login-service.service';
 import { User } from 'src/shared/modals/user';
 
-import { ToastService } from 'src/shared/services/toast.service';
-import { CacheService } from 'src/shared/services/cache.service';
+import {
+    LoginService,
+    ToastService,
+    CacheService
+} from 'src/shared';
 
 @Component({
     templateUrl: 'login.component.html'
@@ -21,7 +23,7 @@ export class LoginComponent {
     constructor(
         private toster: ToastService,
         private cache: CacheService,
-        private loginService: LoginServiceService,
+        private loginService: LoginService,
         private router: Router) { }
 
     ngOnInit() {

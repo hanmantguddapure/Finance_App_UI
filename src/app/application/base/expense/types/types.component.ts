@@ -2,14 +2,11 @@ import { Component, OnInit } from '@angular/core';
 import { AbstractControl, FormBuilder, FormGroup } from '@angular/forms';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 
-import { ExpenseServiceService } from 'src/shared/providers/expense-service.service';
 import { Expense } from 'src/shared/modals/expense';
-import { ToastService } from 'src/shared/services/toast.service';
 
+import { ToastService, ExpenseService } from 'src/shared';
 @Component({
-
     templateUrl: './types.component.html'
-
 })
 export class ExpenseTypesComponent implements OnInit {
     ExpenseGroup: FormGroup;
@@ -19,14 +16,16 @@ export class ExpenseTypesComponent implements OnInit {
 
     expense: Expense = new Expense(null);
     editableExpenseType: any;
+    isLoader: boolean;
 
     constructor(private toster: ToastService,
         private modalService: NgbModal,
         private fb: FormBuilder,
-        private expenseService: ExpenseServiceService) {
+        private expenseService: ExpenseService) {
         this.createForm();
 
         this.editableExpenseType = '';
+        this.isLoader = false;
     }
 
     createForm() {
@@ -47,8 +46,11 @@ export class ExpenseTypesComponent implements OnInit {
     }
 
     ngOnInit() {
+        this.isLoader = true;
+
         this.expenseService.getExpenseTypes().subscribe(data => {
             this.expenseTypesList = data;
+            this.isLoader = false;
         })
     }
 
@@ -59,10 +61,12 @@ export class ExpenseTypesComponent implements OnInit {
             this.toster.error("Please add Expense Type");
             return;
         }
+        this.isLoader = true;
         this.expenseService.addExpenseType(data).then((data: any) => {
             this.expense = data;
             this.expenseTypesList.push(this.expense);
             this.toster.success("Added Successfully");
+            this.isLoader = false;
         });
     }
 

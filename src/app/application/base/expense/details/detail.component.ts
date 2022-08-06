@@ -1,21 +1,31 @@
 import { Component, OnInit } from '@angular/core';
-import { ExpenseServiceService } from 'src/shared/providers/expense-service.service';
+
 import { Expense } from 'src/shared/modals/expense';
-import { ToastService } from 'src/shared/services/toast.service';
+
+import { ToastService, ExpenseService } from 'src/shared';
 
 @Component({
     templateUrl: './detail.component.html'
 })
+
 export class ExpenseDetailComponent implements OnInit {
     expenseTypesList: Array<Expense> = [];
     expenseslst: Array<Expense> = [];
+
     validationFlag: boolean = true;
     expense: Expense = new Expense(null);
     expenseName: string | any;
     total: number = 0;
-    constructor(private toster: ToastService, private expenseService: ExpenseServiceService) { }
+    isLoader: boolean;
+
+    constructor(private toster: ToastService, private expenseService: ExpenseService) {
+        this.isLoader = false;
+    }
+
     ngOnInit() {
+        this.isLoader = true;
         this.expenseService.getExpenseTypes().subscribe(data => {
+            this.isLoader = false;
             this.expenseTypesList = data;
         })
     }
@@ -27,33 +37,34 @@ export class ExpenseDetailComponent implements OnInit {
     getExpensess(event: any) {
         let selectedDate = event.target.value;
         this.total = 0;
+        this.isLoader = true;
         this.expenseService.getExpenseByDate(selectedDate).subscribe(data => {
             this.expenseslst = data;
             this.expenseslst.forEach(element => {
                 this.total = this.total + (element.amount);
             });
-
+            this.isLoader = false;
         })
     }
+
     addExpenseDtls(expenseDetails: any): void {
         this.validationFlag = true;
-
         this.expense = expenseDetails;
         this.expense.expenseType = this.expenseName;
         this.checkValidation();
         if (this.validationFlag) {
+            this.isLoader = true;
             this.expenseService.addExpenseDtls(this.expense).then((data: any) => {
                 if (this.expenseslst == null) {
                     this.expenseslst = [];
                 }
                 this.expenseslst.push(data);
-                // this.total = this.total + parseInt(this.expense.amount);
-                //this.total=(this.total)+(this.expense.amount);
                 this.toster.success("Successfully Added");
+                this.isLoader = false;
             })
         }
-
     };
+
     checkValidation() {
         if (this.expense.expenseTypeId == undefined) {
             this.toster.error("Please Select Expense Type");

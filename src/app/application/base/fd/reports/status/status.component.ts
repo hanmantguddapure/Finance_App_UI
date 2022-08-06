@@ -1,12 +1,11 @@
 import { Component, OnInit } from '@angular/core';
-import { ToastService } from 'src/shared/services/toast.service';
+
 import { FDAccount } from 'src/shared/modals/fdaccount';
-import { FDServiceService } from 'src/shared/providers/fdservice.service';
+
+import { ToastService, FDService } from 'src/shared';
 
 @Component({
-
     templateUrl: './status.component.html',
-
 })
 export class StatusComponent implements OnInit {
     fdReports: Array<FDAccount> = [];
@@ -14,7 +13,10 @@ export class StatusComponent implements OnInit {
     totalInterest: number = 0;
     total: number = 0;
     totalAccounts: number = 0;
-    constructor(private toster: ToastService, private fdservice: FDServiceService) { }
+    isLoader: boolean;
+    constructor(private toster: ToastService, private fdservice: FDService) {
+        this.isLoader = false;
+    }
 
     ngOnInit() {
     }
@@ -25,6 +27,7 @@ export class StatusComponent implements OnInit {
         this.totalInterest = 0;
         this.total = 0;
         this.totalAccounts = 0;
+        this.isLoader = true;
         this.fdservice.getFdsByStatus(fdStatus).subscribe(data => {
             this.fdReports = data;
             this.fdReports.forEach(element => {
@@ -33,6 +36,7 @@ export class StatusComponent implements OnInit {
             });
             this.total = this.totalFD + this.totalInterest;
             this.totalAccounts = this.fdReports.length;
+            this.isLoader = false;
         })
     }
 }

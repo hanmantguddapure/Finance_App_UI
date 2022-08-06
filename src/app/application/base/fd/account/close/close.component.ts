@@ -2,9 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 
-import { ToastService } from 'src/shared/services/toast.service';
 import { FDAccount } from 'src/shared/modals/fdaccount';
-import { FDServiceService } from 'src/shared/providers/fdservice.service';
+
+import { ToastService, FDService, CustomerService } from 'src/shared';
 
 @Component({
     templateUrl: './close.component.html'
@@ -12,7 +12,10 @@ import { FDServiceService } from 'src/shared/providers/fdservice.service';
 
 export class CloseComponent implements OnInit {
     fdAccountDtls: FDAccount = new FDAccount(null);
-    constructor(private toster: ToastService, private fdService: FDServiceService, private modalService: NgbModal, private router: Router) { }
+    isLoader: boolean;
+    constructor(private toster: ToastService, private fdService: FDService, private modalService: NgbModal, private router: Router) {
+        this.isLoader = false;
+    }
 
     ngOnInit() {
     }
@@ -22,7 +25,9 @@ export class CloseComponent implements OnInit {
         if (fdId == "") {
             this.toster.error("Please enter FD Account id")
         } else {
+            this.isLoader = true;
             this.fdService.getFDDetailByFDId(fdId).subscribe(data => {
+                this.isLoader = false;
                 this.fdAccountDtls = data;
             })
         }
@@ -48,10 +53,11 @@ export class CloseComponent implements OnInit {
             return;
         }
 
+        this.isLoader = true;
         this.fdService.closeFD(this.fdAccountDtls).subscribe(data => {
             this.fdAccountDtls = data;
             this.toster.success("Successfully Closed");
+            this.isLoader = false;
         })
     }
-
-};
+}

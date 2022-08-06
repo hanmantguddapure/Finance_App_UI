@@ -10,12 +10,10 @@ import {
     ActivatedRoute
 } from '@angular/router';
 
-import { Customer } from '../../../../../shared/modals/customer';
-import { ToastService } from '../../../../../shared/services/toast.service';
-
-import { CustomerserviceService } from '../../../../../shared/providers/customerservice.service';
+import { Customer } from 'src/shared/modals/customer';
 import { AppConstants } from 'src/shared/modals/app-constants';
-import { GenratePDFService } from 'src/shared/services/pdf-genrate.service';
+
+import { ToastService, CustomerService, GenratePDFService } from 'src/shared';
 
 @Component({
     templateUrl: 'shared-customer.component.html',
@@ -52,7 +50,7 @@ export class SharedCustomerComponent implements OnInit {
 
 
     constructor(private toster: ToastService,
-        private customerService: CustomerserviceService,
+        private customerService: CustomerService,
         private router: Router,
         private genrateService: GenratePDFService,
         private route: ActivatedRoute,
