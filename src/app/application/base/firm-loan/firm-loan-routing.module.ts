@@ -7,14 +7,14 @@ const routes: Routes = [
         data: {
             title: 'Loan'
         },
-        loadChildren: () => import('./short-term/short-term.module').then(m => m.ShortTermModule)
+        loadChildren: () => import('./loan/firm.module').then(m => m.FrimLoanModule)
     },
     {
         path: 'short-term',
         data: {
             title: 'short Term'
         },
-        loadChildren: () => import('./loan/firm.module').then(m => m.FrimLoanModule)
+        loadChildren: () => import('./short-term/short-term.module').then(m => m.ShortTermModule)
     }
 ];
 

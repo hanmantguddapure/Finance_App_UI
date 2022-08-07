@@ -16,14 +16,14 @@ const routes: Routes = [
             },
             {
                 path: 'loan',
-                component: LoansComponent,
+                component: PaymentComponent,
                 data: {
                     title: 'Loan'
                 }
             },
             {
                 path: 'payment',
-                component: PaymentComponent,
+                component: LoansComponent,
                 data: {
                     title: 'Payment'
                 }

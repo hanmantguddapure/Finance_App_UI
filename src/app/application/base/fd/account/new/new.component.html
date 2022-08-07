@@ -1,67 +1,51 @@
 <div class="animated fadeIn">
-    <div class="row">
-        <div class="col-sm-12">
-            <div class="card">
-                <div class="card-header">
-                    <strong>Fixed Deposite Account </strong> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                    <strong>Account No:- {{fdAccount.accountNo}}</strong>
-                </div>
-                <div class="card-body">
-                    <form #form="ngForm" class="form-horizontal">
-                        <div class="form-group mb-3 row">
-                            <label class="col-md-3 col-form-label">Customer</label>
-                            <div class="col-md-9">
-                                <select class="form-control" name="custId" [(ngModel)]=fdAccount.custId>
-                                    <option>--Select Customer--</option>
-                                    <option *ngFor="let customer of allCustomerList" value="{{customer.custId}}">{{customer.fullName}}</option>
-                                </select>
-                            </div>
-                        </div>
-                        <div class="card-header">
-                            <strong>Create New Account</strong>
-                        </div>
-                        <div class="card">
-                            <div class="card-body">
-                                <div class="form-group mb-3 row">
-                                    <label class="col-md-3 col-form-label" for="hf-email">FD Amount</label>
-                                    <div class="col-md-9">
-                                        <input type="text" name="amount" [(ngModel)]=fdAccount.amount class="form-control">
-                                    </div>
-                                </div>
-                                <div class="form-group mb-3 row">
-                                    <label class="col-md-3 col-form-label" for="hf-email">Iterest</label>
-                                    <div class="col-md-9">
-                                        <input type="text" name="iterest" [(ngModel)]=fdAccount.interest class="form-control" (blur)="calculateItersetAmt()">
-                                    </div>
-                                </div>
-                                <div class="form-group mb-3 row">
-                                    <label class="col-md-3 col-form-label" for="hf-email">Iterest Amount</label>
-                                    <div class="col-md-9">
-                                        <input type="text" name="interestAmt" [(ngModel)]=fdAccount.interestAmt value="{{fdAccount.interestAmt}}" class="form-control" readonly>
-                                    </div>
-                                </div>
-                                <div class="form-group mb-3 row">
-                                    <label class="col-md-3 col-form-label" for="hf-email">Start Date</label>
-                                    <div class="col-md-9">
-                                        <input class="form-control" id="date-input" [(ngModel)]=fdAccount.startDate type="date" name="startDate">
-                                    </div>
-                                </div>
-                                <div class="form-group mb-3 row">
-                                    <label class="col-md-3 col-form-label" for="hf-email">End Date</label>
-                                    <div class="col-md-9">
-                                        <input class="form-control" id="date-input" [(ngModel)]=fdAccount.endDate type="date" name="endDate">
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="text-end pt-2">
-                            <button type="button" mat-raised-button (click)="createNewFD()" class="mt-2 mb-2 " color="primary"> Submit</button>
-                            <button type="reset" mat-raised-button class="m-2"> Reset</button>
-                        </div>
-                    </form>
+    <form #form="ngForm" class="form-horizontal">
+        <div class="card">
+            <div class="card-header">
+                <strong>Fixed Deposite Account </strong> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <strong>Account No:- {{fdAccount.accountNo}}</strong>
+            </div>
+            <div class="card-body">
+                <div class="form-group mb-3 col-md-4 col-sm-12">
+                    <label class="col-form-label">Customer</label>
+                    <select class="form-control" name="custId" [(ngModel)]=fdAccount.custId>
+                        <option>--Select Customer--</option>
+                        <option *ngFor="let customer of allCustomerList" value="{{customer.custId}}">{{customer.fullName}}</option>
+                    </select>
                 </div>
             </div>
         </div>
-    </div>
+        <div class="card">
+            <div class="card-header">
+                <strong>Create New Account</strong>
+            </div>
+            <div class="card-body row">
+                <div class="form-group col-md-4 col-sm-12">
+                    <label class="col-form-label" for="hf-email">FD Amount</label>
+                    <input type="text" name="amount" [(ngModel)]=fdAccount.amount class="form-control">
+                </div>
+                <div class="form-group col-md-4 col-sm-12">
+                    <label class="col-form-label" for="hf-email">Iterest</label>
+                    <input type="text" name="iterest" [(ngModel)]=fdAccount.interest class="form-control" (blur)="calculateItersetAmt()">
+                </div>
+                <div class="form-group col-md-4 col-sm-12">
+                    <label class="col-form-label" for="hf-email">Iterest Amount</label>
+                    <input type="text" name="interestAmt" [(ngModel)]=fdAccount.interestAmt value="{{fdAccount.interestAmt}}" class="form-control" readonly>
+                </div>
+                <div class="form-group col-md-4 col-sm-12">
+                    <label class="col-form-label" for="hf-email">Start Date</label>
+                    <input class="form-control" id="date-input" [(ngModel)]=fdAccount.startDate type="date" name="startDate">
+                </div>
+                <div class="form-group col-md-4 col-sm-12">
+                    <label class="col-form-label" for="hf-email">End Date</label>
+                    <input class="form-control" id="date-input" [(ngModel)]=fdAccount.endDate type="date" name="endDate">
+                </div>
+            </div>
+        </div>
+        <div class="text-end pt-2">
+            <button type="button" mat-raised-button (click)="createNewFD()" class="mt-2 mb-2 " color="primary"> Submit</button>
+            <button type="reset" mat-raised-button class="m-2"> Reset</button>
+        </div>
+    </form>
     <app-loader *ngIf="isLoader"></app-loader>
 </div>

@@ -2,7 +2,7 @@
 
     <mat-card-actions>
         <div class="form-group mb-3 row">
-            <div class="col-sm-4 col-md-4 pb-4" *ngIf="isView && CustomerGroup">
+            <div class="col-sm-4 col-md-4 col-sm-12 pb-4" *ngIf="isView && CustomerGroup">
                 <label class="col-form-label">Customer</label>
                 <select class="form-control" formControlName="custId">
                     <option value="">--Select Customer--</option>
@@ -18,24 +18,24 @@
                     </mat-panel-title>
                 </mat-expansion-panel-header>
                 <div class="form-group mb-3 row">
-                    <div class="col-4 col-md-4">
+                    <div class="col-md-4 col-sm-12">
                         <label class="col-form-label">Full Name</label>
                         <input type="text" formControlName="fullName" class="form-control" id="inputError1" placeholder="Full Name..">
                         <div *ngIf="CustomerGroup.get('fullName').invalid" class="invalid-feedback">
                             Please Enter Customer Name.
                         </div>
                     </div>
-                    <div class="col-4 col-md-4">
+                    <div class="col-md-4 col-sm-12">
                         <label class="col-form-label">Buiseness</label>
                         <input type="checkbox" class="switch-input pt-1" checked title="Edit" (change)="CustomerGroup.get('profession').enable()" *ngIf="CustomerGroup.get('profession').disabled">
                         <input type="text" formControlName="profession" class="form-control" placeholder="Buiseness Name..">
                     </div>
-                    <div class="col-4 col-md-4">
+                    <div class="col-md-4 col-sm-12">
                         <label class="col-form-label">Adhar No.</label>
                         <input type="checkbox" class="switch-input pt-1" checked title="Edit" (change)="CustomerGroup.get('adharNo').enable()" *ngIf="CustomerGroup.get('adharNo').disabled">
                         <input class="form-control" type="text" formControlName="adharNo" placeholder="Adhar No.">
                     </div>
-                    <div class="col-4 col-md-4">
+                    <div class="col-md-4 col-sm-12">
                         <label class="col-form-label">PAN No.</label>
                         <input type="checkbox" class="switch-input pt-1" checked title="Edit" (change)="CustomerGroup.get('panNo').enable()" *ngIf="CustomerGroup.get('panNo').disabled">
                         <input class="form-control" type="text" formControlName="panNo" placeholder="PAN No.">
@@ -49,32 +49,32 @@
                     </mat-panel-title>
                 </mat-expansion-panel-header>
                 <div class="form-group mb-3 row" formGroupName="address">
-                    <div class="col-6 col-md-6 col-sm-12">
+                    <div class="col-md-6 col-sm-12 col-sm-12">
                         <label class="col-form-label">Address</label>
                         <input type="checkbox" class="switch-input pt-1" checked title="Edit" (change)="CustomerGroup.get('address.address').enable()" *ngIf="CustomerGroup.get('address.address').disabled">
                         <input type="text" formControlName="address" class="form-control" placeholder="Address">
                     </div>
-                    <div class="col-2 col-md-2 col-sm-12">
+                    <div class=" col-md-2 col-sm-12 col-sm-12">
                         <label class="col-form-label">Postal Code</label>
                         <input type="checkbox" class="switch-input pt-1" checked title="Edit" (change)="CustomerGroup.get('address.zipCode').enable()" *ngIf="CustomerGroup.get('address.zipCode').disabled">
                         <input type="text" formControlName="zipCode" class="form-control" placeholder="Postal Code">
                     </div>
-                    <div class="col-4 col-md-4 col-sm-12">
+                    <div class="col-md-4 col-sm-12">
                         <label class="col-form-label">Email</label>
                         <input type="checkbox" class="switch-input pt-1" checked title="Edit" (change)="CustomerGroup.get('address.email').enable()" *ngIf="CustomerGroup.get('address.email').disabled">
                         <input type="text" formControlName="email" class="form-control" placeholder="Email">
                     </div>
-                    <div class="col-4 col-md-4 col-sm-12">
+                    <div class="col-md-4 col-sm-12">
                         <label class="col-form-label">Mobile No.</label>
                         <input type="checkbox" class="switch-input pt-1" checked title="Edit" (change)="CustomerGroup.get('address.phoneNo').enable()" *ngIf="CustomerGroup.get('address.phoneNo').disabled">
                         <input type="text" formControlName="phoneNo" class="form-control" placeholder="Mobile No.">
                     </div>
-                    <div class="col-4 col-md-4 col-sm-12">
+                    <div class="col-md-4 col-sm-12">
                         <label class="col-form-label">Alternet No.</label>
                         <input type="checkbox" class="switch-input pt-1" checked title="Edit" (change)="CustomerGroup.get('address.altNo').enable()" *ngIf="CustomerGroup.get('address.altNo').disabled">
                         <input type="text" formControlName="altNo" class="form-control" placeholder="Alternet No.">
                     </div>
-                    <div class="col-4 col-md-4 col-sm-12">
+                    <div class="col-md-4 col-sm-12">
                         <label class="col-form-label">Native Place</label>
                         <input type="checkbox" class="switch-input pt-1" checked title="Edit" (change)="CustomerGroup.get('address.nativePlace').enable()" *ngIf="CustomerGroup.get('address.nativePlace').disabled">
                         <input type="text" formControlName="nativePlace" class="form-control" placeholder="Native Place">
@@ -90,29 +90,29 @@
                 <div class="form-group row" formArrayName="nomineeDtls" *ngFor="let item of nomineeDtls['controls']; let i = index;">
                     <hr *ngIf="i > 0" class="my-4" />
                     <ng-container [formGroupName]="i">
-                        <div class="col-4 col-md-4 col-sm-12">
+                        <div class="col-md-4 col-sm-12">
                             <label class="col-form-label">Full Name</label>
                             <input type="text" formControlName="fullName" class="form-control" placeholder="Full Name">
                             <div *ngIf="item.get('fullName').invalid" class="invalid-feedback">
                                 Please Enter Nominee Name.
                             </div>
                         </div>
-                        <div class="col-sm-4 col-md-4 pb-6">
+                        <div class="col-sm-4 col-md-4 col-sm-12 pb-6">
                             <label class="col-form-label">Nominee Relation</label>
                             <select class="form-control" formControlName="relation">
                                 <option value="">--Select Nominee Relation--</option>
                                 <option *ngFor="let item of relation" value="{{item}}">{{item}}</option>
                             </select>
                         </div>
-                        <div class="form-group col-8 col-md-8 col-sm-12" formGroupName="address">
+                        <div class="form-group col-md-8 col-sm-12" formGroupName="address">
                             <label class="col-form-label">Address</label>
                             <input type="text" class="form-control" formControlName="address" placeholder="Address">
                         </div>
-                        <div class="form-group col-4 col-md-4 col-sm-12" formGroupName="address">
+                        <div class="form-group col-md-4 col-sm-12" formGroupName="address">
                             <label class="col-form-label">Phone No.</label>
                             <input type="text" class="form-control" formControlName="phoneNo" placeholder="Phone No.">
                         </div>
-                        <div class="form-group col-4 col-md-4 col-sm-12 mt-1 pt-4">
+                        <div class="form-group col-md-4 col-sm-12 mt-1 pt-4">
                             <button type="button" mat-raised-button class="mt-2" *ngIf="isView" (click)="allowEdit(item)" color="primary">Edit</button>
                             <button type="button" mat-raised-button class="mt-2" *ngIf="!item.value.nomineeId" (click)="deleteNominee(item, i)">Delete</button>
                         </div>
@@ -131,22 +131,22 @@
                 <div class="form-group row" formArrayName="contactPeopleDtls" *ngFor="let item of contactPeopleDtls['controls']; let i = index;">
                     <hr *ngIf="i > 0" class="my-4" />
                     <div class="row" [formGroupName]="i">
-                        <div class="form-group col-4 col-md-4 col-sm-12">
+                        <div class="form-group col-md-4 col-sm-12">
                             <label class="col-form-label">Full Name</label>
                             <input type="text" class="form-control" formControlName="fullName">
                             <div *ngIf="item.get('fullName').invalid" class="invalid-feedback">
                                 Please Enter Customer Name.
                             </div>
                         </div>
-                        <div class="form-group col-8 col-md-8 col-sm-12" formGroupName="address">
+                        <div class="form-group col-md-8 col-sm-12" formGroupName="address">
                             <label class="col-form-label">Address</label>
                             <input type="text" class="form-control" formControlName="address" placeholder="Address">
                         </div>
-                        <div class="form-group col-4 col-md-4 col-sm-12" formGroupName="address">
+                        <div class="form-group col-md-4 col-sm-12" formGroupName="address">
                             <label class="col-form-label">Phone No.</label>
                             <input type="text" class="form-control" formControlName="phoneNo" placeholder="Phone No.">
                         </div>
-                        <div class="form-group col-4 col-md-4 col-sm-12 mt-1 pt-4">
+                        <div class="form-group col-md-4 col-sm-12 mt-1 pt-4">
                             <button type="button" mat-raised-button class="mt-2" *ngIf="isView" (click)="allowEdit(item)" color="primary">Edit</button>
                             <button type="button" mat-raised-button class="mt-2" *ngIf="!item.value.contactPersionId" (click)="deleteContact(item, i)">Delete</button>
                         </div>
@@ -158,8 +158,8 @@
             </mat-expansion-panel>
         </mat-accordion>
         <div class="row" *ngIf="isView && CustomerGroup.get('fullName').value">
-            <label class="col-3 col-form-label p-3" for="hf-email">Customer Detail</label>
-            <div class="col-3 col-form-label p-3">
+            <label class=" col-form-label p-3" for="hf-email">Customer Detail</label>
+            <div class=" col-form-label p-3">
                 <a (click)="print()" target="_blank" download="customer.pdf">Print</a>
             </div>
         </div>

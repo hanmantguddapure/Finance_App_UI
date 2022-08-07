@@ -1,17 +1,14 @@
 <div class="animated fadeIn">
-
     <div class="row">
         <div class="col-sm-12">
             <div class="card">
                 <div class="card-header">
                     <strong>Firm Loan Report</strong>
-
                 </div>
                 <div class="card-body">
-
                     <div class="form-group mb-3 row">
-                        <label class="col-md-3 col-form-label">Select Loan Type</label>
-                        <div class="col-md-9">
+                        <div class="col-md-4">
+                            <label class="col-form-label">Select Loan Type</label>
                             <select class="form-control" name="loanStatus" ngModel (change)="onStatusChange($event)">
                                 <option>--Select Loan Status--</option>
                                 <option value="1">Opened</option>
@@ -19,16 +16,10 @@
                             </select>
                         </div>
                     </div>
-
                 </div>
-
             </div>
-
         </div>
-
     </div>
-    <!--/.row-->
-
     <div class="row">
         <div class="col-lg-12">
             <div class="card">
@@ -49,28 +40,22 @@
                         </thead>
                         <tbody>
                             <tr *ngFor="let shortLoan of shortTermLoans">
-
                                 <td>{{shortLoan.shortTermLoanId}}</td>
                                 <td>{{shortLoan.custFullName}}</td>
                                 <td>{{shortLoan.startDate}}</td>
                                 <td>{{shortLoan.endDate}}</td>
                                 <td>{{shortLoan.remark}}</td>
                                 <td>{{shortLoan.loanAmt}}</td>
-
                             </tr>
                             <tr>
                                 <td colspan="5">Total</td>
                                 <td>{{totalLoan}}</td>
-
                             </tr>
                         </tbody>
                     </table>
-
                 </div>
             </div>
-
         </div>
-        <!--/.col-->
     </div>
     <app-loader *ngIf="isLoader"></app-loader>
 </div>

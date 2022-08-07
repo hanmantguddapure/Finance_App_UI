@@ -4,7 +4,7 @@ export * from './services';
 
 export { CustomerService } from './providers/customer.service'
 export { DashBoardService } from './providers/dash-board.service'
-export { FDService } from './providers/fd.service'
+export { FDService } from './providers/fdservice.service'
 export { LoanService } from './providers/loan.service'
 export { LoginService } from './providers/login.service'
 export { ApiService } from './services/api.service'

@@ -29,8 +29,8 @@ export class CloseComponent implements OnInit {
                 this.isLoader = false;
             })
         }
-
     }
+
     closeShortTermLoan() {
         this.shortTermLoanObj.status = '0';
         this.isLoader = true;

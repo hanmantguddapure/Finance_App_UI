@@ -1,101 +1,80 @@
 <div class="animated fadeIn">
-
-    <div class="row">
-        <div class="col-sm-12">
-            <div class="card">
-                <div class="card-header">
-                    <strong>Account Detail</strong>
-                </div>
-                <div class="card-body">
-                    <div class="row">
-                        <div class="form-group col-sm-3">
-                            <label class="col-form-label">Account Number</label>
-                            <input type="text" name="loanAccNo" ngModel (blur)="getAccountDetail($event)" class="form-control" placeholder="Loan Account No....">
-                        </div>
-                        <div class="form-group col-sm-4">
-                            <label class="col-form-label">Customer Name</label>
-                            <input type="text" name="custFullName" value="{{loanDetail?.custFullName}}" ngModel class="form-control" readonly>
-                        </div>
-                        <div class="form-group col-sm-2">
-                            <label class="col-form-label">Installment Amount</label>
-                            <input type="text" name="installmentAmount" value="{{loanDetail?.installmentAmount}}" ngModel class="form-control" readonly>
-                        </div>
-                        <div class="form-group col-sm-2">
-                            <label class="col-form-label">Total Collection</label>
-                            <input type="text" name="shortName" value="{{loanDetail?.totalCollection}}" ngModel class="form-control" readonly>
-                        </div>
-                    </div>
-
-
-                    <div class="card-header">
-                        <strong>Add Installment</strong>
-                    </div>
-
-                    <div class="card">
-                        <form #form="ngForm" class="form-horizontal">
-                            <div class="card-body">
-
-                                <div class="form-group mb-3 row">
-                                    <label class="col-md-3 col-form-label" for="hf-email">Collection Amount</label>
-                                    <div class="col-md-9">
-                                        <input type="text" name="payment" class="form-control" ngModel placeholder="Amount.....">
-                                    </div>
-                                </div>
-
-                                <div class="form-group mb-3 row">
-                                    <label class="col-md-3 col-form-label" for="hf-email">Collection Date</label>
-                                    <div class="col-md-9">
-                                        <input class="form-control" id="date-input" value="{{currDate|date:'dd/MM/yyyy'}}" type="date" name="paymentDate" ngModel>
-                                    </div>
-                                </div>
-
-                            </div>
-
-                            <div class="text-end">
-                                <button type="button" mat-raised-button (click)="addCustomerPayment(form.value, content)" class="mt-2 mb-2 " color="primary"> Submit</button>
-                                <button type="reset" mat-raised-button class="m-2"> Reset</button>
-                            </div>
-                        </form>
-                    </div>
-                </div>
-
-            </div>
-
+    <div class="card">
+        <div class="card-header">
+            <strong>Account Detail</strong>
         </div>
-
-    </div>
-    <!--/.row-->
-
-    <div class="row">
-        <div class="col-lg-12">
-            <div class="card">
-                <div class="card-header">
-                    <i class="fa fa-align-justify"></i> Collection Detail
+        <div class="card-body">
+            <div class="row">
+                <div class="form-group col-md-4 col-sm-12">
+                    <label class="col-form-label">Account Number</label>
+                    <input type="text" name="loanAccNo" ngModel (blur)="getAccountDetail($event)" class="form-control" placeholder="Loan Account No....">
                 </div>
-                <div class="card-body">
-                    <table class="table table-bordered table-striped table-sm">
-                        <thead>
-                            <tr>
-                                <th>Collection Amount</th>
-                                <th>Collection Type</th>
-                                <th>Collection Date</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr *ngFor="let loanPaymentDetail of loanPaymetDetails">
-                                <td>{{loanPaymentDetail.payment}}</td>
-                                <td>{{loanPaymentDetail.paymentMethod}}</td>
-                                <td>{{loanPaymentDetail.paymentDate}}</td>
-                            </tr>
-                        </tbody>
-                    </table>
+                <div class="form-group col-md-4 col-sm-12">
+                    <label class="col-form-label">Customer Name</label>
+                    <input type="text" name="custFullName" value="{{loanDetail?.custFullName}}" ngModel class="form-control" readonly>
+                </div>
+            </div>
+            <div class="row">
+                <div class="form-group col-md-4 col-sm-12">
+                    <label class="col-form-label">Installment Amount</label>
+                    <input type="text" name="installmentAmount" value="{{loanDetail?.installmentAmount}}" ngModel class="form-control" readonly>
+                </div>
+                <div class="form-group col-md-4 col-sm-12">
+                    <label class="col-form-label">Total Collection</label>
+                    <input type="text" name="shortName" value="{{loanDetail?.totalCollection}}" ngModel class="form-control" readonly>
                 </div>
             </div>
         </div>
-        <!--/.col-->
     </div>
-    <app-loader *ngIf="isLoader"></app-loader>
+    <div class="card">
+        <div class="card-header">
+            <strong>Add Installment</strong>
+        </div>
+        <form #form="ngForm" class="form-horizontal">
+            <div class="card-body">
+                <div class="row">
+                    <div class="form-group mb-3 col-md-4 col-sm-12">
+                        <label class="col-form-label" for="hf-email">Collection Amount</label>
+                        <input type="text" name="payment" class="form-control" ngModel placeholder="Amount.....">
+                    </div>
+                    <div class="form-group mb-3 col-md-4 col-sm-12">
+                        <label class="col-form-label" for="hf-email">Collection Date</label>
+                        <input class="form-control" id="date-input" value="{{currDate|date:'dd/MM/yyyy'}}" type="date" name="paymentDate" ngModel>
+                    </div>
+                    <div class="text-end">
+                        <button type="button" mat-raised-button (click)="addCustomerPayment(form.value, content)" class="mt-2 mb-2 " color="primary"> Submit</button>
+                        <button type="reset" mat-raised-button class="m-2"> Reset</button>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+
+    <div class="card">
+        <div class="card-header">
+            <i class="fa fa-align-justify"></i> Collection Detail
+        </div>
+        <div class="card-body">
+            <table class="table table-bordered table-striped table-sm">
+                <thead>
+                    <tr>
+                        <th>Collection Amount</th>
+                        <th>Collection Type</th>
+                        <th>Collection Date</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let loanPaymentDetail of loanPaymetDetails">
+                        <td>{{loanPaymentDetail.payment}}</td>
+                        <td>{{loanPaymentDetail.paymentMethod}}</td>
+                        <td>{{loanPaymentDetail.paymentDate}}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
 </div>
+<app-loader *ngIf="isLoader"></app-loader>
 
 <ng-template #content let-c="close" let-d="dismiss">
     <div class="modal-body">

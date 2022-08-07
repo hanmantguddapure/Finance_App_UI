@@ -7,46 +7,49 @@
                 </div>
                 <div class="card-body">
                     <div class="row">
-                        <div class="form-group col-sm-2">
+                        <div class="form-group col-md-4 col-sm-12">
                             <label class="col-form-label">Account Number</label>
                             <input name="fdAccountDtlsId" ngModel (blur)="getAccountDetail($event)" class="form-control" placeholder="FD Accont No">
                         </div>
-                        <div class="form-group col-sm-4">
+                        <div class="form-group col-md-4 col-sm-12">
                             <label class="col-form-label">Customer Name</label>
                             <input type="text" value="{{fdAccountDtls.custName}}" class="form-control" readonly>
                         </div>
-                        <div class="form-group col-sm-2">
+                    </div>
+                    <div class="row">
+                        <div class="form-group col-md-4 col-sm-12">
                             <label class="col-form-label" for="hf-email">FD Amount</label>
                             <input type="text" value="{{fdAccountDtls.amount}}" class="form-control" readonly>
                         </div>
-                        <div class="form-group col-sm-2">
+                        <div class="form-group col-md-4 col-sm-12">
                             <label class="col-form-label" for="hf-email">Iterest</label>
                             <input type="text" value="{{fdAccountDtls.interest}} %" class="form-control" readonly>
                         </div>
-                        <div class="form-group col-sm-2">
+                        <div class="form-group col-md-4 col-sm-12">
                             <label class="col-form-label" for="hf-email">Total Paid Iterest</label>
                             <input type="text" value="{{fdAccountDtls.interestAmt}}" class="form-control" readonly>
                         </div>
-                    </div>
-                    <div class="row">
-                        <div class="form-group col-sm-2">
+                        <div class="form-group col-md-4 col-sm-12">
                             <label class="col-form-label" for="hf-email">Start Date</label>
                             <input type="text" value="{{fdAccountDtls.startDate}}" class="form-control" readonly>
                         </div>
-                        <div class="form-group col-sm-2">
+                        <div class="form-group col-md-4 col-sm-12">
                             <label class="col-form-label" for="hf-email">End Date</label>
                             <input type="text" value="{{fdAccountDtls.endDate}}" class="form-control" readonly>
                         </div>
-                        <div class="form-group col-sm-2">
+                        <div class="form-group col-md-4 col-sm-12">
                             <label class="col-form-label" for="hf-email">Closing Date</label>
                             <input type="text" value="{{fdAccountDtls.closingDate}}" class="form-control" readonly>
                         </div>
-                        <div class="form-group col-sm-2">
+                        <div class="form-group col-md-4 col-sm-12">
                             <label class="col-form-label" for="hf-email">Status</label>
                             <input type="text" value="{{fdAccountDtls.isActive}}" class="form-control" readonly>
                         </div>
-                        <div class="form-group col-sm-8">
-                            <a [href]="fileUrl" target="_blank" download="fd.pdf">Download</a>
+                        <div class="form-group col-sm-3 p-4">
+                            <label class="col-form-label"></label>
+                            <div class="col-md-9">
+                                <a [href]="fileUrl" target="_blank" download="fd.pdf">Download</a>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -81,5 +84,5 @@
                 </div>
             </div>
         </div>
-    <app-loader *ngIf="isLoader"></app-loader>
+        <app-loader *ngIf="isLoader"></app-loader>
     </div>
