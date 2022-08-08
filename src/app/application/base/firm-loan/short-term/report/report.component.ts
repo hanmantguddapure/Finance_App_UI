@@ -24,12 +24,14 @@ export class ReportComponent implements OnInit {
         let loanStatus = event.target.value
         this.totalLoan = 0;
         this.isLoader = true;
-        this.loanService.getAllShortTermLoan(loanStatus).subscribe(data => {
+        this.loanService.getAllShortTermLoan(loanStatus).then((data: any) => {
             this.shortTermLoans = data;
             this.shortTermLoans.forEach(element => {
                 this.totalLoan = this.totalLoan + (element.loanAmt);
             });
             this.isLoader = false;
-        })
+        }, errot => {
+            this.isLoader = false;
+        });
     }
 }

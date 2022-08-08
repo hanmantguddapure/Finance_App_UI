@@ -27,12 +27,14 @@ export class ViewComponent implements OnInit {
             this.toster.error("Please enter FD Account id")
         } else {
             this.isLoader = true;
-            this.fdService.getFDDetailByFDId(fdId).subscribe(data => {
+            this.fdService.getFDDetailByFDId(fdId).then((data: any) => {
                 this.fdAccountDtls = data;
                 this.fdInterestHistory = this.fdAccountDtls.paidInterestHistory;
                 this.fileUrl = AppConstants.API_ENDPOINT + "/FD/download/" + fdId;
                 this.isLoader = false;
-            })
+            }, errot => {
+                this.isLoader = false;
+            });
         }
     }
 }

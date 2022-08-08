@@ -50,7 +50,7 @@ export class DashboardComponent implements OnInit {
 
 
     ngOnInit(): void {
-        this.dashboardService.getAllSummaryRepo('Opened', 'Active').subscribe(data => {
+        this.dashboardService.getAllSummaryRepo('Opened', 'Active').then((data: any) => {
             this.totalcredit = 0;
             this.appSummary = data;
             this.loanSummary = this.appSummary?.loanSummary;
@@ -63,6 +63,9 @@ export class DashboardComponent implements OnInit {
             this.totalCreditBalSummary = Math.floor(this.loanSummary?.disbursements + this.loanSummary?.loanIntrest + this.loanSummary?.processingFees);
             this.pendingCollection = this.totalCreditBalSummary - this.loanSummary?.collections;
             this.closingBalSummary = this.pendingCollection - this.totalDebitBalSummary;
-        })
+            // this.isLoader = false;
+        }, errot => {
+            // this.isLoader = false;
+        });
     }
 }

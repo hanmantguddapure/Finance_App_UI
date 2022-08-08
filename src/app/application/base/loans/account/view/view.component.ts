@@ -32,15 +32,18 @@ export class ViewComponent implements OnInit {
             this.toster.error("Please enter loan id")
         } else {
             this.isLoader = true;
-            this.loanservice.getLoanDetailByLoanId(loanId).subscribe(data => {
+            this.loanservice.getLoanDetailByLoanId(loanId).then((data: any) => {
                 this.loanDetail = data;
                 this.loanDetail.pendingAmount = this.loanDetail.principalAmount - this.loanDetail.totalCollection - this.loanDetail.depositeAmt;
                 this.loanPaymetDetails = this.loanDetail.loanCollections;
                 this.installmentMissedRequiredColl = this.loanDetail.pendingAmount + this.loanDetail.depositeAmt;
                 this.loanDetail.totalInstallments = this.loanPaymetDetails.length;
                 this.fileUrl = AppConstants.API_ENDPOINT + "/Loan/download-loan-dtl/" + loanId;
+
                 this.isLoader = false;
-            })
+            }, errot => {
+                this.isLoader = false;
+            });
         }
     }
 }

@@ -23,10 +23,13 @@ export class LoanPenltyComponent {
             this.toster.error("Please enter loan id")
         } else {
             this.isLoader = true;
-            this.loanservice.getLoanPenltyByLoanId(loanId).subscribe(data => {
+            this.loanservice.getLoanPenltyByLoanId(loanId).then((data: any) => {
                 this.loanPenalties = data;
+
                 this.isLoader = false;
-            })
+            }, errot => {
+                this.isLoader = false;
+            });
         }
     }
 
@@ -47,14 +50,17 @@ export class LoanPenltyComponent {
         }
         if (this.isValidate) {
             this.isLoader = true;
-            this.loanservice.addLoanPenlty(this.loanPenlty).subscribe(data => {
+            this.loanservice.addLoanPenlty(this.loanPenlty).then((data: any) => {
                 if (this.loanPenalties == null) {
                     this.loanPenalties = [];
                 }
                 this.loanPenalties.push(this.loanPenlty);
                 this.toster.success("Added Successfully");
+
                 this.isLoader = false;
-            })
+            }, errot => {
+                this.isLoader = false;
+            });
         }
 
     };

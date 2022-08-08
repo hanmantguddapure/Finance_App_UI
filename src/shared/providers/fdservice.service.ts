@@ -4,32 +4,71 @@ import { HttpClient } from '@angular/common/http';
 import { FDAccount } from 'src/shared/modals/fdaccount';
 import { AppConstants } from 'src/shared/modals/app-constants';
 import { FDInterestDtl } from 'src/shared/modals/fdinterest-dtl';
+import { ApiService } from '../services/api.service';
 
 @Injectable({
     providedIn: 'root'
 })
 export class FDService {
 
-    constructor(private http: HttpClient) { }
+    constructor(
+        private http: HttpClient,
+        private apiService: ApiService) { }
 
     public createNewFD(fdaccount: FDAccount) {
-        return this.http.post<FDAccount>(AppConstants.API_ENDPOINT + '/FD/new', fdaccount);
+        return new Promise<void>((resolve, reject) => {
+            this.apiService.postAPI('/FD/new', fdaccount).then(resp => {
+                resolve(resp);
+            }, error => {
+                reject(error);
+            })
+        });
     }
     public closeFD(fdaccount: FDAccount) {
-        return this.http.post<FDAccount>(AppConstants.API_ENDPOINT + '/FD/close', fdaccount);
+        return new Promise<void>((resolve, reject) => {
+            this.apiService.postAPI('/FD/close', fdaccount).then(resp => {
+                resolve(resp);
+            }, error => {
+                reject(error);
+            })
+        });
     }
     public getFDDetailByFDId(fdId: any) {
-        return this.http.get<FDAccount>(AppConstants.API_ENDPOINT + '/FD/find/' + fdId);
+        return new Promise<void>((resolve, reject) => {
+            this.apiService.getAPI('/FD/find/' + fdId).then(resp => {
+                resolve(resp);
+            }, error => {
+                reject(error);
+            })
+        });
     }
 
     public getFdsByStatus(fdStatus: any) {
-        return this.http.get<FDAccount[]>(AppConstants.API_ENDPOINT + '/FD/find-all/' + fdStatus);
+        return new Promise<void>((resolve, reject) => {
+            this.apiService.getAPI('/FD/find-all/' + fdStatus).then(resp => {
+                resolve(resp);
+            }, error => {
+                reject(error);
+            })
+        });
     }
     public getCustFDLst(custId: any) {
-        return this.http.get<FDAccount[]>(AppConstants.API_ENDPOINT + '/FD/findAll/' + custId);
+        return new Promise<void>((resolve, reject) => {
+            this.apiService.getAPI('/FD/findAll/' + custId).then(resp => {
+                resolve(resp);
+            }, error => {
+                reject(error);
+            })
+        });
     }
     public payInterestAmt(fdinterest: FDInterestDtl) {
-        return this.http.post<FDInterestDtl>(AppConstants.API_ENDPOINT + '/FD/pay-interst-amount', fdinterest);
+        return new Promise<void>((resolve, reject) => {
+            this.apiService.postAPI('/FD/pay-interst-amount', fdinterest).then(resp => {
+                resolve(resp);
+            }, error => {
+                reject(error);
+            })
+        });
     }
 
 }

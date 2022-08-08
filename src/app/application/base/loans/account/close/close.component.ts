@@ -23,13 +23,16 @@ export class CloseComponent implements OnInit {
             this.toster.error("Please enter loan id")
         } else {
             this.isLoader = true;
-            this.loanservice.getLoanDetailByLoanId(loanId).subscribe(data => {
+            this.loanservice.getLoanDetailByLoanId(loanId).then((data: any) => {
                 this.loanDetail = data;
                 this.loanDetail.pendingAmount = this.loanDetail.principalAmount - this.loanDetail.totalCollection - this.loanDetail.depositeAmt;
                 this.loanPaymetDetails = this.loanDetail.loanCollections;
                 this.loanDetail.totalInstallments = this.loanPaymetDetails.length;
+
                 this.isLoader = false;
-            })
+            }, errot => {
+                this.isLoader = false;
+            });
         }
 
     }
@@ -42,10 +45,13 @@ export class CloseComponent implements OnInit {
             this.loanDetail.loanStatus = loanDetail.loanStatus;
             this.loanDetail.remark = loanDetail.remark;
             this.isLoader = true;
-            this.loanservice.closeLoanAccount(this.loanDetail).subscribe(data => {
+            this.loanservice.closeLoanAccount(this.loanDetail).then((data: any) => {
                 this.toster.success("Closed Successfully")
+
                 this.isLoader = false;
-            })
+            }, errot => {
+                this.isLoader = false;
+            });
         }
     };
 

@@ -19,9 +19,11 @@ export class NewComponent implements OnInit {
     }
     createNewShortTermLoan(): void {
         this.isLoader = true;
-        this.loanservice.createNewShortTermLoan(this.shortTermLoanObj).subscribe(data => {
+        this.loanservice.createNewShortTermLoan(this.shortTermLoanObj).then((data: any) => {
             this.toster.success("Successfully Added");
             this.isLoader = false;
-        })
+        }, errot => {
+            this.isLoader = false;
+        });
     }
 }

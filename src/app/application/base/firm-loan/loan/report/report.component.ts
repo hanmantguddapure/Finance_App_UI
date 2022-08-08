@@ -22,7 +22,7 @@ export class ReportComponent implements OnInit {
         this.totalLoan = 0;
         this.totalInterest = 0;
         this.isLoader = true;
-        this.loanService.getAllFirmLoan(loanStatus).subscribe(data => {
+        this.loanService.getAllFirmLoan(loanStatus).then((data: any) => {
             this.firmLoanObjs = data;
             this.firmLoanObjs.forEach(element => {
                 this.totalLoan = this.totalLoan + (element.loanAmt);
@@ -31,7 +31,9 @@ export class ReportComponent implements OnInit {
                 }
                 this.isLoader = false;
             });
-        })
+        }, errot => {
+            this.isLoader = false;
+        });
     }
 
 }

@@ -24,20 +24,24 @@ export class CloseComponent implements OnInit {
             this.toster.error("Please enter Account id")
         } else {
             this.isLoader = true;
-            this.loanService.getShortTermLoanById(shortTermLoanId).subscribe(data => {
+            this.loanService.getShortTermLoanById(shortTermLoanId).then((data: any) => {
                 this.shortTermLoanObj = data;
                 this.isLoader = false;
-            })
+            }, errot => {
+                this.isLoader = false;
+            });
         }
     }
 
     closeShortTermLoan() {
         this.shortTermLoanObj.status = '0';
         this.isLoader = true;
-        this.loanService.closeShortTermLoan(this.shortTermLoanObj).subscribe(data => {
+        this.loanService.closeShortTermLoan(this.shortTermLoanObj).then((data: any) => {
             this.toster.success("Successfully Closed");
             this.isLoader = false;
-        })
+        }, errot => {
+            this.isLoader = false;
+        });
     }
 
 }

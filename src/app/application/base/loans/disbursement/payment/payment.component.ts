@@ -24,7 +24,7 @@ export class PaymentComponent implements OnInit {
             this.toster.error("Please enter loan id")
         } else {
             this.isLoader = true;
-            this.loanservice.getLoanDetailByLoanId(loanId).subscribe(data => {
+            this.loanservice.getLoanDetailByLoanId(loanId).then((data: any) => {
                 this.loanDetail = data;
                 if (this.loanDetail.disburseAmt != null) {
                     this.loanDetail.disburseAmt = this.loanDetail.loanAmt - this.loanDetail.disburseAmt;
@@ -34,7 +34,9 @@ export class PaymentComponent implements OnInit {
                     this.loanDetail.disburseAmt = this.loanDetail.loanAmt;
                 }
                 this.isLoader = false;
-            })
+            }, errot => {
+                this.isLoader = false;
+            });
         }
 
     }
@@ -43,11 +45,13 @@ export class PaymentComponent implements OnInit {
         this.loanDetail.paymentMode = paymentDetail.paymentMode;
         this.loanDetail.disburseAmt = paymentDetail.disburseAmt;
         this.isLoader = true;
-        this.loanservice.makeLoanPayment(this.loanDetail).subscribe(data => {
+        this.loanservice.makeLoanPayment(this.loanDetail).then((data: any) => {
             this.loanDetail = data;
             this.toster.success("Payment Done Successfully");
             this.isLoader = false;
-        })
+        }, errot => {
+            this.isLoader = false;
+        });
     }
 
 

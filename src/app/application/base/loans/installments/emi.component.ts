@@ -35,10 +35,13 @@ export class EMIComponent {
     }
     ngOnInit() {
         this.isLoader = true;
-        this.customerService.getCustomerAllDetail().subscribe(data => {
+        this.customerService.getCustomerAllDetail().then((data: any) => {
             this.allCustomerList = data;
+
             this.isLoader = false;
-        })
+        }, errot => {
+            this.isLoader = false;
+        });
     };
     toggleCollapse(): void {
         this.isCollapsed = !this.isCollapsed;
@@ -46,7 +49,7 @@ export class EMIComponent {
     }
     /*  onCustomerChange(custId){
         console.log("test "+custId);
-       this.loanservice.getLoanDetailByCustIdAndStatus(custId).subscribe(data => {
+       this.loanservice.getLoanDetailByCustIdAndStatus(custId).then((data: any) => {
           this.customerLoanDetail=data;
           this.loanDetail=this.customerLoanDetail[0];
          
@@ -59,14 +62,17 @@ export class EMIComponent {
             this.toster.error("Please enter loan id")
         } else {
             this.isLoader = true;
-            this.loanservice.getLoanDetailByLoanId(loanId).subscribe(data => {
+            this.loanservice.getLoanDetailByLoanId(loanId).then((data: any) => {
                 this.loanDetail = data;
                 if (this.loanDetail.loanStatus.toLowerCase() == "closed") {
                     this.toster.error("Loan already closed");
                 }
                 this.loanPaymetDetails = this.loanDetail.loanCollections;
+
                 this.isLoader = false;
-            })
+            }, errot => {
+                this.isLoader = false;
+            });
         }
     }
 
@@ -108,14 +114,17 @@ export class EMIComponent {
 
     addCustomePayment() {
         this.isLoader = true;
-        this.loanservice.addCustomerPaymet(this.loanPaymentDetail).subscribe(data => {
+        this.loanservice.addCustomerPaymet(this.loanPaymentDetail).then((data: any) => {
             if (this.loanPaymetDetails == null) {
                 this.loanPaymetDetails = [];
             }
             this.loanPaymetDetails.push(this.loanPaymentDetail);
             this.toster.success("Added Successfully");
             this.checkDuplicate = false;
+
             this.isLoader = false;
-        })
+        }, errot => {
+            this.isLoader = false;
+        });
     }
 }

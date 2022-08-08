@@ -42,7 +42,7 @@ export class StatusComponent implements OnInit {
         this.totalInterest = 0;
         this.fileUrl = AppConstants.API_ENDPOINT + "/Loan/download-loan-accounts/" + loanStatus;
         this.isLoader = true;
-        this.loanservice.getLoanDetailByStatus(loanStatus).subscribe(data => {
+        this.loanservice.getLoanDetailByStatus(loanStatus).then((data: any) => {
             this.loanRepoDetails = data;
             this.loanRepoDetails.forEach(element => {
                 this.totalPrince = this.totalPrince + (element.principalAmount);
@@ -56,7 +56,10 @@ export class StatusComponent implements OnInit {
                 this.totalDisbursed = this.totalDisbursed + (element.disburseAmt);
             });
             this.totalAccounts = this.loanRepoDetails.length;
+
             this.isLoader = false;
-        })
+        }, errot => {
+            this.isLoader = false;
+        });
     }
 }

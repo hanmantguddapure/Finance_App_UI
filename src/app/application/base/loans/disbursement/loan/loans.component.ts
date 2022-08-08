@@ -18,9 +18,11 @@ export class LoansComponent implements OnInit {
 
     ngOnInit() {
         this.isLoader = true;
-        this.loanservice.getDisburseLoansByStatus('Opened').subscribe(data => {
+        this.loanservice.getDisburseLoansByStatus('Opened').then((data: any) => {
             this.loanRepoDetails = data;
             this.isLoader = false;
-        })
+        }, errot => {
+            this.isLoader = false;
+        });
     }
 }

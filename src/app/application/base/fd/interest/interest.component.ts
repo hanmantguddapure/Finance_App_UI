@@ -28,7 +28,7 @@ export class InterestComponent implements OnInit {
             this.toster.error("Please enter FD Account id")
         } else {
             this.isLoader = true;
-            this.fdService.getFDDetailByFDId(fdId).subscribe(data => {
+            this.fdService.getFDDetailByFDId(fdId).then((data: any) => {
                 this.fdDtls = new FDAccount(data);
                 if (this.fdDtls.isActive.toLowerCase() == "closed") {
                     this.toster.error("This FD already closed");
@@ -38,7 +38,9 @@ export class InterestComponent implements OnInit {
                 this.fdInterest.interestAmt = this.fdDtls.pendingInterestAmt;
                 this.fdInterestHistory = this.fdDtls.paidInterestHistory;
                 this.isLoader = false;
-            })
+            }, errot => {
+                this.isLoader = false;
+            });
         }
     }
 
@@ -48,13 +50,15 @@ export class InterestComponent implements OnInit {
             return;
         }
         this.isLoader = true;
-        this.fdService.payInterestAmt(this.fdInterest).subscribe(data => {
+        this.fdService.payInterestAmt(this.fdInterest).then((data: any) => {
             if (this.fdInterestHistory == null) {
                 this.fdInterestHistory = [];
             }
             this.fdInterestHistory.push(data);
             this.toster.success("Payment Done Successfully");
             this.isLoader = false;
-        })
+        }, errot => {
+            this.isLoader = false;
+        });
     }
 }

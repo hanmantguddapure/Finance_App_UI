@@ -29,10 +29,13 @@ export class HoldersComponent implements OnInit {
 
     ngOnInit() {
         this.isLoader = true;
-        this.customerService.getCustomerAllDetail().subscribe(data => {
+        this.customerService.getCustomerAllDetail().then((data: any) => {
             this.allCustomerList = data;
+
             this.isLoader = false;
-        })
+        }, errot => {
+            this.isLoader = false;
+        });
     }
 
     onStatusChange(event: any) {
@@ -45,7 +48,7 @@ export class HoldersComponent implements OnInit {
         this.totalEarning = 0;
         this.totalInterest = 0;
         this.isLoader = true;
-        this.loanService.getLoanDetailByCustId(custId).subscribe(data => {
+        this.loanService.getLoanDetailByCustId(custId).then((data: any) => {
             this.loanRepoDetails = data;
             this.loanRepoDetails.forEach(element => {
                 this.totalPrince = this.totalPrince + (element.principalAmount);
@@ -59,8 +62,11 @@ export class HoldersComponent implements OnInit {
                 this.totalDisbursed = this.totalDisbursed + (element.disburseAmt);
 
             });
+
             this.isLoader = false;
-        })
+        }, errot => {
+            this.isLoader = false;
+        });
     }
 
 }

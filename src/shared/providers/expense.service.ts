@@ -16,7 +16,13 @@ export class ExpenseService {
     ) { }
 
     public getExpenseTypes() {
-        return this.http.get<Expense[]>(AppConstants.API_ENDPOINT + '/expense/get-expense-types');
+        return new Promise<void>((resolve, reject) => {
+            this.apiService.getAPI('/expense/get-expense-types').then(resp => {
+                resolve(resp);
+            }, error => {
+                reject(error);
+            })
+        });
     }
 
     addExpenseType(expenseName: Expense) {
@@ -70,14 +76,32 @@ export class ExpenseService {
     }
 
     public setExpenseType(expenseType: any) {
-        return this.http.get<Expense[]>(AppConstants.API_ENDPOINT + '/expense/expense-type/' + expenseType);
+        return new Promise<void>((resolve, reject) => {
+            this.apiService.getAPI('/expense/expense-type/' + expenseType).then(resp => {
+                resolve(resp);
+            }, error => {
+                reject(error);
+            })
+        });
     }
 
     public getExpenseByDate(fromDate: any) {
-        return this.http.get<Expense[]>(AppConstants.API_ENDPOINT + '/expense/get-expenses/' + fromDate);
+        return new Promise<void>((resolve, reject) => {
+            this.apiService.getAPI('/expense/get-expenses/' + fromDate).then(resp => {
+                resolve(resp);
+            }, error => {
+                reject(error);
+            })
+        });
     }
 
     public getExpenseBetween(fromDate: any, toDate: any) {
-        return this.http.get<Expense[]>(AppConstants.API_ENDPOINT + '/expense/get-expense-between/' + fromDate + "/" + toDate);
+        return new Promise<void>((resolve, reject) => {
+            this.apiService.getAPI('/expense/get-expense-between/' + fromDate + "/" + toDate).then(resp => {
+                resolve(resp);
+            }, error => {
+                reject(error);
+            })
+        });
     }
 }

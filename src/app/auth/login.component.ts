@@ -38,7 +38,7 @@ export class LoginComponent {
             return;
         }
         this.userLoader = true;
-        this.loginService.checkUserName(this.user.userName).subscribe(data => {
+        this.loginService.checkUserName(this.user.userName).then((data: any) => {
             this.user = data;
             if (this.user.token != null || this.user.token != undefined) {
                 this.isValidUserName = true;
@@ -57,7 +57,7 @@ export class LoginComponent {
             return;
         }
         this.passwordLoader = true;
-        this.loginService.checkUser(this.user).subscribe(data => {
+        this.loginService.checkUser(this.user).then((data: any) => {
             this.cache.user = data;
             this.cache.set('user', this.cache.user);
             this.router.navigate(['/application/dashboard']);

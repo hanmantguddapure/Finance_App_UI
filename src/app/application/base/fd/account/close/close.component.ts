@@ -26,10 +26,12 @@ export class CloseComponent implements OnInit {
             this.toster.error("Please enter FD Account id")
         } else {
             this.isLoader = true;
-            this.fdService.getFDDetailByFDId(fdId).subscribe(data => {
+            this.fdService.getFDDetailByFDId(fdId).then((data: any) => {
                 this.isLoader = false;
                 this.fdAccountDtls = data;
-            })
+            }, errot => {
+                this.isLoader = false;
+            });
         }
 
     }
@@ -54,10 +56,12 @@ export class CloseComponent implements OnInit {
         }
 
         this.isLoader = true;
-        this.fdService.closeFD(this.fdAccountDtls).subscribe(data => {
+        this.fdService.closeFD(this.fdAccountDtls).then((data: any) => {
             this.fdAccountDtls = data;
             this.toster.success("Successfully Closed");
             this.isLoader = false;
-        })
+        }, errot => {
+            this.isLoader = false;
+        });
     }
 }

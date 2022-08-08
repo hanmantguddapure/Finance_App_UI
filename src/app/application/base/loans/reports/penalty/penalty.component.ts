@@ -21,9 +21,12 @@ export class PenaltyComponent implements OnInit {
     onStatusChange(event: any) {
         let loanStatus = event.target.value;
         this.isLoader = true;
-        this.loanservice.getAllLoanPenaltiesByLoanStatus(loanStatus).subscribe(data => {
+        this.loanservice.getAllLoanPenaltiesByLoanStatus(loanStatus).then((data: any) => {
             this.loanPenalties = data;
+
             this.isLoader = false;
-        })
+        }, errot => {
+            this.isLoader = false;
+        });
     }
 }

@@ -23,19 +23,23 @@ export class CloseComponent implements OnInit {
             this.toster.error("Please enter Account id")
         } else {
             this.isLoader = true;
-            this.loanService.getFirmLoanById(firmLoanId).subscribe(data => {
+            this.loanService.getFirmLoanById(firmLoanId).then((data: any) => {
                 this.firmLoanObj = data;
                 this.isLoader = false;
-            })
+            }, errot => {
+                this.isLoader = false;
+            });
         }
     }
 
     closeFirmLoan() {
         this.firmLoanObj.isActive = 0;
         this.isLoader = true;
-        this.loanService.closeFirmLoan(this.firmLoanObj).subscribe(data => {
+        this.loanService.closeFirmLoan(this.firmLoanObj).then((data: any) => {
             this.toster.success("Successfully Closed");
             this.isLoader = false;
-        })
+        }, errot => {
+            this.isLoader = false;
+        });
     }
 }

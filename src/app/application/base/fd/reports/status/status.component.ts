@@ -28,7 +28,7 @@ export class StatusComponent implements OnInit {
         this.total = 0;
         this.totalAccounts = 0;
         this.isLoader = true;
-        this.fdservice.getFdsByStatus(fdStatus).subscribe(data => {
+        this.fdservice.getFdsByStatus(fdStatus).then((data: any) => {
             this.fdReports = data;
             this.fdReports.forEach(element => {
                 this.totalFD = this.totalFD + (element.amount);
@@ -37,6 +37,8 @@ export class StatusComponent implements OnInit {
             this.total = this.totalFD + this.totalInterest;
             this.totalAccounts = this.fdReports.length;
             this.isLoader = false;
-        })
+        }, errot => {
+            this.isLoader = false;
+        });
     }
 }

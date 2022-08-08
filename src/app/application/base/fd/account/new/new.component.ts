@@ -20,10 +20,12 @@ export class NewComponent implements OnInit {
 
     ngOnInit() {
         this.isLoader = true;
-        this.customerService.getCustomerAllDetail().subscribe(data => {
+        this.customerService.getCustomerAllDetail().then((data: any) => {
             this.allCustomerList = data;
             this.isLoader = false;
-        })
+        }, errot => {
+            this.isLoader = false;
+        });
     }
 
     calculateItersetAmt() {
@@ -36,11 +38,13 @@ export class NewComponent implements OnInit {
         this.checkValidation();
         if (this.validationFlag) {
             this.isLoader = true;
-            this.fdService.createNewFD(this.fdAccount).subscribe(data => {
+            this.fdService.createNewFD(this.fdAccount).then((data: any) => {
                 this.fdAccount = data;
                 this.toster.success("Successfully Created New FD");
                 this.isLoader = false;
-            })
+            }, errot => {
+                this.isLoader = false;
+            });
         }
     };
 

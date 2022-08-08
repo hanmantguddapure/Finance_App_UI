@@ -4,18 +4,33 @@ import { HttpClient } from '@angular/common/http';
 import { Dashboard } from 'src/shared/modals/dashboard';
 import { AppConstants } from 'src/shared/modals/app-constants';
 import { AppSummary } from 'src/shared/modals/app-summary';
+import { ApiService } from '../services/api.service';
 
 @Injectable({
     providedIn: 'root'
 })
 export class DashBoardService {
 
-    constructor(private http: HttpClient) { }
+    constructor(private http: HttpClient, private apiService: ApiService) { }
     public getDashboard() {
-        return this.http.get<Dashboard>(AppConstants.API_ENDPOINT + '/dashboard/dashboard');
+
+        return new Promise<void>((resolve, reject) => {
+            this.apiService.getAPI('/dashboard/dashboard').then(resp => {
+                resolve(resp);
+            }, error => {
+                reject(error);
+            })
+        });
     }
     public getAllSummaryRepo(loanStatus: any, fdStatus: any) {
-        return this.http.get<AppSummary>(AppConstants.API_ENDPOINT + '/dashboard/get-all-summary-repo/' + loanStatus + '/' + fdStatus);
+
+        return new Promise<void>((resolve, reject) => {
+            this.apiService.getAPI('/dashboard/get-all-summary-repo/' + loanStatus + '/' + fdStatus).then(resp => {
+                resolve(resp);
+            }, error => {
+                reject(error);
+            })
+        });
     }
 
 }

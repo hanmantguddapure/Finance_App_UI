@@ -26,24 +26,62 @@ export class CustomerService {
         });
     }
 
-    public getCustomerDetail(custId: any): Observable<Customer> {
-        return this.http.get<Customer>(AppConstants.API_ENDPOINT + '/customer/find-byId/' + custId);
+    public getCustomerDetail(custId: any) {
+        return new Promise<void>((resolve, reject) => {
+            this.apiService.getAPI('/customer/find-byId/' + custId).then(resp => {
+                resolve(resp);
+            }, error => {
+                reject(error);
+            })
+        });
     }
-    public getCustomerAllDetail(): Observable<Customer[]> {
-        return this.http.get<Customer[]>(AppConstants.API_ENDPOINT + '/customer/find-all');
+    public getCustomerAllDetail() {
+        return new Promise<void>((resolve, reject) => {
+            this.apiService.getAPI('/customer/find-all').then(resp => {
+                resolve(resp);
+            }, error => {
+                reject(error);
+            })
+        });
     }
 
     public editCustomerDetail(customer: Customer) {
-        return this.http.put<Customer>(AppConstants.API_ENDPOINT + '/customer/edit', customer);
-    }
-    public saveCustContactPersionDetail(customer: Customer) {
-        return this.http.post<Customer>(AppConstants.API_ENDPOINT + '/customer/contact-persions/add', customer);
-    }
-    public editCustContactPersionDetail(customer: Customer) {
-        return this.http.put<Customer>(AppConstants.API_ENDPOINT + '/customer/contact-persions/edit', customer);
-    }
-    public getCustomerContactPeoples(custId: any): Observable<Customer[]> {
-        return this.http.get<Customer[]>(AppConstants.API_ENDPOINT + '/customer/contact-persions/find-by-custId/' + custId);
+        return new Promise<void>((resolve, reject) => {
+            this.apiService.putAPI('/customer/edit', customer).then(resp => {
+                resolve(resp);
+            }, error => {
+                reject(error);
+            })
+        });
     }
 
+    public saveCustContactPersionDetail(customer: Customer) {
+        return new Promise<void>((resolve, reject) => {
+            this.apiService.postAPI('/customer/contact-persions/add', customer).then(resp => {
+                resolve(resp);
+            }, error => {
+                reject(error);
+            })
+        });
+    }
+
+    public editCustContactPersionDetail(customer: Customer) {
+        return new Promise<void>((resolve, reject) => {
+            this.apiService.putAPI('/customer/contact-persions/edit', customer).then(resp => {
+                resolve(resp);
+            }, error => {
+                reject(error);
+            })
+        });
+    }
+
+    public getCustomerContactPeoples(custId: any) {
+        return new Promise<void>((resolve, reject) => {
+            this.apiService.getAPI('/customer/contact-persions/find-by-custId/' + custId).then(resp => {
+                resolve(resp);
+            }, error => {
+                reject(error);
+            })
+        });
+    }
 }

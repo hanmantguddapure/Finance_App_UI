@@ -39,21 +39,27 @@ export class NewComponent implements OnInit {
 
     ngOnInit() {
         this.isLoader = true;
-        this.customerService.getCustomerAllDetail().subscribe(data => {
+        this.customerService.getCustomerAllDetail().then((data: any) => {
             this.allCustomerList = data;
+
             this.isLoader = false;
-        })
+        }, errot => {
+            this.isLoader = false;
+        });
     };
     saveLoanDetail(): void {
         this.validationFlag = true;
         this.checkValidation();
         if (this.validationFlag) {
             this.isLoader = true;
-            this.loanservice.saveLoanDetail(this.loanDetail).subscribe(data => {
+            this.loanservice.saveLoanDetail(this.loanDetail).then((data: any) => {
                 this.loanDetail = data;
                 this.toster.success("Successfully Created New Loan Account");
+
                 this.isLoader = false;
-            })
+            }, errot => {
+                this.isLoader = false;
+            });
         }
 
     };

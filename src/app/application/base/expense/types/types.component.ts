@@ -48,10 +48,12 @@ export class ExpenseTypesComponent implements OnInit {
     ngOnInit() {
         this.isLoader = true;
 
-        this.expenseService.getExpenseTypes().subscribe(data => {
+        this.expenseService.getExpenseTypes().then((data: any) => {
             this.expenseTypesList = data;
             this.isLoader = false;
-        })
+        }, errot => {
+            this.isLoader = false;
+        });
     }
 
     addExpenseTypes() {

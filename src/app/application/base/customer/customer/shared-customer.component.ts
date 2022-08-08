@@ -80,7 +80,7 @@ export class SharedCustomerComponent implements OnInit {
     }
 
     getAll() {
-        this.customerService.getCustomerAllDetail().subscribe((data: any) => {
+        this.customerService.getCustomerAllDetail().then((data: any) => {
             this.allCustomerList = data.response;
         });
     }
@@ -91,7 +91,7 @@ export class SharedCustomerComponent implements OnInit {
                 this.toster.error("Please Select Customer")
             }
             this.isLoader = true;
-            this.customerService.getCustomerDetail(custId).subscribe((data: any) => {
+            this.customerService.getCustomerDetail(custId).then((data: any) => {
                 this.custInfo = data.response;
                 this.CustomerGroup.patchValue(this.custInfo, { emitEvent: false });
                 this.initContactPeople(this.custInfo.contactPeopleDtls);
@@ -206,7 +206,7 @@ export class SharedCustomerComponent implements OnInit {
     /* ##################### View section ###################### */
 
     editCustContact(custContactDtls: any) {
-        this.customerService.editCustContactPersionDetail(custContactDtls).subscribe(data => {
+        this.customerService.editCustContactPersionDetail(custContactDtls).then(data => {
             this.toster.success("Save Changes Successfully");
             this.editCache[custContactDtls.contactPersionId] = false;
         });
@@ -230,7 +230,7 @@ export class SharedCustomerComponent implements OnInit {
     editCustInfo() {
         this.isLoader = true;
         this.custInfo.address = this.addressDetail;
-        this.customerService.editCustomerDetail(this.custInfo).subscribe(data => {
+        this.customerService.editCustomerDetail(this.custInfo).then((data: any) => {
             this.custInfo = data;
             this.editProfession = true;
             this.isEiditable = false;
@@ -244,6 +244,6 @@ export class SharedCustomerComponent implements OnInit {
             this.isLoader = false;
         }, errot => {
             this.isLoader = false;
-        })
+        });
     }
 }

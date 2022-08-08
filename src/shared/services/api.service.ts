@@ -30,15 +30,12 @@ export class ApiService {
 
 
     // HttpClient API get() method => Fetch API
-    getAPI(url, data = null, id = null) {
+    getAPI(url, data = null) {
         return new Promise<void>((resolve, reject) => {
-            this.http.get(AppConstants.API_ENDPOINT + url + id).subscribe({
+            this.http.get(AppConstants.API_ENDPOINT + url).subscribe({
                 next: (res: any) => {
                     resolve(res);
-                },
-                error: (err: any) => {
-                    console.log(err);
-
+                }, error: (err: any) => {
                     reject(err);
                 },
                 complete: () => {
@@ -66,7 +63,7 @@ export class ApiService {
     }
 
     // // HttpClient API put() method => Update API
-    putAPI(url, data, id) {
+    putAPI(url, data, id = null) {
         return new Promise<void>((resolve, reject) => {
             this.http
                 .put(AppConstants.API_ENDPOINT + url + (id ? ('/' + id) : ''), JSON.stringify(data), this.httpOptions).subscribe({

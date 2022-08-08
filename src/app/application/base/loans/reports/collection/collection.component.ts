@@ -26,26 +26,32 @@ export class CollectionComponent implements OnInit {
         this.totalCollection = 0;
         this.loanCollRepo = collectionDates;
         this.isLoader = true;
-        this.loanservice.getLoanCollectionsByDate(this.loanCollRepo.fromDate, this.loanCollRepo.toDate).subscribe(data => {
+        this.loanservice.getLoanCollectionsByDate(this.loanCollRepo.fromDate, this.loanCollRepo.toDate).then((data: any) => {
             this.loanCollections = data;
             this.loanCollections.forEach(element => {
                 this.totalCollection = this.totalCollection + (element.payment);
                 this.fileUrl = AppConstants.API_ENDPOINT + "/Loan/download-loan-collection-repo/" + this.loanCollRepo.fromDate + "/" + this.loanCollRepo.toDate;
             });
+
             this.isLoader = false;
-        })
+        }, errot => {
+            this.isLoader = false;
+        });
     }
 
     getDailyCollection() {
         this.totalCollection = 0;
         this.isLoader = true;
-        this.loanservice.getTodayCollectionSummary().subscribe(data => {
+        this.loanservice.getTodayCollectionSummary().then((data: any) => {
             this.loanCollections = data;
             this.loanCollections.forEach(element => {
                 this.totalCollection = this.totalCollection + (element.payment);
             });
+
             this.isLoader = false;
-        })
+        }, errot => {
+            this.isLoader = false;
+        });
     }
 
 }

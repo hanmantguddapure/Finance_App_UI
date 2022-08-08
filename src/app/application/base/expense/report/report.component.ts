@@ -22,18 +22,22 @@ export class ExpenseReportComponent implements OnInit {
     ngOnInit() {
         this.isLoader = true;
 
-        this.expenseService.getExpenseTypes().subscribe(data => {
+        this.expenseService.getExpenseTypes().then((data: any) => {
             this.expenseTypesList = data;
             this.isLoader = false;
-        })
+        }, errot => {
+            this.isLoader = false;
+        });
     }
 
     onStatusChange(event: any) {
         let expenseType = event.target.value;
 
         this.isLoader = true;
-        this.expenseService.setExpenseType(expenseType).subscribe(data => {
+        this.expenseService.setExpenseType(expenseType).then((data: any) => {
             this.calculateTotal(data)
+            this.isLoader = false;
+        }, errot => {
             this.isLoader = false;
         });
     }
@@ -44,10 +48,12 @@ export class ExpenseReportComponent implements OnInit {
         this.checkValidation();
         if (this.validationFlag) {
             this.isLoader = true;
-            this.expenseService.getExpenseBetween(expenseDetails.fromDate, expenseDetails.toDate).subscribe(data => {
+            this.expenseService.getExpenseBetween(expenseDetails.fromDate, expenseDetails.toDate).then((data: any) => {
                 this.calculateTotal(data)
                 this.isLoader = false;
-            })
+            }, errot => {
+                this.isLoader = false;
+            });
         }
     };
 

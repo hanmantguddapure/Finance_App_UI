@@ -24,10 +24,12 @@ export class ExpenseDetailComponent implements OnInit {
 
     ngOnInit() {
         this.isLoader = true;
-        this.expenseService.getExpenseTypes().subscribe(data => {
+        this.expenseService.getExpenseTypes().then((data: any) => {
             this.isLoader = false;
             this.expenseTypesList = data;
-        })
+        }, errot => {
+            this.isLoader = false;
+        });
     }
 
     selectchange(args: any) {
@@ -38,13 +40,15 @@ export class ExpenseDetailComponent implements OnInit {
         let selectedDate = event.target.value;
         this.total = 0;
         this.isLoader = true;
-        this.expenseService.getExpenseByDate(selectedDate).subscribe(data => {
+        this.expenseService.getExpenseByDate(selectedDate).then((data: any) => {
             this.expenseslst = data;
             this.expenseslst.forEach(element => {
                 this.total = this.total + (element.amount);
             });
             this.isLoader = false;
-        })
+        }, errot => {
+            this.isLoader = false;
+        });
     }
 
     addExpenseDtls(expenseDetails: any): void {
