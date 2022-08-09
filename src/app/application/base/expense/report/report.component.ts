@@ -20,6 +20,11 @@ export class ExpenseReportComponent implements OnInit {
     }
 
     ngOnInit() {
+        this.getInit();
+    }
+
+    getInit() {
+
         this.isLoader = true;
 
         this.expenseService.getExpenseTypes().then((data: any) => {
@@ -63,8 +68,9 @@ export class ExpenseReportComponent implements OnInit {
         }
         this.deleteLoader = true;
         this.expenseService.deleteExpenses(index).then(data => {
-            this.deleteLoader = false;
+            // this.getInit();
             this.expenseslst.splice(index, 1);
+            this.deleteLoader = false;
         }, error => {
             this.deleteLoader = false;
         })
@@ -73,7 +79,7 @@ export class ExpenseReportComponent implements OnInit {
     calculateTotal(data) {
         this.total = 0;
         this.expenseslst = data;
-        this.expenseslst.forEach(element => {
+        this.expenseslst?.forEach(element => {
             this.total = this.total + (element.amount);
         });
     }

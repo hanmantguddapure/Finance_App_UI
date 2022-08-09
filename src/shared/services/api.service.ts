@@ -83,7 +83,7 @@ export class ApiService {
     deleteAPI(url, id: any) {
         return new Promise<void>((resolve, reject) => {//     
             this.http
-                .delete(AppConstants.API_ENDPOINT + url + '/' + id, this.httpOptions).subscribe({
+                .delete(AppConstants.API_ENDPOINT + url, this.httpOptions).subscribe({
                     next: (res: any) => {
                         resolve(res);
                     },

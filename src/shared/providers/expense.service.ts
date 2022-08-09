@@ -57,7 +57,7 @@ export class ExpenseService {
 
     deleteExpenses(id) {
         return new Promise<void>((resolve, reject) => {
-            this.apiService.deleteAPI('/expense/delete-expenses', id).then(resp => {
+            this.apiService.deleteAPI('/expense/delete-expenses' + '/' + id, null).then(resp => {
                 resolve(resp);
             }, error => {
                 reject(error);

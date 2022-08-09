@@ -42,7 +42,7 @@ export class ExpenseDetailComponent implements OnInit {
         this.isLoader = true;
         this.expenseService.getExpenseByDate(selectedDate).then((data: any) => {
             this.expenseslst = data;
-            this.expenseslst.forEach(element => {
+            this.expenseslst?.forEach(element => {
                 this.total = this.total + (element.amount);
             });
             this.isLoader = false;
@@ -59,13 +59,18 @@ export class ExpenseDetailComponent implements OnInit {
         if (this.validationFlag) {
             this.isLoader = true;
             this.expenseService.addExpenseDtls(this.expense).then((data: any) => {
+                if (data.amount) {
+                    this.total += data.amount;
+                }
                 if (this.expenseslst == null) {
                     this.expenseslst = [];
                 }
                 this.expenseslst.push(data);
                 this.toster.success("Successfully Added");
                 this.isLoader = false;
-            })
+            }, error => {
+                this.isLoader = false;
+            });
         }
     };
 
