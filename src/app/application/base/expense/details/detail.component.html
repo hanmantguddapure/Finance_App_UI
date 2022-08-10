@@ -14,7 +14,7 @@
                         <label class="col-form-label" for="expenseTypeId">Expense Types</label>
                         <select class="form-control" id="expenseTypeId" name="expenseTypeId" ngModel (change)="selectchange($event)">
                             <option>--Select Type--</option>
-                            <option *ngFor="let expenses of expenseTypesList" value="{{expenses.expenseTypeId}}">{{expenses.expenseType}}</option>
+                            <option *ngFor="let expenses of expenseTypesList" value="{{expenses?.expenseTypeId}}">{{expenses?.expenseType}}</option>
                         </select>
                     </div>
                     <div class="col-md-4">
@@ -47,10 +47,10 @@
                     <tbody>
                         <tr *ngFor="let expenseDtls of expenseslst; let i = index;">
                             <td>{{i+1}}</td>
-                            <td>{{expenseDtls.fromDate}}</td>
-                            <td>{{expenseDtls.expenseType}}</td>
-                            <td>{{expenseDtls.remark}}</td>
-                            <td>{{expenseDtls.amount}}</td>
+                            <td>{{expenseDtls?.fromDate}}</td>
+                            <td>{{expenseDtls?.expenseType}}</td>
+                            <td>{{expenseDtls?.remark}}</td>
+                            <td>{{expenseDtls?.amount}}</td>
                         </tr>
                         <tr>
                             <td colspan="4">Total</td>

@@ -41,13 +41,13 @@
                         </thead>
                         <tbody>
                             <tr *ngFor="let firmLoan of firmLoanObjs">
-                                <td>{{firmLoan.firmLoanId}}</td>
-                                <td>{{firmLoan.loanFrom}}</td>
-                                <td>{{firmLoan.startDate}}</td>
-                                <td>{{firmLoan.closingDate}}</td>
-                                <td>{{firmLoan.remark}}</td>
-                                <td>{{firmLoan.loanAmt}}</td>
-                                <td>{{firmLoan.interestAmt}}</td>
+                                <td>{{firmLoan?.firmLoanId}}</td>
+                                <td>{{firmLoan?.loanFrom}}</td>
+                                <td>{{firmLoan?.startDate}}</td>
+                                <td>{{firmLoan?.closingDate}}</td>
+                                <td>{{firmLoan?.remark}}</td>
+                                <td>{{firmLoan?.loanAmt}}</td>
+                                <td>{{firmLoan?.interestAmt}}</td>
                             </tr>
                             <tr>
                                 <td colspan="5">Total</td>

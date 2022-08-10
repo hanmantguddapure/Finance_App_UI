@@ -15,13 +15,13 @@
                 </thead>
                 <tbody>
                     <tr *ngFor="let loanRepoDetail of loanRepoDetails">
-                        <td>{{loanRepoDetail.fullName}}</td>
-                        <td>{{loanRepoDetail.loanAccountNo}}</td>
-                        <td>{{loanRepoDetail.principalAmount}}</td>
-                        <td>{{loanRepoDetail.loanAmt}}</td>
-                        <td>{{loanRepoDetail.disburseAmt}}</td>
-                        <td>{{loanRepoDetail.paymentMode}}</td>
-                        <td>{{loanRepoDetail.paymentDate}}</td>
+                        <td>{{loanRepoDetail?.fullName}}</td>
+                        <td>{{loanRepoDetail?.loanAccountNo}}</td>
+                        <td>{{loanRepoDetail?.principalAmount}}</td>
+                        <td>{{loanRepoDetail?.loanAmt}}</td>
+                        <td>{{loanRepoDetail?.disburseAmt}}</td>
+                        <td>{{loanRepoDetail?.paymentMode}}</td>
+                        <td>{{loanRepoDetail?.paymentDate}}</td>
                     </tr>
                 </tbody>
             </table>

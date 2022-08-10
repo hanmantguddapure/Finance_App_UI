@@ -12,7 +12,7 @@
                         <div class="col-md-9">
                             <select class="form-control" name="custId" ngModel (change)="onStatusChange($event)">
                                 <option>--Select Customer--</option>
-                                <option *ngFor="let customer of allCustomerList" value="{{customer.custId}}">{{customer.fullName}}</option>
+                                <option *ngFor="let customer of allCustomerList" value="{{customer?.custId}}">{{customer?.fullName}}</option>
                             </select>
                         </div>
                     </div>
@@ -66,14 +66,14 @@
                         </thead>
                         <tbody>
                             <tr *ngFor="let fdAccount of fdReports">
-                                <td>{{fdAccount.accountNo}}</td>
-                                <td>{{fdAccount.startDate}}</td>
-                                <td>{{fdAccount.endDate}}</td>
-                                <td>{{fdAccount.closingDate}}</td>
-                                <td>{{fdAccount.isActive}}</td>
-                                <td>{{fdAccount.interest}}</td>
-                                <td>{{fdAccount.amount}}</td>
-                                <td>{{fdAccount.interestAmt}}</td>
+                                <td>{{fdAccount?.accountNo}}</td>
+                                <td>{{fdAccount?.startDate}}</td>
+                                <td>{{fdAccount?.endDate}}</td>
+                                <td>{{fdAccount?.closingDate}}</td>
+                                <td>{{fdAccount?.isActive}}</td>
+                                <td>{{fdAccount?.interest}}</td>
+                                <td>{{fdAccount?.amount}}</td>
+                                <td>{{fdAccount?.interestAmt}}</td>
                             </tr>
                         </tbody>
                     </table>

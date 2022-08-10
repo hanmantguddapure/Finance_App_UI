@@ -9,15 +9,15 @@
                     <li [ngbNavItem]="1" *ngIf="!item.children">
                         <a ngbNavLink class="nav-link" [routerLink]="item.url" [routerLinkActive]="'active'">
                             <i [class]="item.icon + ' p-2'"></i>
-                            {{item.name}}
+                            {{item?.name}}
                         </a>
                         <hr class="dropdown-divider">
                     </li>
                     <li ngbDropdown *ngIf="item.children">
                         <a href="javascript:;" class="nav-link" ngbDropdownToggle>
-                            <i [class]="item.icon + ' p-2'"></i>{{item.name}}</a>
+                            <i [class]="item.icon + ' p-2'"></i>{{item?.name}}</a>
                         <div ngbDropdownMenu>
-                            <button [routerLink]="e.url" [routerLinkActive]="'active'" *ngFor="let e of item.children; let j = index;" ngbDropdownItem>{{e.name}}</button>
+                            <button [routerLink]="e.url" [routerLinkActive]="'active'" *ngFor="let e of item.children; let j = index;" ngbDropdownItem>{{e?.name}}</button>
                         </div>
                         <hr class="dropdown-divider">
                     </li>

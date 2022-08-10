@@ -65,9 +65,9 @@
                 </thead>
                 <tbody>
                     <tr *ngFor="let loanPaymentDetail of loanPaymetDetails">
-                        <td>{{loanPaymentDetail.payment}}</td>
-                        <td>{{loanPaymentDetail.paymentMethod}}</td>
-                        <td>{{loanPaymentDetail.paymentDate}}</td>
+                        <td>{{loanPaymentDetail?.payment}}</td>
+                        <td>{{loanPaymentDetail?.paymentMethod}}</td>
+                        <td>{{loanPaymentDetail?.paymentDate}}</td>
                     </tr>
                 </tbody>
             </table>

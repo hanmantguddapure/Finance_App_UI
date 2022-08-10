@@ -44,12 +44,12 @@
                     <tbody>
                         <tr *ngFor="let expenseDtls of expenseslst; let i = index;">
                             <td>{{i+1}}</td>
-                            <td>{{expenseDtls.fromDate}}</td>
-                            <td>{{expenseDtls.expenseType}}</td>
-                            <td>{{expenseDtls.remark}}</td>
-                            <td>{{expenseDtls.amount}}</td>
+                            <td>{{expenseDtls?.fromDate}}</td>
+                            <td>{{expenseDtls?.expenseType}}</td>
+                            <td>{{expenseDtls?.remark}}</td>
+                            <td>{{expenseDtls?.amount}}</td>
                             <td class="text-center" width="10%">
-                                <a href="javascript:;" class="text-danger" (click)="delete(i, expenseDtls.expenseTypeId)">
+                                <a href="javascript:;" class="text-danger" (click)="delete(i, expenseDtls?.expenseTypeId)">
                                     <i class="fa fa-trash"></i>
                                 </a>
                             </td>

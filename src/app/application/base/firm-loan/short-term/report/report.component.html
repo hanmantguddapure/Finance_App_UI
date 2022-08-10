@@ -40,12 +40,12 @@
                         </thead>
                         <tbody>
                             <tr *ngFor="let shortLoan of shortTermLoans">
-                                <td>{{shortLoan.shortTermLoanId}}</td>
-                                <td>{{shortLoan.custFullName}}</td>
-                                <td>{{shortLoan.startDate}}</td>
-                                <td>{{shortLoan.endDate}}</td>
-                                <td>{{shortLoan.remark}}</td>
-                                <td>{{shortLoan.loanAmt}}</td>
+                                <td>{{shortLoan?.shortTermLoanId}}</td>
+                                <td>{{shortLoan?.custFullName}}</td>
+                                <td>{{shortLoan?.startDate}}</td>
+                                <td>{{shortLoan?.endDate}}</td>
+                                <td>{{shortLoan?.remark}}</td>
+                                <td>{{shortLoan?.loanAmt}}</td>
                             </tr>
                             <tr>
                                 <td colspan="5">Total</td>

@@ -36,10 +36,10 @@
                         </thead>
                         <tbody>
                             <tr *ngFor="let loanPenalty of loanPenalties">
-                                <td>{{loanPenalty.loanAccountId}}</td>
-                                <td>{{loanPenalty.custFullName}}</td>
-                                <td>{{loanPenalty.penaltyAmt}}</td>
-                                <td>{{loanPenalty.remark}}</td>
+                                <td>{{loanPenalty?.loanAccountId}}</td>
+                                <td>{{loanPenalty?.custFullName}}</td>
+                                <td>{{loanPenalty?.penaltyAmt}}</td>
+                                <td>{{loanPenalty?.remark}}</td>
                             </tr>
                         </tbody>
                     </table>

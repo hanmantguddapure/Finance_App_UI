@@ -10,7 +10,7 @@
                         <label class="col-form-label">Customer Names</label>
                         <select class="form-control" name="custId" ngModel (change)="onStatusChange($event)">
                             <option>--Select Customer--</option>
-                            <option *ngFor="let customer of allCustomerList" value="{{customer.custId}}">{{customer.fullName}}</option>
+                            <option *ngFor="let customer of allCustomerList" value="{{customer?.custId}}">{{customer?.fullName}}</option>
                         </select>
                     </div>
                 </div>
@@ -42,17 +42,17 @@
                         </thead>
                         <tbody>
                             <tr *ngFor="let loanRepoDetail of loanRepoDetails">
-                                <td>{{loanRepoDetail.loanAccountNo}}</td>
-                                <td>{{loanRepoDetail.loanStatus}}</td>
-                                <td>{{loanRepoDetail.principalAmount}}</td>
-                                <td>{{loanRepoDetail.loanAmt}}</td>
-                                <td>{{loanRepoDetail.disburseAmt}}</td>
-                                <td>{{loanRepoDetail.proceessingFee}}</td>
-                                <td>{{loanRepoDetail.totalInterest}}</td>
-                                <td>{{loanRepoDetail.totalPenalty}}</td>
-                                <td>{{loanRepoDetail.totalCollection}}</td>
-                                <td>{{loanRepoDetail.remainCollection}}</td>
-                                <td>{{loanRepoDetail.totalEarned}}</td>
+                                <td>{{loanRepoDetail?.loanAccountNo}}</td>
+                                <td>{{loanRepoDetail?.loanStatus}}</td>
+                                <td>{{loanRepoDetail?.principalAmount}}</td>
+                                <td>{{loanRepoDetail?.loanAmt}}</td>
+                                <td>{{loanRepoDetail?.disburseAmt}}</td>
+                                <td>{{loanRepoDetail?.proceessingFee}}</td>
+                                <td>{{loanRepoDetail?.totalInterest}}</td>
+                                <td>{{loanRepoDetail?.totalPenalty}}</td>
+                                <td>{{loanRepoDetail?.totalCollection}}</td>
+                                <td>{{loanRepoDetail?.remainCollection}}</td>
+                                <td>{{loanRepoDetail?.totalEarned}}</td>
                             </tr>
                             <tr>
                                 <td align="center" colspan="2">Total</td>

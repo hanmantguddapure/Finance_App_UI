@@ -6,7 +6,7 @@
                 <label class="col-form-label">Customer</label>
                 <select class="form-control" formControlName="custId">
                     <option value="">--Select Customer--</option>
-                    <option *ngFor="let customer of allCustomerList" value="{{customer.custId}}">{{customer.fullName}}</option>
+                    <option *ngFor="let customer of allCustomerList" value="{{customer?.custId}}">{{customer?.fullName}}</option>
                 </select>
             </div>
         </div>

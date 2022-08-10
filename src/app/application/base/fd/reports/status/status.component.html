@@ -61,14 +61,14 @@
                         </thead>
                         <tbody>
                             <tr *ngFor="let fdAccount of fdReports">
-                                <td>{{fdAccount.custName}}</td>
-                                <td>{{fdAccount.accountNo}}</td>
-                                <td>{{fdAccount.amount}}</td>
-                                <td>{{fdAccount.interest}}</td>
-                                <td>{{fdAccount.interestAmt}}</td>
-                                <td>{{fdAccount.startDate}}</td>
-                                <td>{{fdAccount.endDate}}</td>
-                                <td>{{fdAccount.closingDate}}</td>
+                                <td>{{fdAccount?.custName}}</td>
+                                <td>{{fdAccount?.accountNo}}</td>
+                                <td>{{fdAccount?.amount}}</td>
+                                <td>{{fdAccount?.interest}}</td>
+                                <td>{{fdAccount?.interestAmt}}</td>
+                                <td>{{fdAccount?.startDate}}</td>
+                                <td>{{fdAccount?.endDate}}</td>
+                                <td>{{fdAccount?.closingDate}}</td>
                             </tr>
                         </tbody>
                     </table>

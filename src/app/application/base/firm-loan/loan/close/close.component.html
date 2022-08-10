@@ -23,15 +23,15 @@
                     <form #form="ngForm" class="form-horizontal row">
                         <div class="form-group col-md-4 col-sm-12">
                             <label class="col-form-label">Name Of Loan Provider</label>
-                            <input type="text" value="{{firmLoanObj.loanFrom}}" readonly class="form-control" readonly>
+                            <input type="text" value="{{firmLoanObj?.loanFrom}}" readonly class="form-control" readonly>
                         </div>
                         <div class="form-group col-md-4 col-sm-12">
                             <label class="col-form-label" for="hf-email">Loan Amount</label>
-                            <input type="text" value="{{firmLoanObj.loanAmt}}" readonly class="form-control" readonly>
+                            <input type="text" value="{{firmLoanObj?.loanAmt}}" readonly class="form-control" readonly>
                         </div>
                         <div class="form-group col-md-4 col-sm-12">
                             <label class="col-form-label" for="hf-email">Iterest Amount</label>
-                            <input type="text" name="interestAmt" [(ngModel)]="firmLoanObj.interestAmt" value="{{firmLoanObj.interestAmt}}" class="form-control">
+                            <input type="text" name="interestAmt" [(ngModel)]="firmLoanObj.interestAmt" value="{{firmLoanObj?.interestAmt}}" class="form-control">
                         </div>
                         <div class="text-end">
                             <button type="button" mat-raised-button (click)="closeFirmLoan()" class="mt-2 mb-2 " color="primary"> Close</button>

@@ -33,7 +33,7 @@
                     <tbody>
                         <tr *ngFor="let expenseTypes of expenseTypesList; let i = index;">
                             <td>{{i+1}}</td>
-                            <td>{{expenseTypes.expenseType}}</td>
+                            <td>{{expenseTypes?.expenseType}}</td>
                             <td *ngIf="expenseTypes.expenseTypeId" class="text-center">
                                 <a href="javascript:;" (click)="intiateEdit(content, expenseTypes)">
                                     <i class="fa fa-pencil"></i>
