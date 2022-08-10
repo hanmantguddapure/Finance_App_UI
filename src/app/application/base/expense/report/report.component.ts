@@ -7,13 +7,14 @@ import { ToastService, ExpenseService } from 'src/shared';
     templateUrl: './report.component.html'
 })
 export class ExpenseReportComponent implements OnInit {
-    expenseslst: Array<Expense> = [];
+    expenseslst: Array<any> = [];
     validationFlag: boolean = true;
     expense: Expense = new Expense(null);
     total: number | any;
     expenseTypesList: Array<Expense> = [];
     deleteLoader: any;
     isLoader: boolean;
+    expenseType: any;
 
     constructor(private toster: ToastService, private expenseService: ExpenseService) {
         this.isLoader = false;
@@ -36,10 +37,10 @@ export class ExpenseReportComponent implements OnInit {
     }
 
     onStatusChange(event: any) {
-        let expenseType = event.target.value;
+        this.expenseType = event?.target?.value ?? this.expenseType;
 
         this.isLoader = true;
-        this.expenseService.setExpenseType(expenseType).then((data: any) => {
+        this.expenseService.setExpenseType(this.expenseType).then((data: any) => {
             this.calculateTotal(data)
             this.isLoader = false;
         }, errot => {
@@ -63,21 +64,22 @@ export class ExpenseReportComponent implements OnInit {
     };
 
     delete(index, id) {
-        if (this.deleteLoader) {
+        if (this.isLoader) {
             return;
         }
-        this.deleteLoader = true;
-        this.expenseService.deleteExpenses(index).then(data => {
-            // this.getInit();
-            this.expenseslst.splice(index, 1);
-            this.deleteLoader = false;
+        this.isLoader = true;
+        this.expenseService.deleteExpenses(id).then(data => {
+            this.onStatusChange(null);
         }, error => {
-            this.deleteLoader = false;
+            console.log(error);
+            this.onStatusChange(null);
         })
     }
 
     calculateTotal(data) {
         this.total = 0;
+        console.log(data);
+
         this.expenseslst = data;
         this.expenseslst?.forEach(element => {
             this.total = this.total + (element.amount);
