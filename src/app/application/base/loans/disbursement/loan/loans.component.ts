@@ -21,7 +21,8 @@ export class LoansComponent implements OnInit {
         this.loanservice.getDisburseLoansByStatus('Opened').then((data: any) => {
             this.loanRepoDetails = data;
             this.isLoader = false;
-        }, errot => {
+        }, error => {
+                console.log(error);
             this.isLoader = false;
         });
     }

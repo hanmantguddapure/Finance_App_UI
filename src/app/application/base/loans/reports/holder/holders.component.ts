@@ -33,7 +33,8 @@ export class HoldersComponent implements OnInit {
             this.allCustomerList = data;
 
             this.isLoader = false;
-        }, errot => {
+        }, error => {
+                console.log(error);
             this.isLoader = false;
         });
     }
@@ -64,7 +65,8 @@ export class HoldersComponent implements OnInit {
             });
 
             this.isLoader = false;
-        }, errot => {
+        }, error => {
+                console.log(error);
             this.isLoader = false;
         });
     }

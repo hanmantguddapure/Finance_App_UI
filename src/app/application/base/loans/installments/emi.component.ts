@@ -39,7 +39,8 @@ export class EMIComponent {
             this.allCustomerList = data;
 
             this.isLoader = false;
-        }, errot => {
+        }, error => {
+                console.log(error);
             this.isLoader = false;
         });
     };
@@ -70,7 +71,8 @@ export class EMIComponent {
                 this.loanPaymetDetails = this.loanDetail.loanCollections;
 
                 this.isLoader = false;
-            }, errot => {
+            }, error => {
+                console.log(error);
                 this.isLoader = false;
             });
         }
@@ -123,7 +125,8 @@ export class EMIComponent {
             this.checkDuplicate = false;
 
             this.isLoader = false;
-        }, errot => {
+        }, error => {
+                console.log(error);
             this.isLoader = false;
         });
     }

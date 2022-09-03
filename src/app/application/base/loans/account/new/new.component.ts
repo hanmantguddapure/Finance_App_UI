@@ -43,7 +43,8 @@ export class NewComponent implements OnInit {
             this.allCustomerList = data;
 
             this.isLoader = false;
-        }, errot => {
+        }, error => {
+                console.log(error);
             this.isLoader = false;
         });
     };
@@ -57,7 +58,8 @@ export class NewComponent implements OnInit {
                 this.toster.success("Successfully Created New Loan Account");
 
                 this.isLoader = false;
-            }, errot => {
+            }, error => {
+                console.log(error);
                 this.isLoader = false;
             });
         }

@@ -30,7 +30,8 @@ export class ReportComponent implements OnInit {
                 this.totalLoan = this.totalLoan + (element.loanAmt);
             });
             this.isLoader = false;
-        }, errot => {
+        }, error => {
+                console.log(error);
             this.isLoader = false;
         });
     }

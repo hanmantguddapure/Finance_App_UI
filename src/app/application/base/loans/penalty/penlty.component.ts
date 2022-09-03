@@ -27,7 +27,8 @@ export class LoanPenltyComponent {
                 this.loanPenalties = data;
 
                 this.isLoader = false;
-            }, errot => {
+            }, error => {
+                console.log(error);
                 this.isLoader = false;
             });
         }
@@ -58,7 +59,8 @@ export class LoanPenltyComponent {
                 this.toster.success("Added Successfully");
 
                 this.isLoader = false;
-            }, errot => {
+            }, error => {
+                console.log(error);
                 this.isLoader = false;
             });
         }

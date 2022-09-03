@@ -26,7 +26,8 @@ export class CloseComponent implements OnInit {
             this.loanService.getFirmLoanById(firmLoanId).then((data: any) => {
                 this.firmLoanObj = data;
                 this.isLoader = false;
-            }, errot => {
+            }, error => {
+                console.log(error);
                 this.isLoader = false;
             });
         }
@@ -38,7 +39,8 @@ export class CloseComponent implements OnInit {
         this.loanService.closeFirmLoan(this.firmLoanObj).then((data: any) => {
             this.toster.success("Successfully Closed");
             this.isLoader = false;
-        }, errot => {
+        }, error => {
+                console.log(error);
             this.isLoader = false;
         });
     }

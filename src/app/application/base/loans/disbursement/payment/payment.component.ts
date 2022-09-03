@@ -34,7 +34,8 @@ export class PaymentComponent implements OnInit {
                     this.loanDetail.disburseAmt = this.loanDetail.loanAmt;
                 }
                 this.isLoader = false;
-            }, errot => {
+            }, error => {
+                console.log(error);
                 this.isLoader = false;
             });
         }
@@ -49,7 +50,8 @@ export class PaymentComponent implements OnInit {
             this.loanDetail = data;
             this.toster.success("Payment Done Successfully");
             this.isLoader = false;
-        }, errot => {
+        }, error => {
+                console.log(error);
             this.isLoader = false;
         });
     }

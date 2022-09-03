@@ -58,7 +58,8 @@ export class StatusComponent implements OnInit {
             this.totalAccounts = this.loanRepoDetails.length;
 
             this.isLoader = false;
-        }, errot => {
+        }, error => {
+                console.log(error);
             this.isLoader = false;
         });
     }

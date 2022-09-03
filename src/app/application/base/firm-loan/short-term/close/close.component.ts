@@ -27,7 +27,8 @@ export class CloseComponent implements OnInit {
             this.loanService.getShortTermLoanById(shortTermLoanId).then((data: any) => {
                 this.shortTermLoanObj = data;
                 this.isLoader = false;
-            }, errot => {
+            }, error => {
+                console.log(error);
                 this.isLoader = false;
             });
         }
@@ -39,7 +40,8 @@ export class CloseComponent implements OnInit {
         this.loanService.closeShortTermLoan(this.shortTermLoanObj).then((data: any) => {
             this.toster.success("Successfully Closed");
             this.isLoader = false;
-        }, errot => {
+        }, error => {
+                console.log(error);
             this.isLoader = false;
         });
     }

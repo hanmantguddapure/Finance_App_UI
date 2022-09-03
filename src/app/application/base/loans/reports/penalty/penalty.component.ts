@@ -25,7 +25,8 @@ export class PenaltyComponent implements OnInit {
             this.loanPenalties = data;
 
             this.isLoader = false;
-        }, errot => {
+        }, error => {
+                console.log(error);
             this.isLoader = false;
         });
     }

@@ -41,7 +41,8 @@ export class ViewComponent implements OnInit {
                 this.fileUrl = AppConstants.API_ENDPOINT + "/Loan/download-loan-dtl/" + loanId;
 
                 this.isLoader = false;
-            }, errot => {
+            }, error => {
+                console.log(error);
                 this.isLoader = false;
             });
         }

@@ -242,7 +242,8 @@ export class SharedCustomerComponent implements OnInit {
             this.editPhone = true;
             this.toster.success("Save Changes Successfull");
             this.isLoader = false;
-        }, errot => {
+        }, error => {
+                console.log(error);
             this.isLoader = false;
         });
     }

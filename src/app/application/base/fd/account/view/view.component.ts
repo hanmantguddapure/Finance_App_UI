@@ -32,7 +32,8 @@ export class ViewComponent implements OnInit {
                 this.fdInterestHistory = this.fdAccountDtls.paidInterestHistory;
                 this.fileUrl = AppConstants.API_ENDPOINT + "/FD/download/" + fdId;
                 this.isLoader = false;
-            }, errot => {
+            }, error => {
+                console.log(error);
                 this.isLoader = false;
             });
         }

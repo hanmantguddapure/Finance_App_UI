@@ -38,7 +38,8 @@ export class InterestComponent implements OnInit {
                 this.fdInterest.interestAmt = this.fdDtls.pendingInterestAmt;
                 this.fdInterestHistory = this.fdDtls.paidInterestHistory;
                 this.isLoader = false;
-            }, errot => {
+            }, error => {
+                console.log(error);
                 this.isLoader = false;
             });
         }
@@ -57,7 +58,8 @@ export class InterestComponent implements OnInit {
             this.fdInterestHistory.push(data);
             this.toster.success("Payment Done Successfully");
             this.isLoader = false;
-        }, errot => {
+        }, error => {
+                console.log(error);
             this.isLoader = false;
         });
     }

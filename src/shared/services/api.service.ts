@@ -34,7 +34,12 @@ export class ApiService {
         return new Promise<void>((resolve, reject) => {
             this.http.get(AppConstants.API_ENDPOINT + url).subscribe({
                 next: (res: any) => {
-                    resolve(res);
+                    if (res) {
+                        resolve(res);
+                    } else {
+                        reject('');
+                    }
+            
                 }, error: (err: any) => {
                     reject(err);
                 },
@@ -50,7 +55,12 @@ export class ApiService {
         return new Promise<void>((resolve, reject) => {
             this.http.post(AppConstants.API_ENDPOINT + url, JSON.stringify(data), this.httpOptions).subscribe({
                 next: (res: any) => {
-                    resolve(res);
+                    if (res) {
+                        resolve(res);
+                    } else {
+                        reject('');
+                    }
+            
                 },
                 error: (err: any) => {
                     reject(err);
@@ -68,7 +78,12 @@ export class ApiService {
             this.http
                 .put(AppConstants.API_ENDPOINT + url + (id ? ('/' + id) : ''), JSON.stringify(data), this.httpOptions).subscribe({
                     next: (res: any) => {
-                        resolve(res);
+                        if (res) {
+                            resolve(res);
+                        } else {
+                            reject('');
+                        }
+                
                     },
                     error: (err: any) => {
                         reject(err);
@@ -85,7 +100,12 @@ export class ApiService {
             this.http
                 .delete(AppConstants.API_ENDPOINT + url, this.httpOptions).subscribe({
                     next: (res: any) => {
-                        resolve(res);
+                        if (res) {
+                            resolve(res);
+                        } else {
+                            reject('');
+                        }
+                
                     },
                     error: (err: any) => {
                         reject(err);

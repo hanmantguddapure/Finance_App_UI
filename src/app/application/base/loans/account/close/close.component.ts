@@ -30,7 +30,8 @@ export class CloseComponent implements OnInit {
                 this.loanDetail.totalInstallments = this.loanPaymetDetails.length;
 
                 this.isLoader = false;
-            }, errot => {
+            }, error => {
+                console.log(error);
                 this.isLoader = false;
             });
         }
@@ -49,7 +50,8 @@ export class CloseComponent implements OnInit {
                 this.toster.success("Closed Successfully")
 
                 this.isLoader = false;
-            }, errot => {
+            }, error => {
+                console.log(error);
                 this.isLoader = false;
             });
         }

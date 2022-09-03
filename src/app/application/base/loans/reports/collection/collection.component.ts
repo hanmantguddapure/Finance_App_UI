@@ -34,7 +34,8 @@ export class CollectionComponent implements OnInit {
             });
 
             this.isLoader = false;
-        }, errot => {
+        }, error => {
+                console.log(error);
             this.isLoader = false;
         });
     }
@@ -49,7 +50,8 @@ export class CollectionComponent implements OnInit {
             });
 
             this.isLoader = false;
-        }, errot => {
+        }, error => {
+                console.log(error);
             this.isLoader = false;
         });
     }

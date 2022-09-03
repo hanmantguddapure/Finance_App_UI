@@ -29,7 +29,8 @@ export class CloseComponent implements OnInit {
             this.fdService.getFDDetailByFDId(fdId).then((data: any) => {
                 this.isLoader = false;
                 this.fdAccountDtls = data;
-            }, errot => {
+            }, error => {
+                console.log(error);
                 this.isLoader = false;
             });
         }
@@ -60,7 +61,8 @@ export class CloseComponent implements OnInit {
             this.fdAccountDtls = data;
             this.toster.success("Successfully Closed");
             this.isLoader = false;
-        }, errot => {
+        }, error => {
+                console.log(error);
             this.isLoader = false;
         });
     }

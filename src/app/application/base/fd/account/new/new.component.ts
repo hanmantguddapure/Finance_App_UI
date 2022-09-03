@@ -23,7 +23,8 @@ export class NewComponent implements OnInit {
         this.customerService.getCustomerAllDetail().then((data: any) => {
             this.allCustomerList = data;
             this.isLoader = false;
-        }, errot => {
+        }, error => {
+                console.log(error);
             this.isLoader = false;
         });
     }
@@ -42,7 +43,8 @@ export class NewComponent implements OnInit {
                 this.fdAccount = data;
                 this.toster.success("Successfully Created New FD");
                 this.isLoader = false;
-            }, errot => {
+            }, error => {
+                console.log(error);
                 this.isLoader = false;
             });
         }

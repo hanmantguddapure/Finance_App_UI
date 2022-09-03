@@ -27,7 +27,8 @@ export class ExpenseDetailComponent implements OnInit {
         this.expenseService.getExpenseTypes().then((data: any) => {
             this.isLoader = false;
             this.expenseTypesList = data;
-        }, errot => {
+        }, error => {
+                console.log(error);
             this.isLoader = false;
         });
     }
@@ -46,7 +47,8 @@ export class ExpenseDetailComponent implements OnInit {
                 this.total = this.total + (element.amount);
             });
             this.isLoader = false;
-        }, errot => {
+        }, error => {
+                console.log(error);
             this.isLoader = false;
         });
     }

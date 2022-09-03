@@ -37,7 +37,8 @@ export class StatusComponent implements OnInit {
             this.total = this.totalFD + this.totalInterest;
             this.totalAccounts = this.fdReports.length;
             this.isLoader = false;
-        }, errot => {
+        }, error => {
+                console.log(error);
             this.isLoader = false;
         });
     }

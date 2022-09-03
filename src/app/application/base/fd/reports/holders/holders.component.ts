@@ -25,7 +25,8 @@ export class HoldersComponent implements OnInit {
         this.customerService.getCustomerAllDetail().then((data: any) => {
             this.allCustomerList = data;
             this.isLoader = false;
-        }, errot => {
+        }, error => {
+                console.log(error);
             this.isLoader = false;
         });
     }
@@ -46,7 +47,8 @@ export class HoldersComponent implements OnInit {
             this.total = this.totalFD + this.totalInterest;
             this.totalAccounts = this.fdReports.length;
             this.isLoader = false;
-        }, errot => {
+        }, error => {
+                console.log(error);
             this.isLoader = false;
         });
     }

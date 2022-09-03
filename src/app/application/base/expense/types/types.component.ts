@@ -51,7 +51,8 @@ export class ExpenseTypesComponent implements OnInit {
         this.expenseService.getExpenseTypes().then((data: any) => {
             this.expenseTypesList = data;
             this.isLoader = false;
-        }, errot => {
+        }, error => {
+                console.log(error);
             this.isLoader = false;
         });
     }

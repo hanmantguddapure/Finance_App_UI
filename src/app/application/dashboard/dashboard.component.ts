@@ -64,7 +64,8 @@ export class DashboardComponent implements OnInit {
             this.pendingCollection = this.totalCreditBalSummary - this.loanSummary?.collections;
             this.closingBalSummary = this.pendingCollection - this.totalDebitBalSummary;
             // this.isLoader = false;
-        }, errot => {
+        }, error => {
+                console.log(error);
             // this.isLoader = false;
         });
     }

@@ -31,7 +31,8 @@ export class ExpenseReportComponent implements OnInit {
         this.expenseService.getExpenseTypes().then((data: any) => {
             this.expenseTypesList = data;
             this.isLoader = false;
-        }, errot => {
+        }, error => {
+                console.log(error);
             this.isLoader = false;
         });
     }
@@ -43,7 +44,8 @@ export class ExpenseReportComponent implements OnInit {
         this.expenseService.setExpenseType(this.expenseType).then((data: any) => {
             this.calculateTotal(data)
             this.isLoader = false;
-        }, errot => {
+        }, error => {
+                console.log(error);
             this.isLoader = false;
         });
     }
@@ -57,7 +59,8 @@ export class ExpenseReportComponent implements OnInit {
             this.expenseService.getExpenseBetween(expenseDetails.fromDate, expenseDetails.toDate).then((data: any) => {
                 this.calculateTotal(data)
                 this.isLoader = false;
-            }, errot => {
+            }, error => {
+                console.log(error);
                 this.isLoader = false;
             });
         }

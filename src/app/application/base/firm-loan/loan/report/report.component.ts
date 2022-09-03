@@ -31,7 +31,8 @@ export class ReportComponent implements OnInit {
                 }
                 this.isLoader = false;
             });
-        }, errot => {
+        }, error => {
+                console.log(error);
             this.isLoader = false;
         });
     }

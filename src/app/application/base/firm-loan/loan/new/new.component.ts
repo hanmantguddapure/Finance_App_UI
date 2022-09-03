@@ -22,7 +22,8 @@ export class NewComponent implements OnInit {
         this.loanservice.createNewFirmLoan(this.firmLoanObj).then((data: any) => {
             this.toster.success("Successfully Added");
             this.isLoader = false;
-        }, errot => {
+        }, error => {
+                console.log(error);
             this.isLoader = false;
         });
     };
