@@ -36,18 +36,20 @@ export class NewComponent implements OnInit {
         this.iconCollapse = this.isCollapsed ? 'icon-arrow-down' : 'icon-arrow-up';
     }
 
-
     ngOnInit() {
         this.isLoader = true;
         this.customerService.getCustomerAllDetail().then((data: any) => {
-            this.allCustomerList = data;
+            this.allCustomerList = data.response;
+            console.log(this.allCustomerList);
+
 
             this.isLoader = false;
         }, error => {
-                console.log(error);
+            console.log(error);
             this.isLoader = false;
         });
     };
+
     saveLoanDetail(): void {
         this.validationFlag = true;
         this.checkValidation();
@@ -72,20 +74,22 @@ export class NewComponent implements OnInit {
         this.loanDetail.installMentType = "Daily";
         this.loanDetail.installments = 100;
         this.calculateDepositeAmt();
-
     }
+
     calculateDepositeAmt() {
         this.loanDetail.depositeAmt = (this.loanDetail.principalAmount / 100) * 5;
         this.calculateLoanAmt();
     }
+
     calculateLoanAmt() {
         this.loanDetail.loanAmt = this.loanDetail.principalAmount - this.loanDetail.interestAmt - this.loanDetail.processingFees - this.loanDetail.depositeAmt;
         this.calculateInstallmentType();
     }
+
     calculateInstallmentType() {
         this.loanDetail.installmentAmount = (this.loanDetail.principalAmount / this.loanDetail.installments);
-
     }
+
     checkValidation() {
         if (this.loanDetail.custId == undefined) {
             this.toster.error("Please Select Customer");

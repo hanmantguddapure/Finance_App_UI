@@ -36,7 +36,7 @@ export class EMIComponent {
     ngOnInit() {
         this.isLoader = true;
         this.customerService.getCustomerAllDetail().then((data: any) => {
-            this.allCustomerList = data;
+            this.allCustomerList = data.response;
 
             this.isLoader = false;
         }, error => {
