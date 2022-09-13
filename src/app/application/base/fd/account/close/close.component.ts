@@ -45,7 +45,7 @@ export class CloseComponent implements OnInit {
     closeModal(isRedirection: boolean) {
         this.modalService.hasOpenModals() && this.modalService.dismissAll();
         if (isRedirection) {
-            this.router.navigate(['base', 'fdpayinterest']);
+            this.router.navigate(['application', 'fd', 'interest']);
         }
     }
 
@@ -62,7 +62,7 @@ export class CloseComponent implements OnInit {
             this.toster.success("Successfully Closed");
             this.isLoader = false;
         }, error => {
-                console.log(error);
+            console.log(error);
             this.isLoader = false;
         });
     }
