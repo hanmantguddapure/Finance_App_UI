@@ -32,6 +32,8 @@ export class StatusComponent implements OnInit {
     }
 
     onStatusChange(event: any) {
+        this.loanRepoDetails = null;
+
         let loanStatus = event.target.value;
         this.totalPrince = 0;
         this.totalLoan = 0;
@@ -40,6 +42,9 @@ export class StatusComponent implements OnInit {
         this.totalAccounts = 0;
         this.totalEarning = 0;
         this.totalInterest = 0;
+        this.totalPenalty = 0;
+        this.totalProcessFess = 0;
+        this.totalDisbursed = 0;
         this.fileUrl = AppConstants.API_ENDPOINT + "/Loan/download-loan-accounts/" + loanStatus;
         this.isLoader = true;
         this.loanservice.getLoanDetailByStatus(loanStatus).then((data: any) => {
@@ -59,7 +64,7 @@ export class StatusComponent implements OnInit {
 
             this.isLoader = false;
         }, error => {
-                console.log(error);
+            console.log(error);
             this.isLoader = false;
         });
     }
