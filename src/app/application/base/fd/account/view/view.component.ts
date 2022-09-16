@@ -24,7 +24,7 @@ export class ViewComponent implements OnInit {
         let fdId = event.target.value;
 
         if (fdId == "") {
-            this.toster.error("Please enter FD Account id")
+            this.toster.message("Please enter FD Account id")
         } else {
             this.isLoader = true;
             this.fdService.getFDDetailByFDId(fdId).then((data: any) => {

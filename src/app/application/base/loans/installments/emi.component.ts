@@ -60,13 +60,13 @@ export class EMIComponent {
     getAccountDetail(event: any) {
         let loanId = event.target.value;
         if (loanId == "") {
-            this.toster.error("Please enter loan id")
+            this.toster.message("Please enter loan id")
         } else {
             this.isLoader = true;
             this.loanservice.getLoanDetailByLoanId(loanId).then((data: any) => {
                 this.loanDetail = data;
                 if (this.loanDetail.loanStatus.toLowerCase() == "closed") {
-                    this.toster.error("Loan already closed");
+                    this.toster.message("Loan already closed");
                 }
                 this.loanPaymetDetails = this.loanDetail.loanCollections;
 
@@ -87,15 +87,15 @@ export class EMIComponent {
         this.loanPaymentDetail.paymentMethod = "Daily";
 
         if (this.loanDetail.loanAccountNo == "" || this.loanDetail.loanAccountNo == undefined) {
-            this.toster.error("Please enter loan id")
+            this.toster.message("Please enter loan id")
             return;
         }
         if (paymentDetail.payment == "" || paymentDetail.payment == undefined) {
-            this.toster.error("Please enter payment")
+            this.toster.message("Please enter payment")
             return;
         }
         if (paymentDetail.paymentDate == "" || paymentDetail.paymentDate == undefined) {
-            this.toster.error("Please enter payment date")
+            this.toster.message("Please enter payment date")
             return;
         }
 
@@ -121,7 +121,7 @@ export class EMIComponent {
                 this.loanPaymetDetails = [];
             }
             this.loanPaymetDetails.push(this.loanPaymentDetail);
-            this.toster.success("Added Successfully");
+            this.toster.message("Added Successfully");
             this.checkDuplicate = false;
 
             this.isLoader = false;

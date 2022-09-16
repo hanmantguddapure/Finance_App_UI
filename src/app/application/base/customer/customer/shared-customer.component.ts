@@ -88,7 +88,7 @@ export class SharedCustomerComponent implements OnInit {
     valueChanges() {
         this.CustomerGroup.get('custId').valueChanges.subscribe((custId: any) => {
             if (!custId || custId == "") {
-                this.toster.error("Please Select Customer")
+                this.toster.message("Please Select Customer")
             }
             this.isLoader = true;
             this.customerService.getCustomerDetail(custId).then((data: any) => {
@@ -207,7 +207,7 @@ export class SharedCustomerComponent implements OnInit {
 
     editCustContact(custContactDtls: any) {
         this.customerService.editCustContactPersionDetail(custContactDtls).then(data => {
-            this.toster.success("Save Changes Successfully");
+            this.toster.message("Save Changes Successfully");
             this.editCache[custContactDtls.contactPersionId] = false;
         });
     }
@@ -240,7 +240,7 @@ export class SharedCustomerComponent implements OnInit {
             this.editAddress = true;
             this.editEmail = true;
             this.editPhone = true;
-            this.toster.success("Save Changes Successfull");
+            this.toster.message("Save Changes Successfull");
             this.isLoader = false;
         }, error => {
                 console.log(error);

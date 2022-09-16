@@ -39,7 +39,7 @@ import { SharedAppModule } from 'src/shared/shared.module';
         PageNotFoundComponent,
         P404Component,
         P500Component,
-        RegisterComponent,
+        RegisterComponent
     ],
     providers: [
         {

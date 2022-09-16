@@ -23,7 +23,7 @@ export class CloseComponent implements OnInit {
     getAccountDetail(event: any) {
         let fdId = event.target.value;
         if (fdId == "") {
-            this.toster.error("Please enter FD Account id")
+            this.toster.message("Please enter FD Account id")
         } else {
             this.isLoader = true;
             this.fdService.getFDDetailByFDId(fdId).then((data: any) => {
@@ -59,7 +59,7 @@ export class CloseComponent implements OnInit {
         this.isLoader = true;
         this.fdService.closeFD(this.fdAccountDtls).then((data: any) => {
             this.fdAccountDtls = data;
-            this.toster.success("Successfully Closed");
+            this.toster.message("Successfully Closed");
             this.isLoader = false;
         }, error => {
             console.log(error);

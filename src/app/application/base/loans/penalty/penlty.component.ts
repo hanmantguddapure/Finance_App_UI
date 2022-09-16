@@ -20,7 +20,7 @@ export class LoanPenltyComponent {
     getPenaltyDetail(event: any) {
         let loanId = event.target.value;
         if (loanId == "") {
-            this.toster.error("Please enter loan id")
+            this.toster.message("Please enter loan id")
         } else {
             this.isLoader = true;
             this.loanservice.getLoanPenltyByLoanId(loanId).then((data: any) => {
@@ -38,15 +38,15 @@ export class LoanPenltyComponent {
         this.loanPenlty = penaltyDtls;
 
         if (this.loanPenlty.loanAccountId == undefined) {
-            this.toster.error("Please enter loan id")
+            this.toster.message("Please enter loan id")
             this.isValidate = false;
         }
         if (this.loanPenlty.penaltyAmt == undefined) {
-            this.toster.error("Please enter penalty")
+            this.toster.message("Please enter penalty")
             this.isValidate = false;
         }
         if (this.loanPenlty.remark == "" || this.loanPenlty.remark == undefined) {
-            this.toster.error("Please enter remark")
+            this.toster.message("Please enter remark")
             this.isValidate = false;
         }
         if (this.isValidate) {
@@ -56,7 +56,7 @@ export class LoanPenltyComponent {
                     this.loanPenalties = [];
                 }
                 this.loanPenalties.push(this.loanPenlty);
-                this.toster.success("Added Successfully");
+                this.toster.message("Added Successfully");
 
                 this.isLoader = false;
             }, error => {

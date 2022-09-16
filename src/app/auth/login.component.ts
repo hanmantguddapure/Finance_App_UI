@@ -34,7 +34,7 @@ export class LoginComponent {
             return;
         }
         if (!this.user.userName) {
-            this.toster.error("Please Enter User Name");
+            this.toster.message("Please Enter User Name");
             return;
         }
         this.userLoader = true;
@@ -44,7 +44,7 @@ export class LoginComponent {
                 this.isValidUserName = true;
                 this.showUserName = false;
             } else {
-                this.toster.error("User Is Not Valid");
+                this.toster.message("User Is Not Valid");
             }
             this.userLoader = false;
         }, error => {

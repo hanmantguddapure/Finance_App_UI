@@ -21,7 +21,7 @@ export class CloseComponent implements OnInit {
     getAccountDetail(event: any) {
         let shortTermLoanId = event.target.value
         if (shortTermLoanId == "") {
-            this.toster.error("Please enter Account id")
+            this.toster.message("Please enter Account id")
         } else {
             this.isLoader = true;
             this.loanService.getShortTermLoanById(shortTermLoanId).then((data: any) => {
@@ -38,7 +38,7 @@ export class CloseComponent implements OnInit {
         this.shortTermLoanObj.status = '0';
         this.isLoader = true;
         this.loanService.closeShortTermLoan(this.shortTermLoanObj).then((data: any) => {
-            this.toster.success("Successfully Closed");
+            this.toster.message("Successfully Closed");
             this.isLoader = false;
         }, error => {
                 console.log(error);

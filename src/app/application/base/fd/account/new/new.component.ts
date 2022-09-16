@@ -41,7 +41,7 @@ export class NewComponent implements OnInit {
             this.isLoader = true;
             this.fdService.createNewFD(this.fdAccount).then((data: any) => {
                 this.fdAccount = data;
-                this.toster.success("Successfully Created New FD");
+                this.toster.message("Successfully Created New FD");
                 this.isLoader = false;
             }, error => {
                 console.log(error);
@@ -52,24 +52,24 @@ export class NewComponent implements OnInit {
 
     checkValidation() {
         if (this.fdAccount.custId == undefined) {
-            this.toster.error("Please Select Customer");
+            this.toster.message("Please Select Customer");
             this.validationFlag = false;
         }
         if (this.fdAccount.amount == undefined) {
-            this.toster.error("Please Enter FD Amount");
+            this.toster.message("Please Enter FD Amount");
             this.validationFlag = false;
         }
         if (this.fdAccount.interest == undefined) {
-            this.toster.error("Please Enter  Interest ");
+            this.toster.message("Please Enter  Interest ");
             this.validationFlag = false;
         }
 
         if (this.fdAccount.startDate == undefined) {
-            this.toster.error("Please Enter Start Date");
+            this.toster.message("Please Enter Start Date");
             this.validationFlag = false;
         }
         if (this.fdAccount.endDate == undefined) {
-            this.toster.error("Please Enter End Date");
+            this.toster.message("Please Enter End Date");
             this.validationFlag = false;
         }
     }

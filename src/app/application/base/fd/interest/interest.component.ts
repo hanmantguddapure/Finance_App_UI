@@ -25,13 +25,13 @@ export class InterestComponent implements OnInit {
     getFDDetailByFDId(event: any) {
         let fdId = event.target.value;
         if (fdId == "") {
-            this.toster.error("Please enter FD Account id")
+            this.toster.message("Please enter FD Account id")
         } else {
             this.isLoader = true;
             this.fdService.getFDDetailByFDId(fdId).then((data: any) => {
                 this.fdDtls = new FDAccount(data);
                 if (this.fdDtls.isActive.toLowerCase() == "closed") {
-                    this.toster.error("This FD already closed");
+                    this.toster.message("This FD already closed");
                 }
                 this.fdInterest.toDate = this.fdDtls.interestPayTo;
                 this.fdInterest.fromDate = this.fdDtls.interstPayFrom;
@@ -46,20 +46,29 @@ export class InterestComponent implements OnInit {
     }
 
     payInterestAmt(fdInterestDetail: any) {
-        // this.fdInterest=fdInterestDetail;
+        this.fdInterest = fdInterestDetail;
         if (this.fdDtls.isActive.toLowerCase() == "closed") {
             return;
         }
         this.isLoader = true;
         this.fdService.payInterestAmt(this.fdInterest).then((data: any) => {
-            if (this.fdInterestHistory == null) {
-                this.fdInterestHistory = [];
+            console.log(data, Array.isArray(data));
+            if (Array.isArray(data)) {
+                console.log('>>>>');
+
+                data.forEach(e => {
+                    this.toster.message(e);
+                })
+            } else {
+                if (this.fdInterestHistory == null) {
+                    this.fdInterestHistory = [];
+                }
+                this.fdInterestHistory.push(data);
+                this.toster.message("Payment Done Successfully");
             }
-            this.fdInterestHistory.push(data);
-            this.toster.success("Payment Done Successfully");
             this.isLoader = false;
         }, error => {
-                console.log(error);
+            console.log(error);
             this.isLoader = false;
         });
     }

@@ -20,7 +20,7 @@ export class NewComponent implements OnInit {
     createNewShortTermLoan(): void {
         this.isLoader = true;
         this.loanservice.createNewShortTermLoan(this.shortTermLoanObj).then((data: any) => {
-            this.toster.success("Successfully Added");
+            this.toster.message("Successfully Added");
             this.isLoader = false;
         }, error => {
                 console.log(error);

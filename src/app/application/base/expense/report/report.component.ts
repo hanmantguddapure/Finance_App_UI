@@ -91,11 +91,11 @@ export class ExpenseReportComponent implements OnInit {
 
     checkValidation() {
         if (this.expense.fromDate == undefined) {
-            this.toster.error("Please Enter From Date ");
+            this.toster.message("Please Enter From Date ");
             this.validationFlag = false;
         }
         if (this.expense.toDate == undefined) {
-            this.toster.error("Please Enter To Date");
+            this.toster.message("Please Enter To Date");
             this.validationFlag = false;
         }
     }

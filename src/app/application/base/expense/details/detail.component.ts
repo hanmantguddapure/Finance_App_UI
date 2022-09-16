@@ -68,7 +68,7 @@ export class ExpenseDetailComponent implements OnInit {
                     this.expenseslst = [];
                 }
                 this.expenseslst.push(data);
-                this.toster.success("Successfully Added");
+                this.toster.message("Successfully Added");
                 this.isLoader = false;
             }, error => {
                 this.isLoader = false;
@@ -78,15 +78,15 @@ export class ExpenseDetailComponent implements OnInit {
 
     checkValidation() {
         if (this.expense.expenseTypeId == undefined) {
-            this.toster.error("Please Select Expense Type");
+            this.toster.message("Please Select Expense Type");
             this.validationFlag = false;
         }
         if (this.expense.amount == undefined) {
-            this.toster.error("Please Enter Amount");
+            this.toster.message("Please Enter Amount");
             this.validationFlag = false;
         }
         if (this.expense.fromDate == undefined) {
-            this.toster.error("Please Enter From Date ");
+            this.toster.message("Please Enter From Date ");
             this.validationFlag = false;
         }
     }

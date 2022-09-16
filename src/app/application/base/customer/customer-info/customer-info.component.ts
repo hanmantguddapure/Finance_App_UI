@@ -61,7 +61,7 @@ export class CustomerInfoComponent implements OnInit {
 
     saveCustomerPersionDetail() {
         if (this.CustomerGroup.invalid) {
-            this.toster.error("Please fill required fields");
+            this.toster.message("Please fill required fields");
             return;
         }
         this.isLoader = true;
@@ -69,7 +69,7 @@ export class CustomerInfoComponent implements OnInit {
 
         this.customerService.saveCustomerDetail(customer).then(data => {
             this.isLoader = false;
-            this.toster.success(customer.custId ? "Customer updated Successfully" : "New Customer Created Successfully")
+            this.toster.message(customer.custId ? "Customer updated Successfully" : "New Customer Created Successfully")
         }, error => {
             this.isLoader = false;
         })

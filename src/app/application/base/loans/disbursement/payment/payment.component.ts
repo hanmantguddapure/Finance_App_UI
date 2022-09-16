@@ -21,7 +21,7 @@ export class PaymentComponent implements OnInit {
     getAccountDetail(event: any) {
         let loanId = event.target.value;
         if (loanId == "") {
-            this.toster.error("Please enter loan id")
+            this.toster.message("Please enter loan id")
         } else {
             this.isLoader = true;
             this.loanservice.getLoanDetailByLoanId(loanId).then((data: any) => {
@@ -48,7 +48,7 @@ export class PaymentComponent implements OnInit {
         this.isLoader = true;
         this.loanservice.makeLoanPayment(this.loanDetail).then((data: any) => {
             this.loanDetail = data;
-            this.toster.success("Payment Done Successfully");
+            this.toster.message("Payment Done Successfully");
             this.isLoader = false;
         }, error => {
                 console.log(error);

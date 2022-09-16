@@ -29,7 +29,7 @@ export class ViewComponent implements OnInit {
     getAccountDetail(event: any) {
         let loanId = event.target.value;
         if (loanId == "") {
-            this.toster.error("Please enter loan id")
+            this.toster.message("Please enter loan id")
         } else {
             this.isLoader = true;
             this.loanservice.getLoanDetailByLoanId(loanId).then((data: any) => {

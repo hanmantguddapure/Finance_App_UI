@@ -12,6 +12,7 @@ import { MatCardModule } from '@angular/material/card';
 import { MatTabsModule } from '@angular/material/tabs';
 import { MatExpansionModule } from '@angular/material/expansion';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
 
 import { CommonComponents } from "./component";
 
@@ -32,7 +33,8 @@ import { CommonComponents } from "./component";
         MatCardModule,
         MatTabsModule,
         MatExpansionModule,
-        MatProgressSpinnerModule
+        MatProgressSpinnerModule,
+        MatSnackBarModule
     ],
     exports: [
         ...CommonComponents,

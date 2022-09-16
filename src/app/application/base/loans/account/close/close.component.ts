@@ -20,7 +20,7 @@ export class CloseComponent implements OnInit {
     getAccountDetail(event: any) {
         let loanId = event.target.value;
         if (loanId == "") {
-            this.toster.error("Please enter loan id")
+            this.toster.message("Please enter loan id")
         } else {
             this.isLoader = true;
             this.loanservice.getLoanDetailByLoanId(loanId).then((data: any) => {
@@ -41,13 +41,13 @@ export class CloseComponent implements OnInit {
 
     closeLoanAccount(loanDetail: any): void {
         if (this.loanDetail.custId == undefined) {
-            this.toster.error("please Enter CustId")
+            this.toster.message("please Enter CustId")
         } else {
             this.loanDetail.loanStatus = loanDetail.loanStatus;
             this.loanDetail.remark = loanDetail.remark;
             this.isLoader = true;
             this.loanservice.closeLoanAccount(this.loanDetail).then((data: any) => {
-                this.toster.success("Closed Successfully")
+                this.toster.message("Closed Successfully")
 
                 this.isLoader = false;
             }, error => {

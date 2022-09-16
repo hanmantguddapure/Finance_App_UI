@@ -57,7 +57,7 @@ export class NewComponent implements OnInit {
             this.isLoader = true;
             this.loanservice.saveLoanDetail(this.loanDetail).then((data: any) => {
                 this.loanDetail = data;
-                this.toster.success("Successfully Created New Loan Account");
+                this.toster.message("Successfully Created New Loan Account");
 
                 this.isLoader = false;
             }, error => {
@@ -92,51 +92,51 @@ export class NewComponent implements OnInit {
 
     checkValidation() {
         if (this.loanDetail.custId == undefined) {
-            this.toster.error("Please Select Customer");
+            this.toster.message("Please Select Customer");
             this.validationFlag = false;
         }
         if (this.loanDetail.principalAmount == undefined) {
-            this.toster.error("Please Enter Principal Amount");
+            this.toster.message("Please Enter Principal Amount");
             this.validationFlag = false;
         }
         if (this.loanDetail.interest == undefined) {
-            this.toster.error("Please Enter Loan Interest ");
+            this.toster.message("Please Enter Loan Interest ");
             this.validationFlag = false;
         }
         if (this.loanDetail.interestAmt == undefined) {
-            this.toster.error("Please Enter Interest Amount");
+            this.toster.message("Please Enter Interest Amount");
             this.validationFlag = false;
         }
         if (this.loanDetail.depositeAmt == undefined) {
-            this.toster.error("Please Enter Deposite Amount");
+            this.toster.message("Please Enter Deposite Amount");
             this.validationFlag = false;
         }
         if (this.loanDetail.processingFees == undefined) {
-            this.toster.error("Please Enter Processing Fees");
+            this.toster.message("Please Enter Processing Fees");
             this.validationFlag = false;
         }
         if (this.loanDetail.loanAmt == undefined) {
-            this.toster.error("Please Enter Loan Amount");
+            this.toster.message("Please Enter Loan Amount");
             this.validationFlag = false;
         }
         if (this.loanDetail.loanStartDate == undefined) {
-            this.toster.error("Please Enter Loan Start Date");
+            this.toster.message("Please Enter Loan Start Date");
             this.validationFlag = false;
         }
         if (this.loanDetail.loanEndDate == undefined) {
-            this.toster.error("Please Enter Loan End Date");
+            this.toster.message("Please Enter Loan End Date");
             this.validationFlag = false;
         }
         if (this.loanDetail.installMentType == undefined) {
-            this.toster.error("Please Enter Collection Type");
+            this.toster.message("Please Enter Collection Type");
             this.validationFlag = false;
         }
         if (this.loanDetail.installments == undefined) {
-            this.toster.error("Please Enter Installments");
+            this.toster.message("Please Enter Installments");
             this.validationFlag = false;
         }
         if (this.loanDetail.installmentAmount == undefined) {
-            this.toster.error("Please Enter Installment Amount");
+            this.toster.message("Please Enter Installment Amount");
             this.validationFlag = false;
         }
 

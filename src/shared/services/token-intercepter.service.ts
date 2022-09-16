@@ -78,20 +78,20 @@ export class JwtAuthService implements HttpInterceptor {
                     errorMessage = `Error Code: ${error.status}\nMessage: ${error.message}`;
                 }
                 switch (error.status) {
-                    case 0: this.tostar.error("Internal Server Error");
+                    case 0: this.tostar.message("Internal Server Error");
                         // this.router.navigate(['login']);
                         break;
-                    case 204: this.tostar.error("Not Available");
+                    case 204: this.tostar.message("Not Available");
                         break;
-                    case 401: this.tostar.error("Unauthorized");
+                    case 401: this.tostar.message("Unauthorized");
                         break;
-                    case 404: this.tostar.error("Requested is invalid");
+                    case 404: this.tostar.message("Requested is invalid");
                         break;
-                    case 409: this.tostar.error("Already Exist");
+                    case 409: this.tostar.message("Already Exist");
                         break;
-                    case 500: this.tostar.error("Internal Server Error");
+                    case 500: this.tostar.message("Internal Server Error");
                         break;
-                    default: this.tostar.error(errorMessage);
+                    default: this.tostar.message(errorMessage);
                         break;
                 }
                 console.log(errorMessage);

@@ -61,14 +61,14 @@ export class ExpenseTypesComponent implements OnInit {
         let data = this.ExpenseGroup.getRawValue();
 
         if (!data.expenseType) {
-            this.toster.error("Please add Expense Type");
+            this.toster.message("Please add Expense Type");
             return;
         }
         this.isLoader = true;
         this.expenseService.addExpenseType(data).then((data: any) => {
             this.expense = data;
             this.expenseTypesList.push(this.expense);
-            this.toster.success("Added Successfully");
+            this.toster.message("Added Successfully");
             this.isLoader = false;
         });
     }
@@ -84,7 +84,7 @@ export class ExpenseTypesComponent implements OnInit {
 
         this.expenseService.updateExpenseType(data).then((resp: any) => {
             this.close();
-            this.toster.success("Updated Successfully");
+            this.toster.message("Updated Successfully");
         });
 
     }
@@ -99,13 +99,13 @@ export class ExpenseTypesComponent implements OnInit {
         let data = this.ExpenseGroup.getRawValue();
 
         if (!data.expenseType) {
-            this.toster.error("Please add Expense Type");
+            this.toster.message("Please add Expense Type");
             return;
         }
         this.expenseService.addExpenseType(data.expenseType).then((data: any) => {
             this.expense = data;
             this.expenseTypesList.push(this.expense);
-            this.toster.success("Added Successfully");
+            this.toster.message("Added Successfully");
         });
     }
 
