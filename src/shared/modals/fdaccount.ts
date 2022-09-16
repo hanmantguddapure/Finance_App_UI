@@ -34,5 +34,10 @@ export class FDAccount {
         this.pendingMonthsOfInterest = json && json.pendingMonthsOfInterest ? json.pendingMonthsOfInterest : '';
         this.pendingInterestAmt = json && json.pendingInterestAmt ? json.pendingInterestAmt : '';
         this.remark = json && json.remark ? json.remark : '';
+
+        this.paidInterestHistory = new Array();
+        json?.paidInterestHistory && json.paidInterestHistory?.forEach(e => {
+            this.paidInterestHistory.push(new FDInterestDtl(e))
+        });
     }
 }
