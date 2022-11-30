@@ -1,0 +1,9 @@
+<nav mat-tab-nav-bar>
+    <a mat-tab-link routerLink="loan" routerLinkActive #rla="routerLinkActive" [active]="rla.isActive">
+        Disburse Loan
+    </a>
+    <a mat-tab-link routerLink="payment" routerLinkActive #rla1="routerLinkActive" [active]="rla1.isActive">
+        Disbursed Loans
+    </a>
+</nav>
+<router-outlet></router-outlet>

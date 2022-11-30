@@ -1,8 +1,68 @@
-// If you want to override variables do it here
-@import "variables";
+$enable-ltr: true;
+$enable-rtl: true;
 
-// Import styles
-@import "~@coreui/coreui/scss/coreui";
+@import "~bootstrap/scss/bootstrap.scss";
+@import "~@angular/material/prebuilt-themes/indigo-pink.css";
 
-// If you want to add something do it here
-@import "custom";
+$sidebar-backdrop-bg: #3c645fe3;
+
+.sidebar {
+    background: #3c645f;
+}
+
+ngb-accordion {
+    .btn-link {
+        text-decoration: none;
+        color: var(--cui-btn-color, rgba(44, 56, 74, 0.95));
+    }
+    .card-header {
+        padding: 0px;
+    }
+    .accordion-button {
+        padding: 0.5rem 1.25rem;
+        &:focus {
+            box-shadow: none;
+            background: none;
+        }
+    }
+}
+
+.form-control {
+    &.ng-valid,
+    &.ng-invalid {
+        padding-right: 0px !important;
+        background: none;
+        &:focus {
+            box-shadow: none;
+        }
+    }
+}
+
+.btn-check:focus + .btn,
+.btn:focus {
+    box-shadow: none;
+}
+
+.login-body {
+    display: grid;
+    height: 100vh;
+    place-items: center;
+    .card {
+        width: clamp(23ch, 50%, 46ch);
+        display: flex;
+        flex-direction: column;
+        padding: 1rem;
+    }
+}
+
+.dash-card-parent {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin: 5px;
+    .card {
+        margin: 5px;
+        flex: 1 1 150px; // streached
+        // flex: 0 1 150px; // No streached
+    }
+}

@@ -1,0 +1,9 @@
+<nav mat-tab-nav-bar>
+    <a mat-tab-link routerLink="holders" routerLinkActive #rla="routerLinkActive" [active]="rla.isActive">
+        Holders Reports
+    </a>
+    <a mat-tab-link routerLink="status" routerLinkActive #rla1="routerLinkActive" [active]="rla1.isActive">
+        Status Reports
+    </a>
+</nav>
+<router-outlet></router-outlet>

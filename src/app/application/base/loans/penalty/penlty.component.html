@@ -1,0 +1,83 @@
+<div class="animated fadeIn">
+
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="card">
+                <div class="card-header">
+                    <strong>Loan Penalty</strong>
+                </div>
+                <div class="card-body">
+                    <form #form="ngForm" class="form-horizontal">
+                        <div class="form-group mb-3 row">
+                            <label class="col-md-3 col-sm-12 col-form-label">Account Number</label>
+                            <div class="col-md-9">
+                                <input type="text" name="loanAccountId" ngModel (blur)="getPenaltyDetail($event)" class="form-control" placeholder="Loan Account No....">
+                            </div>
+                        </div>
+
+                        <div class="form-group mb-3 row">
+                            <label class="col-md-3 col-sm-12 col-form-label">penalty Amount</label>
+                            <div class="col-md-9">
+                                <input type="text" name="penaltyAmt" ngModel class="form-control">
+                            </div>
+                        </div>
+
+                        <div class="form-group mb-3 row">
+                            <label class="col-md-3 col-sm-12 col-form-label">Remark</label>
+                            <div class="col-md-9">
+                                <input type="text" name="remark" ngModel class="form-control">
+                            </div>
+                        </div>
+
+
+
+
+                        <div class="text-end">
+                            <button type="button" mat-raised-button (click)="addPenalty(form.value)" class="mt-2 mb-2 " color="primary"> Submit</button>
+                            <button type="reset" mat-raised-button class="m-2"> Reset</button>
+                        </div>
+
+                    </form>
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+    <!--/.row-->
+
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="card">
+                <div class="card-header">
+                    <i class="fa fa-align-justify"></i>Penalty Detail
+                </div>
+                <div class="card-body">
+                    <table class="table table-bordered table-striped table-sm">
+                        <thead>
+                            <tr>
+
+                                <th>Penalty Amount</th>
+                                <th>Penalty Date</th>
+                                <th>Remark</th>
+
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let penalty of loanPenalties">
+
+                                <td>{{penalty?.penaltyAmt}}</td>
+                                <td>{{penalty?.penaltyDate}}</td>
+                                <td>{{penalty?.remark}}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                </div>
+            </div>
+        </div>
+        <!--/.col-->
+    </div>
+    <app-loader *ngIf="isLoader"></app-loader>
+</div>

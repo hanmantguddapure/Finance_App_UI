@@ -1,0 +1,42 @@
+<div class="animated fadeIn">
+    <div class="card">
+        <div class="card-body">
+            <form #form="ngForm" class="form-horizontal row">
+                <div class="form-group mb-3 col-md-4 col-sm-12">
+                    <label class="col-form-label" for="email-input">Account Number</label>
+                    <input type="text" name="loanAccNo" ngModel (blur)="getAccountDetail($event)" class="form-control" placeholder="Loan Account No....">
+                </div>
+                <div class="form-group mb-3 col-md-4 col-sm-12">
+                    <label class="col-form-label" for="email-input">Customer Name</label>
+                    <input type="text" name="custFullName" value="{{loanDetail?.custFullName}}" ngModel class="form-control" readonly>
+                </div>
+                <div class="form-group mb-3 col-md-4 col-sm-12">
+                    <label class="col-form-label" for="email-input">Principal Amount</label>
+                    <input type="text" name="loanAmt" value="{{loanDetail?.principalAmount}}" ngModel class="form-control" readonly>
+                </div>
+                <div class="form-group mb-3 col-md-4 col-sm-12">
+                    <label class="col-form-label" for="email-input">Loan Amount</label>
+                    <input type="text" name="principalAmount" value="{{loanDetail?.loanAmt}}" ngModel class="form-control" readonly>
+                </div>
+                <div class="form-group mb-3 col-md-4 col-sm-12">
+                    <label class="col-form-label" for="email-input">Disburse Amount</label>
+                    <input type="text" name="disburseAmt" value="{{disburseAmt}}" [(ngModel)]="loanDetail.disburseAmt" class="form-control">
+                </div>
+                <div class="form-group mb-3 col-md-4 col-sm-12">
+                    <label class="col-form-label" for="email-input">Payment Mode</label>
+                    <select class="form-control" name="paymentMode" ngModel>
+                        <option>--Select Mode--</option>
+                        <option value="Cash">Cash</option>
+                        <option value="Cheque">Cheque</option>
+                        <option value="Online">Online</option>
+                    </select>
+                </div>
+                <div class="text-end">
+                    <button type="button" mat-raised-button (click)="makeLoanPayment(form.value)" class="mt-2 mb-2 " color="primary"> Make Payment</button>
+                    <button type="reset" mat-raised-button class="m-2"> Reset</button>
+                </div>
+            </form>
+        </div>
+    </div>
+    <app-loader *ngIf="isLoader"></app-loader>
+</div>

@@ -1,0 +1,48 @@
+<div class="animated fadeIn">
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="card">
+                <div class="card-body">
+                    <form #form="ngForm" class="form-horizontal">
+                        <div class="form-group mb-3 row">
+                            <div class="col-md-4">
+                                <label class="col-form-label">Account No</label>
+                                <input name="shortTermLoanId" ngModel (blur)="getAccountDetail($event)" class="form-control" placeholder="Enter Account No....">
+                            </div>
+                        </div>
+                        <div class="card">
+                            <div class="card-body row">
+                                <div class="form-group col-md-4 col-sm-12">
+                                    <label class="col-form-label">Customer Name</label>
+                                    <input type="text" name="custFullName" readonly value="{{shortTermLoanObj?.custFullName}}" class="form-control">
+                                </div>
+                                <div class="form-group col-md-4 col-sm-12">
+                                    <label class="col-form-label" for="hf-email">Loan Amount</label>
+                                    <input type="text" name="loanAmt" readonly value="{{shortTermLoanObj?.loanAmt}}" class="form-control">
+                                </div>
+                                <div class="form-group col-md-4 col-sm-12">
+                                    <label class="col-form-label" for="hf-email">Start Date</label>
+                                    <input class="form-control" id="date-input" readonly value="{{shortTermLoanObj?.startDate}}" type="date" name="startDate">
+                                </div>
+                                <div class="form-group col-md-4 col-sm-12">
+                                    <label class="col-form-label" for="hf-email">End Date</label>
+                                    <input class="form-control" id="date-input" readonly value="{{shortTermLoanObj?.endDate}}" type="date" name="endDate">
+                                </div>
+                                <div class="form-group col-md-4 col-sm-12">
+                                    <label class="col-form-label" for="hf-email">Remark</label>
+                                    <input type="text" name="remark" [(ngModel)]=shortTermLoanObj.remark class="form-control">
+                                </div>
+                            </div>
+                        </div>
+                        <!--/.col-->
+                        <div class="text-end">
+                            <button type="button" mat-raised-button (click)="closeShortTermLoan()" class="mt-2 mb-2 " color="primary"> Close</button>
+                            <button type="reset" mat-raised-button class="m-2"> Reset</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <app-loader *ngIf="isLoader"></app-loader>
+</div>

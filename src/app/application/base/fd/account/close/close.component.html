@@ -1,0 +1,70 @@
+<div class="animated fadeIn">
+    <div class="row">
+        <form #form="ngForm" class="form-horizontal">
+            <div class="col-sm-12">
+                <div class="card">
+                    <div class="card-header">
+                        <strong>Fixed Deposite Account Close </strong>
+                    </div>
+                    <div class="card-body">
+                        <div class="form-group mb-3 col-md-4 col-sm-12">
+                            <label class="col-form-label">Account No</label>
+                            <input name="fdAccountDtlsId" ngModel (blur)="getAccountDetail($event)" class="form-control" placeholder="FD Account No....">
+                        </div>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-header">
+                        <strong>Account Detail</strong>
+                    </div>
+                    <div class="card-body">
+                        <form #form="ngForm" class="form-horizontal row">
+                            <div class="form-group col-md-4 col-sm-12">
+                                <label class="col-form-label">Customer Name</label>
+                                <input type="text" value="{{fdAccountDtls?.custName}}" class="form-control" readonly>
+                            </div>
+                            <div class="form-group col-md-4 col-sm-12">
+                                <label class="col-form-label" for="hf-email">FD Amount</label>
+                                <input type="text" value="{{fdAccountDtls?.amount}}" class="form-control" readonly>
+                            </div>
+                            <div class="form-group col-md-4 col-sm-12">
+                                <label class="col-form-label" for="hf-email">Paid Iterest</label>
+                                <input type="text" value="{{fdAccountDtls?.interestAmt}}" class="form-control" readonly>
+                            </div>
+                            <div class="form-group col-md-4 col-sm-12">
+                                <label class="col-form-label" for="hf-email">End Date</label>
+                                <input type="text" value="{{fdAccountDtls?.endDate}}" class="form-control" readonly>
+                            </div>
+                            <div class="form-group col-md-4 col-sm-12">
+                                <label class="col-form-label" for="hf-email">Status</label>
+                                <input type="text" value="{{fdAccountDtls?.isActive}}" class="form-control" readonly>
+                            </div>
+                            <div class="form-group col-md-4 col-sm-12">
+                                <label class="col-form-label" for="hf-email">Remark</label>
+                                <input type="text" name="remark" [(ngModel)]=fdAccountDtls.remark class="form-control">
+                            </div>
+                            <div class="form-group col-md-4 col-sm-12">
+                                <label class="col-form-label" for="hf-email">Pending Intrest Amount</label>
+                                <input type="text" name="pendingInterestAmt" [(ngModel)]=fdAccountDtls.pendingInterestAmt class="form-control">
+                            </div>
+                            <div class="text-end">
+                                <button type="button" mat-raised-button (click)="closeFD(content)" class="mt-2 mb-2 " color="primary"> Close</button>
+                                <button type="reset" mat-raised-button class="m-2"> Reset</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+<ng-template #content let-c="close" let-d="dismiss">
+    <div class="modal-body">
+        <p>Your FD Intrest amount is pending, Please pay intrest amount!</p>
+    </div>
+    <div class="modal-footer">
+        <button type="button" mat-raised-button class="m-2 " (click)="closeModal(false)">Close</button>
+        <button type="button" mat-raised-button class="m-2 " color="primary" (click)="closeModal(true)">Okay</button>
+    </div>
+    <app-loader *ngIf="isLoader"></app-loader>
+</ng-template>

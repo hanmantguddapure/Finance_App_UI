@@ -1,0 +1,9 @@
+<form #custform="ngForm" class="form-horizontal">
+    <shared-customer [isView]="false" [isLoader]="isLoader" [CustomerGroup]="CustomerGroup"></shared-customer>
+    <!--/.col-->
+    <div class="text-end">
+        <button type="button" class="m-2" (click)="saveCustomerPersionDetail()" mat-raised-button color="primary">Submit</button>
+        <button type="reset" class="m-2" mat-raised-button>Reset</button>
+    </div>
+</form>
+<app-loader *ngIf="isLoader"></app-loader>

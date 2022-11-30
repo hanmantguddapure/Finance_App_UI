@@ -1,0 +1,9 @@
+<nav mat-tab-nav-bar>
+    <a mat-tab-link routerLink="customer-new" routerLinkActive #rla="routerLinkActive" [active]="rla.isActive">
+        New Customer
+    </a>
+    <a mat-tab-link routerLink="customer-info" routerLinkActive #rla1="routerLinkActive" [active]="rla1.isActive">
+        View Customer
+    </a>
+</nav>
+<router-outlet></router-outlet>

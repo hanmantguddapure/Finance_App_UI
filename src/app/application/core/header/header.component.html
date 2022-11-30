@@ -1,0 +1,20 @@
+<header class="d-flex flex-wrap align-items-center justify-content-center justify-content-md-between py-2 border-bottom">
+    <ul class="nav col-12 col-md-auto mb-2 justify-content-center text-start mb-md-0">
+        <button mat-flat-button (click)="drawer.toggle()">
+            <i class="fa fa-bars collaps-icon"></i>
+        </button>
+        <li>
+            <a class="nav-link p-2 text-dark" href="javascript:;" routerLink="/application" routerLinkActive="active">
+                Dashboard
+            </a>
+        </li>
+    </ul>
+    <ul class="nav col-12 col-md-auto mb-2 justify-content-center text-end mb-md-0">
+        <li>
+            <a class="nav-link p-2 text-dark" href="javascript:;">Logged In {{cache.user?.fullName}}</a>
+        </li>
+        <li>
+            <a class="nav-link p-2 text-danger font-weight-bold" href="javascript:;" (click)="logout()">Log Out</a>
+        </li>
+    </ul>
+</header>

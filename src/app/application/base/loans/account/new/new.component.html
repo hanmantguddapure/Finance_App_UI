@@ -1,0 +1,80 @@
+<div class="animated fadeIn">
+    <div class="row">
+        <div class="col-sm-12">
+            <form #form="ngForm" class="form-horizontal">
+                <div class="card">
+                    <div class="card-header">
+                        <strong>Loan Account Detail</strong> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        <strong>Account No:- {{loanDetail?.loanAccountNo}}</strong>
+                    </div>
+                    <div class="card-body">
+                        <div class="col-md-4 p-2">
+                            <label class="col-form-label">Customer</label>
+                            <select class="form-control" name="custId" [(ngModel)]=loanDetail.custId>
+                                <option>--Select Customer--</option>
+                                <option *ngFor="let customer of allCustomerList" value="{{customer?.custId}}">{{customer?.fullName}}</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-header">
+                        <strong>Create New Account</strong>
+                    </div>
+                    <div class="card-body row">
+                        <div class="col-md-4">
+                            <label class="col-form-label" for="hf-email">Principal Amount</label>
+                            <input type="text" name="principalAmount" [(ngModel)]="loanDetail.principalAmount" class="form-control" placeholder="Enter Principal Amount..">
+                        </div>
+                        <div class="col-md-4">
+                            <label class="col-form-label" for="hf-email">Iterest</label>
+                            <input type="text" name="interest" [(ngModel)]="loanDetail.interest" class="form-control" (blur)="calculateItersetAmt()" placeholder="Enter Interest..">
+                        </div>
+                        <div class="col-md-4">
+                            <label class="col-form-label" for="hf-email">Iterest Amount</label>
+                            <input type="text" name="interestAmt" value="{{loanDetail?.interestAmt}}" [(ngModel)]="loanDetail.interestAmt" class="form-control" readonly>
+                        </div>
+                        <div class="col-md-4">
+                            <label class="col-form-label" for="hf-email">Deposite Amount</label>
+                            <input type="text" name="depositeAmt" value="{{loanDetail?.depositeAmt}}" [(ngModel)]="loanDetail.depositeAmt" class="form-control" readonly>
+                        </div>
+                        <div class="col-md-4">
+                            <label class="col-form-label" for="hf-email">Processing Fees</label>
+                            <input type="text" name="processingFees" value="{{loanDetail?.processingFees}}" [(ngModel)]="loanDetail.processingFees" class="form-control" readonly>
+                        </div>
+                        <div class="col-md-4">
+                            <label class="col-form-label" for="hf-email">Disbursement</label>
+                            <input type="text" name="loanAmt" value="{{loanDetail?.loanAmt}}" [(ngModel)]="loanDetail.loanAmt" class="form-control" readonly>
+                        </div>
+                        <div class="col-md-4">
+                            <label class="col-form-label" for="hf-email">Loan Start Date</label>
+                            <input class="form-control" id="date-input" type="date" name="loanStartDate" [(ngModel)]="loanDetail.loanStartDate" placeholder="Loan Date">
+                        </div>
+                        <div class="col-md-4">
+                            <label class="col-form-label" for="hf-email">Loan End Date</label>
+                            <input class="form-control" id="date-input" type="date" name="loanEndDate" [(ngModel)]="loanDetail.loanEndDate" placeholder="Loan Date">
+                        </div>
+                        <div class="col-md-4">
+                            <label class="col-form-label" for="hf-email">Collection Type</label>
+                            <input class="form-control" id="date-input" type="text" readonly name="installMentType" value="{{loanDetail?.installMentType}}" [(ngModel)]="loanDetail.installMentType">
+                        </div>
+                        <div class="col-md-4">
+                            <label class="col-form-label" for="hf-email">Installments</label>
+                            <input class="form-control" id="date-input" type="text" readonly name="installments" value="{{loanDetail?.installments}}" [(ngModel)]="loanDetail.installments">
+                        </div>
+                        <div class="col-md-4">
+                            <label class="col-form-label" for="hf-email">Installment Amount</label>
+                            <input class="form-control" id="date-input" type="text" readonly name="installmentAmount" value="{{loanDetail?.installmentAmount}}" [(ngModel)]="loanDetail.installmentAmount">
+                        </div>
+                    </div>
+                </div>
+                <!--/.col-->
+                <div class="text-end">
+                    <button type="button" mat-raised-button (click)="saveLoanDetail()" class="mt-2 mb-2 " color="primary"> Submit</button>
+                    <button type="reset" mat-raised-button class="m-2"> Reset</button>
+                </div>
+            </form>
+        </div>
+    </div>
+    <app-loader *ngIf="isLoader"></app-loader>
+</div>

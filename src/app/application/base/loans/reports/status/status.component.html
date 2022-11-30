@@ -1,0 +1,82 @@
+<div class="animated fadeIn">
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="card">
+                <div class="card-header">
+                    <strong>Loan Report</strong>
+                </div>
+                <div class="card-body row">
+                    <div class="form-group mb-3 col-md-4 col-sm-12">
+                        <label class="col-form-label">Select Loan Type</label>
+                        <select class="form-control" name="loanStatus" ngModel (change)="onStatusChange($event)">
+                            <option>--Select Loan Status--</option>
+                            <option value="Opened">Opened</option>
+                            <option value="Closed">Closed</option>
+                            <option value="MISC">MISC</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row" *ngIf="loanRepoDetails?.length">
+        <div class="col-lg-12">
+            <div class="card">
+                <div class="card-header">
+                    <i class="fa fa-align-justify"></i> Loan Report
+                </div>
+                <div class="card-body">
+                    <table class="table table-bordered table-striped table-sm">
+                        <thead>
+                            <tr>
+                                <th>A/C No.</th>
+                                <th>Name</th>
+                                <th>Loan</th>
+                                <th>Disbursement</th>
+                                <th>Disbursed</th>
+                                <th title="Processing Fees">Fees</th>
+                                <th title="Total Intrest Amount Of Loan">Intrest</th>
+                                <th>Penalty</th>
+                                <th title="Total Loan Recovered">Recovered</th>
+                                <th title="Pending Recoverment">Pending</th>
+                                <th>Earned</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let loanRepoDetail of loanRepoDetails">
+                                <td>{{loanRepoDetail?.loanAccountNo}}</td>
+                                <td>{{loanRepoDetail?.fullName}}</td>
+                                <td>{{loanRepoDetail?.principalAmount}}</td>
+                                <td>{{loanRepoDetail?.loanAmt}}</td>
+                                <td>{{loanRepoDetail?.disburseAmt}}</td>
+                                <td>{{loanRepoDetail?.proceessingFee}}</td>
+                                <td>{{loanRepoDetail?.totalInterest}}</td>
+                                <td>{{loanRepoDetail?.totalPenalty}}</td>
+                                <td>{{loanRepoDetail?.totalCollection}}</td>
+                                <td>{{loanRepoDetail?.remainCollection}}</td>
+                                <td>{{loanRepoDetail?.totalEarned}}</td>
+                            </tr>
+                            <tr>
+                                <td align="center" colspan="2">Total</td>
+                                <td>{{totalPrince}}</td>
+                                <td>{{totalLoan}}</td>
+                                <td>{{totalDisbursed}}</td>
+                                <td>{{totalProcessFess}}</td>
+                                <td>{{totalInterest}}</td>
+                                <td>{{totalPenalty}}</td>
+                                <td>{{totalCollection}}
+                                <td>{{pendingCollection}}</td>
+                                <td>{{totalEarning}}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <div class="col-md-9">
+                <label class="col-form-label"></label>
+                <a [href]="fileUrl" target="_blank" download="loan_account.pdf">Download File</a>
+            </div>
+        </div>
+    </div>
+    <app-loader *ngIf="isLoader"></app-loader>
+</div>

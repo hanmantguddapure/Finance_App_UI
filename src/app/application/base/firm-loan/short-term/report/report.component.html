@@ -1,0 +1,61 @@
+<div class="animated fadeIn">
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="card">
+                <div class="card-header">
+                    <strong>Firm Loan Report</strong>
+                </div>
+                <div class="card-body">
+                    <div class="form-group mb-3 row">
+                        <div class="col-md-4">
+                            <label class="col-form-label">Select Loan Type</label>
+                            <select class="form-control" name="loanStatus" ngModel (change)="onStatusChange($event)">
+                                <option>--Select Loan Status--</option>
+                                <option value="1">Opened</option>
+                                <option value="0">Closed</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="card">
+                <div class="card-header">
+                    <i class="fa fa-align-justify"></i> Loan Report
+                </div>
+                <div class="card-body">
+                    <table class="table table-bordered table-striped table-sm">
+                        <thead>
+                            <tr>
+                                <th>Account No.</th>
+                                <th>Customer Name</th>
+                                <th>Start Date</th>
+                                <th>End Date</th>
+                                <th>Ramark</th>
+                                <th>Loan Amount</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let shortLoan of shortTermLoans">
+                                <td>{{shortLoan?.shortTermLoanId}}</td>
+                                <td>{{shortLoan?.custFullName}}</td>
+                                <td>{{shortLoan?.startDate}}</td>
+                                <td>{{shortLoan?.endDate}}</td>
+                                <td>{{shortLoan?.remark}}</td>
+                                <td>{{shortLoan?.loanAmt}}</td>
+                            </tr>
+                            <tr>
+                                <td colspan="5">Total</td>
+                                <td>{{totalLoan}}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+    <app-loader *ngIf="isLoader"></app-loader>
+</div>
