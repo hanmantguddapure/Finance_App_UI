@@ -7,7 +7,7 @@ const routes: Routes = [
     {
         path: '',
         component: InterestComponent,
-        title: 'Intrest'
+        // title: 'Intrest'
         // children: [
         //     {
         //         path: '',

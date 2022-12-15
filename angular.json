@@ -1,12 +1,12 @@
 {
-    "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
+    "$schema": "node_modules/@angular/cli/lib/config/schema.json",
     "cli": {
         "analytics": false
     },
     "version": 1,
     "newProjectRoot": "projects",
     "projects": {
-        "ng": {
+        "finance": {
             "projectType": "application",
             "schematics": {
                 "@schematics/angular:component": {
@@ -41,16 +41,15 @@
                             "src/scss/style.scss"
                         ],
                         "scripts": [],
-                        "allowedCommonJsDependencies": [
-                        ]
+                        "allowedCommonJsDependencies": []
                     },
                     "configurations": {
                         "production": {
                             "budgets": [
                                 {
                                     "type": "initial",
-                                    "maximumWarning": "1500kb",
-                                    "maximumError": "6mb"
+                                    "maximumWarning": "5mb",
+                                    "maximumError": "10mb"
                                 },
                                 {
                                     "type": "anyComponentStyle",
@@ -67,12 +66,12 @@
                             "outputHashing": "all"
                         },
                         "development": {
-                            "buildOptimizer": true,
-                            "optimization": true,
+                            "buildOptimizer": false,
+                            "optimization": false,
                             "vendorChunk": false,
                             "extractLicenses": false,
                             "sourceMap": true,
-                            "namedChunks": false
+                            "namedChunks": true,
                         }
                     },
                     "defaultConfiguration": "production"
@@ -81,10 +80,10 @@
                     "builder": "@angular-devkit/build-angular:dev-server",
                     "configurations": {
                         "production": {
-                            "browserTarget": "ng:build:production"
+                            "browserTarget": "finance:build:production"
                         },
                         "development": {
-                            "browserTarget": "ng:build:development"
+                            "browserTarget": "finance:build:development"
                         }
                     },
                     "defaultConfiguration": "development"
@@ -92,7 +91,7 @@
                 "extract-i18n": {
                     "builder": "@angular-devkit/build-angular:extract-i18n",
                     "options": {
-                        "browserTarget": "coreui-free-angular-admin-template:build"
+                        "browserTarget": "finance:build"
                     }
                 },
                 "test": {
@@ -243,5 +242,6 @@
                 }
             }
         }
-    }
+    },
+    "defaultProject": "solver"
 }
