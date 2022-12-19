@@ -1,0 +1,114 @@
+<div class="animated fadeIn">
+    <div class="card">
+        <div class="card-header">
+            <strong>Prsonal Loan Detail</strong>
+        </div>
+        <div class="card-body">
+            <div class="row">
+                <div class="form-group col-md-4 col-sm-12">
+                    <label class="col-form-label">Account Number</label>
+                    <input type="text" name="loanId" ngModel (blur)="getAccountDetail($event)" class="form-control" placeholder="Loan Account No....">
+                </div>
+                <div class="form-group col-md-4 col-sm-12">
+                    <label class="col-form-label">Loan Fearm</label>
+                    <input type="text" name="loanFrom" value="{{loanDetail?.loanFrom}}" ngModel class="form-control" readonly>
+                </div>
+            </div>
+            <div class="row">
+                <div class="form-group col-md-4 col-sm-12">
+                    <label class="col-form-label">Loan Amount</label>
+                    <input type="text" name="loanAmt" value="{{loanDetail?.loanAmt}}" ngModel class="form-control" readonly>
+                </div>
+                <div class="form-group mb-3 col-md-4 col-sm-12">
+                    <label class="col-form-label" for="hf-email">Collection Date</label>
+                    <input class="form-control" name="emiDate" id="date-input" value="{{loanDetail?.emiDate|date:'dd/MM/yyyy'}}" type="date" ngModel>
+                </div>
+                <div class="form-group col-md-4 col-sm-12">
+                    <label class="col-form-label">Emi Amount</label>
+                    <input type="text" name="emiAmount" value="{{loanDetail?.emiAmount}}" ngModel class="form-control" readonly>
+                </div>
+                <div class="form-group mb-3 col-md-4 col-sm-12">
+                    <label class="col-form-label" for="email-input">Loan Tenure</label>
+                    <input type="text" name="loanTenure" value="{{loanDetail?.loanTenure}}" [(ngModel)]="loanDetail.disburseAmt" class="form-control">
+                </div>
+                <div class="form-group mb-3 col-md-4 col-sm-12">
+                    <label class="col-form-label" for="email-input">Loan Interest</label>
+                    <input type="text" name="loanInterest" value="{{loanDetail?.loanInterest}}" [(ngModel)]="loanDetail.disburseAmt" class="form-control">
+                </div>
+                <div class="form-group mb-3 col-md-4 col-sm-12">
+                    <label class="col-form-label" for="hf-email">Start Date</label>
+                    <input class="form-control" name="loanStartDate" id="date-input" value="{{loanDetail?.loanStartDate|date:'dd/MM/yyyy'}}" type="date" ngModel>
+                </div>
+                <div class="form-group mb-3 col-md-4 col-sm-12">
+                    <label class="col-form-label" for="hf-email">End Date</label>
+                    <input class="form-control" name="loanEndDate" id="date-input" value="{{loanDetail?.loanEndDate|date:'dd/MM/yyyy'}}" type="date" ngModel>
+                </div>
+                <div class="text-end">
+                    <button type="button" mat-raised-button (click)="newPersonalLaon()" class="mt-2 mb-2 " color="primary">Add</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="card">
+        <div class="card-header">
+            <strong>Add Installment</strong>
+        </div>
+        <form #form="ngForm" class="form-horizontal">
+            <div class="card-body">
+                <div class="row">
+                    <div class="form-group mb-3 col-md-4 col-sm-12">
+                        <label class="col-form-label" for="hf-email">Installment Amount</label>
+                        <input type="text" name="installmentAmt" class="form-control" ngModel placeholder="Amount.....">
+                    </div>
+                    <div class="form-group col-md-4 col-sm-12">
+                        <label class="col-form-label">Loan Fearm</label>
+                        <input type="text" name="installmentType" class="form-control" ngModel>
+                    </div>
+                    <div class="form-group mb-3 col-md-4 col-sm-12">
+                        <label class="col-form-label" for="hf-email">Installment Date</label>
+                        <input class="form-control" name="installmentDate" id="datze-input" value="{{installmentDate|date:'dd/MM/yyyy'}}" type="date" ngModel>
+                    </div>
+                    <div class="text-end">
+                        <button type="button" mat-raised-button (click)="addCustomerPayment(form.value, content)" class="mt-2 mb-2 " color="primary"> Submit</button>
+                        <button type="reset" mat-raised-button class="m-2"> Reset</button>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+
+    <!-- <div class="card">
+        <div class="card-header">
+            <i class="fa fa-align-justify"></i> Collection Detail
+        </div>
+        <div class="card-body">
+            <table class="table table-bordered table-striped table-sm">
+                <thead>
+                    <tr>
+                        <th>Collection Amount</th>
+                        <th>Collection Type</th>
+                        <th>Collection Date</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let personalLaonDetails of loanPaymetDetails">
+                        <td>{{personalLaonDetails?.payment}}</td>
+                        <td>{{personalLaonDetails?.paymentMethod}}</td>
+                        <td>{{personalLaonDetails?.paymentDate}}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div> -->
+</div>
+<app-loader *ngIf="isLoader"></app-loader>
+
+<ng-template #content let-c="close" let-d="dismiss">
+    <div class="modal-body">
+        <p>Payment Already Added On This Date, Are You Want Add Again?</p>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="m-2" mat-raised-button class="" (click)="closeModal()">No</button>
+        <button type="button" class="m-2" mat-raised-button class="" color="primary" (click)="addPLoanInstallments()">Yes</button>
+    </div>
+</ng-template>

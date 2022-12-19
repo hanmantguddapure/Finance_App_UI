@@ -13,3 +13,27 @@ export class PaymentDetail {
         this.paymentId = json && json.paymentId ? json.paymentId : '';
     }
 }
+
+export class PersonalLaonDetail {
+    loanId: any;
+    loanFrom: any;
+    loanAmt: any;
+    emiDate: any;
+    emiAmount: any;
+    loanTenure: any;
+    loanInterest: any;
+    loanStartDate: any;
+    loanEndDate: any;
+
+    constructor(json: any) {
+        this.loanId = json?.loanId ?? '';
+        this.loanFrom = json?.loanFrom ?? '';
+        this.loanAmt = json?.loanAmt ?? '';
+        this.emiDate = json?.emiDate ?? '';
+        this.emiAmount = json?.emiAmount ?? '';
+        this.loanTenure = json?.loanTenure ?? '';
+        this.loanInterest = json?.loanInterest ?? '';
+        this.loanStartDate = json?.loanStartDate ?? '';
+        this.loanEndDate = json?.loanEndDate ?? '';
+    }
+}

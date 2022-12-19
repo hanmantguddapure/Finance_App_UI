@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 
 import { Loandetail } from 'src/shared/modals/loandetail';
-import { PaymentDetail } from 'src/shared/modals/payment-detail';
+import { PaymentDetail, PersonalLaonDetail } from 'src/shared/modals/payment-detail';
 import { LoanPenalty } from 'src/shared/modals/loan-penalty';
 import { FirmLoan } from 'src/shared/modals/firm-loan';
 import { ShortTermLoan } from 'src/shared/modals/short-term-loan';
@@ -172,6 +172,39 @@ export class LoanService {
             })
         });
     }
+
+    // personal Laon
+    public newPersonalLaon(firmLoan: PersonalLaonDetail) {
+        return new Promise<void>((resolve, reject) => {
+            this.apiService.postAPI('/personal/new', firmLoan).then(resp => {
+                resolve(resp);
+            }, error => {
+                reject(error);
+            })
+        });
+    }
+
+    public addPLoanInstallments(payment: PersonalLaonDetail) {
+        return new Promise<void>((resolve, reject) => {
+            this.apiService.postAPI('/installment/add', payment).then(resp => {
+                resolve(resp);
+            }, error => {
+                reject(error);
+            })
+        });
+    }
+
+    public getPersonalLaonLoanId(loanId: any) {
+        return new Promise<void>((resolve, reject) => {
+            this.apiService.getAPI('/personal/' + loanId).then(resp => {
+                resolve(resp);
+            }, error => {
+                reject(error);
+            })
+        });
+    }
+
+    // end personal Laon
 
     public getFirmLoanById(firmLoanId: any) {
         return new Promise<void>((resolve, reject) => {

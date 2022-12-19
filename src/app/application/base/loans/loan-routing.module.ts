@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { EMIComponent } from './installments/emi.component';
 import { LoanPenltyComponent } from './penalty/penlty.component';
+import { PersonalLoanComponent } from './personal-loan/personal-loan.component';
 
 const routes: Routes = [
     {
@@ -38,7 +39,14 @@ const routes: Routes = [
             title: 'Account'
         },
         loadChildren: () => import('./account/account.module').then(m => m.AccountModule)
-    }
+    },
+    {
+        path: 'presonal-loan',
+        data: {
+            title: 'Personal Loan'
+        },
+        component: PersonalLoanComponent,
+    },
 ];
 
 @NgModule({

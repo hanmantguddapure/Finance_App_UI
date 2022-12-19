@@ -10,6 +10,8 @@ import { LoanRoutingModule } from './loan-routing.module';
 import { LoanPenltyComponent } from './penalty/penlty.component';
 import { EMIComponent } from './installments/emi.component';
 
+import { PersonalLoanComponent } from './personal-loan/personal-loan.component';
+
 @NgModule({
     imports: [
         CommonModule,
@@ -22,7 +24,8 @@ import { EMIComponent } from './installments/emi.component';
     ],
     declarations: [
         EMIComponent,
-        LoanPenltyComponent
+        LoanPenltyComponent,
+        PersonalLoanComponent
     ]
 })
 export class LoanModule { }

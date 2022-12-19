@@ -33,6 +33,10 @@ export const navItems: any = [
             {
                 name: 'Penlty',
                 url: '/application/loan/penalty'
+            },
+            {
+                name: 'Personal Loan',
+                url: '/application/loan/presonal-loan'
             }
         ]
     },
